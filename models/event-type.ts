@@ -15,15 +15,36 @@
 
 
 /**
- * Type of events.
+ * Type of webhook events.
  * @export
  * @enum {string}
  */
 
 export const EventType = {
+    /**
+    * Occurs when an email delivery status is updated, and the status changes to &#x60;delivered&#x60; or &#x60;failed&#x60;.
+    */
     EmailDeliveryUpdated: 'email.delivery.updated',
+    /**
+    * Occurs when an SMS message status is updated, and the status changes to &#x60;delivered&#x60; or &#x60;undelivered&#x60;.
+    */
     SmsMessageUpdated: 'sms.message.updated',
-    VoiceMessageUpdated: 'voice.message.updated'
+    /**
+    * Occurs when a voice message status is updated, and the status changes to &#x60;delivered&#x60; or &#x60;undelivered&#x60;.
+    */
+    VoiceMessageUpdated: 'voice.message.updated',
+    /**
+    * Occurs when a WhatsApp inbound message is received.
+    */
+    WhatsappInboundMessageReceived: 'whatsapp.inbound_message.received',
+    /**
+    * Occurs when a WhatsApp outbound message status is updated, and the status changes to &#x60;sent&#x60;, &#x60;failed&#x60;, &#x60;delivered&#x60;, or &#x60;read&#x60;.
+    */
+    WhatsappMessageUpdated: 'whatsapp.message.updated',
+    /**
+    * Occurs when a WhatsApp template is reviewed, and the status changes to &#x60;APPROVED&#x60; or &#x60;REJECTED&#x60;.
+    */
+    WhatsappTemplateReviewed: 'whatsapp.template.reviewed'
 } as const;
 
 export type EventType = typeof EventType[keyof typeof EventType];

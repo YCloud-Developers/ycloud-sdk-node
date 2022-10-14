@@ -14,11 +14,23 @@
 
 
 
-export * from './apis/balance-api';
-export * from './apis/emails-api';
-export * from './apis/sms-api';
-export * from './apis/verify-api';
-export * from './apis/voices-api';
-export * from './apis/webhook-endpoints-api';
-export * from './apis/whatsapp-messages-api';
+/**
+ * Contact email address(es) formatted as an emails object.
+ * @export
+ * @interface WhatsappMessageContactEmailsInner
+ */
+export interface WhatsappMessageContactEmailsInner {
+    /**
+     * Email address.
+     * @type {string}
+     * @memberof WhatsappMessageContactEmailsInner
+     */
+    'email'?: string;
+    /**
+     * Standard values are `HOME` and `WORK`.
+     * @type {string}
+     * @memberof WhatsappMessageContactEmailsInner
+     */
+    'type'?: string;
+}
 

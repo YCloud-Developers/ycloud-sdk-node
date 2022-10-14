@@ -14,11 +14,29 @@
 
 
 
-export * from './apis/balance-api';
-export * from './apis/emails-api';
-export * from './apis/sms-api';
-export * from './apis/verify-api';
-export * from './apis/voices-api';
-export * from './apis/webhook-endpoints-api';
-export * from './apis/whatsapp-messages-api';
+/**
+ * 
+ * @export
+ * @interface WhatsappTemplateComponentExample
+ */
+export interface WhatsappTemplateComponentExample {
+    /**
+     * 
+     * @type {Array<Array<string>>}
+     * @memberof WhatsappTemplateComponentExample
+     */
+    'body_text'?: Array<Array<string>>;
+    /**
+     * 
+     * @type {Array<string>}
+     * @memberof WhatsappTemplateComponentExample
+     */
+    'header_text'?: Array<string>;
+    /**
+     * 
+     * @type {Array<string>}
+     * @memberof WhatsappTemplateComponentExample
+     */
+    'header_url'?: Array<string>;
+}
 

@@ -14,11 +14,26 @@
 
 
 
-export * from './apis/balance-api';
-export * from './apis/emails-api';
-export * from './apis/sms-api';
-export * from './apis/verify-api';
-export * from './apis/voices-api';
-export * from './apis/webhook-endpoints-api';
-export * from './apis/whatsapp-messages-api';
+/**
+ * WhatsApp outbound message type. See also [WhatsApp messages](https://developers.facebook.com/docs/whatsapp/cloud-api/reference/messages).
+ * @export
+ * @enum {string}
+ */
+
+export const WhatsappMessageType = {
+    Template: 'template',
+    Text: 'text',
+    Image: 'image',
+    Audio: 'audio',
+    Video: 'video',
+    Document: 'document',
+    Sticker: 'sticker',
+    Location: 'location',
+    Interactive: 'interactive',
+    Contacts: 'contacts'
+} as const;
+
+export type WhatsappMessageType = typeof WhatsappMessageType[keyof typeof WhatsappMessageType];
+
+
 

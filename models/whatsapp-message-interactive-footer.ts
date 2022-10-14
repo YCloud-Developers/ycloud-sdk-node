@@ -14,11 +14,17 @@
 
 
 
-export * from './apis/balance-api';
-export * from './apis/emails-api';
-export * from './apis/sms-api';
-export * from './apis/verify-api';
-export * from './apis/voices-api';
-export * from './apis/webhook-endpoints-api';
-export * from './apis/whatsapp-messages-api';
+/**
+ * [WhatsApp Footer Object](https://developers.facebook.com/docs/whatsapp/cloud-api/reference/messages#footer-object).
+ * @export
+ * @interface WhatsappMessageInteractiveFooter
+ */
+export interface WhatsappMessageInteractiveFooter {
+    /**
+     * The footer content. Emojis and markdown are supported. Links are supported.
+     * @type {string}
+     * @memberof WhatsappMessageInteractiveFooter
+     */
+    'text'?: string;
+}
 

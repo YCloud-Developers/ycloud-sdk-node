@@ -48,6 +48,8 @@ Class | Method | HTTP request | Description
 *EmailsApi* | **send** | **POST** /emails | Send an email
 *SmsApi* | **list** | **GET** /sms | List SMS records
 *SmsApi* | **send** | **POST** /sms | Send an SMS
+*VerifyApi* | **check** | **POST** /verify/verificationChecks | Check a verification
+*VerifyApi* | **send** | **POST** /verify/verifications | Start a verification
 *VoicesApi* | **list** | **GET** /voices | List voice records
 *VoicesApi* | **send** | **POST** /voices | Send a voice code
 *WebhookEndpointsApi* | **create** | **POST** /webhookEndpoints | Create a webhook endpoint
@@ -56,6 +58,7 @@ Class | Method | HTTP request | Description
 *WebhookEndpointsApi* | **retrieve** | **GET** /webhookEndpoints/{id} | Retrieve a webhook endpoint
 *WebhookEndpointsApi* | **rotateSecret** | **POST** /webhookEndpoints/{id}/rotateSecret | Rotate a webhook endpoint secret
 *WebhookEndpointsApi* | **update** | **PATCH** /webhookEndpoints/{id} | Update a webhook endpoint
+*WhatsappMessagesApi* | **send** | **POST** /whatsapp/messages | Send a WhatsApp message
 
 
 ## Documentation for Authorization

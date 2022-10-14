@@ -14,11 +14,20 @@
 
 
 
-export * from './apis/balance-api';
-export * from './apis/emails-api';
-export * from './apis/sms-api';
-export * from './apis/verify-api';
-export * from './apis/voices-api';
-export * from './apis/webhook-endpoints-api';
-export * from './apis/whatsapp-messages-api';
+/**
+ * Supports several independent channels for verification: `sms`: Sends an SMS message with a verification code. `voice`: Makes a voice call with a verification code. `email_code`: Sends an email with a verification code. `whatsapp`: Sends a WhatsApp message with a verification code.
+ * @export
+ * @enum {string}
+ */
+
+export const VerificationChannel = {
+    Sms: 'sms',
+    Voice: 'voice',
+    EmailCode: 'email_code',
+    Whatsapp: 'whatsapp'
+} as const;
+
+export type VerificationChannel = typeof VerificationChannel[keyof typeof VerificationChannel];
+
+
 

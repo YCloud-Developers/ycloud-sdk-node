@@ -27,7 +27,7 @@ export interface Voice {
      */
     'id': string;
     /**
-     * The recipient\'s phone number in E.164 format.
+     * The recipient\'s phone number in [E.164](https://en.wikipedia.org/wiki/E.164) format.
      * @type {string}
      * @memberof Voice
      */

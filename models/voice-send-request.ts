@@ -33,7 +33,7 @@ export interface VoiceSendRequest {
      */
     'verificationCode': string;
     /**
-     * [ISO 639 Language Code](https://www.iso.org/iso-639-language-codes.html). If not specified, language will be set as `en` by default. Notably, in certain countries or regions, language will be automatically set as the local language due to the regional restrictions. Other applicable languages: `en`: English `zh`: Chinese `id`: Indonesian `vi`: Vietnamese `tr`: Turkish `ru`: Russian `de`: German `fr`: French `it`: Italian `pt`: Portuguese
+     * [ISO 639 Language Code](https://www.iso.org/iso-639-language-codes.html). If not specified, language will be set as `en` by default. Notably, in certain countries or regions, language will be automatically set as the local language due to the regional restrictions. Applicable languages: `ar`: Arabic `de`: German `en`: English `es`: Spanish `fr`: French `id`: Indonesian `it`: Italian `pt`: Portuguese `ru`: Russian `tr`: Turkish `vi`: Vietnamese `zh`: Chinese
      * @type {string}
      * @memberof VoiceSendRequest
      */

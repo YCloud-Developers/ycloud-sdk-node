@@ -14,11 +14,17 @@
 
 
 
-export * from './apis/balance-api';
-export * from './apis/emails-api';
-export * from './apis/sms-api';
-export * from './apis/verify-api';
-export * from './apis/voices-api';
-export * from './apis/webhook-endpoints-api';
-export * from './apis/whatsapp-messages-api';
+/**
+ * When the notification describes a text message, the text object provides the body of the text message.
+ * @export
+ * @interface WhatsappInboundMessageText
+ */
+export interface WhatsappInboundMessageText {
+    /**
+     * Message text.
+     * @type {string}
+     * @memberof WhatsappInboundMessageText
+     */
+    'body'?: string;
+}
 

@@ -14,11 +14,23 @@
 
 
 
-export * from './apis/balance-api';
-export * from './apis/emails-api';
-export * from './apis/sms-api';
-export * from './apis/verify-api';
-export * from './apis/voices-api';
-export * from './apis/webhook-endpoints-api';
-export * from './apis/whatsapp-messages-api';
+/**
+ * Sent when a customer clicks a button. Returned when `type` is `button_reply`.
+ * @export
+ * @interface WhatsappInboundMessageInteractiveButtonReply
+ */
+export interface WhatsappInboundMessageInteractiveButtonReply {
+    /**
+     * Unique ID of a button.
+     * @type {string}
+     * @memberof WhatsappInboundMessageInteractiveButtonReply
+     */
+    'id'?: string;
+    /**
+     * Title of a button.
+     * @type {string}
+     * @memberof WhatsappInboundMessageInteractiveButtonReply
+     */
+    'title'?: string;
+}
 

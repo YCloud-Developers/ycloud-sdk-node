@@ -14,11 +14,19 @@
 
 
 
-export * from './apis/balance-api';
-export * from './apis/emails-api';
-export * from './apis/sms-api';
-export * from './apis/verify-api';
-export * from './apis/voices-api';
-export * from './apis/webhook-endpoints-api';
-export * from './apis/whatsapp-messages-api';
+/**
+ * 
+ * @export
+ * @enum {string}
+ */
+
+export const WhatsappTemplateComponentButtonType = {
+    PhoneNumber: 'PHONE_NUMBER',
+    Url: 'URL',
+    QuickReply: 'QUICK_REPLY'
+} as const;
+
+export type WhatsappTemplateComponentButtonType = typeof WhatsappTemplateComponentButtonType[keyof typeof WhatsappTemplateComponentButtonType];
+
+
 

@@ -14,8 +14,12 @@
 
 
 import { EmailDelivery } from './email-delivery';
+import { EventType } from './event-type';
 import { Sms } from './sms';
 import { Voice } from './voice';
+import { WhatsappInboundMessage } from './whatsapp-inbound-message';
+import { WhatsappMessage } from './whatsapp-message';
+import { WhatsappTemplate } from './whatsapp-template';
 
 /**
  * Represents a webhook event payload. Every event contains certain common properties: `id`, `type`, `apiVersion`, `createTime`. Each event may also contain some properties unique to the event. For example, `sms` is returned when `type` is `sms.message.updated`.
@@ -30,11 +34,11 @@ export interface Event {
      */
     'id': string;
     /**
-     * Type of this event.
-     * @type {string}
+     * 
+     * @type {EventType}
      * @memberof Event
      */
-    'type': string;
+    'type': EventType;
     /**
      * The API version used to render this event.
      * @type {string}
@@ -65,5 +69,23 @@ export interface Event {
      * @memberof Event
      */
     'voice'?: Voice;
+    /**
+     * 
+     * @type {WhatsappInboundMessage}
+     * @memberof Event
+     */
+    'whatsappInboundMessage'?: WhatsappInboundMessage;
+    /**
+     * 
+     * @type {WhatsappMessage}
+     * @memberof Event
+     */
+    'whatsappMessage'?: WhatsappMessage;
+    /**
+     * 
+     * @type {WhatsappTemplate}
+     * @memberof Event
+     */
+    'whatsappTemplate'?: WhatsappTemplate;
 }
 

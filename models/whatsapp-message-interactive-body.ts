@@ -14,11 +14,17 @@
 
 
 
-export * from './apis/balance-api';
-export * from './apis/emails-api';
-export * from './apis/sms-api';
-export * from './apis/verify-api';
-export * from './apis/voices-api';
-export * from './apis/webhook-endpoints-api';
-export * from './apis/whatsapp-messages-api';
+/**
+ * [WhatsApp Body Object](https://developers.facebook.com/docs/whatsapp/cloud-api/reference/messages#body-object).
+ * @export
+ * @interface WhatsappMessageInteractiveBody
+ */
+export interface WhatsappMessageInteractiveBody {
+    /**
+     * The body content of the message. Emojis and markdown are supported. Links are supported.
+     * @type {string}
+     * @memberof WhatsappMessageInteractiveBody
+     */
+    'text'?: string;
+}
 

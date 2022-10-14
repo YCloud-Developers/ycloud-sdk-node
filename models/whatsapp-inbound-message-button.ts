@@ -14,11 +14,23 @@
 
 
 
-export * from './apis/balance-api';
-export * from './apis/emails-api';
-export * from './apis/sms-api';
-export * from './apis/verify-api';
-export * from './apis/voices-api';
-export * from './apis/webhook-endpoints-api';
-export * from './apis/whatsapp-messages-api';
+/**
+ * When the message type field is set to `button`, this object is included in the message object.
+ * @export
+ * @interface WhatsappInboundMessageButton
+ */
+export interface WhatsappInboundMessageButton {
+    /**
+     * The payload for a button set up by the business that a customer clicked as part of an interactive message.
+     * @type {string}
+     * @memberof WhatsappInboundMessageButton
+     */
+    'payload'?: string;
+    /**
+     * Button text.
+     * @type {string}
+     * @memberof WhatsappInboundMessageButton
+     */
+    'text'?: string;
+}
 

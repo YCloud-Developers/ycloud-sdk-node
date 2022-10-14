@@ -14,11 +14,17 @@
 
 
 
-export * from './apis/balance-api';
-export * from './apis/emails-api';
-export * from './apis/sms-api';
-export * from './apis/verify-api';
-export * from './apis/voices-api';
-export * from './apis/webhook-endpoints-api';
-export * from './apis/whatsapp-messages-api';
+/**
+ * Contains a language object. Specifies the language the template may be rendered in.
+ * @export
+ * @interface WhatsappMessageTemplateLanguage
+ */
+export interface WhatsappMessageTemplateLanguage {
+    /**
+     * The code of the language or locale to use. Accepts both language and language_locale formats (e.g., en and en_US). See [Supported Languages](https://developers.facebook.com/docs/whatsapp/api/messages/message-templates#supported-languages) for all codes.
+     * @type {string}
+     * @memberof WhatsappMessageTemplateLanguage
+     */
+    'code': string;
+}
 

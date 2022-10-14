@@ -14,11 +14,29 @@
 
 
 
-export * from './apis/balance-api';
-export * from './apis/emails-api';
-export * from './apis/sms-api';
-export * from './apis/verify-api';
-export * from './apis/voices-api';
-export * from './apis/webhook-endpoints-api';
-export * from './apis/whatsapp-messages-api';
+/**
+ * Contact organization information formatted as an org object.
+ * @export
+ * @interface WhatsappMessageContactOrg
+ */
+export interface WhatsappMessageContactOrg {
+    /**
+     * Name of the contact\'s company.
+     * @type {string}
+     * @memberof WhatsappMessageContactOrg
+     */
+    'company'?: string;
+    /**
+     * Name of the contact\'s department.
+     * @type {string}
+     * @memberof WhatsappMessageContactOrg
+     */
+    'department'?: string;
+    /**
+     * Contact\'s business title.
+     * @type {string}
+     * @memberof WhatsappMessageContactOrg
+     */
+    'title'?: string;
+}
 
