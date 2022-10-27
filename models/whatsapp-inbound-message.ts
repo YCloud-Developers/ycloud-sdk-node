@@ -34,6 +34,12 @@ export interface WhatsappInboundMessage {
      */
     'id': string;
     /**
+     * WhatsApp Business Account ID.
+     * @type {string}
+     * @memberof WhatsappInboundMessage
+     */
+    'wabaId'?: string;
+    /**
      * The sender\'s phone number in [E.164](https://en.wikipedia.org/wiki/E.164) format.
      * @type {string}
      * @memberof WhatsappInboundMessage

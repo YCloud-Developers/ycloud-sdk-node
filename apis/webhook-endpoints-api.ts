@@ -19,7 +19,7 @@ import { Configuration } from '../configuration';
 // @ts-ignore
 import { DUMMY_BASE_URL, assertParamExists, setApiKeyToObject, setBasicAuthToObject, setBearerAuthToObject, setOAuthToObject, setSearchParams, serializeDataIfNeeded, toPathString, createRequestFunction } from '../common';
 // @ts-ignore
-import { BASE_PATH, COLLECTION_FORMATS, RequestArgs, BaseAPI, RequiredError } from '../base';
+import { BASE_PATH, USER_AGENT, COLLECTION_FORMATS, RequestArgs, BaseAPI, RequiredError } from '../base';
 // @ts-ignore
 import { WebhookEndpoint } from '../models';
 // @ts-ignore
@@ -54,6 +54,9 @@ const WebhookEndpointsApiAxiosParamCreator = function (configuration?: Configura
 
             const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options};
             const localVarHeaderParameter = {} as any;
+            if (USER_AGENT) {
+                localVarHeaderParameter['User-Agent'] = USER_AGENT;
+            }
             const localVarQueryParameter = {} as any;
 
             // authentication api_key required
@@ -95,6 +98,9 @@ const WebhookEndpointsApiAxiosParamCreator = function (configuration?: Configura
 
             const localVarRequestOptions = { method: 'DELETE', ...baseOptions, ...options};
             const localVarHeaderParameter = {} as any;
+            if (USER_AGENT) {
+                localVarHeaderParameter['User-Agent'] = USER_AGENT;
+            }
             const localVarQueryParameter = {} as any;
 
             // authentication api_key required
@@ -133,6 +139,9 @@ const WebhookEndpointsApiAxiosParamCreator = function (configuration?: Configura
 
             const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
             const localVarHeaderParameter = {} as any;
+            if (USER_AGENT) {
+                localVarHeaderParameter['User-Agent'] = USER_AGENT;
+            }
             const localVarQueryParameter = {} as any;
 
             // authentication api_key required
@@ -183,6 +192,9 @@ const WebhookEndpointsApiAxiosParamCreator = function (configuration?: Configura
 
             const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
             const localVarHeaderParameter = {} as any;
+            if (USER_AGENT) {
+                localVarHeaderParameter['User-Agent'] = USER_AGENT;
+            }
             const localVarQueryParameter = {} as any;
 
             // authentication api_key required
@@ -221,6 +233,9 @@ const WebhookEndpointsApiAxiosParamCreator = function (configuration?: Configura
 
             const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options};
             const localVarHeaderParameter = {} as any;
+            if (USER_AGENT) {
+                localVarHeaderParameter['User-Agent'] = USER_AGENT;
+            }
             const localVarQueryParameter = {} as any;
 
             // authentication api_key required
@@ -242,13 +257,15 @@ const WebhookEndpointsApiAxiosParamCreator = function (configuration?: Configura
          * Updates a webhook endpoint, such as url, events, status.
          * @summary Update a webhook endpoint
          * @param {string} id ID of the webhook endpoint.
-         * @param {WebhookEndpointUpdateRequest} [webhookEndpointUpdateRequest] 
+         * @param {WebhookEndpointUpdateRequest} webhookEndpointUpdateRequest 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        update: async (id: string, webhookEndpointUpdateRequest?: WebhookEndpointUpdateRequest, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+        update: async (id: string, webhookEndpointUpdateRequest: WebhookEndpointUpdateRequest, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'id' is not null or undefined
             assertParamExists('update', 'id', id)
+            // verify required parameter 'webhookEndpointUpdateRequest' is not null or undefined
+            assertParamExists('update', 'webhookEndpointUpdateRequest', webhookEndpointUpdateRequest)
             const localVarPath = `/webhookEndpoints/{id}`
                 .replace(`{${"id"}}`, encodeURIComponent(String(id)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
@@ -260,6 +277,9 @@ const WebhookEndpointsApiAxiosParamCreator = function (configuration?: Configura
 
             const localVarRequestOptions = { method: 'PATCH', ...baseOptions, ...options};
             const localVarHeaderParameter = {} as any;
+            if (USER_AGENT) {
+                localVarHeaderParameter['User-Agent'] = USER_AGENT;
+            }
             const localVarQueryParameter = {} as any;
 
             // authentication api_key required
@@ -349,11 +369,11 @@ const WebhookEndpointsApiFp = function(configuration?: Configuration) {
          * Updates a webhook endpoint, such as url, events, status.
          * @summary Update a webhook endpoint
          * @param {string} id ID of the webhook endpoint.
-         * @param {WebhookEndpointUpdateRequest} [webhookEndpointUpdateRequest] 
+         * @param {WebhookEndpointUpdateRequest} webhookEndpointUpdateRequest 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async update(id: string, webhookEndpointUpdateRequest?: WebhookEndpointUpdateRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<WebhookEndpoint>> {
+        async update(id: string, webhookEndpointUpdateRequest: WebhookEndpointUpdateRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<WebhookEndpoint>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.update(id, webhookEndpointUpdateRequest, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
@@ -422,7 +442,7 @@ const WebhookEndpointsApiFactory = function (configuration?: Configuration, base
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        update(id: string, webhookEndpointUpdateRequest?: WebhookEndpointUpdateRequest, options?: any): AxiosPromise<WebhookEndpoint> {
+        update(id: string, webhookEndpointUpdateRequest: WebhookEndpointUpdateRequest, options?: any): AxiosPromise<WebhookEndpoint> {
             return localVarFp.update(id, webhookEndpointUpdateRequest, options).then((request) => request(axios, basePath));
         },
     };
@@ -527,12 +547,12 @@ export class WebhookEndpointsApi extends BaseAPI {
      * Updates a webhook endpoint, such as url, events, status.
      * @summary Update a webhook endpoint
      * @param {string} id ID of the webhook endpoint.
-     * @param {WebhookEndpointUpdateRequest} [webhookEndpointUpdateRequest] 
+     * @param {WebhookEndpointUpdateRequest} webhookEndpointUpdateRequest 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof WebhookEndpointsApi
      */
-    public update(id: string, webhookEndpointUpdateRequest?: WebhookEndpointUpdateRequest, options?: AxiosRequestConfig) {
+    public update(id: string, webhookEndpointUpdateRequest: WebhookEndpointUpdateRequest, options?: AxiosRequestConfig) {
         return WebhookEndpointsApiFp(this.configuration).update(id, webhookEndpointUpdateRequest, options).then((request) => request(this.axios, this.basePath));
     }
 }

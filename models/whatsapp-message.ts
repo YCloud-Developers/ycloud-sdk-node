@@ -17,6 +17,7 @@ import { WhatsappMessageContact } from './whatsapp-message-contact';
 import { WhatsappMessageInteractive } from './whatsapp-message-interactive';
 import { WhatsappMessageLocation } from './whatsapp-message-location';
 import { WhatsappMessageMedia } from './whatsapp-message-media';
+import { WhatsappMessageStatus } from './whatsapp-message-status';
 import { WhatsappMessageTemplate } from './whatsapp-message-template';
 import { WhatsappMessageText } from './whatsapp-message-text';
 import { WhatsappMessageType } from './whatsapp-message-type';
@@ -33,6 +34,12 @@ export interface WhatsappMessage {
      * @memberof WhatsappMessage
      */
     'id': string;
+    /**
+     * WhatsApp Business Account ID.
+     * @type {string}
+     * @memberof WhatsappMessage
+     */
+    'wabaId'?: string;
     /**
      * The sender\'s phone number in [E.164](https://en.wikipedia.org/wiki/E.164) format.
      * @type {string}
@@ -112,11 +119,11 @@ export interface WhatsappMessage {
      */
     'externalId'?: string;
     /**
-     * One of `accepted`, `sent`, `failed`, `delivered`, `read`. - `accepted`: The messaging request is accepted by our system. - `sent`: A message sent by your business is in transit within WhatsApp\'s systems. - `failed`: A message sent by your business failed to send. - `delivered`: A message sent by your business was delivered to the user\'s device. - `read`: A message sent by your business was read by the user.
-     * @type {string}
+     * 
+     * @type {WhatsappMessageStatus}
      * @memberof WhatsappMessage
      */
-    'status'?: string;
+    'status'?: WhatsappMessageStatus;
     /**
      * Error code when the message status is `failed`.
      * @type {string}

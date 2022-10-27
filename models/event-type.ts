@@ -42,6 +42,14 @@ export const EventType = {
     */
     WhatsappMessageUpdated: 'whatsapp.message.updated',
     /**
+    * Occurs when a WhatsApp business account phone number&#39;s name has been approved or rejected.
+    */
+    WhatsappPhoneNumberNameUpdated: 'whatsapp.phone_number.name_updated',
+    /**
+    * Occurs when a WhatsApp business account phone number&#39;s quality-related status is updated, and the status changes to &#x60;GREEN&#x60;, &#x60;YELLOW&#x60;, or &#x60;RED&#x60;.
+    */
+    WhatsappPhoneNumberQualityUpdated: 'whatsapp.phone_number.quality_updated',
+    /**
     * Occurs when a WhatsApp template is reviewed, and the status changes to &#x60;APPROVED&#x60; or &#x60;REJECTED&#x60;.
     */
     WhatsappTemplateReviewed: 'whatsapp.template.reviewed'

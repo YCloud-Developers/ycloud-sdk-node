@@ -21,32 +21,28 @@ import { DUMMY_BASE_URL, assertParamExists, setApiKeyToObject, setBasicAuthToObj
 // @ts-ignore
 import { BASE_PATH, USER_AGENT, COLLECTION_FORMATS, RequestArgs, BaseAPI, RequiredError } from '../base';
 // @ts-ignore
-import { Voice } from '../models';
+import { WhatsappPhoneNumber } from '../models';
 // @ts-ignore
-import { VoicePage } from '../models';
-// @ts-ignore
-import { VoiceSendRequest } from '../models';
+import { WhatsappPhoneNumberPage } from '../models';
 /**
- * VoicesApi - axios parameter creator
+ * WhatsappPhoneNumbersApi - axios parameter creator
  * @export
  */
-const VoicesApiAxiosParamCreator = function (configuration?: Configuration) {
+const WhatsappPhoneNumbersApiAxiosParamCreator = function (configuration?: Configuration) {
     return {
         /**
-         * Returns a paginated list of voice calls you\'ve previously sent.
-         * @summary List voice records
-         * @param {VoicesApiListRequest} requestParameters Request parameters.
+         * Returns a paginated list of WhatsApp business account phone numbers you\'ve registered on YCloud.
+         * @summary List WhatsApp phone numbers
+         * @param {WhatsappPhoneNumbersApiListRequest} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        list: async (requestParameters: VoicesApiListRequest = {}, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+        list: async (requestParameters: WhatsappPhoneNumbersApiListRequest = {}, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             let page = requestParameters['page'];
             let limit = requestParameters['limit'];
             let includeTotal = requestParameters['includeTotal'];
-            let filterCreateTimeGte = requestParameters['filterCreateTimeGte'];
-            let filterCreateTimeLte = requestParameters['filterCreateTimeLte'];
-            let filterId = requestParameters['filterId'];
-            const localVarPath = `/voices`;
+            let filterWabaId = requestParameters['filterWabaId'];
+            const localVarPath = `/whatsapp/phoneNumbers`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             // const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
             let baseOptions;
@@ -76,20 +72,8 @@ const VoicesApiAxiosParamCreator = function (configuration?: Configuration) {
                 localVarQueryParameter['includeTotal'] = includeTotal;
             }
 
-            if (filterCreateTimeGte !== undefined) {
-                localVarQueryParameter['filter.createTime.gte'] = (filterCreateTimeGte as any instanceof Date) ?
-                    (filterCreateTimeGte as any).toISOString() :
-                    filterCreateTimeGte;
-            }
-
-            if (filterCreateTimeLte !== undefined) {
-                localVarQueryParameter['filter.createTime.lte'] = (filterCreateTimeLte as any instanceof Date) ?
-                    (filterCreateTimeLte as any).toISOString() :
-                    filterCreateTimeLte;
-            }
-
-            if (filterId !== undefined) {
-                localVarQueryParameter['filter.id'] = filterId;
+            if (filterWabaId !== undefined) {
+                localVarQueryParameter['filter.wabaId'] = filterWabaId;
             }
 
 
@@ -105,16 +89,21 @@ const VoicesApiAxiosParamCreator = function (configuration?: Configuration) {
             };
         },
         /**
-         * Sends an outbound voice call verification code.
-         * @summary Send a voice code
-         * @param {VoiceSendRequest} voiceSendRequest Voice call request that needs to be sent.
+         * Retrieves a WhatsApp business account phone number you\'ve registered on YCloud.
+         * @summary Retrieve a WhatsApp phone number
+         * @param {string} wabaId WhatsApp Business Account ID.
+         * @param {string} phoneNumber Phone number in [E.164](https://en.wikipedia.org/wiki/E.164) format.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        send: async (voiceSendRequest: VoiceSendRequest, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
-            // verify required parameter 'voiceSendRequest' is not null or undefined
-            assertParamExists('send', 'voiceSendRequest', voiceSendRequest)
-            const localVarPath = `/voices`;
+        retrieve: async (wabaId: string, phoneNumber: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'wabaId' is not null or undefined
+            assertParamExists('retrieve', 'wabaId', wabaId)
+            // verify required parameter 'phoneNumber' is not null or undefined
+            assertParamExists('retrieve', 'phoneNumber', phoneNumber)
+            const localVarPath = `/whatsapp/phoneNumbers/{wabaId}/{phoneNumber}`
+                .replace(`{${"wabaId"}}`, encodeURIComponent(String(wabaId)))
+                .replace(`{${"phoneNumber"}}`, encodeURIComponent(String(phoneNumber)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             // const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
             let baseOptions;
@@ -122,7 +111,7 @@ const VoicesApiAxiosParamCreator = function (configuration?: Configuration) {
                 baseOptions = configuration.baseOptions;
             }
 
-            const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options};
+            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
             const localVarHeaderParameter = {} as any;
             if (USER_AGENT) {
                 localVarHeaderParameter['User-Agent'] = USER_AGENT;
@@ -134,13 +123,10 @@ const VoicesApiAxiosParamCreator = function (configuration?: Configuration) {
 
 
     
-            localVarHeaderParameter['Content-Type'] = 'application/json';
-
             // setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
             localVarRequestOptions.params = localVarQueryParameter;
-            localVarRequestOptions.data = serializeDataIfNeeded(voiceSendRequest, localVarRequestOptions, configuration)
 
             return {
                 url: localVarPath,
@@ -151,149 +137,135 @@ const VoicesApiAxiosParamCreator = function (configuration?: Configuration) {
 };
 
 /**
- * VoicesApi - functional programming interface
+ * WhatsappPhoneNumbersApi - functional programming interface
  * @export
  */
-const VoicesApiFp = function(configuration?: Configuration) {
-    const localVarAxiosParamCreator = VoicesApiAxiosParamCreator(configuration)
+const WhatsappPhoneNumbersApiFp = function(configuration?: Configuration) {
+    const localVarAxiosParamCreator = WhatsappPhoneNumbersApiAxiosParamCreator(configuration)
     return {
         /**
-         * Returns a paginated list of voice calls you\'ve previously sent.
-         * @summary List voice records
-         * @param {VoicesApiListRequest} requestParameters Request parameters.
+         * Returns a paginated list of WhatsApp business account phone numbers you\'ve registered on YCloud.
+         * @summary List WhatsApp phone numbers
+         * @param {WhatsappPhoneNumbersApiListRequest} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async list(requestParameters: VoicesApiListRequest = {}, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<VoicePage>> {
+        async list(requestParameters: WhatsappPhoneNumbersApiListRequest = {}, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<WhatsappPhoneNumberPage>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.list(requestParameters, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
         /**
-         * Sends an outbound voice call verification code.
-         * @summary Send a voice code
-         * @param {VoiceSendRequest} voiceSendRequest Voice call request that needs to be sent.
+         * Retrieves a WhatsApp business account phone number you\'ve registered on YCloud.
+         * @summary Retrieve a WhatsApp phone number
+         * @param {string} wabaId WhatsApp Business Account ID.
+         * @param {string} phoneNumber Phone number in [E.164](https://en.wikipedia.org/wiki/E.164) format.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async send(voiceSendRequest: VoiceSendRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Voice>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.send(voiceSendRequest, options);
+        async retrieve(wabaId: string, phoneNumber: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<WhatsappPhoneNumber>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.retrieve(wabaId, phoneNumber, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
     }
 };
 
 /**
- * VoicesApi - factory interface
+ * WhatsappPhoneNumbersApi - factory interface
  * @export
  */
-const VoicesApiFactory = function (configuration?: Configuration, basePath?: string, axios?: AxiosInstance) {
-    const localVarFp = VoicesApiFp(configuration)
+const WhatsappPhoneNumbersApiFactory = function (configuration?: Configuration, basePath?: string, axios?: AxiosInstance) {
+    const localVarFp = WhatsappPhoneNumbersApiFp(configuration)
     return {
         /**
-         * Returns a paginated list of voice calls you\'ve previously sent.
-         * @summary List voice records
-         * @param {VoicesApiListRequest} requestParameters Request parameters.
+         * Returns a paginated list of WhatsApp business account phone numbers you\'ve registered on YCloud.
+         * @summary List WhatsApp phone numbers
+         * @param {WhatsappPhoneNumbersApiListRequest} requestParameters Request parameters.
          * @param {number} [page] Page number of the results to be returned, 1-based.
          * @param {number} [limit] A limit on the number of results to be returned, or number of results per page, between 1 and 100, defaults to 10.
          * @param {boolean} [includeTotal] Return results inside an object that contains the total result count or not.
-         * @param {string} [filterCreateTimeGte] Return results where the &#x60;createTime&#x60; field is greater than or equal to this value. Default: One day ago from now.
-         * @param {string} [filterCreateTimeLte] Return results where the &#x60;createTime&#x60; field is less than or equal to this value.
-         * @param {string} [filterId] Unique object ID on our side. Other filter parameters will be ignored if this parameter is present.
+         * @param {string} [filterWabaId] WhatsApp Business Account ID.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        list(requestParameters: VoicesApiListRequest = {}, options?: any): AxiosPromise<VoicePage> {
+        list(requestParameters: WhatsappPhoneNumbersApiListRequest = {}, options?: any): AxiosPromise<WhatsappPhoneNumberPage> {
             return localVarFp.list(requestParameters, options).then((request) => request(axios, basePath));
         },
         /**
-         * Sends an outbound voice call verification code.
-         * @summary Send a voice code
+         * Retrieves a WhatsApp business account phone number you\'ve registered on YCloud.
+         * @summary Retrieve a WhatsApp phone number
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        send(voiceSendRequest: VoiceSendRequest, options?: any): AxiosPromise<Voice> {
-            return localVarFp.send(voiceSendRequest, options).then((request) => request(axios, basePath));
+        retrieve(wabaId: string, phoneNumber: string, options?: any): AxiosPromise<WhatsappPhoneNumber> {
+            return localVarFp.retrieve(wabaId, phoneNumber, options).then((request) => request(axios, basePath));
         },
     };
 };
 
 /**
- * Request parameters for list operation in VoicesApi.
+ * Request parameters for list operation in WhatsappPhoneNumbersApi.
  * @export
- * @interface VoicesApiListRequest
+ * @interface WhatsappPhoneNumbersApiListRequest
  */
-export interface VoicesApiListRequest {
+export interface WhatsappPhoneNumbersApiListRequest {
     /**
      * Page number of the results to be returned, 1-based.
      * @type {number}
-     * @memberof VoicesApiList
+     * @memberof WhatsappPhoneNumbersApiList
      */
     readonly page?: number
 
     /**
      * A limit on the number of results to be returned, or number of results per page, between 1 and 100, defaults to 10.
      * @type {number}
-     * @memberof VoicesApiList
+     * @memberof WhatsappPhoneNumbersApiList
      */
     readonly limit?: number
 
     /**
      * Return results inside an object that contains the total result count or not.
      * @type {boolean}
-     * @memberof VoicesApiList
+     * @memberof WhatsappPhoneNumbersApiList
      */
     readonly includeTotal?: boolean
 
     /**
-     * Return results where the &#x60;createTime&#x60; field is greater than or equal to this value. Default: One day ago from now.
+     * WhatsApp Business Account ID.
      * @type {string}
-     * @memberof VoicesApiList
+     * @memberof WhatsappPhoneNumbersApiList
      */
-    readonly filterCreateTimeGte?: string
-
-    /**
-     * Return results where the &#x60;createTime&#x60; field is less than or equal to this value.
-     * @type {string}
-     * @memberof VoicesApiList
-     */
-    readonly filterCreateTimeLte?: string
-
-    /**
-     * Unique object ID on our side. Other filter parameters will be ignored if this parameter is present.
-     * @type {string}
-     * @memberof VoicesApiList
-     */
-    readonly filterId?: string
+    readonly filterWabaId?: string
 }
 
 /**
- * VoicesApi - object-oriented interface
+ * WhatsappPhoneNumbersApi - object-oriented interface
  * @export
- * @class VoicesApi
+ * @class WhatsappPhoneNumbersApi
  * @extends {BaseAPI}
  */
-export class VoicesApi extends BaseAPI {
+export class WhatsappPhoneNumbersApi extends BaseAPI {
     /**
-     * Returns a paginated list of voice calls you\'ve previously sent.
-     * @summary List voice records
-     * @param {VoicesApiListRequest} requestParameters Request parameters.
+     * Returns a paginated list of WhatsApp business account phone numbers you\'ve registered on YCloud.
+     * @summary List WhatsApp phone numbers
+     * @param {WhatsappPhoneNumbersApiListRequest} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
-     * @memberof VoicesApi
+     * @memberof WhatsappPhoneNumbersApi
      */
-    public list(requestParameters: VoicesApiListRequest = {}, options?: AxiosRequestConfig) {
-        return VoicesApiFp(this.configuration).list(requestParameters, options).then((request) => request(this.axios, this.basePath));
+    public list(requestParameters: WhatsappPhoneNumbersApiListRequest = {}, options?: AxiosRequestConfig) {
+        return WhatsappPhoneNumbersApiFp(this.configuration).list(requestParameters, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
-     * Sends an outbound voice call verification code.
-     * @summary Send a voice code
-     * @param {VoiceSendRequest} voiceSendRequest Voice call request that needs to be sent.
+     * Retrieves a WhatsApp business account phone number you\'ve registered on YCloud.
+     * @summary Retrieve a WhatsApp phone number
+     * @param {string} wabaId WhatsApp Business Account ID.
+     * @param {string} phoneNumber Phone number in [E.164](https://en.wikipedia.org/wiki/E.164) format.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
-     * @memberof VoicesApi
+     * @memberof WhatsappPhoneNumbersApi
      */
-    public send(voiceSendRequest: VoiceSendRequest, options?: AxiosRequestConfig) {
-        return VoicesApiFp(this.configuration).send(voiceSendRequest, options).then((request) => request(this.axios, this.basePath));
+    public retrieve(wabaId: string, phoneNumber: string, options?: AxiosRequestConfig) {
+        return WhatsappPhoneNumbersApiFp(this.configuration).retrieve(wabaId, phoneNumber, options).then((request) => request(this.axios, this.basePath));
     }
 }

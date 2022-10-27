@@ -14,13 +14,18 @@
 
 
 
-export * from './apis/balance-api';
-export * from './apis/emails-api';
-export * from './apis/sms-api';
-export * from './apis/verify-api';
-export * from './apis/voices-api';
-export * from './apis/webhook-endpoints-api';
-export * from './apis/whatsapp-messages-api';
-export * from './apis/whatsapp-phone-numbers-api';
-export * from './apis/whatsapp-templates-api';
+/**
+ * To see if a phone number has been verified via OTP (one-time password), check that number\'s `code_verification_status` field.
+ * @export
+ * @enum {string}
+ */
+
+export const WhatsappPhoneNumberCodeVerificationStatus = {
+    Verified: 'VERIFIED',
+    NotVerified: 'NOT_VERIFIED'
+} as const;
+
+export type WhatsappPhoneNumberCodeVerificationStatus = typeof WhatsappPhoneNumberCodeVerificationStatus[keyof typeof WhatsappPhoneNumberCodeVerificationStatus];
+
+
 

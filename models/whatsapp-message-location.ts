@@ -37,12 +37,12 @@ export interface WhatsappMessageLocation {
      * @type {string}
      * @memberof WhatsappMessageLocation
      */
-    'name': string;
+    'name'?: string;
     /**
-     * Address of the location.
+     * Address of the location. Only displayed if `name` is present.
      * @type {string}
      * @memberof WhatsappMessageLocation
      */
-    'address': string;
+    'address'?: string;
 }
 

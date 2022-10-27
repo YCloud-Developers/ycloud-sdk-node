@@ -58,7 +58,14 @@ Class | Method | HTTP request | Description
 *WebhookEndpointsApi* | **retrieve** | **GET** /webhookEndpoints/{id} | Retrieve a webhook endpoint
 *WebhookEndpointsApi* | **rotateSecret** | **POST** /webhookEndpoints/{id}/rotateSecret | Rotate a webhook endpoint secret
 *WebhookEndpointsApi* | **update** | **PATCH** /webhookEndpoints/{id} | Update a webhook endpoint
+*WhatsappMessagesApi* | **retrieve** | **GET** /whatsapp/messages/{id} | Retrieve a WhatsApp message
 *WhatsappMessagesApi* | **send** | **POST** /whatsapp/messages | Send a WhatsApp message
+*WhatsappPhoneNumbersApi* | **list** | **GET** /whatsapp/phoneNumbers | List WhatsApp phone numbers
+*WhatsappPhoneNumbersApi* | **retrieve** | **GET** /whatsapp/phoneNumbers/{wabaId}/{phoneNumber} | Retrieve a WhatsApp phone number
+*WhatsappTemplatesApi* | **create** | **POST** /whatsapp/templates | Create a WhatsApp template
+*WhatsappTemplatesApi* | **deleteByName** | **DELETE** /whatsapp/templates/{wabaId}/{name} | Delete WhatsApp templates by name
+*WhatsappTemplatesApi* | **list** | **GET** /whatsapp/templates | List WhatsApp templates
+*WhatsappTemplatesApi* | **retrieveByNameAndLanguage** | **GET** /whatsapp/templates/{wabaId}/{name}/{language} | Retrieve a WhatsApp template
 
 
 ## Documentation for Authorization

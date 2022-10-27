@@ -19,7 +19,7 @@ import { Configuration } from '../configuration';
 // @ts-ignore
 import { DUMMY_BASE_URL, assertParamExists, setApiKeyToObject, setBasicAuthToObject, setBearerAuthToObject, setOAuthToObject, setSearchParams, serializeDataIfNeeded, toPathString, createRequestFunction } from '../common';
 // @ts-ignore
-import { BASE_PATH, COLLECTION_FORMATS, RequestArgs, BaseAPI, RequiredError } from '../base';
+import { BASE_PATH, USER_AGENT, COLLECTION_FORMATS, RequestArgs, BaseAPI, RequiredError } from '../base';
 // @ts-ignore
 import { Verification } from '../models';
 // @ts-ignore
@@ -37,11 +37,13 @@ const VerifyApiAxiosParamCreator = function (configuration?: Configuration) {
         /**
          * Checks a verification with a phone number, an email address, or a verification ID. A `pending` verification status changes to `approved` once you receive a response with the `valid` parameter is `true`. An approved verification cannot be checked anymore.
          * @summary Check a verification
-         * @param {VerificationCheckRequest} [verificationCheckRequest] 
+         * @param {VerificationCheckRequest} verificationCheckRequest 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        check: async (verificationCheckRequest?: VerificationCheckRequest, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+        check: async (verificationCheckRequest: VerificationCheckRequest, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'verificationCheckRequest' is not null or undefined
+            assertParamExists('check', 'verificationCheckRequest', verificationCheckRequest)
             const localVarPath = `/verify/verificationChecks`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             // const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -52,6 +54,9 @@ const VerifyApiAxiosParamCreator = function (configuration?: Configuration) {
 
             const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options};
             const localVarHeaderParameter = {} as any;
+            if (USER_AGENT) {
+                localVarHeaderParameter['User-Agent'] = USER_AGENT;
+            }
             const localVarQueryParameter = {} as any;
 
             // authentication api_key required
@@ -92,6 +97,9 @@ const VerifyApiAxiosParamCreator = function (configuration?: Configuration) {
 
             const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options};
             const localVarHeaderParameter = {} as any;
+            if (USER_AGENT) {
+                localVarHeaderParameter['User-Agent'] = USER_AGENT;
+            }
             const localVarQueryParameter = {} as any;
 
             // authentication api_key required
@@ -125,11 +133,11 @@ const VerifyApiFp = function(configuration?: Configuration) {
         /**
          * Checks a verification with a phone number, an email address, or a verification ID. A `pending` verification status changes to `approved` once you receive a response with the `valid` parameter is `true`. An approved verification cannot be checked anymore.
          * @summary Check a verification
-         * @param {VerificationCheckRequest} [verificationCheckRequest] 
+         * @param {VerificationCheckRequest} verificationCheckRequest 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async check(verificationCheckRequest?: VerificationCheckRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<VerificationCheck>> {
+        async check(verificationCheckRequest: VerificationCheckRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<VerificationCheck>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.check(verificationCheckRequest, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
@@ -160,7 +168,7 @@ const VerifyApiFactory = function (configuration?: Configuration, basePath?: str
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        check(verificationCheckRequest?: VerificationCheckRequest, options?: any): AxiosPromise<VerificationCheck> {
+        check(verificationCheckRequest: VerificationCheckRequest, options?: any): AxiosPromise<VerificationCheck> {
             return localVarFp.check(verificationCheckRequest, options).then((request) => request(axios, basePath));
         },
         /**
@@ -185,12 +193,12 @@ export class VerifyApi extends BaseAPI {
     /**
      * Checks a verification with a phone number, an email address, or a verification ID. A `pending` verification status changes to `approved` once you receive a response with the `valid` parameter is `true`. An approved verification cannot be checked anymore.
      * @summary Check a verification
-     * @param {VerificationCheckRequest} [verificationCheckRequest] 
+     * @param {VerificationCheckRequest} verificationCheckRequest 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof VerifyApi
      */
-    public check(verificationCheckRequest?: VerificationCheckRequest, options?: AxiosRequestConfig) {
+    public check(verificationCheckRequest: VerificationCheckRequest, options?: AxiosRequestConfig) {
         return VerifyApiFp(this.configuration).check(verificationCheckRequest, options).then((request) => request(this.axios, this.basePath));
     }
 

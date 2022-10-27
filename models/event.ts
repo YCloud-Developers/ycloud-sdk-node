@@ -19,6 +19,7 @@ import { Sms } from './sms';
 import { Voice } from './voice';
 import { WhatsappInboundMessage } from './whatsapp-inbound-message';
 import { WhatsappMessage } from './whatsapp-message';
+import { WhatsappPhoneNumber } from './whatsapp-phone-number';
 import { WhatsappTemplate } from './whatsapp-template';
 
 /**
@@ -81,6 +82,12 @@ export interface Event {
      * @memberof Event
      */
     'whatsappMessage'?: WhatsappMessage;
+    /**
+     * 
+     * @type {WhatsappPhoneNumber}
+     * @memberof Event
+     */
+    'whatsappPhoneNumber'?: WhatsappPhoneNumber;
     /**
      * 
      * @type {WhatsappTemplate}

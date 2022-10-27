@@ -24,13 +24,19 @@ import { WhatsappTemplateStatus } from './whatsapp-template-status';
  */
 export interface WhatsappTemplate {
     /**
+     * WhatsApp Business Account ID.
+     * @type {string}
+     * @memberof WhatsappTemplate
+     */
+    'wabaId'?: string;
+    /**
      * Name of the template.
      * @type {string}
      * @memberof WhatsappTemplate
      */
     'name': string;
     /**
-     * Language code of the template. See [Supported Languages](https://developers.facebook.com/docs/whatsapp/api/messages/message-templates#supported-languages) for all codes.
+     * Language code of the template. See [Supported Languages](https://developers.facebook.com/docs/whatsapp/api/messages/message-templates#supported-languages-) for all codes.
      * @type {string}
      * @memberof WhatsappTemplate
      */

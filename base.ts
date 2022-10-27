@@ -20,6 +20,8 @@ import globalAxios, { AxiosPromise, AxiosInstance, AxiosRequestConfig } from 'ax
 
 export const BASE_PATH = "https://api.ycloud.com/v2".replace(/\/+$/, "");
 
+export const USER_AGENT = "ycloud-sdk-node/1.2.0";
+
 /**
  *
  * @export

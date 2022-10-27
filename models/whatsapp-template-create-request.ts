@@ -23,13 +23,19 @@ import { WhatsappTemplateComponent } from './whatsapp-template-component';
  */
 export interface WhatsappTemplateCreateRequest {
     /**
+     * WhatsApp Business Account ID.
+     * @type {string}
+     * @memberof WhatsappTemplateCreateRequest
+     */
+    'wabaId': string;
+    /**
      * Name of the template.
      * @type {string}
      * @memberof WhatsappTemplateCreateRequest
      */
     'name': string;
     /**
-     * Language code of the template. See [Supported Languages](https://developers.facebook.com/docs/whatsapp/api/messages/message-templates#supported-languages) for all codes.
+     * Language code of the template. See [Supported Languages](https://developers.facebook.com/docs/whatsapp/api/messages/message-templates#supported-languages-) for all codes.
      * @type {string}
      * @memberof WhatsappTemplateCreateRequest
      */

@@ -19,7 +19,7 @@ import { Configuration } from '../configuration';
 // @ts-ignore
 import { DUMMY_BASE_URL, assertParamExists, setApiKeyToObject, setBasicAuthToObject, setBearerAuthToObject, setOAuthToObject, setSearchParams, serializeDataIfNeeded, toPathString, createRequestFunction } from '../common';
 // @ts-ignore
-import { BASE_PATH, COLLECTION_FORMATS, RequestArgs, BaseAPI, RequiredError } from '../base';
+import { BASE_PATH, USER_AGENT, COLLECTION_FORMATS, RequestArgs, BaseAPI, RequiredError } from '../base';
 // @ts-ignore
 import { WhatsappMessage } from '../models';
 // @ts-ignore
@@ -31,13 +31,56 @@ import { WhatsappMessageSendRequest } from '../models';
 const WhatsappMessagesApiAxiosParamCreator = function (configuration?: Configuration) {
     return {
         /**
-         * Sends an outbound WhatsApp message.
-         * @summary Send a WhatsApp message
-         * @param {WhatsappMessageSendRequest} [whatsappMessageSendRequest] 
+         * Retrieves a WhatsApp message you\'ve previously sent.
+         * @summary Retrieve a WhatsApp message
+         * @param {string} id ID of the object.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        send: async (whatsappMessageSendRequest?: WhatsappMessageSendRequest, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+        retrieve: async (id: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'id' is not null or undefined
+            assertParamExists('retrieve', 'id', id)
+            const localVarPath = `/whatsapp/messages/{id}`
+                .replace(`{${"id"}}`, encodeURIComponent(String(id)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            // const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            if (USER_AGENT) {
+                localVarHeaderParameter['User-Agent'] = USER_AGENT;
+            }
+            const localVarQueryParameter = {} as any;
+
+            // authentication api_key required
+            await setApiKeyToObject(localVarHeaderParameter, "X-API-Key", configuration)
+
+
+    
+            // setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+            localVarRequestOptions.params = localVarQueryParameter;
+
+            return {
+                url: localVarPath,
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * Sends an outbound WhatsApp message.
+         * @summary Send a WhatsApp message
+         * @param {WhatsappMessageSendRequest} whatsappMessageSendRequest 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        send: async (whatsappMessageSendRequest: WhatsappMessageSendRequest, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'whatsappMessageSendRequest' is not null or undefined
+            assertParamExists('send', 'whatsappMessageSendRequest', whatsappMessageSendRequest)
             const localVarPath = `/whatsapp/messages`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             // const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -48,6 +91,9 @@ const WhatsappMessagesApiAxiosParamCreator = function (configuration?: Configura
 
             const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options};
             const localVarHeaderParameter = {} as any;
+            if (USER_AGENT) {
+                localVarHeaderParameter['User-Agent'] = USER_AGENT;
+            }
             const localVarQueryParameter = {} as any;
 
             // authentication api_key required
@@ -79,13 +125,24 @@ const WhatsappMessagesApiFp = function(configuration?: Configuration) {
     const localVarAxiosParamCreator = WhatsappMessagesApiAxiosParamCreator(configuration)
     return {
         /**
-         * Sends an outbound WhatsApp message.
-         * @summary Send a WhatsApp message
-         * @param {WhatsappMessageSendRequest} [whatsappMessageSendRequest] 
+         * Retrieves a WhatsApp message you\'ve previously sent.
+         * @summary Retrieve a WhatsApp message
+         * @param {string} id ID of the object.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async send(whatsappMessageSendRequest?: WhatsappMessageSendRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<WhatsappMessage>> {
+        async retrieve(id: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<WhatsappMessage>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.retrieve(id, options);
+            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+        },
+        /**
+         * Sends an outbound WhatsApp message.
+         * @summary Send a WhatsApp message
+         * @param {WhatsappMessageSendRequest} whatsappMessageSendRequest 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async send(whatsappMessageSendRequest: WhatsappMessageSendRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<WhatsappMessage>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.send(whatsappMessageSendRequest, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
@@ -100,12 +157,21 @@ const WhatsappMessagesApiFactory = function (configuration?: Configuration, base
     const localVarFp = WhatsappMessagesApiFp(configuration)
     return {
         /**
+         * Retrieves a WhatsApp message you\'ve previously sent.
+         * @summary Retrieve a WhatsApp message
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        retrieve(id: string, options?: any): AxiosPromise<WhatsappMessage> {
+            return localVarFp.retrieve(id, options).then((request) => request(axios, basePath));
+        },
+        /**
          * Sends an outbound WhatsApp message.
          * @summary Send a WhatsApp message
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        send(whatsappMessageSendRequest?: WhatsappMessageSendRequest, options?: any): AxiosPromise<WhatsappMessage> {
+        send(whatsappMessageSendRequest: WhatsappMessageSendRequest, options?: any): AxiosPromise<WhatsappMessage> {
             return localVarFp.send(whatsappMessageSendRequest, options).then((request) => request(axios, basePath));
         },
     };
@@ -119,14 +185,26 @@ const WhatsappMessagesApiFactory = function (configuration?: Configuration, base
  */
 export class WhatsappMessagesApi extends BaseAPI {
     /**
-     * Sends an outbound WhatsApp message.
-     * @summary Send a WhatsApp message
-     * @param {WhatsappMessageSendRequest} [whatsappMessageSendRequest] 
+     * Retrieves a WhatsApp message you\'ve previously sent.
+     * @summary Retrieve a WhatsApp message
+     * @param {string} id ID of the object.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof WhatsappMessagesApi
      */
-    public send(whatsappMessageSendRequest?: WhatsappMessageSendRequest, options?: AxiosRequestConfig) {
+    public retrieve(id: string, options?: AxiosRequestConfig) {
+        return WhatsappMessagesApiFp(this.configuration).retrieve(id, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * Sends an outbound WhatsApp message.
+     * @summary Send a WhatsApp message
+     * @param {WhatsappMessageSendRequest} whatsappMessageSendRequest 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof WhatsappMessagesApi
+     */
+    public send(whatsappMessageSendRequest: WhatsappMessageSendRequest, options?: AxiosRequestConfig) {
         return WhatsappMessagesApiFp(this.configuration).send(whatsappMessageSendRequest, options).then((request) => request(this.axios, this.basePath));
     }
 }
