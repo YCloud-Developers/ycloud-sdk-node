@@ -21,7 +21,13 @@
  */
 export interface WhatsappInboundMessageMedia {
     /**
-     * The protocol and URL of the media.
+     * ID of the media. Can be used to delete the media if stored locally on the client.
+     * @type {string}
+     * @memberof WhatsappInboundMessageMedia
+     */
+    'id'?: string;
+    /**
+     * The url to download the media file. Note that This link can be directly accessed in a few minutes for the convenience of the consumer, but you should always include an `X-API-Key` header to download this file within a month.
      * @type {string}
      * @memberof WhatsappInboundMessageMedia
      */
@@ -39,17 +45,11 @@ export interface WhatsappInboundMessageMedia {
      */
     'filename'?: string;
     /**
-     * ID of the media. Can be used to delete the media if stored locally on the client.
-     * @type {string}
-     * @memberof WhatsappInboundMessageMedia
-     */
-    'id'?: string;
-    /**
      * Metadata pertaining to `sticker` media.
-     * @type {string}
+     * @type {{ [key: string]: object; }}
      * @memberof WhatsappInboundMessageMedia
      */
-    'metadata'?: string;
+    'metadata'?: { [key: string]: object; };
     /**
      * Mime type of the media.
      * @type {string}

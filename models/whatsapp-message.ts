@@ -13,6 +13,7 @@
  */
 
 
+import { WhatsappConversation } from './whatsapp-conversation';
 import { WhatsappMessageContact } from './whatsapp-message-contact';
 import { WhatsappMessageInteractive } from './whatsapp-message-interactive';
 import { WhatsappMessageLocation } from './whatsapp-message-location';
@@ -39,7 +40,7 @@ export interface WhatsappMessage {
      * @type {string}
      * @memberof WhatsappMessage
      */
-    'wabaId'?: string;
+    'wabaId': string;
     /**
      * The sender\'s phone number in [E.164](https://en.wikipedia.org/wiki/E.164) format.
      * @type {string}
@@ -52,6 +53,12 @@ export interface WhatsappMessage {
      * @memberof WhatsappMessage
      */
     'to': string;
+    /**
+     * 
+     * @type {WhatsappConversation}
+     * @memberof WhatsappMessage
+     */
+    'conversation'?: WhatsappConversation;
     /**
      * 
      * @type {WhatsappMessageType}

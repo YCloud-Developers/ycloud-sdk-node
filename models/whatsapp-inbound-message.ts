@@ -20,6 +20,7 @@ import { WhatsappInboundMessageMedia } from './whatsapp-inbound-message-media';
 import { WhatsappInboundMessageText } from './whatsapp-inbound-message-text';
 import { WhatsappInboundMessageType } from './whatsapp-inbound-message-type';
 import { WhatsappMessageContact } from './whatsapp-message-contact';
+import { WhatsappProfile } from './whatsapp-profile';
 
 /**
  * WhatsApp inbound message object.
@@ -40,11 +41,17 @@ export interface WhatsappInboundMessage {
      */
     'wabaId'?: string;
     /**
-     * The sender\'s phone number in [E.164](https://en.wikipedia.org/wiki/E.164) format.
+     * The customer\'s phone number who sent the message to the business, formatted in [E.164](https://en.wikipedia.org/wiki/E.164) format.
      * @type {string}
      * @memberof WhatsappInboundMessage
      */
     'from'?: string;
+    /**
+     * 
+     * @type {WhatsappProfile}
+     * @memberof WhatsappInboundMessage
+     */
+    'customerProfile'?: WhatsappProfile;
     /**
      * The recipient\'s phone number in [E.164](https://en.wikipedia.org/wiki/E.164) format.
      * @type {string}

@@ -39,6 +39,6 @@ export interface WhatsappMessageTemplate {
      * @type {Array<WhatsappMessageTemplateComponentsInner>}
      * @memberof WhatsappMessageTemplate
      */
-    'components': Array<WhatsappMessageTemplateComponentsInner>;
+    'components'?: Array<WhatsappMessageTemplateComponentsInner>;
 }
 

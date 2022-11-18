@@ -21,9 +21,13 @@ import { DUMMY_BASE_URL, assertParamExists, setApiKeyToObject, setBasicAuthToObj
 // @ts-ignore
 import { BASE_PATH, USER_AGENT, COLLECTION_FORMATS, RequestArgs, BaseAPI, RequiredError } from '../base';
 // @ts-ignore
+import { ErrorResponse } from '../models';
+// @ts-ignore
 import { WhatsappTemplate } from '../models';
 // @ts-ignore
 import { WhatsappTemplateCreateRequest } from '../models';
+// @ts-ignore
+import { WhatsappTemplateEditRequest } from '../models';
 // @ts-ignore
 import { WhatsappTemplatePage } from '../models';
 /**
@@ -114,6 +118,59 @@ const WhatsappTemplatesApiAxiosParamCreator = function (configuration?: Configur
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
             localVarRequestOptions.params = localVarQueryParameter;
+
+            return {
+                url: localVarPath,
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * Edits a WhatsApp template by name and language. Editing a template replaces its old contents entirely, so include any components you wish to preserve as well as components you wish to update using the components parameter. See also [Edit a Message Template](https://developers.facebook.com/docs/whatsapp/business-management-api/message-templates#edit-a-message-template).
+         * @summary Edit a WhatsApp template
+         * @param {string} wabaId WhatsApp Business Account ID.
+         * @param {string} name Name of the template.
+         * @param {string} language Language code of the template. See [Supported Languages](https://developers.facebook.com/docs/whatsapp/api/messages/message-templates#supported-languages-) for all codes.
+         * @param {WhatsappTemplateEditRequest} [whatsappTemplateEditRequest] 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        editByNameAndLanguage: async (wabaId: string, name: string, language: string, whatsappTemplateEditRequest?: WhatsappTemplateEditRequest, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'wabaId' is not null or undefined
+            assertParamExists('editByNameAndLanguage', 'wabaId', wabaId)
+            // verify required parameter 'name' is not null or undefined
+            assertParamExists('editByNameAndLanguage', 'name', name)
+            // verify required parameter 'language' is not null or undefined
+            assertParamExists('editByNameAndLanguage', 'language', language)
+            const localVarPath = `/whatsapp/templates/{wabaId}/{name}/{language}`
+                .replace(`{${"wabaId"}}`, encodeURIComponent(String(wabaId)))
+                .replace(`{${"name"}}`, encodeURIComponent(String(name)))
+                .replace(`{${"language"}}`, encodeURIComponent(String(language)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            // const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'PATCH', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            if (USER_AGENT) {
+                localVarHeaderParameter['User-Agent'] = USER_AGENT;
+            }
+            const localVarQueryParameter = {} as any;
+
+            // authentication api_key required
+            await setApiKeyToObject(localVarHeaderParameter, "X-API-Key", configuration)
+
+
+    
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+
+            // setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+            localVarRequestOptions.params = localVarQueryParameter;
+            localVarRequestOptions.data = serializeDataIfNeeded(whatsappTemplateEditRequest, localVarRequestOptions, configuration)
 
             return {
                 url: localVarPath,
@@ -271,6 +328,20 @@ const WhatsappTemplatesApiFp = function(configuration?: Configuration) {
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
         /**
+         * Edits a WhatsApp template by name and language. Editing a template replaces its old contents entirely, so include any components you wish to preserve as well as components you wish to update using the components parameter. See also [Edit a Message Template](https://developers.facebook.com/docs/whatsapp/business-management-api/message-templates#edit-a-message-template).
+         * @summary Edit a WhatsApp template
+         * @param {string} wabaId WhatsApp Business Account ID.
+         * @param {string} name Name of the template.
+         * @param {string} language Language code of the template. See [Supported Languages](https://developers.facebook.com/docs/whatsapp/api/messages/message-templates#supported-languages-) for all codes.
+         * @param {WhatsappTemplateEditRequest} [whatsappTemplateEditRequest] 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async editByNameAndLanguage(wabaId: string, name: string, language: string, whatsappTemplateEditRequest?: WhatsappTemplateEditRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<WhatsappTemplate>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.editByNameAndLanguage(wabaId, name, language, whatsappTemplateEditRequest, options);
+            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+        },
+        /**
          * Returns a paginated list of WhatsApp templates you\'ve previously created.
          * @summary List WhatsApp templates
          * @param {WhatsappTemplatesApiListRequest} requestParameters Request parameters.
@@ -321,6 +392,15 @@ const WhatsappTemplatesApiFactory = function (configuration?: Configuration, bas
          */
         deleteByName(wabaId: string, name: string, options?: any): AxiosPromise<Array<WhatsappTemplate>> {
             return localVarFp.deleteByName(wabaId, name, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * Edits a WhatsApp template by name and language. Editing a template replaces its old contents entirely, so include any components you wish to preserve as well as components you wish to update using the components parameter. See also [Edit a Message Template](https://developers.facebook.com/docs/whatsapp/business-management-api/message-templates#edit-a-message-template).
+         * @summary Edit a WhatsApp template
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        editByNameAndLanguage(wabaId: string, name: string, language: string, whatsappTemplateEditRequest?: WhatsappTemplateEditRequest, options?: any): AxiosPromise<WhatsappTemplate> {
+            return localVarFp.editByNameAndLanguage(wabaId, name, language, whatsappTemplateEditRequest, options).then((request) => request(axios, basePath));
         },
         /**
          * Returns a paginated list of WhatsApp templates you\'ve previously created.
@@ -429,6 +509,21 @@ export class WhatsappTemplatesApi extends BaseAPI {
      */
     public deleteByName(wabaId: string, name: string, options?: AxiosRequestConfig) {
         return WhatsappTemplatesApiFp(this.configuration).deleteByName(wabaId, name, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * Edits a WhatsApp template by name and language. Editing a template replaces its old contents entirely, so include any components you wish to preserve as well as components you wish to update using the components parameter. See also [Edit a Message Template](https://developers.facebook.com/docs/whatsapp/business-management-api/message-templates#edit-a-message-template).
+     * @summary Edit a WhatsApp template
+     * @param {string} wabaId WhatsApp Business Account ID.
+     * @param {string} name Name of the template.
+     * @param {string} language Language code of the template. See [Supported Languages](https://developers.facebook.com/docs/whatsapp/api/messages/message-templates#supported-languages-) for all codes.
+     * @param {WhatsappTemplateEditRequest} [whatsappTemplateEditRequest] 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof WhatsappTemplatesApi
+     */
+    public editByNameAndLanguage(wabaId: string, name: string, language: string, whatsappTemplateEditRequest?: WhatsappTemplateEditRequest, options?: AxiosRequestConfig) {
+        return WhatsappTemplatesApiFp(this.configuration).editByNameAndLanguage(wabaId, name, language, whatsappTemplateEditRequest, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**

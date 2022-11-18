@@ -21,6 +21,8 @@ import { DUMMY_BASE_URL, assertParamExists, setApiKeyToObject, setBasicAuthToObj
 // @ts-ignore
 import { BASE_PATH, USER_AGENT, COLLECTION_FORMATS, RequestArgs, BaseAPI, RequiredError } from '../base';
 // @ts-ignore
+import { ErrorResponse } from '../models';
+// @ts-ignore
 import { WhatsappMessage } from '../models';
 // @ts-ignore
 import { WhatsappMessageSendRequest } from '../models';

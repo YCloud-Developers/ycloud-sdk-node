@@ -28,7 +28,7 @@ export interface WhatsappTemplate {
      * @type {string}
      * @memberof WhatsappTemplate
      */
-    'wabaId'?: string;
+    'wabaId': string;
     /**
      * Name of the template.
      * @type {string}

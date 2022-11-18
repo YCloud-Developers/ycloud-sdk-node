@@ -22,8 +22,6 @@ import { DUMMY_BASE_URL, assertParamExists, setApiKeyToObject, setBasicAuthToObj
 import { BASE_PATH, USER_AGENT, COLLECTION_FORMATS, RequestArgs, BaseAPI, RequiredError } from '../base';
 // @ts-ignore
 import { Balance } from '../models';
-// @ts-ignore
-import { ErrorResponse } from '../models';
 /**
  * BalanceApi - axios parameter creator
  * @export
