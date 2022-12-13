@@ -17,6 +17,7 @@ import { WhatsappPhoneNumberCodeVerificationStatus } from './whatsapp-phone-numb
 import { WhatsappPhoneNumberNameStatus } from './whatsapp-phone-number-name-status';
 import { WhatsappPhoneNumberQualityRating } from './whatsapp-phone-number-quality-rating';
 import { WhatsappPhoneNumberStatus } from './whatsapp-phone-number-status';
+import { WhatsappReviewDecision } from './whatsapp-review-decision';
 
 /**
  * A WhatsApp Business Account (WABA) phone number. See also [WhatsApp Retrieve Phone Numbers](https://developers.facebook.com/docs/whatsapp/business-management-api/manage-phone-numbers).
@@ -85,11 +86,11 @@ export interface WhatsappPhoneNumber {
      */
     'newNameStatus'?: WhatsappPhoneNumberNameStatus;
     /**
-     * Decision. See [Phone Number Name Update](https://developers.facebook.com/docs/graph-api/webhooks/reference/whatsapp-business-account/#phone_number_name_update).
-     * @type {string}
+     * 
+     * @type {WhatsappReviewDecision}
      * @memberof WhatsappPhoneNumber
      */
-    'decision'?: string;
+    'decision'?: WhatsappReviewDecision;
     /**
      * Last requested verified name. See [Phone Number Name Update](https://developers.facebook.com/docs/graph-api/webhooks/reference/whatsapp-business-account/#phone_number_name_update).
      * @type {string}

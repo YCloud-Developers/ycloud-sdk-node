@@ -34,6 +34,14 @@ export const EventType = {
     */
     VoiceMessageUpdated: 'voice.message.updated',
     /**
+    * Occurs when a WhatsApp Business Account has been reviewed.
+    */
+    WhatsappBusinessAccountReviewed: 'whatsapp.business_account.reviewed',
+    /**
+    * Occurs when a policy violation happened, WhatsApp Business Account has been banned and more.
+    */
+    WhatsappBusinessAccountUpdated: 'whatsapp.business_account.updated',
+    /**
     * Occurs when a WhatsApp inbound message is received.
     */
     WhatsappInboundMessageReceived: 'whatsapp.inbound_message.received',
@@ -50,7 +58,7 @@ export const EventType = {
     */
     WhatsappPhoneNumberQualityUpdated: 'whatsapp.phone_number.quality_updated',
     /**
-    * Occurs when a WhatsApp template is reviewed, and the status changes to &#x60;APPROVED&#x60; or &#x60;REJECTED&#x60;.
+    * Occurs when a WhatsApp template status is updated, and the status changes to REJECTED, APPROVED, PAUSED, DISABLED, or IN_APPEAL.
     */
     WhatsappTemplateReviewed: 'whatsapp.template.reviewed'
 } as const;

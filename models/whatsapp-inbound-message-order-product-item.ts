@@ -17,20 +17,32 @@
 /**
  * 
  * @export
- * @interface Balance
+ * @interface WhatsappInboundMessageOrderProductItem
  */
-export interface Balance {
+export interface WhatsappInboundMessageOrderProductItem {
     /**
-     * Balance of current account.
-     * @type {number}
-     * @memberof Balance
+     * The product SKU identifier.
+     * @type {string}
+     * @memberof WhatsappInboundMessageOrderProductItem
      */
-    'amount': number;
+    'product_retailer_id'?: string;
+    /**
+     * Number of item.
+     * @type {number}
+     * @memberof WhatsappInboundMessageOrderProductItem
+     */
+    'quantity'?: number;
+    /**
+     * Unitary price of item.
+     * @type {string}
+     * @memberof WhatsappInboundMessageOrderProductItem
+     */
+    'item_price'?: string;
     /**
      * Price currency. [ISO 4217 currency code](https://en.wikipedia.org/wiki/ISO_4217).
      * @type {string}
-     * @memberof Balance
+     * @memberof WhatsappInboundMessageOrderProductItem
      */
-    'currency': string;
+    'currency'?: string;
 }
 

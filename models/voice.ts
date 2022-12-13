@@ -63,7 +63,7 @@ export interface Voice {
      */
     'totalPrice'?: number;
     /**
-     * [ISO 4217 currency code](https://en.wikipedia.org/wiki/ISO_4217)
+     * Price currency. [ISO 4217 currency code](https://en.wikipedia.org/wiki/ISO_4217).
      * @type {string}
      * @memberof Voice
      */

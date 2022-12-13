@@ -15,22 +15,22 @@
 
 
 /**
- * 
+ * When a user reacts to messages with an emoji, the message type is set to `reaction`, and this field is included.
  * @export
- * @interface Balance
+ * @interface WhatsappInboundMessageReaction
  */
-export interface Balance {
+export interface WhatsappInboundMessageReaction {
     /**
-     * Balance of current account.
-     * @type {number}
-     * @memberof Balance
-     */
-    'amount': number;
-    /**
-     * Price currency. [ISO 4217 currency code](https://en.wikipedia.org/wiki/ISO_4217).
+     * Specifies the `wamid` of the message received that contained the reaction.
      * @type {string}
-     * @memberof Balance
+     * @memberof WhatsappInboundMessageReaction
      */
-    'currency': string;
+    'message_id'?: string;
+    /**
+     * This field is included when a user reacts to messages with an emoji. Otherwise, it indicates a user removed the emoji.
+     * @type {string}
+     * @memberof WhatsappInboundMessageReaction
+     */
+    'emoji'?: string;
 }
 

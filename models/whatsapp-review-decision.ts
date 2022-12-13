@@ -15,22 +15,17 @@
 
 
 /**
- * 
+ * Used if a decision about WhatsApp accounts or phone numbers has been made.
  * @export
- * @interface Balance
+ * @enum {string}
  */
-export interface Balance {
-    /**
-     * Balance of current account.
-     * @type {number}
-     * @memberof Balance
-     */
-    'amount': number;
-    /**
-     * Price currency. [ISO 4217 currency code](https://en.wikipedia.org/wiki/ISO_4217).
-     * @type {string}
-     * @memberof Balance
-     */
-    'currency': string;
-}
+
+export const WhatsappReviewDecision = {
+    Approved: 'APPROVED',
+    Rejected: 'REJECTED'
+} as const;
+
+export type WhatsappReviewDecision = typeof WhatsappReviewDecision[keyof typeof WhatsappReviewDecision];
+
+
 

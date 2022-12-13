@@ -15,22 +15,18 @@
 
 
 /**
- * 
+ * The ban state of the WhatsApp Business Account.
  * @export
- * @interface Balance
+ * @enum {string}
  */
-export interface Balance {
-    /**
-     * Balance of current account.
-     * @type {number}
-     * @memberof Balance
-     */
-    'amount': number;
-    /**
-     * Price currency. [ISO 4217 currency code](https://en.wikipedia.org/wiki/ISO_4217).
-     * @type {string}
-     * @memberof Balance
-     */
-    'currency': string;
-}
+
+export const WhatsappBusinessAccountBanState = {
+    ScheduleForDisable: 'SCHEDULE_FOR_DISABLE',
+    Disable: 'DISABLE',
+    Reinstate: 'REINSTATE'
+} as const;
+
+export type WhatsappBusinessAccountBanState = typeof WhatsappBusinessAccountBanState[keyof typeof WhatsappBusinessAccountBanState];
+
+
 

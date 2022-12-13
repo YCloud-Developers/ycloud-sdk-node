@@ -31,7 +31,10 @@ export const WhatsappInboundMessageType = {
     Location: 'location',
     Interactive: 'interactive',
     Button: 'button',
+    Reaction: 'reaction',
+    Order: 'order',
     System: 'system',
+    Unsupported: 'unsupported',
     Unknown: 'unknown'
 } as const;
 

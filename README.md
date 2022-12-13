@@ -58,6 +58,8 @@ Class | Method | HTTP request | Description
 *WebhookEndpointsApi* | **retrieve** | **GET** /webhookEndpoints/{id} | Retrieve a webhook endpoint
 *WebhookEndpointsApi* | **rotateSecret** | **POST** /webhookEndpoints/{id}/rotateSecret | Rotate a webhook endpoint secret
 *WebhookEndpointsApi* | **update** | **PATCH** /webhookEndpoints/{id} | Update a webhook endpoint
+*WhatsappBusinessAccountsApi* | **list** | **GET** /whatsapp/businessAccounts | List WABAs
+*WhatsappBusinessAccountsApi* | **retrieve** | **GET** /whatsapp/businessAccounts/{id} | Retrieve a WABA
 *WhatsappMessagesApi* | **retrieve** | **GET** /whatsapp/messages/{id} | Retrieve a WhatsApp message
 *WhatsappMessagesApi* | **send** | **POST** /whatsapp/messages | Send a WhatsApp message
 *WhatsappPhoneNumbersApi* | **list** | **GET** /whatsapp/phoneNumbers | List WhatsApp phone numbers

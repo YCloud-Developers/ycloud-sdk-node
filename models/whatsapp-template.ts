@@ -16,6 +16,7 @@
 import { WhatsappTemplateCategory } from './whatsapp-template-category';
 import { WhatsappTemplateComponent } from './whatsapp-template-component';
 import { WhatsappTemplateStatus } from './whatsapp-template-status';
+import { WhatsappTemplateStatusUpdateEventEnum } from './whatsapp-template-status-update-event-enum';
 
 /**
  * See [WhatsApp Templates](https://developers.facebook.com/docs/whatsapp/business-management-api/message-templates).
@@ -77,5 +78,17 @@ export interface WhatsappTemplate {
      * @memberof WhatsappTemplate
      */
     'updateTime'?: string;
+    /**
+     * 
+     * @type {WhatsappTemplateStatusUpdateEventEnum}
+     * @memberof WhatsappTemplate
+     */
+    'statusUpdateEvent'?: WhatsappTemplateStatusUpdateEventEnum;
+    /**
+     * The date at which the template will be disabled. When a WhatsApp template `FLAGGED` event is received, this field is set.
+     * @type {string}
+     * @memberof WhatsappTemplate
+     */
+    'disableDate'?: string;
 }
 

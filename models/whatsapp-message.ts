@@ -36,6 +36,12 @@ export interface WhatsappMessage {
      */
     'id': string;
     /**
+     * The native WhatsApp message ID.
+     * @type {string}
+     * @memberof WhatsappMessage
+     */
+    'wamid'?: string;
+    /**
      * WhatsApp Business Account ID.
      * @type {string}
      * @memberof WhatsappMessage
@@ -155,5 +161,17 @@ export interface WhatsappMessage {
      * @memberof WhatsappMessage
      */
     'updateTime'?: string;
+    /**
+     * Total price of this message.
+     * @type {number}
+     * @memberof WhatsappMessage
+     */
+    'totalPrice'?: number;
+    /**
+     * Price currency. [ISO 4217 currency code](https://en.wikipedia.org/wiki/ISO_4217).
+     * @type {string}
+     * @memberof WhatsappMessage
+     */
+    'currency'?: string;
 }
 

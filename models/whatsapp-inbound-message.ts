@@ -14,9 +14,15 @@
 
 
 import { WhatsappInboundMessageButton } from './whatsapp-inbound-message-button';
+import { WhatsappInboundMessageContext } from './whatsapp-inbound-message-context';
+import { WhatsappInboundMessageError } from './whatsapp-inbound-message-error';
 import { WhatsappInboundMessageInteractive } from './whatsapp-inbound-message-interactive';
 import { WhatsappInboundMessageLocation } from './whatsapp-inbound-message-location';
 import { WhatsappInboundMessageMedia } from './whatsapp-inbound-message-media';
+import { WhatsappInboundMessageOrder } from './whatsapp-inbound-message-order';
+import { WhatsappInboundMessageReaction } from './whatsapp-inbound-message-reaction';
+import { WhatsappInboundMessageReferral } from './whatsapp-inbound-message-referral';
+import { WhatsappInboundMessageSystem } from './whatsapp-inbound-message-system';
 import { WhatsappInboundMessageText } from './whatsapp-inbound-message-text';
 import { WhatsappInboundMessageType } from './whatsapp-inbound-message-type';
 import { WhatsappMessageContact } from './whatsapp-message-contact';
@@ -34,6 +40,12 @@ export interface WhatsappInboundMessage {
      * @memberof WhatsappInboundMessage
      */
     'id': string;
+    /**
+     * The native WhatsApp message ID.
+     * @type {string}
+     * @memberof WhatsappInboundMessage
+     */
+    'wamid'?: string;
     /**
      * WhatsApp Business Account ID.
      * @type {string}
@@ -130,5 +142,41 @@ export interface WhatsappInboundMessage {
      * @memberof WhatsappInboundMessage
      */
     'contacts'?: Array<WhatsappMessageContact>;
+    /**
+     * 
+     * @type {WhatsappInboundMessageReaction}
+     * @memberof WhatsappInboundMessage
+     */
+    'reaction'?: WhatsappInboundMessageReaction;
+    /**
+     * 
+     * @type {WhatsappInboundMessageOrder}
+     * @memberof WhatsappInboundMessage
+     */
+    'order'?: WhatsappInboundMessageOrder;
+    /**
+     * 
+     * @type {WhatsappInboundMessageSystem}
+     * @memberof WhatsappInboundMessage
+     */
+    'system'?: WhatsappInboundMessageSystem;
+    /**
+     * 
+     * @type {Array<WhatsappInboundMessageError>}
+     * @memberof WhatsappInboundMessage
+     */
+    'errors'?: Array<WhatsappInboundMessageError>;
+    /**
+     * 
+     * @type {WhatsappInboundMessageContext}
+     * @memberof WhatsappInboundMessage
+     */
+    'context'?: WhatsappInboundMessageContext;
+    /**
+     * 
+     * @type {WhatsappInboundMessageReferral}
+     * @memberof WhatsappInboundMessage
+     */
+    'referral'?: WhatsappInboundMessageReferral;
 }
 

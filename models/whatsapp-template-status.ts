@@ -22,11 +22,7 @@
 
 export const WhatsappTemplateStatus = {
     /**
-    * Indicates that the template is approved, and you may begin sending it to customers.
-    */
-    Approved: 'APPROVED',
-    /**
-    * Indicates that the template is still under review. Review can take up to 24 hours.
+    * The template is still under review. Review can take up to 24 hours.
     */
     Pending: 'PENDING',
     /**
@@ -34,13 +30,25 @@ export const WhatsappTemplateStatus = {
     */
     Rejected: 'REJECTED',
     /**
+    * The template is approved, and you may begin sending it to customers.
+    */
+    Approved: 'APPROVED',
+    /**
     * The template has been paused due to recurring negative feedback from customers. Message templates with this status cannot be sent to customers. See [Template Pausing](https://developers.facebook.com/docs/whatsapp/message-templates/guidelines#template-pausing).
     */
     Paused: 'PAUSED',
     /**
     * The template has been disabled due to recurring negative feedback from customers or for violating one or more of our policies. Message templates with this status cannot be sent to customers. You may be able to edit a disabled message template and request an appeal. See [Appeals](https://developers.facebook.com/docs/whatsapp/message-templates/guidelines#appeals).
     */
-    Disabled: 'DISABLED'
+    Disabled: 'DISABLED',
+    /**
+    * The template is in appeal. See also [Template Appeals](https://developers.facebook.com/docs/whatsapp/message-templates/guidelines#appeals).
+    */
+    InAppeal: 'IN_APPEAL',
+    /**
+    * The template is pending deletion.
+    */
+    PendingDeletion: 'PENDING_DELETION'
 } as const;
 
 export type WhatsappTemplateStatus = typeof WhatsappTemplateStatus[keyof typeof WhatsappTemplateStatus];

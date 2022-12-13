@@ -15,22 +15,22 @@
 
 
 /**
- * 
+ * When the message type field is set to `unknown` or `unsupported`, this object is included.
  * @export
- * @interface Balance
+ * @interface WhatsappInboundMessageError
  */
-export interface Balance {
+export interface WhatsappInboundMessageError {
     /**
-     * Balance of current account.
-     * @type {number}
-     * @memberof Balance
-     */
-    'amount': number;
-    /**
-     * Price currency. [ISO 4217 currency code](https://en.wikipedia.org/wiki/ISO_4217).
+     * The error code.
      * @type {string}
-     * @memberof Balance
+     * @memberof WhatsappInboundMessageError
      */
-    'currency': string;
+    'code'?: string;
+    /**
+     * The error title.
+     * @type {string}
+     * @memberof WhatsappInboundMessageError
+     */
+    'title'?: string;
 }
 

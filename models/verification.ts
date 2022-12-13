@@ -53,10 +53,16 @@ export interface Verification {
      */
     'sendTime'?: string;
     /**
-     * Total price of this verification. Currency: USD.
+     * Total price of this verification.
      * @type {number}
      * @memberof Verification
      */
     'totalPrice'?: number;
+    /**
+     * Price currency. [ISO 4217 currency code](https://en.wikipedia.org/wiki/ISO_4217).
+     * @type {string}
+     * @memberof Verification
+     */
+    'currency'?: string;
 }
 

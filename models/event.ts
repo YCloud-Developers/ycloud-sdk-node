@@ -17,6 +17,7 @@ import { EmailDelivery } from './email-delivery';
 import { EventType } from './event-type';
 import { Sms } from './sms';
 import { Voice } from './voice';
+import { WhatsappBusinessAccount } from './whatsapp-business-account';
 import { WhatsappInboundMessage } from './whatsapp-inbound-message';
 import { WhatsappMessage } from './whatsapp-message';
 import { WhatsappPhoneNumber } from './whatsapp-phone-number';
@@ -70,6 +71,12 @@ export interface Event {
      * @memberof Event
      */
     'voice'?: Voice;
+    /**
+     * 
+     * @type {WhatsappBusinessAccount}
+     * @memberof Event
+     */
+    'whatsappBusinessAccount'?: WhatsappBusinessAccount;
     /**
      * 
      * @type {WhatsappInboundMessage}
