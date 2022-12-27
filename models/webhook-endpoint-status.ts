@@ -21,8 +21,18 @@
  */
 
 export const WebhookEndpointStatus = {
+    /**
+    * Indicates that the webhook endpoint is active, and will receive notifications of events monitored.
+    */
     Active: 'active',
-    Disabled: 'disabled'
+    /**
+    * Indicates that the webhook endpoint is disabled, and will not receive notifications.
+    */
+    Disabled: 'disabled',
+    /**
+    * Indicates that the webhook endpoint is pending, and will not receive notifications. If a webhook endpoint fails to receive notifications frequently, it changes to pending.
+    */
+    Pending: 'pending'
 } as const;
 
 export type WebhookEndpointStatus = typeof WebhookEndpointStatus[keyof typeof WebhookEndpointStatus];

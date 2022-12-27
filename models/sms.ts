@@ -69,7 +69,7 @@ export interface Sms {
      */
     'currency'?: string;
     /**
-     * Delivery status. One of `accepted`, `sent`, `delivered`, `undelivered`.
+     * Delivery status. One of `accepted`, `sent`, `delivered`, `undelivered`, or `failed`.
      * @type {string}
      * @memberof Sms
      */
@@ -110,7 +110,8 @@ export const SmsStatusEnum = {
     Accepted: 'accepted',
     Sent: 'sent',
     Delivered: 'delivered',
-    Undelivered: 'undelivered'
+    Undelivered: 'undelivered',
+    Failed: 'failed'
 } as const;
 
 export type SmsStatusEnum = typeof SmsStatusEnum[keyof typeof SmsStatusEnum];

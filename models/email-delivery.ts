@@ -62,6 +62,7 @@ export const EmailDeliveryStatusEnum = {
     Sending: 'sending',
     Sent: 'sent',
     Delivered: 'delivered',
+    Undelivered: 'undelivered',
     Failed: 'failed'
 } as const;
 

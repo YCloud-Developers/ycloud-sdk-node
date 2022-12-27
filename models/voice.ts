@@ -69,7 +69,7 @@ export interface Voice {
      */
     'currency'?: string;
     /**
-     * Delivery status. One of `accepted`, `sent`, `delivered`, `undelivered`.
+     * Delivery status. One of `accepted`, `sent`, `delivered`, `undelivered`, or `failed`.
      * @type {string}
      * @memberof Voice
      */
@@ -110,7 +110,8 @@ export const VoiceStatusEnum = {
     Accepted: 'accepted',
     Sent: 'sent',
     Delivered: 'delivered',
-    Undelivered: 'undelivered'
+    Undelivered: 'undelivered',
+    Failed: 'failed'
 } as const;
 
 export type VoiceStatusEnum = typeof VoiceStatusEnum[keyof typeof VoiceStatusEnum];

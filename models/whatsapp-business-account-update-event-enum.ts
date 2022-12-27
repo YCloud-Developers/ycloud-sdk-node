@@ -26,21 +26,13 @@ export const WhatsappBusinessAccountUpdateEventEnum = {
     */
     DisabledUpdate: 'DISABLED_UPDATE',
     /**
-    * Sandbox Number Upgraded to Verified Account.
-    */
-    VerifiedAccount: 'VERIFIED_ACCOUNT',
-    /**
     * WhatsApp Business Account Restricted Due To Policy Violations.
     */
     AccountRestriction: 'ACCOUNT_RESTRICTION',
     /**
     * WhatsApp Business Account Violates Policy.
     */
-    AccountViolation: 'ACCOUNT_VIOLATION',
-    /**
-    * WhatsApp Business Account Deleted.
-    */
-    AccountDeleted: 'ACCOUNT_DELETED'
+    AccountViolation: 'ACCOUNT_VIOLATION'
 } as const;
 
 export type WhatsappBusinessAccountUpdateEventEnum = typeof WhatsappBusinessAccountUpdateEventEnum[keyof typeof WhatsappBusinessAccountUpdateEventEnum];
