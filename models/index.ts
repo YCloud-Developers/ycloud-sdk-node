@@ -29,6 +29,7 @@ export * from './webhook-endpoint-status';
 export * from './webhook-endpoint-update-request';
 export * from './whatsapp-business-account';
 export * from './whatsapp-business-account-ban-state';
+export * from './whatsapp-business-account-page';
 export * from './whatsapp-business-account-restriction-info';
 export * from './whatsapp-business-account-review-status';
 export * from './whatsapp-business-account-update-event-enum';

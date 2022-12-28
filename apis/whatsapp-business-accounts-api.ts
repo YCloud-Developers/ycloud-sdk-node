@@ -24,6 +24,8 @@ import { BASE_PATH, USER_AGENT, COLLECTION_FORMATS, RequestArgs, BaseAPI, Requir
 import { ErrorResponse } from '../models';
 // @ts-ignore
 import { WhatsappBusinessAccount } from '../models';
+// @ts-ignore
+import { WhatsappBusinessAccountPage } from '../models';
 /**
  * WhatsappBusinessAccountsApi - axios parameter creator
  * @export
@@ -38,6 +40,9 @@ const WhatsappBusinessAccountsApiAxiosParamCreator = function (configuration?: C
          * @throws {RequiredError}
          */
         list: async (requestParameters: WhatsappBusinessAccountsApiListRequest = {}, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            let page = requestParameters['page'];
+            let limit = requestParameters['limit'];
+            let includeTotal = requestParameters['includeTotal'];
             let filterAccountReviewStatus = requestParameters['filterAccountReviewStatus'];
             const localVarPath = `/whatsapp/businessAccounts`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
@@ -56,6 +61,18 @@ const WhatsappBusinessAccountsApiAxiosParamCreator = function (configuration?: C
 
             // authentication api_key required
             await setApiKeyToObject(localVarHeaderParameter, "X-API-Key", configuration)
+
+            if (page !== undefined) {
+                localVarQueryParameter['page'] = page;
+            }
+
+            if (limit !== undefined) {
+                localVarQueryParameter['limit'] = limit;
+            }
+
+            if (includeTotal !== undefined) {
+                localVarQueryParameter['includeTotal'] = includeTotal;
+            }
 
             if (filterAccountReviewStatus !== undefined) {
                 localVarQueryParameter['filter.accountReviewStatus'] = filterAccountReviewStatus;
@@ -131,7 +148,7 @@ const WhatsappBusinessAccountsApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async list(requestParameters: WhatsappBusinessAccountsApiListRequest = {}, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<WhatsappBusinessAccount>> {
+        async list(requestParameters: WhatsappBusinessAccountsApiListRequest = {}, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<WhatsappBusinessAccountPage>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.list(requestParameters, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
@@ -160,11 +177,14 @@ const WhatsappBusinessAccountsApiFactory = function (configuration?: Configurati
          * Returns a paginated list of WhatsApp business accounts you\'ve registered on YCloud.
          * @summary List WABAs
          * @param {WhatsappBusinessAccountsApiListRequest} requestParameters Request parameters.
+         * @param {number} [page] Page number of the results to be returned, 1-based.
+         * @param {number} [limit] A limit on the number of results to be returned, or number of results per page, between 1 and 100, defaults to 10.
+         * @param {boolean} [includeTotal] Return results inside an object that contains the total result count or not.
          * @param {string} [filterAccountReviewStatus] WhatsApp Business Account review status.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        list(requestParameters: WhatsappBusinessAccountsApiListRequest = {}, options?: any): AxiosPromise<WhatsappBusinessAccount> {
+        list(requestParameters: WhatsappBusinessAccountsApiListRequest = {}, options?: any): AxiosPromise<WhatsappBusinessAccountPage> {
             return localVarFp.list(requestParameters, options).then((request) => request(axios, basePath));
         },
         /**
@@ -185,6 +205,27 @@ const WhatsappBusinessAccountsApiFactory = function (configuration?: Configurati
  * @interface WhatsappBusinessAccountsApiListRequest
  */
 export interface WhatsappBusinessAccountsApiListRequest {
+    /**
+     * Page number of the results to be returned, 1-based.
+     * @type {number}
+     * @memberof WhatsappBusinessAccountsApiList
+     */
+    readonly page?: number
+
+    /**
+     * A limit on the number of results to be returned, or number of results per page, between 1 and 100, defaults to 10.
+     * @type {number}
+     * @memberof WhatsappBusinessAccountsApiList
+     */
+    readonly limit?: number
+
+    /**
+     * Return results inside an object that contains the total result count or not.
+     * @type {boolean}
+     * @memberof WhatsappBusinessAccountsApiList
+     */
+    readonly includeTotal?: boolean
+
     /**
      * WhatsApp Business Account review status.
      * @type {string}
