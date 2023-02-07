@@ -13,6 +13,7 @@
  */
 
 
+import { WhatsappApiError } from './whatsapp-api-error';
 import { WhatsappTemplateCategory } from './whatsapp-template-category';
 import { WhatsappTemplateComponent } from './whatsapp-template-component';
 import { WhatsappTemplateStatus } from './whatsapp-template-status';
@@ -90,5 +91,11 @@ export interface WhatsappTemplate {
      * @memberof WhatsappTemplate
      */
     'disableDate'?: string;
+    /**
+     * 
+     * @type {WhatsappApiError}
+     * @memberof WhatsappTemplate
+     */
+    'whatsappApiError'?: WhatsappApiError;
 }
 

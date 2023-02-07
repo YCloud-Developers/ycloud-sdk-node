@@ -13,6 +13,7 @@
  */
 
 
+import { WhatsappApiError } from './whatsapp-api-error';
 import { WhatsappConversation } from './whatsapp-conversation';
 import { WhatsappMessageContact } from './whatsapp-message-contact';
 import { WhatsappMessageInteractive } from './whatsapp-message-interactive';
@@ -173,5 +174,11 @@ export interface WhatsappMessage {
      * @memberof WhatsappMessage
      */
     'currency'?: string;
+    /**
+     * 
+     * @type {WhatsappApiError}
+     * @memberof WhatsappMessage
+     */
+    'whatsappApiError'?: WhatsappApiError;
 }
 

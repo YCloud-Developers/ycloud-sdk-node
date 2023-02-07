@@ -30,6 +30,10 @@ export const EventType = {
     */
     SmsMessageUpdated: 'sms.message.updated',
     /**
+    * Occurs when an SMS inbound message is received, which means a user replies to your message.
+    */
+    SmsInboundReceived: 'sms.inbound.received',
+    /**
     * Occurs when a voice message status is updated, and the status changes to &#x60;delivered&#x60; or &#x60;undelivered&#x60;.
     */
     VoiceMessageUpdated: 'voice.message.updated',
