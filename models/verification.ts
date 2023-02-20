@@ -14,6 +14,7 @@
 
 
 import { VerificationChannel } from './verification-channel';
+import { VerificationFallback } from './verification-fallback';
 import { VerificationStatus } from './verification-status';
 
 /**
@@ -64,5 +65,17 @@ export interface Verification {
      * @memberof Verification
      */
     'currency'?: string;
+    /**
+     * Whether sms fallback is enabled or not. Applicable when `channel` is `whatsapp`. If enabled, YCloud will try to send the verification code via sms when the WhatsApp message is failed.
+     * @type {boolean}
+     * @memberof Verification
+     */
+    'smsFallbackEnabled'?: boolean;
+    /**
+     * 
+     * @type {VerificationFallback}
+     * @memberof Verification
+     */
+    'smsFallback'?: VerificationFallback;
 }
 

@@ -69,7 +69,7 @@ export interface Voice {
      */
     'currency'?: string;
     /**
-     * Delivery status. One of `accepted`, `sent`, `delivered`, `undelivered`, or `failed`.
+     * Delivery status. One of `accepted`, `sent`, `delivered`, `undelivered`, or `failed`. - `accepted`: The messaging request is accepted by our system. - `failed`: The message failed to be sent from our system. - `sent`: The message has been sent from our system. - `delivered`: YCloud has received a delivery receipt indicating that message is delivered. - `undelivered`: YCloud has received a delivery receipt indicating that message is not delivered.
      * @type {string}
      * @memberof Voice
      */
@@ -104,14 +104,41 @@ export interface Voice {
      * @memberof Voice
      */
     'callbackUrl'?: string;
+    /**
+     * This can be either empty or one of `voice`, or `verify`. Defaults to `voice`. - `voice`: Indicates that the message is sent via [Voice](https://www.ycloud.com/voice) product. - `verify`: Indicates that the message is sent via [Verify](https://www.ycloud.com/verify) product.
+     * @type {string}
+     * @memberof Voice
+     */
+    'bizType'?: string;
+    /**
+     * The verification ID. Included only when `bizType` is `verify`.
+     * @type {string}
+     * @memberof Voice
+     */
+    'verificationId'?: string;
 }
 
 export const VoiceStatusEnum = {
+    /**
+    * The messaging request is accepted by our system.
+    */
     Accepted: 'accepted',
+    /**
+    * The message failed to be sent from our system.
+    */
+    Failed: 'failed',
+    /**
+    * The message has been sent from our system.
+    */
     Sent: 'sent',
+    /**
+    * YCloud has received a delivery receipt indicating that message is delivered.
+    */
     Delivered: 'delivered',
-    Undelivered: 'undelivered',
-    Failed: 'failed'
+    /**
+    * YCloud has received a delivery receipt indicating that message is not delivered.
+    */
+    Undelivered: 'undelivered'
 } as const;
 
 export type VoiceStatusEnum = typeof VoiceStatusEnum[keyof typeof VoiceStatusEnum];

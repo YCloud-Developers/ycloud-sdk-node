@@ -15,7 +15,7 @@
 
 
 /**
- * Webhook endpoint status.
+ * Webhook endpoint status. - `active`: Indicates that the webhook endpoint is active, and will receive notifications of events monitored. - `disabled`: Indicates that the webhook endpoint is disabled, and will not receive notifications. - `pending`: Indicates that the webhook endpoint is pending, and will not receive notifications. If a webhook endpoint fails to receive notifications frequently, it changes to pending.
  * @export
  * @enum {string}
  */

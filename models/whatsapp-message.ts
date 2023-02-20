@@ -180,5 +180,17 @@ export interface WhatsappMessage {
      * @memberof WhatsappMessage
      */
     'whatsappApiError'?: WhatsappApiError;
+    /**
+     * This can be either empty or one of `whatsapp`, or `verify`. Defaults to `whatsapp`. - `whatsapp`: Indicates that the message is sent via [WhatsApp](https://www.ycloud.com/whatsapp) product. - `verify`: Indicates that the message is sent via [Verify](https://www.ycloud.com/verify) product.
+     * @type {string}
+     * @memberof WhatsappMessage
+     */
+    'bizType'?: string;
+    /**
+     * The verification ID. Included only when `bizType` is `verify`.
+     * @type {string}
+     * @memberof WhatsappMessage
+     */
+    'verificationId'?: string;
 }
 

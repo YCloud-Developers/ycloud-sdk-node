@@ -33,7 +33,7 @@ export interface EmailDelivery {
      */
     'recipientAddress': string;
     /**
-     * Delivery status of the email to the specific recipient address.
+     * Delivery status of the email to the specific recipient address. - `sending`: The messaging request is accepted by our system. - `failed`: The message failed to be sent from our system. - `sent`: The message has been sent from YCloud. - `delivered`: YCloud has received a delivery receipt indicating that message is delivered. - `undelivered`: YCloud has received a delivery receipt indicating that message is not delivered.
      * @type {string}
      * @memberof EmailDelivery
      */
@@ -56,14 +56,26 @@ export interface EmailDelivery {
      * @memberof EmailDelivery
      */
     'externalId'?: string;
+    /**
+     * This can be either empty or one of `email`, or `verify`. Defaults to `email`. - `email`: Indicates that the message is sent via [Email](https://www.ycloud.com/email) product. - `verify`: Indicates that the message is sent via [Verify](https://www.ycloud.com/verify) product.
+     * @type {string}
+     * @memberof EmailDelivery
+     */
+    'bizType'?: string;
+    /**
+     * The verification ID. Included only when `bizType` is `verify`.
+     * @type {string}
+     * @memberof EmailDelivery
+     */
+    'verificationId'?: string;
 }
 
 export const EmailDeliveryStatusEnum = {
     Sending: 'sending',
+    Failed: 'failed',
     Sent: 'sent',
     Delivered: 'delivered',
-    Undelivered: 'undelivered',
-    Failed: 'failed'
+    Undelivered: 'undelivered'
 } as const;
 
 export type EmailDeliveryStatusEnum = typeof EmailDeliveryStatusEnum[keyof typeof EmailDeliveryStatusEnum];

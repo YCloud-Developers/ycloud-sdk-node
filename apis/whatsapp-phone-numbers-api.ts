@@ -26,6 +26,10 @@ import { ErrorResponse } from '../models';
 import { WhatsappPhoneNumber } from '../models';
 // @ts-ignore
 import { WhatsappPhoneNumberPage } from '../models';
+// @ts-ignore
+import { WhatsappPhoneNumberProfile } from '../models';
+// @ts-ignore
+import { WhatsappPhoneNumberProfileUpdateRequest } from '../models';
 /**
  * WhatsappPhoneNumbersApi - axios parameter creator
  * @export
@@ -135,6 +139,102 @@ const WhatsappPhoneNumbersApiAxiosParamCreator = function (configuration?: Confi
                 options: localVarRequestOptions,
             };
         },
+        /**
+         * Retrieves a WhatsApp business account phone number\'s profile. Customers can view your business profile by clicking your business\'s name or number in a conversation thread.
+         * @summary Retrieve a WhatsApp phone number profile
+         * @param {string} wabaId WhatsApp Business Account ID.
+         * @param {string} phoneNumber Phone number in [E.164](https://en.wikipedia.org/wiki/E.164) format.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        retrieveProfile: async (wabaId: string, phoneNumber: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'wabaId' is not null or undefined
+            assertParamExists('retrieveProfile', 'wabaId', wabaId)
+            // verify required parameter 'phoneNumber' is not null or undefined
+            assertParamExists('retrieveProfile', 'phoneNumber', phoneNumber)
+            const localVarPath = `/whatsapp/phoneNumbers/{wabaId}/{phoneNumber}/profile`
+                .replace(`{${"wabaId"}}`, encodeURIComponent(String(wabaId)))
+                .replace(`{${"phoneNumber"}}`, encodeURIComponent(String(phoneNumber)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            // const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            if (USER_AGENT) {
+                localVarHeaderParameter['User-Agent'] = USER_AGENT;
+            }
+            const localVarQueryParameter = {} as any;
+
+            // authentication api_key required
+            await setApiKeyToObject(localVarHeaderParameter, "X-API-Key", configuration)
+
+
+    
+            // setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+            localVarRequestOptions.params = localVarQueryParameter;
+
+            return {
+                url: localVarPath,
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * Updates a WhatsApp phone number profile.
+         * @summary Update a WhatsApp phone number profile
+         * @param {string} wabaId WhatsApp Business Account ID.
+         * @param {string} phoneNumber Phone number in [E.164](https://en.wikipedia.org/wiki/E.164) format.
+         * @param {WhatsappPhoneNumberProfileUpdateRequest} whatsappPhoneNumberProfileUpdateRequest 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        updateProfile: async (wabaId: string, phoneNumber: string, whatsappPhoneNumberProfileUpdateRequest: WhatsappPhoneNumberProfileUpdateRequest, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'wabaId' is not null or undefined
+            assertParamExists('updateProfile', 'wabaId', wabaId)
+            // verify required parameter 'phoneNumber' is not null or undefined
+            assertParamExists('updateProfile', 'phoneNumber', phoneNumber)
+            // verify required parameter 'whatsappPhoneNumberProfileUpdateRequest' is not null or undefined
+            assertParamExists('updateProfile', 'whatsappPhoneNumberProfileUpdateRequest', whatsappPhoneNumberProfileUpdateRequest)
+            const localVarPath = `/whatsapp/phoneNumbers/{wabaId}/{phoneNumber}/profile`
+                .replace(`{${"wabaId"}}`, encodeURIComponent(String(wabaId)))
+                .replace(`{${"phoneNumber"}}`, encodeURIComponent(String(phoneNumber)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            // const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'PATCH', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            if (USER_AGENT) {
+                localVarHeaderParameter['User-Agent'] = USER_AGENT;
+            }
+            const localVarQueryParameter = {} as any;
+
+            // authentication api_key required
+            await setApiKeyToObject(localVarHeaderParameter, "X-API-Key", configuration)
+
+
+    
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+
+            // setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+            localVarRequestOptions.params = localVarQueryParameter;
+            localVarRequestOptions.data = serializeDataIfNeeded(whatsappPhoneNumberProfileUpdateRequest, localVarRequestOptions, configuration)
+
+            return {
+                url: localVarPath,
+                options: localVarRequestOptions,
+            };
+        },
     }
 };
 
@@ -166,6 +266,31 @@ const WhatsappPhoneNumbersApiFp = function(configuration?: Configuration) {
          */
         async retrieve(wabaId: string, phoneNumber: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<WhatsappPhoneNumber>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.retrieve(wabaId, phoneNumber, options);
+            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+        },
+        /**
+         * Retrieves a WhatsApp business account phone number\'s profile. Customers can view your business profile by clicking your business\'s name or number in a conversation thread.
+         * @summary Retrieve a WhatsApp phone number profile
+         * @param {string} wabaId WhatsApp Business Account ID.
+         * @param {string} phoneNumber Phone number in [E.164](https://en.wikipedia.org/wiki/E.164) format.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async retrieveProfile(wabaId: string, phoneNumber: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<WhatsappPhoneNumberProfile>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.retrieveProfile(wabaId, phoneNumber, options);
+            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+        },
+        /**
+         * Updates a WhatsApp phone number profile.
+         * @summary Update a WhatsApp phone number profile
+         * @param {string} wabaId WhatsApp Business Account ID.
+         * @param {string} phoneNumber Phone number in [E.164](https://en.wikipedia.org/wiki/E.164) format.
+         * @param {WhatsappPhoneNumberProfileUpdateRequest} whatsappPhoneNumberProfileUpdateRequest 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async updateProfile(wabaId: string, phoneNumber: string, whatsappPhoneNumberProfileUpdateRequest: WhatsappPhoneNumberProfileUpdateRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<WhatsappPhoneNumberProfile>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.updateProfile(wabaId, phoneNumber, whatsappPhoneNumberProfileUpdateRequest, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
     }
@@ -200,6 +325,24 @@ const WhatsappPhoneNumbersApiFactory = function (configuration?: Configuration, 
          */
         retrieve(wabaId: string, phoneNumber: string, options?: any): AxiosPromise<WhatsappPhoneNumber> {
             return localVarFp.retrieve(wabaId, phoneNumber, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * Retrieves a WhatsApp business account phone number\'s profile. Customers can view your business profile by clicking your business\'s name or number in a conversation thread.
+         * @summary Retrieve a WhatsApp phone number profile
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        retrieveProfile(wabaId: string, phoneNumber: string, options?: any): AxiosPromise<WhatsappPhoneNumberProfile> {
+            return localVarFp.retrieveProfile(wabaId, phoneNumber, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * Updates a WhatsApp phone number profile.
+         * @summary Update a WhatsApp phone number profile
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        updateProfile(wabaId: string, phoneNumber: string, whatsappPhoneNumberProfileUpdateRequest: WhatsappPhoneNumberProfileUpdateRequest, options?: any): AxiosPromise<WhatsappPhoneNumberProfile> {
+            return localVarFp.updateProfile(wabaId, phoneNumber, whatsappPhoneNumberProfileUpdateRequest, options).then((request) => request(axios, basePath));
         },
     };
 };
@@ -269,5 +412,32 @@ export class WhatsappPhoneNumbersApi extends BaseAPI {
      */
     public retrieve(wabaId: string, phoneNumber: string, options?: AxiosRequestConfig) {
         return WhatsappPhoneNumbersApiFp(this.configuration).retrieve(wabaId, phoneNumber, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * Retrieves a WhatsApp business account phone number\'s profile. Customers can view your business profile by clicking your business\'s name or number in a conversation thread.
+     * @summary Retrieve a WhatsApp phone number profile
+     * @param {string} wabaId WhatsApp Business Account ID.
+     * @param {string} phoneNumber Phone number in [E.164](https://en.wikipedia.org/wiki/E.164) format.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof WhatsappPhoneNumbersApi
+     */
+    public retrieveProfile(wabaId: string, phoneNumber: string, options?: AxiosRequestConfig) {
+        return WhatsappPhoneNumbersApiFp(this.configuration).retrieveProfile(wabaId, phoneNumber, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * Updates a WhatsApp phone number profile.
+     * @summary Update a WhatsApp phone number profile
+     * @param {string} wabaId WhatsApp Business Account ID.
+     * @param {string} phoneNumber Phone number in [E.164](https://en.wikipedia.org/wiki/E.164) format.
+     * @param {WhatsappPhoneNumberProfileUpdateRequest} whatsappPhoneNumberProfileUpdateRequest 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof WhatsappPhoneNumbersApi
+     */
+    public updateProfile(wabaId: string, phoneNumber: string, whatsappPhoneNumberProfileUpdateRequest: WhatsappPhoneNumberProfileUpdateRequest, options?: AxiosRequestConfig) {
+        return WhatsappPhoneNumbersApiFp(this.configuration).updateProfile(wabaId, phoneNumber, whatsappPhoneNumberProfileUpdateRequest, options).then((request) => request(this.axios, this.basePath));
     }
 }

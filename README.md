@@ -64,6 +64,8 @@ Class | Method | HTTP request | Description
 *WhatsappMessagesApi* | **send** | **POST** /whatsapp/messages | Send a WhatsApp message
 *WhatsappPhoneNumbersApi* | **list** | **GET** /whatsapp/phoneNumbers | List WhatsApp phone numbers
 *WhatsappPhoneNumbersApi* | **retrieve** | **GET** /whatsapp/phoneNumbers/{wabaId}/{phoneNumber} | Retrieve a WhatsApp phone number
+*WhatsappPhoneNumbersApi* | **retrieveProfile** | **GET** /whatsapp/phoneNumbers/{wabaId}/{phoneNumber}/profile | Retrieve a WhatsApp phone number profile
+*WhatsappPhoneNumbersApi* | **updateProfile** | **PATCH** /whatsapp/phoneNumbers/{wabaId}/{phoneNumber}/profile | Update a WhatsApp phone number profile
 *WhatsappTemplatesApi* | **create** | **POST** /whatsapp/templates | Create a WhatsApp template
 *WhatsappTemplatesApi* | **deleteByName** | **DELETE** /whatsapp/templates/{wabaId}/{name} | Delete WhatsApp templates by name
 *WhatsappTemplatesApi* | **editByNameAndLanguage** | **PATCH** /whatsapp/templates/{wabaId}/{name}/{language} | Edit a WhatsApp template

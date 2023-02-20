@@ -15,7 +15,7 @@
 
 
 /**
- * The review status of the current display name request. See also [Get Display Name Status](https://developers.facebook.com/docs/whatsapp/business-management-api/manage-phone-numbers#get-display-name-status--beta-).
+ * The review status of the current display name request. See also [Get Display Name Status](https://developers.facebook.com/docs/whatsapp/business-management-api/manage-phone-numbers#get-display-name-status--beta-). - `APPROVED`: The name has been approved. You can download your certificate now. - `AVAILABLE_WITHOUT_REVIEW`: The certificate for the phone is available and display name is ready to use without review. - `DECLINED`: The name has not been approved. You cannot download your certificate. - `EXPIRED`: Your certificate has expire and can no longer be downloaded. - `PENDING_REVIEW`: Your name request is under review. You cannot download your certificate. - `NONE`: No certificate is available.
  * @export
  * @enum {string}
  */
