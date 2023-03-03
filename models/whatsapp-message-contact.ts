@@ -13,12 +13,12 @@
  */
 
 
-import { WhatsappMessageContactAddressesInner } from './whatsapp-message-contact-addresses-inner';
-import { WhatsappMessageContactEmailsInner } from './whatsapp-message-contact-emails-inner';
+import { WhatsappMessageContactAddress } from './whatsapp-message-contact-address';
+import { WhatsappMessageContactEmail } from './whatsapp-message-contact-email';
 import { WhatsappMessageContactName } from './whatsapp-message-contact-name';
 import { WhatsappMessageContactOrg } from './whatsapp-message-contact-org';
-import { WhatsappMessageContactPhonesInner } from './whatsapp-message-contact-phones-inner';
-import { WhatsappMessageContactUrlsInner } from './whatsapp-message-contact-urls-inner';
+import { WhatsappMessageContactPhone } from './whatsapp-message-contact-phone';
+import { WhatsappMessageContactUrl } from './whatsapp-message-contact-url';
 
 /**
  * When the message type filed is set to `contacts`, this object is included in the message object. See also [WhatsApp message contacts object](https://developers.facebook.com/docs/whatsapp/cloud-api/reference/messages#contacts-object).
@@ -28,10 +28,10 @@ import { WhatsappMessageContactUrlsInner } from './whatsapp-message-contact-urls
 export interface WhatsappMessageContact {
     /**
      * 
-     * @type {Array<WhatsappMessageContactAddressesInner>}
+     * @type {Array<WhatsappMessageContactAddress>}
      * @memberof WhatsappMessageContact
      */
-    'addresses'?: Array<WhatsappMessageContactAddressesInner>;
+    'addresses'?: Array<WhatsappMessageContactAddress>;
     /**
      * `YYYY-MM-DD` formatted string.
      * @type {string}
@@ -40,16 +40,16 @@ export interface WhatsappMessageContact {
     'birthday'?: string;
     /**
      * 
-     * @type {Array<WhatsappMessageContactEmailsInner>}
+     * @type {Array<WhatsappMessageContactEmail>}
      * @memberof WhatsappMessageContact
      */
-    'emails'?: Array<WhatsappMessageContactEmailsInner>;
+    'emails'?: Array<WhatsappMessageContactEmail>;
     /**
      * 
      * @type {WhatsappMessageContactName}
      * @memberof WhatsappMessageContact
      */
-    'name'?: WhatsappMessageContactName;
+    'name': WhatsappMessageContactName;
     /**
      * 
      * @type {WhatsappMessageContactOrg}
@@ -58,15 +58,15 @@ export interface WhatsappMessageContact {
     'org'?: WhatsappMessageContactOrg;
     /**
      * Contact phone number(s) formatted as a phone object.
-     * @type {Array<WhatsappMessageContactPhonesInner>}
+     * @type {Array<WhatsappMessageContactPhone>}
      * @memberof WhatsappMessageContact
      */
-    'phones'?: Array<WhatsappMessageContactPhonesInner>;
+    'phones'?: Array<WhatsappMessageContactPhone>;
     /**
      * Contact URL(s) formatted as a urls object.
-     * @type {Array<WhatsappMessageContactUrlsInner>}
+     * @type {Array<WhatsappMessageContactUrl>}
      * @memberof WhatsappMessageContact
      */
-    'urls'?: Array<WhatsappMessageContactUrlsInner>;
+    'urls'?: Array<WhatsappMessageContactUrl>;
 }
 

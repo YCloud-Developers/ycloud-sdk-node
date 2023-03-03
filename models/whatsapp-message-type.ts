@@ -30,7 +30,8 @@ export const WhatsappMessageType = {
     Sticker: 'sticker',
     Location: 'location',
     Interactive: 'interactive',
-    Contacts: 'contacts'
+    Contacts: 'contacts',
+    Reaction: 'reaction'
 } as const;
 
 export type WhatsappMessageType = typeof WhatsappMessageType[keyof typeof WhatsappMessageType];

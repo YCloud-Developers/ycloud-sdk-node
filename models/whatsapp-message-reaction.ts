@@ -15,22 +15,22 @@
 
 
 /**
- * Contains a language object. Specifies the language the template may be rendered in.
+ * When a user reacts to messages with an emoji, the message type is set to `reaction`, and this field is included.
  * @export
- * @interface WhatsappMessageTemplateLanguage
+ * @interface WhatsappMessageReaction
  */
-export interface WhatsappMessageTemplateLanguage {
+export interface WhatsappMessageReaction {
     /**
-     * The code of the language or locale to use. Accepts both language and language_locale formats (e.g., en and en_US). See [Supported Languages](https://developers.facebook.com/docs/whatsapp/api/messages/message-templates#supported-languages-) for all codes.
+     * Specifies the `wamid` of the message received that contained the reaction.
      * @type {string}
-     * @memberof WhatsappMessageTemplateLanguage
+     * @memberof WhatsappMessageReaction
      */
-    'code': string;
+    'message_id': string;
     /**
-     * Default (and only supported option): `deterministic`.
+     * **Required** when you send a `reaction` message. Set it to `\"\"` if you want to remove the emoji. **Optional** when you received a message from a user. This field is included when a user reacts to messages with an emoji. Otherwise, it indicates a user removed the emoji.
      * @type {string}
-     * @memberof WhatsappMessageTemplateLanguage
+     * @memberof WhatsappMessageReaction
      */
-    'policy'?: string;
+    'emoji'?: string;
 }
 

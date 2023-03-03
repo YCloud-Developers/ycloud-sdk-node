@@ -18,48 +18,48 @@ import { WhatsappMessageMedia } from './whatsapp-message-media';
 /**
  * See [Parameter Object](https://developers.facebook.com/docs/whatsapp/cloud-api/reference/messages#parameter-object), [Button Parameter Object](https://developers.facebook.com/docs/whatsapp/cloud-api/reference/messages#button-parameter-object.
  * @export
- * @interface WhatsappMessageTemplateComponentsInnerParametersInner
+ * @interface WhatsappMessageTemplateComponentParameter
  */
-export interface WhatsappMessageTemplateComponentsInnerParametersInner {
+export interface WhatsappMessageTemplateComponentParameter {
     /**
-     * Describes the parameter type.
+     * **Required.** Describes the parameter type. - `text`: Used when the template component type is `BODY`, or the `HEADER` component format is `TEXT`. - `image`: Used when the template `HEADER` component is `IMAGE`. - `video`: Used when the template `HEADER` component is `VIDEO`. - `document`: Used when the template `HEADER` component is `DOCUMENT`. - `payload`: Used when the template component button type is `QUICK_REPLY`.
      * @type {string}
-     * @memberof WhatsappMessageTemplateComponentsInnerParametersInner
+     * @memberof WhatsappMessageTemplateComponentParameter
      */
-    'type'?: WhatsappMessageTemplateComponentsInnerParametersInnerTypeEnum;
+    'type'?: WhatsappMessageTemplateComponentParameterTypeEnum;
     /**
-     * Required when `type` = `text`. The message\'s text. For the header component, the character limit is 60 characters. For the body component, the character limit is 1024 characters. For url buttons, it indicates the developer-provided suffix that is appended to the predefined prefix URL in the template.
+     * **Required when `type` = `text`.** The message\'s text. For the header component, the character limit is 60 characters. For the body component, the character limit is 1024 characters. For url buttons, it indicates the developer-provided suffix that is appended to the predefined prefix URL in the template.
      * @type {string}
-     * @memberof WhatsappMessageTemplateComponentsInnerParametersInner
+     * @memberof WhatsappMessageTemplateComponentParameter
      */
     'text'?: string;
     /**
      * Required for `quick_reply` buttons. Developer-defined payload that is returned when the button is clicked in addition to the display text on the button.
      * @type {string}
-     * @memberof WhatsappMessageTemplateComponentsInnerParametersInner
+     * @memberof WhatsappMessageTemplateComponentParameter
      */
     'payload'?: string;
     /**
      * 
      * @type {WhatsappMessageMedia}
-     * @memberof WhatsappMessageTemplateComponentsInnerParametersInner
+     * @memberof WhatsappMessageTemplateComponentParameter
      */
     'image'?: WhatsappMessageMedia;
     /**
      * 
      * @type {WhatsappMessageMedia}
-     * @memberof WhatsappMessageTemplateComponentsInnerParametersInner
+     * @memberof WhatsappMessageTemplateComponentParameter
      */
     'video'?: WhatsappMessageMedia;
     /**
      * 
      * @type {WhatsappMessageMedia}
-     * @memberof WhatsappMessageTemplateComponentsInnerParametersInner
+     * @memberof WhatsappMessageTemplateComponentParameter
      */
     'document'?: WhatsappMessageMedia;
 }
 
-export const WhatsappMessageTemplateComponentsInnerParametersInnerTypeEnum = {
+export const WhatsappMessageTemplateComponentParameterTypeEnum = {
     Text: 'text',
     Image: 'image',
     Video: 'video',
@@ -67,6 +67,6 @@ export const WhatsappMessageTemplateComponentsInnerParametersInnerTypeEnum = {
     Payload: 'payload'
 } as const;
 
-export type WhatsappMessageTemplateComponentsInnerParametersInnerTypeEnum = typeof WhatsappMessageTemplateComponentsInnerParametersInnerTypeEnum[keyof typeof WhatsappMessageTemplateComponentsInnerParametersInnerTypeEnum];
+export type WhatsappMessageTemplateComponentParameterTypeEnum = typeof WhatsappMessageTemplateComponentParameterTypeEnum[keyof typeof WhatsappMessageTemplateComponentParameterTypeEnum];
 
 

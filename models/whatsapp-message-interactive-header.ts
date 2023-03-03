@@ -16,7 +16,7 @@
 import { WhatsappMessageMedia } from './whatsapp-message-media';
 
 /**
- * [WhatsApp Header Object](https://developers.facebook.com/docs/whatsapp/cloud-api/reference/messages#header-object).
+ * Required for type `product_list`. Optional for other types. See also [WhatsApp Header Object](https://developers.facebook.com/docs/whatsapp/cloud-api/reference/messages#header-object).
  * @export
  * @interface WhatsappMessageInteractiveHeader
  */

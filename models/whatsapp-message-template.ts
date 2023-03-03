@@ -13,11 +13,11 @@
  */
 
 
-import { WhatsappMessageTemplateComponentsInner } from './whatsapp-message-template-components-inner';
+import { WhatsappMessageTemplateComponent } from './whatsapp-message-template-component';
 import { WhatsappMessageTemplateLanguage } from './whatsapp-message-template-language';
 
 /**
- * Template object when sending a WhatsApp template message. See also [WhatsApp Template Object](https://developers.facebook.com/docs/whatsapp/cloud-api/reference/messages#template-object).
+ * Use for sending a WhatsApp `template` message. See also [WhatsApp Template Object](https://developers.facebook.com/docs/whatsapp/cloud-api/reference/messages#template-object).
  * @export
  * @interface WhatsappMessageTemplate
  */
@@ -35,10 +35,10 @@ export interface WhatsappMessageTemplate {
      */
     'language': WhatsappMessageTemplateLanguage;
     /**
-     * Array of components objects containing the parameters of the message.
-     * @type {Array<WhatsappMessageTemplateComponentsInner>}
+     * **Required when the specified template contains variables or media.** Array of components objects containing the parameters of the message.
+     * @type {Array<WhatsappMessageTemplateComponent>}
      * @memberof WhatsappMessageTemplate
      */
-    'components'?: Array<WhatsappMessageTemplateComponentsInner>;
+    'components'?: Array<WhatsappMessageTemplateComponent>;
 }
 

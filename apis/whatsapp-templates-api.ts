@@ -37,7 +37,7 @@ import { WhatsappTemplatePage } from '../models';
 const WhatsappTemplatesApiAxiosParamCreator = function (configuration?: Configuration) {
     return {
         /**
-         * Creates a WhatsApp template. See also [Create Message Templates](https://developers.facebook.com/docs/whatsapp/business-management-api/message-templates/#create-message-templates).
+         * Creates a WhatsApp template.
          * @summary Create a WhatsApp template
          * @param {WhatsappTemplateCreateRequest} whatsappTemplateCreateRequest 
          * @param {*} [options] Override http request option.
@@ -305,7 +305,7 @@ const WhatsappTemplatesApiFp = function(configuration?: Configuration) {
     const localVarAxiosParamCreator = WhatsappTemplatesApiAxiosParamCreator(configuration)
     return {
         /**
-         * Creates a WhatsApp template. See also [Create Message Templates](https://developers.facebook.com/docs/whatsapp/business-management-api/message-templates/#create-message-templates).
+         * Creates a WhatsApp template.
          * @summary Create a WhatsApp template
          * @param {WhatsappTemplateCreateRequest} whatsappTemplateCreateRequest 
          * @param {*} [options] Override http request option.
@@ -376,7 +376,7 @@ const WhatsappTemplatesApiFactory = function (configuration?: Configuration, bas
     const localVarFp = WhatsappTemplatesApiFp(configuration)
     return {
         /**
-         * Creates a WhatsApp template. See also [Create Message Templates](https://developers.facebook.com/docs/whatsapp/business-management-api/message-templates/#create-message-templates).
+         * Creates a WhatsApp template.
          * @summary Create a WhatsApp template
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -487,7 +487,7 @@ export interface WhatsappTemplatesApiListRequest {
  */
 export class WhatsappTemplatesApi extends BaseAPI {
     /**
-     * Creates a WhatsApp template. See also [Create Message Templates](https://developers.facebook.com/docs/whatsapp/business-management-api/message-templates/#create-message-templates).
+     * Creates a WhatsApp template.
      * @summary Create a WhatsApp template
      * @param {WhatsappTemplateCreateRequest} whatsappTemplateCreateRequest 
      * @param {*} [options] Override http request option.

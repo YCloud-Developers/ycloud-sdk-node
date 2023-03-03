@@ -17,26 +17,20 @@
 /**
  * 
  * @export
- * @interface WhatsappMessageInteractiveActionSectionsInnerRowsInner
+ * @interface WhatsappMessageContactUrl
  */
-export interface WhatsappMessageInteractiveActionSectionsInnerRowsInner {
+export interface WhatsappMessageContactUrl {
     /**
-     * Unique row ID.
+     * URL.
      * @type {string}
-     * @memberof WhatsappMessageInteractiveActionSectionsInnerRowsInner
+     * @memberof WhatsappMessageContactUrl
      */
-    'id'?: string;
+    'url'?: string;
     /**
-     * Row title content.
+     * Standard values are `HOME` and `WORK`.
      * @type {string}
-     * @memberof WhatsappMessageInteractiveActionSectionsInnerRowsInner
+     * @memberof WhatsappMessageContactUrl
      */
-    'title'?: string;
-    /**
-     * Row description content.
-     * @type {string}
-     * @memberof WhatsappMessageInteractiveActionSectionsInnerRowsInner
-     */
-    'description'?: string;
+    'type'?: string;
 }
 

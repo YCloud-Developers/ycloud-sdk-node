@@ -15,22 +15,16 @@
 
 
 /**
- * When a user reacts to messages with an emoji, the message type is set to `reaction`, and this field is included.
+ * 
  * @export
- * @interface WhatsappInboundMessageReaction
+ * @interface WhatsappMessageInteractiveActionSectionProductItem
  */
-export interface WhatsappInboundMessageReaction {
+export interface WhatsappMessageInteractiveActionSectionProductItem {
     /**
-     * Specifies the `wamid` of the message received that contained the reaction.
+     * Required for Multi-Product Messages. Unique identifier of the product in a catalog.
      * @type {string}
-     * @memberof WhatsappInboundMessageReaction
+     * @memberof WhatsappMessageInteractiveActionSectionProductItem
      */
-    'message_id'?: string;
-    /**
-     * This field is included when a user reacts to messages with an emoji. Otherwise, it indicates a user removed the emoji.
-     * @type {string}
-     * @memberof WhatsappInboundMessageReaction
-     */
-    'emoji'?: string;
+    'product_retailer_id'?: string;
 }
 

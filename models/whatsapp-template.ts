@@ -50,7 +50,7 @@ export interface WhatsappTemplate {
      */
     'category': WhatsappTemplateCategory;
     /**
-     * 
+     * Template components. A template consists of `HEADER`, `BODY`, `FOOTER`, and `BUTTONS` components. `BODY` component is required, the other types are optional.
      * @type {Array<WhatsappTemplateComponent>}
      * @memberof WhatsappTemplate
      */

@@ -16,9 +16,11 @@
 import { WhatsappApiError } from './whatsapp-api-error';
 import { WhatsappConversation } from './whatsapp-conversation';
 import { WhatsappMessageContact } from './whatsapp-message-contact';
+import { WhatsappMessageContext } from './whatsapp-message-context';
 import { WhatsappMessageInteractive } from './whatsapp-message-interactive';
 import { WhatsappMessageLocation } from './whatsapp-message-location';
 import { WhatsappMessageMedia } from './whatsapp-message-media';
+import { WhatsappMessageReaction } from './whatsapp-message-reaction';
 import { WhatsappMessageStatus } from './whatsapp-message-status';
 import { WhatsappMessageTemplate } from './whatsapp-message-template';
 import { WhatsappMessageText } from './whatsapp-message-text';
@@ -37,7 +39,7 @@ export interface WhatsappMessage {
      */
     'id': string;
     /**
-     * The native WhatsApp message ID.
+     * The original message ID on WhatsApp\'s platform.
      * @type {string}
      * @memberof WhatsappMessage
      */
@@ -110,6 +112,12 @@ export interface WhatsappMessage {
     'document'?: WhatsappMessageMedia;
     /**
      * 
+     * @type {WhatsappMessageMedia}
+     * @memberof WhatsappMessage
+     */
+    'sticker'?: WhatsappMessageMedia;
+    /**
+     * 
      * @type {WhatsappMessageLocation}
      * @memberof WhatsappMessage
      */
@@ -126,6 +134,18 @@ export interface WhatsappMessage {
      * @memberof WhatsappMessage
      */
     'contacts'?: Array<WhatsappMessageContact>;
+    /**
+     * 
+     * @type {WhatsappMessageReaction}
+     * @memberof WhatsappMessage
+     */
+    'reaction'?: WhatsappMessageReaction;
+    /**
+     * 
+     * @type {WhatsappMessageContext}
+     * @memberof WhatsappMessage
+     */
+    'context'?: WhatsappMessageContext;
     /**
      * A unique string to reference the object. This can be an order number or similar, and can be used to reconcile the object with your internal systems.
      * @type {string}

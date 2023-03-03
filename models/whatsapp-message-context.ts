@@ -15,22 +15,16 @@
 
 
 /**
- * 
+ * Used to mention a specific message you are replying to. The reply can be any message type.
  * @export
- * @interface WhatsappMessageContactUrlsInner
+ * @interface WhatsappMessageContext
  */
-export interface WhatsappMessageContactUrlsInner {
+export interface WhatsappMessageContext {
     /**
-     * URL.
+     * Specifies the `wamid` of the message your are replying to. `wamid` is the original message ID on WhatsApp’s platform.
      * @type {string}
-     * @memberof WhatsappMessageContactUrlsInner
+     * @memberof WhatsappMessageContext
      */
-    'url'?: string;
-    /**
-     * Standard values are `HOME` and `WORK`.
-     * @type {string}
-     * @memberof WhatsappMessageContactUrlsInner
-     */
-    'type'?: string;
+    'message_id'?: string;
 }
 

@@ -15,7 +15,7 @@
 
 
 /**
- * [WhatsApp Media Object](https://developers.facebook.com/docs/whatsapp/cloud-api/reference/messages#media-object).
+ * Use for `image`, `video`, `audio`, `document`, or `sticker` messages.  See also [Supported Media Types](https://developers.facebook.com/docs/whatsapp/cloud-api/reference/media#supported-media-types).
  * @export
  * @interface WhatsappMessageMedia
  */
@@ -27,7 +27,7 @@ export interface WhatsappMessageMedia {
      */
     'link': string;
     /**
-     * Describes the specified `video` or `image` media.
+     * Describes the specified `image`, `video`, or `document` media. Not applicable in the `header` of `interactive` messages.
      * @type {string}
      * @memberof WhatsappMessageMedia
      */

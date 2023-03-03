@@ -26,27 +26,27 @@ export interface WhatsappTemplateComponentButton {
      * @type {WhatsappTemplateComponentButtonType}
      * @memberof WhatsappTemplateComponentButton
      */
-    'type'?: WhatsappTemplateComponentButtonType;
+    'type': WhatsappTemplateComponentButtonType;
     /**
-     * 
+     * **Required.** Button text.
      * @type {string}
      * @memberof WhatsappTemplateComponentButton
      */
-    'text'?: string;
+    'text': string;
     /**
-     * 
+     * **Required for button type `URL`.**  There can be at most 1 variable at the end of the URL.
      * @type {string}
      * @memberof WhatsappTemplateComponentButton
      */
     'url'?: string;
     /**
-     * 
+     * **Required for button type `PHONE_NUMBER`.**
      * @type {string}
      * @memberof WhatsappTemplateComponentButton
      */
     'phone_number'?: string;
     /**
-     * 
+     * Sample full URL for a `URL` button with a variable.
      * @type {Array<string>}
      * @memberof WhatsappTemplateComponentButton
      */

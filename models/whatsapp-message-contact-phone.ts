@@ -17,25 +17,25 @@
 /**
  * 
  * @export
- * @interface WhatsappMessageContactPhonesInner
+ * @interface WhatsappMessageContactPhone
  */
-export interface WhatsappMessageContactPhonesInner {
+export interface WhatsappMessageContactPhone {
     /**
      * Automatically populated with the `wa_id` value as a formatted phone number.
      * @type {string}
-     * @memberof WhatsappMessageContactPhonesInner
+     * @memberof WhatsappMessageContactPhone
      */
     'phone'?: string;
     /**
      * Standard Values are `CELL`, `MAIN`, `IPHONE`, `HOME`, and `WORK`.
      * @type {string}
-     * @memberof WhatsappMessageContactPhonesInner
+     * @memberof WhatsappMessageContactPhone
      */
     'type'?: string;
     /**
      * WhatsApp ID.
      * @type {string}
-     * @memberof WhatsappMessageContactPhonesInner
+     * @memberof WhatsappMessageContactPhone
      */
     'wa_id'?: string;
 }

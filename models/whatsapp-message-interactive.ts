@@ -19,13 +19,13 @@ import { WhatsappMessageInteractiveFooter } from './whatsapp-message-interactive
 import { WhatsappMessageInteractiveHeader } from './whatsapp-message-interactive-header';
 
 /**
- * [WhatsApp Interactive Object](https://developers.facebook.com/docs/whatsapp/cloud-api/reference/messages#interactive-object).
+ * Use for `interactive` messages. See also [WhatsApp Interactive Object](https://developers.facebook.com/docs/whatsapp/cloud-api/reference/messages#interactive-object).
  * @export
  * @interface WhatsappMessageInteractive
  */
 export interface WhatsappMessageInteractive {
     /**
-     * The type of interactive message you want to send. - `list`: Use it for List Messages. - `button`: Use it for Reply Buttons.
+     * The type of interactive message you want to send. - `list`: Use it for List Messages. - `button`: Use it for Reply Buttons. - `product`: Use for Single Product Messages. - `product_list`: Use for Multi-Product Messages.
      * @type {string}
      * @memberof WhatsappMessageInteractive
      */
@@ -41,7 +41,7 @@ export interface WhatsappMessageInteractive {
      * @type {WhatsappMessageInteractiveBody}
      * @memberof WhatsappMessageInteractive
      */
-    'body': WhatsappMessageInteractiveBody;
+    'body'?: WhatsappMessageInteractiveBody;
     /**
      * 
      * @type {WhatsappMessageInteractiveHeader}
@@ -57,8 +57,22 @@ export interface WhatsappMessageInteractive {
 }
 
 export const WhatsappMessageInteractiveTypeEnum = {
+    /**
+    * Use it for List Messages.
+    */
     Button: 'button',
-    List: 'list'
+    /**
+    * Use it for Reply Buttons.
+    */
+    List: 'list',
+    /**
+    * Use for Single Product Messages.
+    */
+    Product: 'product',
+    /**
+    * Use for Multi-Product Messages.
+    */
+    ProductList: 'product_list'
 } as const;
 
 export type WhatsappMessageInteractiveTypeEnum = typeof WhatsappMessageInteractiveTypeEnum[keyof typeof WhatsappMessageInteractiveTypeEnum];

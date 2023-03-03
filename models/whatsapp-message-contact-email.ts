@@ -15,16 +15,22 @@
 
 
 /**
- * Optional. An object with the footer of the message. See also [WhatsApp Footer Object](https://developers.facebook.com/docs/whatsapp/cloud-api/reference/messages#footer-object).
+ * Contact email address(es) formatted as an emails object.
  * @export
- * @interface WhatsappMessageInteractiveFooter
+ * @interface WhatsappMessageContactEmail
  */
-export interface WhatsappMessageInteractiveFooter {
+export interface WhatsappMessageContactEmail {
     /**
-     * The footer content. Emojis and markdown are supported. Links are supported.
+     * Email address.
      * @type {string}
-     * @memberof WhatsappMessageInteractiveFooter
+     * @memberof WhatsappMessageContactEmail
      */
-    'text'?: string;
+    'email'?: string;
+    /**
+     * Standard values are `HOME` and `WORK`.
+     * @type {string}
+     * @memberof WhatsappMessageContactEmail
+     */
+    'type'?: string;
 }
 

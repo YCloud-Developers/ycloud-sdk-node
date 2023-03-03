@@ -17,49 +17,49 @@
 /**
  * Full contact address(es) formatted as an addresses object.
  * @export
- * @interface WhatsappMessageContactAddressesInner
+ * @interface WhatsappMessageContactAddress
  */
-export interface WhatsappMessageContactAddressesInner {
+export interface WhatsappMessageContactAddress {
     /**
      * Street number and name.
      * @type {string}
-     * @memberof WhatsappMessageContactAddressesInner
+     * @memberof WhatsappMessageContactAddress
      */
     'street'?: string;
     /**
      * City name.
      * @type {string}
-     * @memberof WhatsappMessageContactAddressesInner
+     * @memberof WhatsappMessageContactAddress
      */
     'city'?: string;
     /**
      * State abbreviation.
      * @type {string}
-     * @memberof WhatsappMessageContactAddressesInner
+     * @memberof WhatsappMessageContactAddress
      */
     'state'?: string;
     /**
      * ZIP code.
      * @type {string}
-     * @memberof WhatsappMessageContactAddressesInner
+     * @memberof WhatsappMessageContactAddress
      */
     'zip'?: string;
     /**
      * Full country name.
      * @type {string}
-     * @memberof WhatsappMessageContactAddressesInner
+     * @memberof WhatsappMessageContactAddress
      */
     'country'?: string;
     /**
      * Two-letter country abbreviation.
      * @type {string}
-     * @memberof WhatsappMessageContactAddressesInner
+     * @memberof WhatsappMessageContactAddress
      */
     'country_code'?: string;
     /**
      * Standard values are `HOME` and `WORK`.
      * @type {string}
-     * @memberof WhatsappMessageContactAddressesInner
+     * @memberof WhatsappMessageContactAddress
      */
     'type'?: string;
 }

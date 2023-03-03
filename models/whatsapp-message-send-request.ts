@@ -14,9 +14,11 @@
 
 
 import { WhatsappMessageContact } from './whatsapp-message-contact';
+import { WhatsappMessageContext } from './whatsapp-message-context';
 import { WhatsappMessageInteractive } from './whatsapp-message-interactive';
 import { WhatsappMessageLocation } from './whatsapp-message-location';
 import { WhatsappMessageMedia } from './whatsapp-message-media';
+import { WhatsappMessageReaction } from './whatsapp-message-reaction';
 import { WhatsappMessageTemplate } from './whatsapp-message-template';
 import { WhatsappMessageText } from './whatsapp-message-text';
 import { WhatsappMessageType } from './whatsapp-message-type';
@@ -83,6 +85,12 @@ export interface WhatsappMessageSendRequest {
     'document'?: WhatsappMessageMedia;
     /**
      * 
+     * @type {WhatsappMessageMedia}
+     * @memberof WhatsappMessageSendRequest
+     */
+    'sticker'?: WhatsappMessageMedia;
+    /**
+     * 
      * @type {WhatsappMessageLocation}
      * @memberof WhatsappMessageSendRequest
      */
@@ -99,6 +107,18 @@ export interface WhatsappMessageSendRequest {
      * @memberof WhatsappMessageSendRequest
      */
     'contacts'?: Array<WhatsappMessageContact>;
+    /**
+     * 
+     * @type {WhatsappMessageReaction}
+     * @memberof WhatsappMessageSendRequest
+     */
+    'reaction'?: WhatsappMessageReaction;
+    /**
+     * 
+     * @type {WhatsappMessageContext}
+     * @memberof WhatsappMessageSendRequest
+     */
+    'context'?: WhatsappMessageContext;
     /**
      * A unique string to reference the object. This can be an order number or similar, and can be used to reconcile the object with your internal systems.
      * @type {string}

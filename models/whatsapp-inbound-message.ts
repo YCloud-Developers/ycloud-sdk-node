@@ -20,12 +20,12 @@ import { WhatsappInboundMessageInteractive } from './whatsapp-inbound-message-in
 import { WhatsappInboundMessageLocation } from './whatsapp-inbound-message-location';
 import { WhatsappInboundMessageMedia } from './whatsapp-inbound-message-media';
 import { WhatsappInboundMessageOrder } from './whatsapp-inbound-message-order';
-import { WhatsappInboundMessageReaction } from './whatsapp-inbound-message-reaction';
 import { WhatsappInboundMessageReferral } from './whatsapp-inbound-message-referral';
 import { WhatsappInboundMessageSystem } from './whatsapp-inbound-message-system';
 import { WhatsappInboundMessageText } from './whatsapp-inbound-message-text';
 import { WhatsappInboundMessageType } from './whatsapp-inbound-message-type';
 import { WhatsappMessageContact } from './whatsapp-message-contact';
+import { WhatsappMessageReaction } from './whatsapp-message-reaction';
 import { WhatsappProfile } from './whatsapp-profile';
 
 /**
@@ -41,7 +41,7 @@ export interface WhatsappInboundMessage {
      */
     'id': string;
     /**
-     * The native WhatsApp message ID.
+     * The original message ID on WhatsApp\'s platform.
      * @type {string}
      * @memberof WhatsappInboundMessage
      */
@@ -144,10 +144,10 @@ export interface WhatsappInboundMessage {
     'contacts'?: Array<WhatsappMessageContact>;
     /**
      * 
-     * @type {WhatsappInboundMessageReaction}
+     * @type {WhatsappMessageReaction}
      * @memberof WhatsappInboundMessage
      */
-    'reaction'?: WhatsappInboundMessageReaction;
+    'reaction'?: WhatsappMessageReaction;
     /**
      * 
      * @type {WhatsappInboundMessageOrder}

@@ -40,7 +40,7 @@ export interface WhatsappInboundMessageContext {
      */
     'from'?: string;
     /**
-     * **Optional.**  The `wamid` for the sent message for an inbound reply.
+     * **Optional.**  The `wamid` for the sent message for an inbound reply. `wamid` is the original message ID on WhatsApp’s platform.
      * @type {string}
      * @memberof WhatsappInboundMessageContext
      */

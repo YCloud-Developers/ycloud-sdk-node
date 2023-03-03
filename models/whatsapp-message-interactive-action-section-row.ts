@@ -15,22 +15,28 @@
 
 
 /**
- * Contact email address(es) formatted as an emails object.
+ * 
  * @export
- * @interface WhatsappMessageContactEmailsInner
+ * @interface WhatsappMessageInteractiveActionSectionRow
  */
-export interface WhatsappMessageContactEmailsInner {
+export interface WhatsappMessageInteractiveActionSectionRow {
     /**
-     * Email address.
+     * Unique row ID.
      * @type {string}
-     * @memberof WhatsappMessageContactEmailsInner
+     * @memberof WhatsappMessageInteractiveActionSectionRow
      */
-    'email'?: string;
+    'id'?: string;
     /**
-     * Standard values are `HOME` and `WORK`.
+     * Row title content.
      * @type {string}
-     * @memberof WhatsappMessageContactEmailsInner
+     * @memberof WhatsappMessageInteractiveActionSectionRow
      */
-    'type'?: string;
+    'title'?: string;
+    /**
+     * Row description content.
+     * @type {string}
+     * @memberof WhatsappMessageInteractiveActionSectionRow
+     */
+    'description'?: string;
 }
 
