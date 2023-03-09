@@ -37,7 +37,7 @@ import { WebhookEndpointUpdateRequest } from '../models';
 const WebhookEndpointsApiAxiosParamCreator = function (configuration?: Configuration) {
     return {
         /**
-         * Creates a webhook endpoint listening the specified events.
+         * Creates a webhook endpoint listening for specific events.
          * @summary Create a webhook endpoint
          * @param {WebhookEndpointCreateRequest} webhookEndpointCreateRequest 
          * @param {*} [options] Override http request option.
@@ -313,7 +313,7 @@ const WebhookEndpointsApiFp = function(configuration?: Configuration) {
     const localVarAxiosParamCreator = WebhookEndpointsApiAxiosParamCreator(configuration)
     return {
         /**
-         * Creates a webhook endpoint listening the specified events.
+         * Creates a webhook endpoint listening for specific events.
          * @summary Create a webhook endpoint
          * @param {WebhookEndpointCreateRequest} webhookEndpointCreateRequest 
          * @param {*} [options] Override http request option.
@@ -390,7 +390,7 @@ const WebhookEndpointsApiFactory = function (configuration?: Configuration, base
     const localVarFp = WebhookEndpointsApiFp(configuration)
     return {
         /**
-         * Creates a webhook endpoint listening the specified events.
+         * Creates a webhook endpoint listening for specific events.
          * @summary Create a webhook endpoint
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -486,7 +486,7 @@ export interface WebhookEndpointsApiListRequest {
  */
 export class WebhookEndpointsApi extends BaseAPI {
     /**
-     * Creates a webhook endpoint listening the specified events.
+     * Creates a webhook endpoint listening for specific events.
      * @summary Create a webhook endpoint
      * @param {WebhookEndpointCreateRequest} webhookEndpointCreateRequest 
      * @param {*} [options] Override http request option.

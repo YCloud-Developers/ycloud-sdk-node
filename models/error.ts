@@ -50,5 +50,11 @@ export interface Error {
      * @memberof Error
      */
     'docUrl'?: string;
+    /**
+     * Each API request has an associated request ID. It conveys the response header `YCloud-Request-ID` used for the convenience of the consumer.
+     * @type {string}
+     * @memberof Error
+     */
+    'requestId'?: string;
 }
 
