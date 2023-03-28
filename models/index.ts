@@ -99,6 +99,7 @@ export * from './whatsapp-template';
 export * from './whatsapp-template-category';
 export * from './whatsapp-template-component';
 export * from './whatsapp-template-component-button';
+export * from './whatsapp-template-component-button-otp-type';
 export * from './whatsapp-template-component-button-type';
 export * from './whatsapp-template-component-example';
 export * from './whatsapp-template-create-request';

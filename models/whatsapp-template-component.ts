@@ -47,6 +47,18 @@ export interface WhatsappTemplateComponent {
      */
     'buttons'?: Array<WhatsappTemplateComponentButton>;
     /**
+     * **Optional. Only applicable in the `BODY` component of an AUTHENTICATION template.** Set to `true` if you want the template to include the string, *For your security, do not share this code.* Set to `false` to exclude the string.
+     * @type {boolean}
+     * @memberof WhatsappTemplateComponent
+     */
+    'add_security_recommendation'?: boolean;
+    /**
+     * **Optional. Only applicable in the `FOOTER` component of an AUTHENTICATION template.** Indicates number of minutes the password or code is valid. If omitted, the code expiration warning will not be displayed in the delivered message. Minimum 1, maximum 90.
+     * @type {number}
+     * @memberof WhatsappTemplateComponent
+     */
+    'code_expiration_minutes'?: number;
+    /**
      * 
      * @type {WhatsappTemplateComponentExample}
      * @memberof WhatsappTemplateComponent

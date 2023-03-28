@@ -13,6 +13,7 @@
  */
 
 
+import { WhatsappTemplateComponentButtonOtpType } from './whatsapp-template-component-button-otp-type';
 import { WhatsappTemplateComponentButtonType } from './whatsapp-template-component-button-type';
 
 /**
@@ -28,7 +29,7 @@ export interface WhatsappTemplateComponentButton {
      */
     'type': WhatsappTemplateComponentButtonType;
     /**
-     * **Required.** Button text.
+     * **Required.** Button text. For `OTP` buttons, note that even if your template is using a one-tap autofill button, this value must still be supplied. If we are unable to validate your handshake the authentication template message will display a copy code button with this text instead. Maximum 25 characters.
      * @type {string}
      * @memberof WhatsappTemplateComponentButton
      */
@@ -45,6 +46,30 @@ export interface WhatsappTemplateComponentButton {
      * @memberof WhatsappTemplateComponentButton
      */
     'phone_number'?: string;
+    /**
+     * 
+     * @type {WhatsappTemplateComponentButtonOtpType}
+     * @memberof WhatsappTemplateComponentButton
+     */
+    'otp_type'?: WhatsappTemplateComponentButtonOtpType;
+    /**
+     * **One-tap buttons only.** One-tap button text. Maximum 25 characters.
+     * @type {string}
+     * @memberof WhatsappTemplateComponentButton
+     */
+    'autofill_text'?: string;
+    /**
+     * **One-tap buttons only.** Your Android app\'s package name.
+     * @type {string}
+     * @memberof WhatsappTemplateComponentButton
+     */
+    'package_name'?: string;
+    /**
+     * **One-tap buttons only.** Your app signing key hash. See [App Signing Key Hash](https://developers.facebook.com/docs/whatsapp/business-management-api/authentication-templates#app-signing-key-hash).
+     * @type {string}
+     * @memberof WhatsappTemplateComponentButton
+     */
+    'signature_hash'?: string;
     /**
      * Sample full URL for a `URL` button with a variable.
      * @type {Array<string>}

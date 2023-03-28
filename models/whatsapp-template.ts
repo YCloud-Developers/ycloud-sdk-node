@@ -50,6 +50,12 @@ export interface WhatsappTemplate {
      */
     'category': WhatsappTemplateCategory;
     /**
+     * This field indicates the template\'s previous category (or `null`, for newly created templates after April 1, 2023). Compare this value to the template\'s `category` field value, which indicates the template\'s current category. For more information about template category migration, see also [First template category migration](https://developers.facebook.com/docs/whatsapp/updates-to-pricing/launch-timeline#first-template-category-migration).
+     * @type {string}
+     * @memberof WhatsappTemplate
+     */
+    'previousCategory'?: string;
+    /**
      * Template components. A template consists of `HEADER`, `BODY`, `FOOTER`, and `BUTTONS` components. `BODY` component is required, the other types are optional.
      * @type {Array<WhatsappTemplateComponent>}
      * @memberof WhatsappTemplate

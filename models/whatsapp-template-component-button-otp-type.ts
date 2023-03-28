@@ -15,19 +15,17 @@
 
 
 /**
- * 
+ * Indicates button OTP type. Set to `COPY_CODE` if you want the template to use a copy code button, or `ONE_TAP` to have it use a one-tap autofill button.
  * @export
  * @enum {string}
  */
 
-export const WhatsappTemplateComponentButtonType = {
-    PhoneNumber: 'PHONE_NUMBER',
-    Url: 'URL',
-    QuickReply: 'QUICK_REPLY',
-    Otp: 'OTP'
+export const WhatsappTemplateComponentButtonOtpType = {
+    CopyCode: 'COPY_CODE',
+    OneTap: 'ONE_TAP'
 } as const;
 
-export type WhatsappTemplateComponentButtonType = typeof WhatsappTemplateComponentButtonType[keyof typeof WhatsappTemplateComponentButtonType];
+export type WhatsappTemplateComponentButtonOtpType = typeof WhatsappTemplateComponentButtonOtpType[keyof typeof WhatsappTemplateComponentButtonOtpType];
 
 
 
