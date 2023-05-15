@@ -92,6 +92,7 @@ export * from './whatsapp-phone-number-profile';
 export * from './whatsapp-phone-number-profile-update-request';
 export * from './whatsapp-phone-number-profile-vertical';
 export * from './whatsapp-phone-number-quality-rating';
+export * from './whatsapp-phone-number-quality-update-event-enum';
 export * from './whatsapp-phone-number-status';
 export * from './whatsapp-profile';
 export * from './whatsapp-review-decision';

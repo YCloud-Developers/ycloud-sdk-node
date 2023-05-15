@@ -183,6 +183,24 @@ export interface WhatsappMessage {
      */
     'updateTime'?: string;
     /**
+     * The time at which this message `status` changed to `sent`, formatted in [RFC 3339](https://datatracker.ietf.org/doc/html/rfc3339). e.g., `2022-06-01T12:00:00.000Z`.
+     * @type {string}
+     * @memberof WhatsappMessage
+     */
+    'sendTime'?: string;
+    /**
+     * The time at which this message `status` changed to `delivered`, formatted in [RFC 3339](https://datatracker.ietf.org/doc/html/rfc3339). e.g., `2022-06-01T12:00:00.000Z`.
+     * @type {string}
+     * @memberof WhatsappMessage
+     */
+    'deliverTime'?: string;
+    /**
+     * The time at which this message `status` changed to `read`, formatted in [RFC 3339](https://datatracker.ietf.org/doc/html/rfc3339). e.g., `2022-06-01T12:00:00.000Z`.
+     * @type {string}
+     * @memberof WhatsappMessage
+     */
+    'readTime'?: string;
+    /**
      * Total price of this message. **Note: It\'s only an estimated price when the `status` is `accepted` or `sent`. It becomes the final price after the message is delivered, i.e., the `status` is `delivered` or `read`.**
      * @type {number}
      * @memberof WhatsappMessage

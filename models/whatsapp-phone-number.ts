@@ -16,6 +16,7 @@
 import { WhatsappPhoneNumberCodeVerificationStatus } from './whatsapp-phone-number-code-verification-status';
 import { WhatsappPhoneNumberNameStatus } from './whatsapp-phone-number-name-status';
 import { WhatsappPhoneNumberQualityRating } from './whatsapp-phone-number-quality-rating';
+import { WhatsappPhoneNumberQualityUpdateEventEnum } from './whatsapp-phone-number-quality-update-event-enum';
 import { WhatsappPhoneNumberStatus } from './whatsapp-phone-number-status';
 import { WhatsappReviewDecision } from './whatsapp-review-decision';
 
@@ -50,7 +51,7 @@ export interface WhatsappPhoneNumber {
      */
     'qualityRating'?: WhatsappPhoneNumberQualityRating;
     /**
-     * Messaging limits determine the maximum number of business-initiated conversations each phone number can start in a rolling 24-hour period. See also [Messaging Limits](https://developers.facebook.com/docs/whatsapp/messaging-limits#messaging-limits). - `TIER_50`: 50 business-initiated conversations in a rolling 24-hour period. - `TIER_250`: 250 business-initiated conversations in a rolling 24-hour period. - `TIER_1K`: 1K business-initiated conversations with unique customers in a rolling 24-hour period. - `TIER_10K`: 10K business-initiated conversations with unique customers in a rolling 24-hour period. - `TIER_100K`: 100K business-initiated conversations with unique customers in a rolling 24-hour period. - `TIER_UNLIMITED`: An unlimited number of business-initiated conversations in a rolling 24-hour period.
+     * Messaging limits determine the maximum number of business-initiated conversations each phone number can start in a rolling 24-hour period. See also [Messaging Limits](https://developers.facebook.com/docs/whatsapp/messaging-limits#messaging-limits). - `TIER_NOT_SET`: Unknown limit. - `TIER_50`: 50 business-initiated conversations in a rolling 24-hour period. - `TIER_250`: 250 business-initiated conversations in a rolling 24-hour period. - `TIER_1K`: 1K business-initiated conversations with unique customers in a rolling 24-hour period. - `TIER_10K`: 10K business-initiated conversations with unique customers in a rolling 24-hour period. - `TIER_100K`: 100K business-initiated conversations with unique customers in a rolling 24-hour period. - `TIER_UNLIMITED`: An unlimited number of business-initiated conversations in a rolling 24-hour period.
      * @type {string}
      * @memberof WhatsappPhoneNumber
      */
@@ -103,5 +104,11 @@ export interface WhatsappPhoneNumber {
      * @memberof WhatsappPhoneNumber
      */
     'rejectionReason'?: string;
+    /**
+     * 
+     * @type {WhatsappPhoneNumberQualityUpdateEventEnum}
+     * @memberof WhatsappPhoneNumber
+     */
+    'qualityUpdateEvent'?: WhatsappPhoneNumberQualityUpdateEventEnum;
 }
 

@@ -129,7 +129,7 @@ const WhatsappTemplatesApiAxiosParamCreator = function (configuration?: Configur
          * @summary Edit a WhatsApp template
          * @param {string} wabaId WhatsApp Business Account ID.
          * @param {string} name Name of the template.
-         * @param {string} language Language code of the template. See [Supported Languages](https://developers.facebook.com/docs/whatsapp/api/messages/message-templates#supported-languages-) for all codes.
+         * @param {string} language Language code of the template. See [Supported Languages](https://developers.facebook.com/docs/whatsapp/api/messages/message-templates#supported-languages) for all codes.
          * @param {WhatsappTemplateEditRequest} [whatsappTemplateEditRequest] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -250,7 +250,7 @@ const WhatsappTemplatesApiAxiosParamCreator = function (configuration?: Configur
          * @summary Retrieve a WhatsApp template
          * @param {string} wabaId WhatsApp Business Account ID.
          * @param {string} name Name of the template.
-         * @param {string} language Language code of the template. See [Supported Languages](https://developers.facebook.com/docs/whatsapp/api/messages/message-templates#supported-languages-) for all codes.
+         * @param {string} language Language code of the template. See [Supported Languages](https://developers.facebook.com/docs/whatsapp/api/messages/message-templates#supported-languages) for all codes.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -332,7 +332,7 @@ const WhatsappTemplatesApiFp = function(configuration?: Configuration) {
          * @summary Edit a WhatsApp template
          * @param {string} wabaId WhatsApp Business Account ID.
          * @param {string} name Name of the template.
-         * @param {string} language Language code of the template. See [Supported Languages](https://developers.facebook.com/docs/whatsapp/api/messages/message-templates#supported-languages-) for all codes.
+         * @param {string} language Language code of the template. See [Supported Languages](https://developers.facebook.com/docs/whatsapp/api/messages/message-templates#supported-languages) for all codes.
          * @param {WhatsappTemplateEditRequest} [whatsappTemplateEditRequest] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -357,7 +357,7 @@ const WhatsappTemplatesApiFp = function(configuration?: Configuration) {
          * @summary Retrieve a WhatsApp template
          * @param {string} wabaId WhatsApp Business Account ID.
          * @param {string} name Name of the template.
-         * @param {string} language Language code of the template. See [Supported Languages](https://developers.facebook.com/docs/whatsapp/api/messages/message-templates#supported-languages-) for all codes.
+         * @param {string} language Language code of the template. See [Supported Languages](https://developers.facebook.com/docs/whatsapp/api/messages/message-templates#supported-languages) for all codes.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -516,7 +516,7 @@ export class WhatsappTemplatesApi extends BaseAPI {
      * @summary Edit a WhatsApp template
      * @param {string} wabaId WhatsApp Business Account ID.
      * @param {string} name Name of the template.
-     * @param {string} language Language code of the template. See [Supported Languages](https://developers.facebook.com/docs/whatsapp/api/messages/message-templates#supported-languages-) for all codes.
+     * @param {string} language Language code of the template. See [Supported Languages](https://developers.facebook.com/docs/whatsapp/api/messages/message-templates#supported-languages) for all codes.
      * @param {WhatsappTemplateEditRequest} [whatsappTemplateEditRequest] 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
@@ -543,7 +543,7 @@ export class WhatsappTemplatesApi extends BaseAPI {
      * @summary Retrieve a WhatsApp template
      * @param {string} wabaId WhatsApp Business Account ID.
      * @param {string} name Name of the template.
-     * @param {string} language Language code of the template. See [Supported Languages](https://developers.facebook.com/docs/whatsapp/api/messages/message-templates#supported-languages-) for all codes.
+     * @param {string} language Language code of the template. See [Supported Languages](https://developers.facebook.com/docs/whatsapp/api/messages/message-templates#supported-languages) for all codes.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof WhatsappTemplatesApi

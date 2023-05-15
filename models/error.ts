@@ -13,6 +13,7 @@
  */
 
 
+import { WhatsappApiError } from './whatsapp-api-error';
 
 /**
  * 
@@ -56,5 +57,11 @@ export interface Error {
      * @memberof Error
      */
     'requestId'?: string;
+    /**
+     * 
+     * @type {WhatsappApiError}
+     * @memberof Error
+     */
+    'whatsappApiError'?: WhatsappApiError;
 }
 

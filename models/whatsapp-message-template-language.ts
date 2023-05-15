@@ -21,13 +21,13 @@
  */
 export interface WhatsappMessageTemplateLanguage {
     /**
-     * The code of the language or locale to use. Accepts both language and language_locale formats (e.g., en and en_US). See [Supported Languages](https://developers.facebook.com/docs/whatsapp/api/messages/message-templates#supported-languages-) for all codes.
+     * The code of the language or locale to use. Accepts both language and language_locale formats (e.g., en and en_US). See [Supported Languages](https://developers.facebook.com/docs/whatsapp/api/messages/message-templates#supported-languages) for all codes.
      * @type {string}
      * @memberof WhatsappMessageTemplateLanguage
      */
     'code': string;
     /**
-     * Default (and only supported option): `deterministic`.
+     * The language policy the message should follow. Default (and only supported option): `deterministic`, which means that WhatsApp delivers the message template in exactly the language and locale asked for.
      * @type {string}
      * @memberof WhatsappMessageTemplateLanguage
      */

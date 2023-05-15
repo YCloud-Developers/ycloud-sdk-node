@@ -74,8 +74,8 @@ const WhatsappMessagesApiAxiosParamCreator = function (configuration?: Configura
             };
         },
         /**
-         * Sends an outbound WhatsApp message.
-         * @summary Send a WhatsApp message
+         * Enqueues an outbound WhatsApp message for sending.  You can enqueue messages at a rate of 200 MPS (Messages Per Second). These queued messages are submitted to the Meta WhatsApp API at a rate of 60 MPS per WhatsApp business phone number.
+         * @summary Enqueue a WhatsApp message
          * @param {WhatsappMessageSendRequest} whatsappMessageSendRequest 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -84,6 +84,49 @@ const WhatsappMessagesApiAxiosParamCreator = function (configuration?: Configura
             // verify required parameter 'whatsappMessageSendRequest' is not null or undefined
             assertParamExists('send', 'whatsappMessageSendRequest', whatsappMessageSendRequest)
             const localVarPath = `/whatsapp/messages`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            // const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            if (USER_AGENT) {
+                localVarHeaderParameter['User-Agent'] = USER_AGENT;
+            }
+            const localVarQueryParameter = {} as any;
+
+            // authentication api_key required
+            await setApiKeyToObject(localVarHeaderParameter, "X-API-Key", configuration)
+
+
+    
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+
+            // setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+            localVarRequestOptions.params = localVarQueryParameter;
+            localVarRequestOptions.data = serializeDataIfNeeded(whatsappMessageSendRequest, localVarRequestOptions, configuration)
+
+            return {
+                url: localVarPath,
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * Sends an outbound WhatsApp message directly.  Your message will be submitted to Meta WhatsApp API directly. Typically used for sending OTP and instant messages.  **The Meta WhatsApp API supports up to 80 MPS (Messages Per Second) by default and up to 1,000 MPS by request. Throughput is inclusive of inbound and outbound messages and all message types.**  The response body field `error.whatsappApiError` is included if we tried to request Meta WhatsApp API and got an error response.
+         * @summary Send a WhatsApp message directly
+         * @param {WhatsappMessageSendRequest} whatsappMessageSendRequest 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        sendDirectly: async (whatsappMessageSendRequest: WhatsappMessageSendRequest, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'whatsappMessageSendRequest' is not null or undefined
+            assertParamExists('sendDirectly', 'whatsappMessageSendRequest', whatsappMessageSendRequest)
+            const localVarPath = `/whatsapp/messages/sendDirectly`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             // const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
             let baseOptions;
@@ -138,14 +181,25 @@ const WhatsappMessagesApiFp = function(configuration?: Configuration) {
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
         /**
-         * Sends an outbound WhatsApp message.
-         * @summary Send a WhatsApp message
+         * Enqueues an outbound WhatsApp message for sending.  You can enqueue messages at a rate of 200 MPS (Messages Per Second). These queued messages are submitted to the Meta WhatsApp API at a rate of 60 MPS per WhatsApp business phone number.
+         * @summary Enqueue a WhatsApp message
          * @param {WhatsappMessageSendRequest} whatsappMessageSendRequest 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
         async send(whatsappMessageSendRequest: WhatsappMessageSendRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<WhatsappMessage>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.send(whatsappMessageSendRequest, options);
+            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+        },
+        /**
+         * Sends an outbound WhatsApp message directly.  Your message will be submitted to Meta WhatsApp API directly. Typically used for sending OTP and instant messages.  **The Meta WhatsApp API supports up to 80 MPS (Messages Per Second) by default and up to 1,000 MPS by request. Throughput is inclusive of inbound and outbound messages and all message types.**  The response body field `error.whatsappApiError` is included if we tried to request Meta WhatsApp API and got an error response.
+         * @summary Send a WhatsApp message directly
+         * @param {WhatsappMessageSendRequest} whatsappMessageSendRequest 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async sendDirectly(whatsappMessageSendRequest: WhatsappMessageSendRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<WhatsappMessage>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.sendDirectly(whatsappMessageSendRequest, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
     }
@@ -168,13 +222,22 @@ const WhatsappMessagesApiFactory = function (configuration?: Configuration, base
             return localVarFp.retrieve(id, options).then((request) => request(axios, basePath));
         },
         /**
-         * Sends an outbound WhatsApp message.
-         * @summary Send a WhatsApp message
+         * Enqueues an outbound WhatsApp message for sending.  You can enqueue messages at a rate of 200 MPS (Messages Per Second). These queued messages are submitted to the Meta WhatsApp API at a rate of 60 MPS per WhatsApp business phone number.
+         * @summary Enqueue a WhatsApp message
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
         send(whatsappMessageSendRequest: WhatsappMessageSendRequest, options?: any): AxiosPromise<WhatsappMessage> {
             return localVarFp.send(whatsappMessageSendRequest, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * Sends an outbound WhatsApp message directly.  Your message will be submitted to Meta WhatsApp API directly. Typically used for sending OTP and instant messages.  **The Meta WhatsApp API supports up to 80 MPS (Messages Per Second) by default and up to 1,000 MPS by request. Throughput is inclusive of inbound and outbound messages and all message types.**  The response body field `error.whatsappApiError` is included if we tried to request Meta WhatsApp API and got an error response.
+         * @summary Send a WhatsApp message directly
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        sendDirectly(whatsappMessageSendRequest: WhatsappMessageSendRequest, options?: any): AxiosPromise<WhatsappMessage> {
+            return localVarFp.sendDirectly(whatsappMessageSendRequest, options).then((request) => request(axios, basePath));
         },
     };
 };
@@ -199,8 +262,8 @@ export class WhatsappMessagesApi extends BaseAPI {
     }
 
     /**
-     * Sends an outbound WhatsApp message.
-     * @summary Send a WhatsApp message
+     * Enqueues an outbound WhatsApp message for sending.  You can enqueue messages at a rate of 200 MPS (Messages Per Second). These queued messages are submitted to the Meta WhatsApp API at a rate of 60 MPS per WhatsApp business phone number.
+     * @summary Enqueue a WhatsApp message
      * @param {WhatsappMessageSendRequest} whatsappMessageSendRequest 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
@@ -208,5 +271,17 @@ export class WhatsappMessagesApi extends BaseAPI {
      */
     public send(whatsappMessageSendRequest: WhatsappMessageSendRequest, options?: AxiosRequestConfig) {
         return WhatsappMessagesApiFp(this.configuration).send(whatsappMessageSendRequest, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * Sends an outbound WhatsApp message directly.  Your message will be submitted to Meta WhatsApp API directly. Typically used for sending OTP and instant messages.  **The Meta WhatsApp API supports up to 80 MPS (Messages Per Second) by default and up to 1,000 MPS by request. Throughput is inclusive of inbound and outbound messages and all message types.**  The response body field `error.whatsappApiError` is included if we tried to request Meta WhatsApp API and got an error response.
+     * @summary Send a WhatsApp message directly
+     * @param {WhatsappMessageSendRequest} whatsappMessageSendRequest 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof WhatsappMessagesApi
+     */
+    public sendDirectly(whatsappMessageSendRequest: WhatsappMessageSendRequest, options?: AxiosRequestConfig) {
+        return WhatsappMessagesApiFp(this.configuration).sendDirectly(whatsappMessageSendRequest, options).then((request) => request(this.axios, this.basePath));
     }
 }

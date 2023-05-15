@@ -61,7 +61,8 @@ Class | Method | HTTP request | Description
 *WhatsappBusinessAccountsApi* | **list** | **GET** /whatsapp/businessAccounts | List WABAs
 *WhatsappBusinessAccountsApi* | **retrieve** | **GET** /whatsapp/businessAccounts/{id} | Retrieve a WABA
 *WhatsappMessagesApi* | **retrieve** | **GET** /whatsapp/messages/{id} | Retrieve a WhatsApp message
-*WhatsappMessagesApi* | **send** | **POST** /whatsapp/messages | Send a WhatsApp message
+*WhatsappMessagesApi* | **send** | **POST** /whatsapp/messages | Enqueue a WhatsApp message
+*WhatsappMessagesApi* | **sendDirectly** | **POST** /whatsapp/messages/sendDirectly | Send a WhatsApp message directly
 *WhatsappPhoneNumbersApi* | **list** | **GET** /whatsapp/phoneNumbers | List WhatsApp phone numbers
 *WhatsappPhoneNumbersApi* | **retrieve** | **GET** /whatsapp/phoneNumbers/{wabaId}/{phoneNumber} | Retrieve a WhatsApp phone number
 *WhatsappPhoneNumbersApi* | **retrieveProfile** | **GET** /whatsapp/phoneNumbers/{wabaId}/{phoneNumber}/profile | Retrieve a WhatsApp phone number profile
