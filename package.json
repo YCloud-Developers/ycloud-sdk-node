@@ -1,6 +1,6 @@
 {
   "name": "@ycloud-cpaas/ycloud-sdk-node",
-  "version": "1.8.1",
+  "version": "1.8.2",
   "description": "YCloud SDK for Node.js",
   "author": "YCloud <service@ycloud.com>",
   "repository": {

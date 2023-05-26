@@ -106,5 +106,6 @@ export * from './whatsapp-template-component-example';
 export * from './whatsapp-template-create-request';
 export * from './whatsapp-template-edit-request';
 export * from './whatsapp-template-page';
+export * from './whatsapp-template-quality-rating';
 export * from './whatsapp-template-status';
 export * from './whatsapp-template-status-update-event-enum';

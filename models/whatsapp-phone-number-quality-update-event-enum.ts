@@ -15,13 +15,31 @@
 
 
 /**
- * Indicates the update event type of WhatsApp phone number quality when a notification is sent to you. Flagged status occurs when the quality rating reaches a low state. If the message quality improves to a high or medium state and maintains this for 7 days, your status will return to Connected. If the quality rating doesn\'t improve, your status will still return to Connected, but you\'ll be placed in a lower messaging limit tier.
+ * Indicates the update event type of WhatsApp phone number quality when a notification is sent to you. - `ONBOARDING`: Typically when the messaging limit changes from `TIER_NOT_SET` to another tier.  - `UPGRADE`: Messaging limit tier upgraded. - `DOWNGRADE`: Messaging limit tier downgraded. - `FLAGGED`: Flagged status occurs when the quality rating reaches a low state. If the message quality improves to a high or medium state and maintains this for 7 days, your status will return to Connected. If the quality rating doesn\'t improve, your status will still return to Connected, but you\'ll be placed in a lower messaging limit tier. Learn more on [Phone Number Quality](https://www.facebook.com/business/help/896873687365001) docs. - `UNFLAGGED`: Phone number status changes from `FLAGGED` to `CONNECTED`.
  * @export
  * @enum {string}
  */
 
 export const WhatsappPhoneNumberQualityUpdateEventEnum = {
+    /**
+    * Typically when the messaging limit changes from &#x60;TIER_NOT_SET&#x60; to another tier.
+    */
+    Onboarding: 'ONBOARDING',
+    /**
+    * Messaging limit tier upgraded.
+    */
+    Upgrade: 'UPGRADE',
+    /**
+    * Messaging limit tier downgraded.
+    */
+    Downgrade: 'DOWNGRADE',
+    /**
+    * Flagged status occurs when the quality rating reaches a low state. If the message quality improves to a high or medium state and maintains this for 7 days, your status will return to Connected. If the quality rating doesn&#39;t improve, your status will still return to Connected, but you&#39;ll be placed in a lower messaging limit tier. Learn more on [Phone Number Quality](https://www.facebook.com/business/help/896873687365001) docs.
+    */
     Flagged: 'FLAGGED',
+    /**
+    * Phone number status changes from &#x60;FLAGGED&#x60; to &#x60;CONNECTED&#x60;.
+    */
     Unflagged: 'UNFLAGGED'
 } as const;
 

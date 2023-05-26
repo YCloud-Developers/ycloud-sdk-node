@@ -66,6 +66,10 @@ export const EventType = {
     */
     WhatsappTemplateCategoryUpdated: 'whatsapp.template.category_updated',
     /**
+    * Occurs when a WhatsApp template quality rating is updated.
+    */
+    WhatsappTemplateQualityUpdated: 'whatsapp.template.quality_updated',
+    /**
     * Occurs when a WhatsApp template status is updated, and the status changes to REJECTED, APPROVED, PAUSED, DISABLED, or IN_APPEAL.
     */
     WhatsappTemplateReviewed: 'whatsapp.template.reviewed'

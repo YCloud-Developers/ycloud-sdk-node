@@ -16,6 +16,7 @@
 import { WhatsappApiError } from './whatsapp-api-error';
 import { WhatsappTemplateCategory } from './whatsapp-template-category';
 import { WhatsappTemplateComponent } from './whatsapp-template-component';
+import { WhatsappTemplateQualityRating } from './whatsapp-template-quality-rating';
 import { WhatsappTemplateStatus } from './whatsapp-template-status';
 import { WhatsappTemplateStatusUpdateEventEnum } from './whatsapp-template-status-update-event-enum';
 
@@ -67,6 +68,12 @@ export interface WhatsappTemplate {
      * @memberof WhatsappTemplate
      */
     'status'?: WhatsappTemplateStatus;
+    /**
+     * 
+     * @type {WhatsappTemplateQualityRating}
+     * @memberof WhatsappTemplate
+     */
+    'qualityRating'?: WhatsappTemplateQualityRating;
     /**
      * The reason why the template is rejected.
      * @type {string}
