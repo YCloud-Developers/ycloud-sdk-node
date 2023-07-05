@@ -69,6 +69,12 @@ export interface WhatsappPhoneNumber {
      */
     'codeVerificationStatus'?: WhatsappPhoneNumberCodeVerificationStatus;
     /**
+     * Whether this phone number is an official business account or not. An official business account has a green checkmark badge in its profile and chat thread headers. See [Official Business Account](https://developers.facebook.com/docs/whatsapp/overview/business-accounts#official-business-account) for more information.
+     * @type {boolean}
+     * @memberof WhatsappPhoneNumber
+     */
+    'isOfficialBusinessAccount'?: boolean;
+    /**
      * 
      * @type {WhatsappPhoneNumberStatus}
      * @memberof WhatsappPhoneNumber

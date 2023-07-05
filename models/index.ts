@@ -38,6 +38,7 @@ export * from './whatsapp-business-account-review-status';
 export * from './whatsapp-business-account-update-event-enum';
 export * from './whatsapp-conversation';
 export * from './whatsapp-conversation-origin-type';
+export * from './whatsapp-conversation-type';
 export * from './whatsapp-inbound-message';
 export * from './whatsapp-inbound-message-button';
 export * from './whatsapp-inbound-message-context';

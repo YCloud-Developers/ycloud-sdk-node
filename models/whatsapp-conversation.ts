@@ -14,6 +14,7 @@
 
 
 import { WhatsappConversationOriginType } from './whatsapp-conversation-origin-type';
+import { WhatsappConversationType } from './whatsapp-conversation-type';
 
 /**
  * WhatsApp defines a conversation as a 24-hour session of messaging between a person and a business. See also [Using the Platform](https://developers.facebook.com/docs/whatsapp/conversation-types#using-the-platform).
@@ -27,6 +28,12 @@ export interface WhatsappConversation {
      * @memberof WhatsappConversation
      */
     'id'?: string;
+    /**
+     * 
+     * @type {WhatsappConversationType}
+     * @memberof WhatsappConversation
+     */
+    'type'?: WhatsappConversationType;
     /**
      * 
      * @type {WhatsappConversationOriginType}
