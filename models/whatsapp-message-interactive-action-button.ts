@@ -16,7 +16,7 @@
 import { WhatsappMessageInteractiveActionButtonReply } from './whatsapp-message-interactive-action-button-reply';
 
 /**
- * 
+ * A button object in `interactive` messages.
  * @export
  * @interface WhatsappMessageInteractiveActionButton
  */

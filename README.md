@@ -45,6 +45,11 @@ All URIs are relative to *https://api.ycloud.com/v2*
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
 *BalanceApi* | **retrieve** | **GET** /balance | Retrieve balance
+*ContactsApi* | **create** | **POST** /contact/contacts | Create a contact
+*ContactsApi* | **delete** | **DELETE** /contact/contacts/{id} | Delete a contact
+*ContactsApi* | **list** | **GET** /contact/contacts | List contacts
+*ContactsApi* | **retrieve** | **GET** /contact/contacts/{id} | Retrieve a contact
+*ContactsApi* | **update** | **PATCH** /contact/contacts/{id} | Update a contact
 *EmailsApi* | **send** | **POST** /emails | Send an email
 *SmsApi* | **list** | **GET** /sms | List SMS records
 *SmsApi* | **send** | **POST** /sms | Send an SMS

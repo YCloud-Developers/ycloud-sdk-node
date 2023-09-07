@@ -23,13 +23,13 @@ import { WhatsappMessageInteractiveActionSection } from './whatsapp-message-inte
  */
 export interface WhatsappMessageInteractiveAction {
     /**
-     * Required for Reply Buttons.
+     * Required for Reply Buttons. You can have up to 3 buttons.
      * @type {Array<WhatsappMessageInteractiveActionButton>}
      * @memberof WhatsappMessageInteractiveAction
      */
     'buttons'?: Array<WhatsappMessageInteractiveActionButton>;
     /**
-     * Required for List Messages. Button content. It cannot be an empty string and must be unique within the message. Emojis are supported, markdown is not.
+     * Required for List Messages. Button content. It cannot be an empty string and must be unique within the message. Emojis are supported, markdown is not. Maximum length: 20 characters.
      * @type {string}
      * @memberof WhatsappMessageInteractiveAction
      */

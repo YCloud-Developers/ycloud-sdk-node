@@ -23,7 +23,7 @@ import { WhatsappMessageInteractiveActionSectionRow } from './whatsapp-message-i
  */
 export interface WhatsappMessageInteractiveActionSection {
     /**
-     * Title of the section.
+     * **Required if the message has more than one section.** Title of the section. Maximum length: 24 characters.
      * @type {string}
      * @memberof WhatsappMessageInteractiveActionSection
      */

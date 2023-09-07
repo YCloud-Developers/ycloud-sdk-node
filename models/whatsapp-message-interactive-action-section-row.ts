@@ -21,19 +21,19 @@
  */
 export interface WhatsappMessageInteractiveActionSectionRow {
     /**
-     * Unique row ID.
+     * Unique row ID. Maximum length: 200 characters.
      * @type {string}
      * @memberof WhatsappMessageInteractiveActionSectionRow
      */
     'id'?: string;
     /**
-     * Row title content.
+     * Row title content. Maximum length: 24 characters.
      * @type {string}
      * @memberof WhatsappMessageInteractiveActionSectionRow
      */
     'title'?: string;
     /**
-     * Row description content.
+     * Row description content. Maximum length: 72 characters.
      * @type {string}
      * @memberof WhatsappMessageInteractiveActionSectionRow
      */

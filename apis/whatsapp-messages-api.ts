@@ -74,7 +74,7 @@ const WhatsappMessagesApiAxiosParamCreator = function (configuration?: Configura
             };
         },
         /**
-         * Enqueues an outbound WhatsApp message for sending.  Queued messages will be submitted to the Meta WhatsApp API asynchronously.
+         * Enqueues an outbound WhatsApp message for sending.  Queued messages will be submitted to the WhatsApp Business API asynchronously.
          * @summary Enqueue a WhatsApp message
          * @param {WhatsappMessageSendRequest} whatsappMessageSendRequest 
          * @param {*} [options] Override http request option.
@@ -117,7 +117,7 @@ const WhatsappMessagesApiAxiosParamCreator = function (configuration?: Configura
             };
         },
         /**
-         * Sends an outbound WhatsApp message directly.  The message is submitted to the Meta WhatsApp API synchronously. Typically used for sending OTP and instant messages.  The response body field `error.whatsappApiError` is included if we tried to request Meta WhatsApp API and got an error response.
+         * Sends an outbound WhatsApp message directly.  The message is submitted to the WhatsApp Business API synchronously. Typically used for sending OTP and instant messages.  The response body field `error.whatsappApiError` is included if we tried to request the WhatsApp Business API and got an error response.
          * @summary Send a WhatsApp message directly
          * @param {WhatsappMessageSendRequest} whatsappMessageSendRequest 
          * @param {*} [options] Override http request option.
@@ -181,7 +181,7 @@ const WhatsappMessagesApiFp = function(configuration?: Configuration) {
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
         /**
-         * Enqueues an outbound WhatsApp message for sending.  Queued messages will be submitted to the Meta WhatsApp API asynchronously.
+         * Enqueues an outbound WhatsApp message for sending.  Queued messages will be submitted to the WhatsApp Business API asynchronously.
          * @summary Enqueue a WhatsApp message
          * @param {WhatsappMessageSendRequest} whatsappMessageSendRequest 
          * @param {*} [options] Override http request option.
@@ -192,7 +192,7 @@ const WhatsappMessagesApiFp = function(configuration?: Configuration) {
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
         /**
-         * Sends an outbound WhatsApp message directly.  The message is submitted to the Meta WhatsApp API synchronously. Typically used for sending OTP and instant messages.  The response body field `error.whatsappApiError` is included if we tried to request Meta WhatsApp API and got an error response.
+         * Sends an outbound WhatsApp message directly.  The message is submitted to the WhatsApp Business API synchronously. Typically used for sending OTP and instant messages.  The response body field `error.whatsappApiError` is included if we tried to request the WhatsApp Business API and got an error response.
          * @summary Send a WhatsApp message directly
          * @param {WhatsappMessageSendRequest} whatsappMessageSendRequest 
          * @param {*} [options] Override http request option.
@@ -222,7 +222,7 @@ const WhatsappMessagesApiFactory = function (configuration?: Configuration, base
             return localVarFp.retrieve(id, options).then((request) => request(axios, basePath));
         },
         /**
-         * Enqueues an outbound WhatsApp message for sending.  Queued messages will be submitted to the Meta WhatsApp API asynchronously.
+         * Enqueues an outbound WhatsApp message for sending.  Queued messages will be submitted to the WhatsApp Business API asynchronously.
          * @summary Enqueue a WhatsApp message
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -231,7 +231,7 @@ const WhatsappMessagesApiFactory = function (configuration?: Configuration, base
             return localVarFp.send(whatsappMessageSendRequest, options).then((request) => request(axios, basePath));
         },
         /**
-         * Sends an outbound WhatsApp message directly.  The message is submitted to the Meta WhatsApp API synchronously. Typically used for sending OTP and instant messages.  The response body field `error.whatsappApiError` is included if we tried to request Meta WhatsApp API and got an error response.
+         * Sends an outbound WhatsApp message directly.  The message is submitted to the WhatsApp Business API synchronously. Typically used for sending OTP and instant messages.  The response body field `error.whatsappApiError` is included if we tried to request the WhatsApp Business API and got an error response.
          * @summary Send a WhatsApp message directly
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -262,7 +262,7 @@ export class WhatsappMessagesApi extends BaseAPI {
     }
 
     /**
-     * Enqueues an outbound WhatsApp message for sending.  Queued messages will be submitted to the Meta WhatsApp API asynchronously.
+     * Enqueues an outbound WhatsApp message for sending.  Queued messages will be submitted to the WhatsApp Business API asynchronously.
      * @summary Enqueue a WhatsApp message
      * @param {WhatsappMessageSendRequest} whatsappMessageSendRequest 
      * @param {*} [options] Override http request option.
@@ -274,7 +274,7 @@ export class WhatsappMessagesApi extends BaseAPI {
     }
 
     /**
-     * Sends an outbound WhatsApp message directly.  The message is submitted to the Meta WhatsApp API synchronously. Typically used for sending OTP and instant messages.  The response body field `error.whatsappApiError` is included if we tried to request Meta WhatsApp API and got an error response.
+     * Sends an outbound WhatsApp message directly.  The message is submitted to the WhatsApp Business API synchronously. Typically used for sending OTP and instant messages.  The response body field `error.whatsappApiError` is included if we tried to request the WhatsApp Business API and got an error response.
      * @summary Send a WhatsApp message directly
      * @param {WhatsappMessageSendRequest} whatsappMessageSendRequest 
      * @param {*} [options] Override http request option.

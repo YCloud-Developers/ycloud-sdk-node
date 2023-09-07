@@ -21,7 +21,7 @@
  */
 export interface WhatsappMessageInteractiveBody {
     /**
-     * The body content of the message. Emojis and markdown are supported. Links are supported.
+     * The body content of the message. Emojis and markdown are supported. Maximum length: 1024 characters.
      * @type {string}
      * @memberof WhatsappMessageInteractiveBody
      */

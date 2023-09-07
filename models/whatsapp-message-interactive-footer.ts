@@ -21,7 +21,7 @@
  */
 export interface WhatsappMessageInteractiveFooter {
     /**
-     * The footer content. Emojis and markdown are supported. Links are supported.
+     * The footer content. Emojis and markdown are supported. Links are supported. Maximum length: 60 characters.
      * @type {string}
      * @memberof WhatsappMessageInteractiveFooter
      */
