@@ -13,7 +13,7 @@
  */
 
 
-import { ContactCreateRequestCustomAttributesInner } from './contact-create-request-custom-attributes-inner';
+import { ContactCustomAttribute } from './contact-custom-attribute';
 
 /**
  * Contains the properties of the contact to be updated.
@@ -53,9 +53,9 @@ export interface ContactUpdateRequest {
     'tags'?: Array<string>;
     /**
      * Contact\'s custom attributes. If present (i.e., not `null`), all previous attributes of this contact will be replaced.
-     * @type {Array<ContactCreateRequestCustomAttributesInner>}
+     * @type {Array<ContactCustomAttribute>}
      * @memberof ContactUpdateRequest
      */
-    'customAttributes'?: Array<ContactCreateRequestCustomAttributesInner>;
+    'customAttributes'?: Array<ContactCustomAttribute>;
 }
 

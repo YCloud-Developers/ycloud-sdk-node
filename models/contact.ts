@@ -13,7 +13,7 @@
  */
 
 
-import { ContactCustomAttributesInner } from './contact-custom-attributes-inner';
+import { ContactCustomAttribute } from './contact-custom-attribute';
 
 /**
  * Represents a contact.
@@ -77,9 +77,9 @@ export interface Contact {
     'createTime'?: string;
     /**
      * Contact\'s custom attributes.
-     * @type {Array<ContactCustomAttributesInner>}
+     * @type {Array<ContactCustomAttribute>}
      * @memberof Contact
      */
-    'customAttributes'?: Array<ContactCustomAttributesInner>;
+    'customAttributes'?: Array<ContactCustomAttribute>;
 }
 

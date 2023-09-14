@@ -13,7 +13,7 @@
  */
 
 
-import { ContactCreateRequestCustomAttributesInner } from './contact-create-request-custom-attributes-inner';
+import { ContactCustomAttribute } from './contact-custom-attribute';
 
 /**
  * Contains the properties of the contact to be created.
@@ -53,9 +53,9 @@ export interface ContactCreateRequest {
     'tags'?: Array<string>;
     /**
      * Contact\'s custom attributes.
-     * @type {Array<ContactCreateRequestCustomAttributesInner>}
+     * @type {Array<ContactCustomAttribute>}
      * @memberof ContactCreateRequest
      */
-    'customAttributes'?: Array<ContactCreateRequestCustomAttributesInner>;
+    'customAttributes'?: Array<ContactCustomAttribute>;
 }
 
