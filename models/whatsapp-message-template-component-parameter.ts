@@ -22,7 +22,7 @@ import { WhatsappMessageMedia } from './whatsapp-message-media';
  */
 export interface WhatsappMessageTemplateComponentParameter {
     /**
-     * **Required.** Describes the parameter type. - `text`: Used when the template component type is `BODY`, or the `HEADER` component format is `TEXT`. - `image`: Used when the template `HEADER` component is `IMAGE`. - `video`: Used when the template `HEADER` component is `VIDEO`. - `document`: Used when the template `HEADER` component is `DOCUMENT`. - `payload`: Used when the template component button type is `QUICK_REPLY`.
+     * **Required.** Describes the parameter type. - `text`: Used when the template component type is `BODY`, or the `HEADER` component format is `TEXT`. - `image`: Used when the template `HEADER` component is `IMAGE`. - `video`: Used when the template `HEADER` component is `VIDEO`. - `document`: Used when the template `HEADER` component is `DOCUMENT`. - `payload`: Used when the template component button type is `QUICK_REPLY`. - `coupon_code`: Used when the template component button type is `COPY_CODE`.
      * @type {string}
      * @memberof WhatsappMessageTemplateComponentParameter
      */
@@ -39,6 +39,12 @@ export interface WhatsappMessageTemplateComponentParameter {
      * @memberof WhatsappMessageTemplateComponentParameter
      */
     'payload'?: string;
+    /**
+     * **Required when `type` = `coupon_code`.** The coupon code to be copied when the customer taps the button.
+     * @type {string}
+     * @memberof WhatsappMessageTemplateComponentParameter
+     */
+    'coupon_code'?: string;
     /**
      * 
      * @type {WhatsappMessageMedia}
@@ -64,7 +70,8 @@ export const WhatsappMessageTemplateComponentParameterTypeEnum = {
     Image: 'image',
     Video: 'video',
     Document: 'document',
-    Payload: 'payload'
+    Payload: 'payload',
+    CouponCode: 'coupon_code'
 } as const;
 
 export type WhatsappMessageTemplateComponentParameterTypeEnum = typeof WhatsappMessageTemplateComponentParameterTypeEnum[keyof typeof WhatsappMessageTemplateComponentParameterTypeEnum];

@@ -73,6 +73,7 @@ export * from './whatsapp-message-interactive';
 export * from './whatsapp-message-interactive-action';
 export * from './whatsapp-message-interactive-action-button';
 export * from './whatsapp-message-interactive-action-button-reply';
+export * from './whatsapp-message-interactive-action-parameters';
 export * from './whatsapp-message-interactive-action-section';
 export * from './whatsapp-message-interactive-action-section-product-item';
 export * from './whatsapp-message-interactive-action-section-row';

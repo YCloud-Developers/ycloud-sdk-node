@@ -25,7 +25,7 @@ import { WhatsappMessageInteractiveHeader } from './whatsapp-message-interactive
  */
 export interface WhatsappMessageInteractive {
     /**
-     * The type of interactive message you want to send. - `list`: Use it for List Messages. - `button`: Use it for Reply Buttons. - `product`: Use for Single Product Messages. - `product_list`: Use for Multi-Product Messages.
+     * The type of interactive message you want to send. - `button`: Use for Reply Buttons. - `list`: Use for List Messages. - `cta_url`: Use for Call-To-Action (CTA) URL Button Messages. - `product`: Use for Single Product Messages. - `product_list`: Use for Multi-Product Messages.
      * @type {string}
      * @memberof WhatsappMessageInteractive
      */
@@ -58,13 +58,17 @@ export interface WhatsappMessageInteractive {
 
 export const WhatsappMessageInteractiveTypeEnum = {
     /**
-    * Use it for List Messages.
+    * Use for Reply Buttons.
     */
     Button: 'button',
     /**
-    * Use it for Reply Buttons.
+    * Use for List Messages.
     */
     List: 'list',
+    /**
+    * Use for Call-To-Action (CTA) URL Button Messages.
+    */
+    CtaUrl: 'cta_url',
     /**
     * Use for Single Product Messages.
     */

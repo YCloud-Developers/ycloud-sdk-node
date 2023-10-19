@@ -14,6 +14,7 @@
 
 
 import { WhatsappMessageInteractiveActionButton } from './whatsapp-message-interactive-action-button';
+import { WhatsappMessageInteractiveActionParameters } from './whatsapp-message-interactive-action-parameters';
 import { WhatsappMessageInteractiveActionSection } from './whatsapp-message-interactive-action-section';
 
 /**
@@ -52,5 +53,27 @@ export interface WhatsappMessageInteractiveAction {
      * @memberof WhatsappMessageInteractiveAction
      */
     'sections'?: Array<WhatsappMessageInteractiveActionSection>;
+    /**
+     * Action name. Required for Call-To-Action (CTA) URL Button Messages.
+     * @type {string}
+     * @memberof WhatsappMessageInteractiveAction
+     */
+    'name'?: WhatsappMessageInteractiveActionNameEnum;
+    /**
+     * 
+     * @type {WhatsappMessageInteractiveActionParameters}
+     * @memberof WhatsappMessageInteractiveAction
+     */
+    'parameters'?: WhatsappMessageInteractiveActionParameters;
 }
+
+export const WhatsappMessageInteractiveActionNameEnum = {
+    /**
+    * Use for Call-To-Action (CTA) URL Buttons.
+    */
+    CtaUrl: 'cta_url'
+} as const;
+
+export type WhatsappMessageInteractiveActionNameEnum = typeof WhatsappMessageInteractiveActionNameEnum[keyof typeof WhatsappMessageInteractiveActionNameEnum];
+
 

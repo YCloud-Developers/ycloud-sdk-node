@@ -32,5 +32,17 @@ export interface WhatsappInboundMessageError {
      * @memberof WhatsappInboundMessageError
      */
     'title'?: string;
+    /**
+     * The error message.
+     * @type {string}
+     * @memberof WhatsappInboundMessageError
+     */
+    'message'?: string;
+    /**
+     * An error data object with the following properties: - `details`: A string describing the reason for the error. Example: `Message type is currently not supported.`.
+     * @type {object}
+     * @memberof WhatsappInboundMessageError
+     */
+    'error_data'?: object;
 }
 

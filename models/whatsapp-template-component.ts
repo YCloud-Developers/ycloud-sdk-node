@@ -41,7 +41,7 @@ export interface WhatsappTemplateComponent {
      */
     'text'?: string;
     /**
-     * **Required for type `BUTTONS`.** The `BUTTONS` component has two types of buttons: Quick Reply, and Call To Action. These button types are exclusive, which means you cannot use both of them in one template. Quick Reply buttons are limited to 3. Call To Actions buttons have at most 1 PHONE_NUMBER button, and at most 1 URL button.
+     * **Required for type `BUTTONS`.** Buttons are optional interactive components that perform specific actions when tapped. Templates can have a mixture of up to 10 button components total, although there are limits to individual buttons of the same type as well as combination limits. If a template has more than three buttons, two buttons will appear in the delivered message and the remaining buttons will be replaced with a **See all options** button. Tapping the **See all options** button reveals the remaining buttons.
      * @type {Array<WhatsappTemplateComponentButton>}
      * @memberof WhatsappTemplateComponent
      */

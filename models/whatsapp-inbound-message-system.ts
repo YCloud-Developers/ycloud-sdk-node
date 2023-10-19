@@ -33,12 +33,6 @@ export interface WhatsappInboundMessageSystem {
      */
     'new_wa_id'?: string;
     /**
-     * **Added to Webhooks for identity updates.**  New WhatsApp ID of the customer.
-     * @type {string}
-     * @memberof WhatsappInboundMessageSystem
-     */
-    'identity'?: string;
-    /**
      * Supported types are: - `user_changed_number`: for a user changed number notification. - `user_identity_changed`: for user identity changed notification.
      * @type {string}
      * @memberof WhatsappInboundMessageSystem
