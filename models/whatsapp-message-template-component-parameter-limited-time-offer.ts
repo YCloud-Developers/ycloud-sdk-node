@@ -15,18 +15,16 @@
 
 
 /**
- * Indicates button OTP type. Set to `COPY_CODE` if you want the template to use a copy code button, `ONE_TAP` to have it use a one-tap autofill button, or `ZERO_TAP` to have no button at all.
+ * Required if template uses offer expiration details.
  * @export
- * @enum {string}
+ * @interface WhatsappMessageTemplateComponentParameterLimitedTimeOffer
  */
-
-export const WhatsappTemplateComponentButtonOtpType = {
-    CopyCode: 'COPY_CODE',
-    OneTap: 'ONE_TAP',
-    ZeroTap: 'ZERO_TAP'
-} as const;
-
-export type WhatsappTemplateComponentButtonOtpType = typeof WhatsappTemplateComponentButtonOtpType[keyof typeof WhatsappTemplateComponentButtonOtpType];
-
-
+export interface WhatsappMessageTemplateComponentParameterLimitedTimeOffer {
+    /**
+     * **Required.** Offer code expiration time as a UNIX timestamp in milliseconds.
+     * @type {number}
+     * @memberof WhatsappMessageTemplateComponentParameterLimitedTimeOffer
+     */
+    'expiration_time_ms'?: number;
+}
 

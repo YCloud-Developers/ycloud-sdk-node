@@ -71,6 +71,12 @@ export interface WhatsappTemplateComponentButton {
      */
     'signature_hash'?: string;
     /**
+     * **Zero-tap buttons only.** Set to `true` to indicate that you understand that your use of zero-tap authentication is subject to the WhatsApp Business Terms of Service, and that it\'s your responsibility to ensure your customers expect that the code will be automatically filled in on their behalf when they choose to receive the zero-tap code through WhatsApp. If set to `false`, the template will not be created as you need to accept zero-tap terms before creating zero-tap enabled message templates.
+     * @type {boolean}
+     * @memberof WhatsappTemplateComponentButton
+     */
+    'zero_tap_terms_accepted'?: boolean;
+    /**
      * Sample full URL for a `URL` button with a variable.
      * @type {Array<string>}
      * @memberof WhatsappTemplateComponentButton

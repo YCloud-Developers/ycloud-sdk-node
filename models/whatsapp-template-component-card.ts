@@ -13,20 +13,19 @@
  */
 
 
+import { WhatsappTemplateComponent } from './whatsapp-template-component';
 
 /**
- * Indicates button OTP type. Set to `COPY_CODE` if you want the template to use a copy code button, `ONE_TAP` to have it use a one-tap autofill button, or `ZERO_TAP` to have no button at all.
+ * Carousel templates support up to 10 carousel cards. Cards must have a media header (image or video) and can optionally include body text and up to 2 quick reply buttons, phone number buttons, or URL buttons (button types can be mixed).
  * @export
- * @enum {string}
+ * @interface WhatsappTemplateComponentCard
  */
-
-export const WhatsappTemplateComponentButtonOtpType = {
-    CopyCode: 'COPY_CODE',
-    OneTap: 'ONE_TAP',
-    ZeroTap: 'ZERO_TAP'
-} as const;
-
-export type WhatsappTemplateComponentButtonOtpType = typeof WhatsappTemplateComponentButtonOtpType[keyof typeof WhatsappTemplateComponentButtonOtpType];
-
-
+export interface WhatsappTemplateComponentCard {
+    /**
+     * **Required.** Card components.
+     * @type {Array<WhatsappTemplateComponent>}
+     * @memberof WhatsappTemplateComponentCard
+     */
+    'components'?: Array<WhatsappTemplateComponent>;
+}
 

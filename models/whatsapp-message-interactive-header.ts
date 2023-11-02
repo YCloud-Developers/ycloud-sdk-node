@@ -22,11 +22,11 @@ import { WhatsappMessageMedia } from './whatsapp-message-media';
  */
 export interface WhatsappMessageInteractiveHeader {
     /**
-     * The header type you would like to use. - `text`: Used for List Messages and Reply Buttons. - `video`: Used for Reply Buttons. - `image`: Used for Reply Buttons. - `document`: Used for Reply Buttons.
+     * **Required.** The header type you would like to use. - `text`: Used for List Messages and Reply Buttons. - `video`: Used for Reply Buttons. - `image`: Used for Reply Buttons. - `document`: Used for Reply Buttons.
      * @type {string}
      * @memberof WhatsappMessageInteractiveHeader
      */
-    'type': WhatsappMessageInteractiveHeaderTypeEnum;
+    'type'?: WhatsappMessageInteractiveHeaderTypeEnum;
     /**
      * Text for the header. Formatting allows emojis, but not markdown.
      * @type {string}

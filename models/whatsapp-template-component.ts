@@ -14,7 +14,9 @@
 
 
 import { WhatsappTemplateComponentButton } from './whatsapp-template-component-button';
+import { WhatsappTemplateComponentCard } from './whatsapp-template-component-card';
 import { WhatsappTemplateComponentExample } from './whatsapp-template-component-example';
+import { WhatsappTemplateComponentLimitedTimeOffer } from './whatsapp-template-component-limited-time-offer';
 
 /**
  * 
@@ -23,7 +25,7 @@ import { WhatsappTemplateComponentExample } from './whatsapp-template-component-
  */
 export interface WhatsappTemplateComponent {
     /**
-     * **Required.** Template component type.
+     * **Required.** Template component type. - `BODY`: Body components are text-only components and are required by all templates. Templates are limited to one body component. - `HEADER`: Headers are optional components that appear at the top of template messages. Headers support text, media (images, videos, documents). Templates are limited to one header component. - `FOOTER`: Footers are optional text-only components that appear immediately after the body component. Templates are limited to one footer component. - `BUTTONS`: Buttons are optional interactive components that perform specific actions when tapped. - `LIMITED_TIME_OFFER`: Use for limited-time offer templates. The delivered message can display an offer expiration details section with a heading, an optional expiration timer, and the offer code itself. - `CAROUSEL`: Carousel templates allow you to send a single text message (1), accompanied by a set of up to 10 carousel cards (2) in a horizontally scrollable view.
      * @type {string}
      * @memberof WhatsappTemplateComponent
      */
@@ -35,7 +37,7 @@ export interface WhatsappTemplateComponent {
      */
     'format'?: WhatsappTemplateComponentFormatEnum;
     /**
-     * **Required for type `BODY`, `FOOTER`, and format `TEXT`.**
+     * For body text (type = `BODY`), maximum 1024 characters. For header text (type = `HEADER`, format = `TEXT`), maximum 60 characters. For footer text (type = `FOOTER`), maximum 60 characters. For card body text (`CAROUSEL` card component type = `BODY`), maximum 160 characters.
      * @type {string}
      * @memberof WhatsappTemplateComponent
      */
@@ -60,17 +62,31 @@ export interface WhatsappTemplateComponent {
     'code_expiration_minutes'?: number;
     /**
      * 
+     * @type {WhatsappTemplateComponentLimitedTimeOffer}
+     * @memberof WhatsappTemplateComponent
+     */
+    'limited_time_offer'?: WhatsappTemplateComponentLimitedTimeOffer;
+    /**
+     * 
      * @type {WhatsappTemplateComponentExample}
      * @memberof WhatsappTemplateComponent
      */
     'example'?: WhatsappTemplateComponentExample;
+    /**
+     * **Required for type `CAROUSEL`.** Carousel templates support up to 10 carousel cards.
+     * @type {Array<WhatsappTemplateComponentCard>}
+     * @memberof WhatsappTemplateComponent
+     */
+    'cards'?: Array<WhatsappTemplateComponentCard>;
 }
 
 export const WhatsappTemplateComponentTypeEnum = {
     Body: 'BODY',
     Header: 'HEADER',
     Footer: 'FOOTER',
-    Buttons: 'BUTTONS'
+    Buttons: 'BUTTONS',
+    LimitedTimeOffer: 'LIMITED_TIME_OFFER',
+    Carousel: 'CAROUSEL'
 } as const;
 
 export type WhatsappTemplateComponentTypeEnum = typeof WhatsappTemplateComponentTypeEnum[keyof typeof WhatsappTemplateComponentTypeEnum];

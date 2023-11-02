@@ -18,7 +18,7 @@ import { WhatsappMessageInteractiveActionParameters } from './whatsapp-message-i
 import { WhatsappMessageInteractiveActionSection } from './whatsapp-message-interactive-action-section';
 
 /**
- * Action you want the user to perform after reading the `interactive` message. See also [WhatsApp Interactive Action Object](https://developers.facebook.com/docs/whatsapp/cloud-api/reference/messages#action-object).
+ * **Required.** Action you want the user to perform after reading the `interactive` message. See also [WhatsApp Interactive Action Object](https://developers.facebook.com/docs/whatsapp/cloud-api/reference/messages#action-object).
  * @export
  * @interface WhatsappMessageInteractiveAction
  */

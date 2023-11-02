@@ -49,7 +49,7 @@ export interface WhatsappTemplate {
      * @type {WhatsappTemplateCategory}
      * @memberof WhatsappTemplate
      */
-    'category': WhatsappTemplateCategory;
+    'category'?: WhatsappTemplateCategory;
     /**
      * This field indicates the template\'s previous category (or `null`, for newly created templates after April 1, 2023). Compare this value to the template\'s `category` field value, which indicates the template\'s current category. For more information about template category migration, see also [First template category migration](https://developers.facebook.com/docs/whatsapp/updates-to-pricing/launch-timeline#first-template-category-migration).
      * @type {string}
@@ -57,11 +57,17 @@ export interface WhatsappTemplate {
      */
     'previousCategory'?: string;
     /**
+     * **Use only for template category is `AUTHENTICATION`.** If we are unable to deliver an authentication template for an amount of time that exceeds its time-to-live, we will stop retrying and drop the message. Defaults to `600` seconds for newly created authentication templates. To override the default value, set this field to a value between `60` and `600` seconds. Or set it to `-1` resulting in a 24-hour time-to-live.
+     * @type {number}
+     * @memberof WhatsappTemplate
+     */
+    'messageSendTtlSeconds'?: number;
+    /**
      * Template components. A template consists of `HEADER`, `BODY`, `FOOTER`, and `BUTTONS` components. `BODY` component is required, the other types are optional.
      * @type {Array<WhatsappTemplateComponent>}
      * @memberof WhatsappTemplate
      */
-    'components': Array<WhatsappTemplateComponent>;
+    'components'?: Array<WhatsappTemplateComponent>;
     /**
      * 
      * @type {WhatsappTemplateStatus}

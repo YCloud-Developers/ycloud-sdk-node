@@ -482,7 +482,7 @@ const WhatsappTemplatesApiFactory = function (configuration?: Configuration, bas
          * @param {boolean} [includeTotal] Return results inside an object that contains the total result count or not.
          * @param {string} [filterWabaId] WhatsApp Business Account ID.
          * @param {string} [filterName] Name of the template.
-         * @param {string} [filterLanguage] Language of the template.
+         * @param {string} [filterLanguage] Language code of the template. See [Supported Languages](https://developers.facebook.com/docs/whatsapp/api/messages/message-templates#supported-languages) for all codes.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -543,7 +543,7 @@ export interface WhatsappTemplatesApiListRequest {
     readonly filterName?: string
 
     /**
-     * Language of the template.
+     * Language code of the template. See [Supported Languages](https://developers.facebook.com/docs/whatsapp/api/messages/message-templates#supported-languages) for all codes.
      * @type {string}
      * @memberof WhatsappTemplatesApiList
      */

@@ -73,7 +73,7 @@ export interface WhatsappMessage {
      * @type {WhatsappMessageType}
      * @memberof WhatsappMessage
      */
-    'type': WhatsappMessageType;
+    'type'?: WhatsappMessageType;
     /**
      * 
      * @type {WhatsappMessageTemplate}
