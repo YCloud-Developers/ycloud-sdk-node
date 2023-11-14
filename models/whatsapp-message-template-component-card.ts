@@ -13,7 +13,7 @@
  */
 
 
-import { WhatsappMessageTemplateComponent } from './whatsapp-message-template-component';
+import { WhatsappMessageTemplateComponentCardComponent } from './whatsapp-message-template-component-card-component';
 
 /**
  * Card component containing the parameters of the message.
@@ -29,9 +29,9 @@ export interface WhatsappMessageTemplateComponentCard {
     'card_index'?: number;
     /**
      * Card component.
-     * @type {Array<WhatsappMessageTemplateComponent>}
+     * @type {Array<WhatsappMessageTemplateComponentCardComponent>}
      * @memberof WhatsappMessageTemplateComponentCard
      */
-    'components'?: Array<WhatsappMessageTemplateComponent>;
+    'components'?: Array<WhatsappMessageTemplateComponentCardComponent>;
 }
 

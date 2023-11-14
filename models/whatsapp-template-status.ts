@@ -38,7 +38,7 @@ export const WhatsappTemplateStatus = {
     */
     Paused: 'PAUSED',
     /**
-    * The template has been disabled due to recurring negative feedback from customers or for violating one or more of our policies. Message templates with this status cannot be sent to customers. You may be able to edit a disabled message template and request an appeal. See [Appeals](https://developers.facebook.com/docs/whatsapp/message-templates/guidelines#appeals).
+    * The template has been disabled due to recurring negative feedback from customers or for violating one or more of our policies. Message templates with this status cannot be sent to customers. You may be able to edit a disabled message template and request an appeal. See [Template Appeals](https://developers.facebook.com/docs/whatsapp/message-templates/guidelines#appeals).
     */
     Disabled: 'DISABLED',
     /**

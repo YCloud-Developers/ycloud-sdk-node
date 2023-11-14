@@ -13,7 +13,7 @@
  */
 
 
-import { WhatsappTemplateComponent } from './whatsapp-template-component';
+import { WhatsappTemplateComponentCardComponent } from './whatsapp-template-component-card-component';
 
 /**
  * Carousel templates support up to 10 carousel cards. Cards must have a media header (image or video) and can optionally include body text and up to 2 quick reply buttons, phone number buttons, or URL buttons (button types can be mixed).
@@ -23,9 +23,9 @@ import { WhatsappTemplateComponent } from './whatsapp-template-component';
 export interface WhatsappTemplateComponentCard {
     /**
      * **Required.** Card components.
-     * @type {Array<WhatsappTemplateComponent>}
+     * @type {Array<WhatsappTemplateComponentCardComponent>}
      * @memberof WhatsappTemplateComponentCard
      */
-    'components'?: Array<WhatsappTemplateComponent>;
+    'components'?: Array<WhatsappTemplateComponentCardComponent>;
 }
 

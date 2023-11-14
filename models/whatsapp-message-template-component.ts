@@ -23,7 +23,7 @@ import { WhatsappMessageTemplateComponentParameter } from './whatsapp-message-te
  */
 export interface WhatsappMessageTemplateComponent {
     /**
-     * Describes the component type.
+     * Component type.
      * @type {string}
      * @memberof WhatsappMessageTemplateComponent
      */
