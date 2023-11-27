@@ -38,7 +38,7 @@ const WhatsappTemplatesApiAxiosParamCreator = function (configuration?: Configur
     return {
         /**
          * Creates a WhatsApp template.
-         * @summary Create a WhatsApp template
+         * @summary Create a template
          * @param {WhatsappTemplateCreateRequest} whatsappTemplateCreateRequest 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -81,7 +81,7 @@ const WhatsappTemplatesApiAxiosParamCreator = function (configuration?: Configur
         },
         /**
          * Deletes WhatsApp templates by name. If that template name exists in multiple languages, all languages will be deleted. HTTP status `404` is returned if no templates are found for the specific name.
-         * @summary Delete WhatsApp templates by name
+         * @summary Delete templates by name
          * @param {string} wabaId WhatsApp Business Account ID.
          * @param {string} name Name of the template.
          * @param {*} [options] Override http request option.
@@ -126,7 +126,7 @@ const WhatsappTemplatesApiAxiosParamCreator = function (configuration?: Configur
         },
         /**
          * Deletes a WhatsApp template by name and language.
-         * @summary Delete a WhatsApp template
+         * @summary Delete a template
          * @param {string} wabaId WhatsApp Business Account ID.
          * @param {string} name Name of the template.
          * @param {string} language Language code of the template. See [Supported Languages](https://developers.facebook.com/docs/whatsapp/api/messages/message-templates#supported-languages) for all codes.
@@ -175,7 +175,7 @@ const WhatsappTemplatesApiAxiosParamCreator = function (configuration?: Configur
         },
         /**
          * Edits a WhatsApp template by name and language. Editing a template replaces its old contents entirely, so include any components you wish to preserve as well as components you wish to update using the components parameter. See also [Edit a Message Template](https://developers.facebook.com/docs/whatsapp/business-management-api/message-templates#edit-a-message-template).
-         * @summary Edit a WhatsApp template
+         * @summary Edit a template
          * @param {string} wabaId WhatsApp Business Account ID.
          * @param {string} name Name of the template.
          * @param {string} language Language code of the template. See [Supported Languages](https://developers.facebook.com/docs/whatsapp/api/messages/message-templates#supported-languages) for all codes.
@@ -228,7 +228,7 @@ const WhatsappTemplatesApiAxiosParamCreator = function (configuration?: Configur
         },
         /**
          * Returns a paginated list of WhatsApp templates you\'ve previously created.
-         * @summary List WhatsApp templates
+         * @summary List templates
          * @param {WhatsappTemplatesApiListRequest} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -296,7 +296,7 @@ const WhatsappTemplatesApiAxiosParamCreator = function (configuration?: Configur
         },
         /**
          * Retrieves a WhatsApp template by name and language.
-         * @summary Retrieve a WhatsApp template
+         * @summary Retrieve a template
          * @param {string} wabaId WhatsApp Business Account ID.
          * @param {string} name Name of the template.
          * @param {string} language Language code of the template. See [Supported Languages](https://developers.facebook.com/docs/whatsapp/api/messages/message-templates#supported-languages) for all codes.
@@ -355,7 +355,7 @@ const WhatsappTemplatesApiFp = function(configuration?: Configuration) {
     return {
         /**
          * Creates a WhatsApp template.
-         * @summary Create a WhatsApp template
+         * @summary Create a template
          * @param {WhatsappTemplateCreateRequest} whatsappTemplateCreateRequest 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -366,7 +366,7 @@ const WhatsappTemplatesApiFp = function(configuration?: Configuration) {
         },
         /**
          * Deletes WhatsApp templates by name. If that template name exists in multiple languages, all languages will be deleted. HTTP status `404` is returned if no templates are found for the specific name.
-         * @summary Delete WhatsApp templates by name
+         * @summary Delete templates by name
          * @param {string} wabaId WhatsApp Business Account ID.
          * @param {string} name Name of the template.
          * @param {*} [options] Override http request option.
@@ -378,7 +378,7 @@ const WhatsappTemplatesApiFp = function(configuration?: Configuration) {
         },
         /**
          * Deletes a WhatsApp template by name and language.
-         * @summary Delete a WhatsApp template
+         * @summary Delete a template
          * @param {string} wabaId WhatsApp Business Account ID.
          * @param {string} name Name of the template.
          * @param {string} language Language code of the template. See [Supported Languages](https://developers.facebook.com/docs/whatsapp/api/messages/message-templates#supported-languages) for all codes.
@@ -391,7 +391,7 @@ const WhatsappTemplatesApiFp = function(configuration?: Configuration) {
         },
         /**
          * Edits a WhatsApp template by name and language. Editing a template replaces its old contents entirely, so include any components you wish to preserve as well as components you wish to update using the components parameter. See also [Edit a Message Template](https://developers.facebook.com/docs/whatsapp/business-management-api/message-templates#edit-a-message-template).
-         * @summary Edit a WhatsApp template
+         * @summary Edit a template
          * @param {string} wabaId WhatsApp Business Account ID.
          * @param {string} name Name of the template.
          * @param {string} language Language code of the template. See [Supported Languages](https://developers.facebook.com/docs/whatsapp/api/messages/message-templates#supported-languages) for all codes.
@@ -405,7 +405,7 @@ const WhatsappTemplatesApiFp = function(configuration?: Configuration) {
         },
         /**
          * Returns a paginated list of WhatsApp templates you\'ve previously created.
-         * @summary List WhatsApp templates
+         * @summary List templates
          * @param {WhatsappTemplatesApiListRequest} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -416,7 +416,7 @@ const WhatsappTemplatesApiFp = function(configuration?: Configuration) {
         },
         /**
          * Retrieves a WhatsApp template by name and language.
-         * @summary Retrieve a WhatsApp template
+         * @summary Retrieve a template
          * @param {string} wabaId WhatsApp Business Account ID.
          * @param {string} name Name of the template.
          * @param {string} language Language code of the template. See [Supported Languages](https://developers.facebook.com/docs/whatsapp/api/messages/message-templates#supported-languages) for all codes.
@@ -439,7 +439,7 @@ const WhatsappTemplatesApiFactory = function (configuration?: Configuration, bas
     return {
         /**
          * Creates a WhatsApp template.
-         * @summary Create a WhatsApp template
+         * @summary Create a template
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -448,7 +448,7 @@ const WhatsappTemplatesApiFactory = function (configuration?: Configuration, bas
         },
         /**
          * Deletes WhatsApp templates by name. If that template name exists in multiple languages, all languages will be deleted. HTTP status `404` is returned if no templates are found for the specific name.
-         * @summary Delete WhatsApp templates by name
+         * @summary Delete templates by name
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -457,7 +457,7 @@ const WhatsappTemplatesApiFactory = function (configuration?: Configuration, bas
         },
         /**
          * Deletes a WhatsApp template by name and language.
-         * @summary Delete a WhatsApp template
+         * @summary Delete a template
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -466,7 +466,7 @@ const WhatsappTemplatesApiFactory = function (configuration?: Configuration, bas
         },
         /**
          * Edits a WhatsApp template by name and language. Editing a template replaces its old contents entirely, so include any components you wish to preserve as well as components you wish to update using the components parameter. See also [Edit a Message Template](https://developers.facebook.com/docs/whatsapp/business-management-api/message-templates#edit-a-message-template).
-         * @summary Edit a WhatsApp template
+         * @summary Edit a template
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -475,7 +475,7 @@ const WhatsappTemplatesApiFactory = function (configuration?: Configuration, bas
         },
         /**
          * Returns a paginated list of WhatsApp templates you\'ve previously created.
-         * @summary List WhatsApp templates
+         * @summary List templates
          * @param {WhatsappTemplatesApiListRequest} requestParameters Request parameters.
          * @param {number} [page] Page number of the results to be returned, 1-based.
          * @param {number} [limit] A limit on the number of results to be returned, or number of results per page, between 1 and 100, defaults to 10.
@@ -491,7 +491,7 @@ const WhatsappTemplatesApiFactory = function (configuration?: Configuration, bas
         },
         /**
          * Retrieves a WhatsApp template by name and language.
-         * @summary Retrieve a WhatsApp template
+         * @summary Retrieve a template
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -559,7 +559,7 @@ export interface WhatsappTemplatesApiListRequest {
 export class WhatsappTemplatesApi extends BaseAPI {
     /**
      * Creates a WhatsApp template.
-     * @summary Create a WhatsApp template
+     * @summary Create a template
      * @param {WhatsappTemplateCreateRequest} whatsappTemplateCreateRequest 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
@@ -571,7 +571,7 @@ export class WhatsappTemplatesApi extends BaseAPI {
 
     /**
      * Deletes WhatsApp templates by name. If that template name exists in multiple languages, all languages will be deleted. HTTP status `404` is returned if no templates are found for the specific name.
-     * @summary Delete WhatsApp templates by name
+     * @summary Delete templates by name
      * @param {string} wabaId WhatsApp Business Account ID.
      * @param {string} name Name of the template.
      * @param {*} [options] Override http request option.
@@ -584,7 +584,7 @@ export class WhatsappTemplatesApi extends BaseAPI {
 
     /**
      * Deletes a WhatsApp template by name and language.
-     * @summary Delete a WhatsApp template
+     * @summary Delete a template
      * @param {string} wabaId WhatsApp Business Account ID.
      * @param {string} name Name of the template.
      * @param {string} language Language code of the template. See [Supported Languages](https://developers.facebook.com/docs/whatsapp/api/messages/message-templates#supported-languages) for all codes.
@@ -598,7 +598,7 @@ export class WhatsappTemplatesApi extends BaseAPI {
 
     /**
      * Edits a WhatsApp template by name and language. Editing a template replaces its old contents entirely, so include any components you wish to preserve as well as components you wish to update using the components parameter. See also [Edit a Message Template](https://developers.facebook.com/docs/whatsapp/business-management-api/message-templates#edit-a-message-template).
-     * @summary Edit a WhatsApp template
+     * @summary Edit a template
      * @param {string} wabaId WhatsApp Business Account ID.
      * @param {string} name Name of the template.
      * @param {string} language Language code of the template. See [Supported Languages](https://developers.facebook.com/docs/whatsapp/api/messages/message-templates#supported-languages) for all codes.
@@ -613,7 +613,7 @@ export class WhatsappTemplatesApi extends BaseAPI {
 
     /**
      * Returns a paginated list of WhatsApp templates you\'ve previously created.
-     * @summary List WhatsApp templates
+     * @summary List templates
      * @param {WhatsappTemplatesApiListRequest} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
@@ -625,7 +625,7 @@ export class WhatsappTemplatesApi extends BaseAPI {
 
     /**
      * Retrieves a WhatsApp template by name and language.
-     * @summary Retrieve a WhatsApp template
+     * @summary Retrieve a template
      * @param {string} wabaId WhatsApp Business Account ID.
      * @param {string} name Name of the template.
      * @param {string} language Language code of the template. See [Supported Languages](https://developers.facebook.com/docs/whatsapp/api/messages/message-templates#supported-languages) for all codes.

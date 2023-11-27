@@ -14,6 +14,7 @@
 
 
 import { WhatsappMessageMedia } from './whatsapp-message-media';
+import { WhatsappMessageTemplateComponentParameterAction } from './whatsapp-message-template-component-parameter-action';
 import { WhatsappMessageTemplateComponentParameterLimitedTimeOffer } from './whatsapp-message-template-component-parameter-limited-time-offer';
 
 /**
@@ -23,7 +24,7 @@ import { WhatsappMessageTemplateComponentParameterLimitedTimeOffer } from './wha
  */
 export interface WhatsappMessageTemplateComponentParameter {
     /**
-     * **Required.** Component parameter type. - `text`: Used when the template component type is `BODY`, or the `HEADER` component format is `TEXT`. - `image`: Used when the template `HEADER` component is `IMAGE`. - `video`: Used when the template `HEADER` component is `VIDEO`. - `document`: Used when the template `HEADER` component is `DOCUMENT`. - `payload`: Used when the template component button type is `QUICK_REPLY`. - `coupon_code`: Used when the template component button type is `COPY_CODE`. - `limited_time_offer`: Used when the template component type is `LIMITED_TIME_OFFER`.
+     * **Required.** Component parameter type. - `text`: Used when the template component type is `BODY`, or the `HEADER` component format is `TEXT`. - `image`: Used when the template `HEADER` component is `IMAGE`. - `video`: Used when the template `HEADER` component is `VIDEO`. - `document`: Used when the template `HEADER` component is `DOCUMENT`. - `payload`: Used when the template component button type is `QUICK_REPLY`. - `coupon_code`: Used when the template component button type is `COPY_CODE`. - `limited_time_offer`: Used when the template component type is `LIMITED_TIME_OFFER`. - `action`: Used when the template component button type is `CATALOG`.
      * @type {string}
      * @memberof WhatsappMessageTemplateComponentParameter
      */
@@ -70,6 +71,12 @@ export interface WhatsappMessageTemplateComponentParameter {
      * @memberof WhatsappMessageTemplateComponentParameter
      */
     'limited_time_offer'?: WhatsappMessageTemplateComponentParameterLimitedTimeOffer;
+    /**
+     * 
+     * @type {WhatsappMessageTemplateComponentParameterAction}
+     * @memberof WhatsappMessageTemplateComponentParameter
+     */
+    'action'?: WhatsappMessageTemplateComponentParameterAction;
 }
 
 export const WhatsappMessageTemplateComponentParameterTypeEnum = {
@@ -79,7 +86,8 @@ export const WhatsappMessageTemplateComponentParameterTypeEnum = {
     Document: 'document',
     Payload: 'payload',
     CouponCode: 'coupon_code',
-    LimitedTimeOffer: 'limited_time_offer'
+    LimitedTimeOffer: 'limited_time_offer',
+    Action: 'action'
 } as const;
 
 export type WhatsappMessageTemplateComponentParameterTypeEnum = typeof WhatsappMessageTemplateComponentParameterTypeEnum[keyof typeof WhatsappMessageTemplateComponentParameterTypeEnum];

@@ -33,7 +33,7 @@ import { WhatsappMessageType } from './whatsapp-message-type';
  */
 export interface WhatsappMessage {
     /**
-     * Unique ID for the object.
+     * Unique ID of the message.
      * @type {string}
      * @memberof WhatsappMessage
      */

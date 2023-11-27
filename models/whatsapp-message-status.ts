@@ -21,25 +21,10 @@
  */
 
 export const WhatsappMessageStatus = {
-    /**
-    * The messaging request is accepted by our system.
-    */
     Accepted: 'accepted',
-    /**
-    * A message sent by your business failed to send.
-    */
     Failed: 'failed',
-    /**
-    * A message sent by your business is in transit within WhatsApp&#39;s systems.
-    */
     Sent: 'sent',
-    /**
-    * A message sent by your business was delivered to the user&#39;s device.
-    */
     Delivered: 'delivered',
-    /**
-    * A message sent by your business was read by the user.
-    */
     Read: 'read'
 } as const;
 

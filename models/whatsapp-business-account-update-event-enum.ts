@@ -15,23 +15,14 @@
 
 
 /**
- * Indicates the update event type of the WABA when a notification is sent to you to report a [policy violation](https://developers.facebook.com/docs/whatsapp/overview/policy-enforcement), a WABA has been banned and more.
+ * Indicates the update event type of the WABA when a notification is sent to you to report a [policy violation](https://developers.facebook.com/docs/whatsapp/overview/policy-enforcement), a WABA has been banned and more. - `DISABLED_UPDATE`: WhatsApp Business Account Banned. - `ACCOUNT_RESTRICTION`: WhatsApp Business Account Restricted Due To Policy Violations. - `ACCOUNT_VIOLATION`: WhatsApp Business Account Violates Policy.
  * @export
  * @enum {string}
  */
 
 export const WhatsappBusinessAccountUpdateEventEnum = {
-    /**
-    * WhatsApp Business Account Banned.
-    */
     DisabledUpdate: 'DISABLED_UPDATE',
-    /**
-    * WhatsApp Business Account Restricted Due To Policy Violations.
-    */
     AccountRestriction: 'ACCOUNT_RESTRICTION',
-    /**
-    * WhatsApp Business Account Violates Policy.
-    */
     AccountViolation: 'ACCOUNT_VIOLATION'
 } as const;
 

@@ -21,21 +21,9 @@
  */
 
 export const WhatsappTemplateQualityRating = {
-    /**
-    * High quality
-    */
     Green: 'GREEN',
-    /**
-    * Medium quality
-    */
     Yellow: 'YELLOW',
-    /**
-    * Low quality
-    */
     Red: 'RED',
-    /**
-    * Unknown quality
-    */
     Unknown: 'UNKNOWN'
 } as const;
 

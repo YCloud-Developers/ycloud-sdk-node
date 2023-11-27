@@ -23,7 +23,7 @@ import { VerificationStatus } from './verification-status';
  */
 export interface VerificationCheck {
     /**
-     * ID of this object.
+     * ID of this verification check.
      * @type {string}
      * @memberof VerificationCheck
      */

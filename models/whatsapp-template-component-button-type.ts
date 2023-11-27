@@ -15,7 +15,7 @@
 
 
 /**
- * Button type. - `PHONE_NUMBER`: Phone number buttons call the specified business phone number when tapped by the app user. Templates are limited to one phone number button. - `URL`: URL buttons load the specified URL in the device\'s default web browser when tapped by the app user. Templates are limited to two URL buttons. - `QUICK_REPLY`: Quick reply buttons are custom text-only buttons that immediately message you with the specified text string when tapped by the app user. Templates are limited to 10 quick reply buttons. If using quick reply buttons with other buttons, buttons must be organized into two groups: quick reply buttons and non-quick reply buttons. - `COPY_CODE`: Copy code buttons copy a text string (defined when the template is sent in a template message) to the device\'s clipboard when tapped by the app user. Templates are limited to one copy code button. - `OTP`: One-time password (OTP) buttons are a special type of URL button component used with authentication templates.
+ * Button type. - `PHONE_NUMBER`: Phone number buttons call the specified business phone number when tapped by the app user. Templates are limited to one phone number button. - `URL`: URL buttons load the specified URL in the device\'s default web browser when tapped by the app user. Templates are limited to two URL buttons. - `QUICK_REPLY`: Quick reply buttons are custom text-only buttons that immediately message you with the specified text string when tapped by the app user. Templates are limited to 10 quick reply buttons. If using quick reply buttons with other buttons, buttons must be organized into two groups: quick reply buttons and non-quick reply buttons. - `COPY_CODE`: Copy code buttons copy a text string (defined when the template is sent in a template message) to the device\'s clipboard when tapped by the app user. Templates are limited to one copy code button. - `OTP`: One-time password (OTP) buttons are a special type of URL button component used with authentication templates. - `CATALOG`: When a customer taps the **View catalog** button in a catalog template message, your product catalog appears within WhatsApp. - `MPM`: Customers can browse products and sections by tapping the **View items** button in a multi-product template message.
  * @export
  * @enum {string}
  */
@@ -25,7 +25,9 @@ export const WhatsappTemplateComponentButtonType = {
     Url: 'URL',
     QuickReply: 'QUICK_REPLY',
     CopyCode: 'COPY_CODE',
-    Otp: 'OTP'
+    Otp: 'OTP',
+    Catalog: 'CATALOG',
+    Mpm: 'MPM'
 } as const;
 
 export type WhatsappTemplateComponentButtonType = typeof WhatsappTemplateComponentButtonType[keyof typeof WhatsappTemplateComponentButtonType];

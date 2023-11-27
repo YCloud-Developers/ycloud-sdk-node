@@ -119,25 +119,10 @@ export interface Voice {
 }
 
 export const VoiceStatusEnum = {
-    /**
-    * The messaging request is accepted by our system.
-    */
     Accepted: 'accepted',
-    /**
-    * The message failed to be sent from our system.
-    */
     Failed: 'failed',
-    /**
-    * The message has been sent from our system.
-    */
     Sent: 'sent',
-    /**
-    * YCloud has received a delivery receipt indicating that message is delivered.
-    */
     Delivered: 'delivered',
-    /**
-    * YCloud has received a delivery receipt indicating that message is not delivered.
-    */
     Undelivered: 'undelivered'
 } as const;
 

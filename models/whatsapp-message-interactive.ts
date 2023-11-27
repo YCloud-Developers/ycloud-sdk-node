@@ -25,7 +25,7 @@ import { WhatsappMessageInteractiveHeader } from './whatsapp-message-interactive
  */
 export interface WhatsappMessageInteractive {
     /**
-     * **Required.** The type of interactive message you want to send. - `button`: Use for Reply Buttons. - `list`: Use for List Messages. - `cta_url`: Use for Call-To-Action (CTA) URL Button Messages. - `product`: Use for Single Product Messages. - `product_list`: Use for Multi-Product Messages.
+     * **Required.** The type of interactive message you want to send. - `button`: Use for Reply Buttons. - `list`: Use for List Messages. - `cta_url`: Use for Call-To-Action (CTA) URL Button Messages. - `product`: Use for Single Product Messages. - `product_list`: Use for Multi-Product Messages. - `catalog_message`: Use for Catalog Messages.
      * @type {string}
      * @memberof WhatsappMessageInteractive
      */
@@ -57,26 +57,12 @@ export interface WhatsappMessageInteractive {
 }
 
 export const WhatsappMessageInteractiveTypeEnum = {
-    /**
-    * Use for Reply Buttons.
-    */
     Button: 'button',
-    /**
-    * Use for List Messages.
-    */
     List: 'list',
-    /**
-    * Use for Call-To-Action (CTA) URL Button Messages.
-    */
     CtaUrl: 'cta_url',
-    /**
-    * Use for Single Product Messages.
-    */
     Product: 'product',
-    /**
-    * Use for Multi-Product Messages.
-    */
-    ProductList: 'product_list'
+    ProductList: 'product_list',
+    CatalogMessage: 'catalog_message'
 } as const;
 
 export type WhatsappMessageInteractiveTypeEnum = typeof WhatsappMessageInteractiveTypeEnum[keyof typeof WhatsappMessageInteractiveTypeEnum];

@@ -15,32 +15,15 @@
 
 
 /**
- * Category of WhatsApp templates. - `AUTHENTICATION`: Enable businesses to authenticate users with one-time passcodes, potentially at multiple steps in the login process (e.g., account verification, account recovery, integrity challenges). - `MARKETING`: Include promotions or offers, informational updates, or invitations for customers to respond / take action. Any conversation that does not qualify as utility or authentication is a marketing conversation. - `UTILITY`: Facilitate a specific, agreed-upon request or transaction or update to a customer about an ongoing transaction, including post-purchase notifications and recurring billing statements. - `TRANSACTIONAL`: Valid until 2023-05-01. Send account updates, order updates, alerts, and more to share important information. - `OTP`: Valid until 2023-05-01. Send codes that allow your customers to access their accounts.
+ * Category of WhatsApp templates. - `AUTHENTICATION`: Enable businesses to authenticate users with one-time passcodes, potentially at multiple steps in the login process (e.g., account verification, account recovery, integrity challenges). - `MARKETING`: Include promotions or offers, informational updates, or invitations for customers to respond / take action. Any conversation that does not qualify as utility or authentication is a marketing conversation. - `UTILITY`: Facilitate a specific, agreed-upon request or transaction or update to a customer about an ongoing transaction, including post-purchase notifications and recurring billing statements.
  * @export
  * @enum {string}
  */
 
 export const WhatsappTemplateCategory = {
-    /**
-    * Enable businesses to authenticate users with one-time passcodes, potentially at multiple steps in the login process (e.g., account verification, account recovery, integrity challenges).
-    */
     Authentication: 'AUTHENTICATION',
-    /**
-    * Include promotions or offers, informational updates, or invitations for customers to respond / take action. Any conversation that does not qualify as utility or authentication is a marketing conversation.
-    */
     Marketing: 'MARKETING',
-    /**
-    * Facilitate a specific, agreed-upon request or transaction or update to a customer about an ongoing transaction, including post-purchase notifications and recurring billing statements.
-    */
-    Utility: 'UTILITY',
-    /**
-    * Valid until 2023-05-01. Send account updates, order updates, alerts, and more to share important information.
-    */
-    Transactional: 'TRANSACTIONAL',
-    /**
-    * Valid until 2023-05-01. Send codes that allow your customers to access their accounts.
-    */
-    Otp: 'OTP'
+    Utility: 'UTILITY'
 } as const;
 
 export type WhatsappTemplateCategory = typeof WhatsappTemplateCategory[keyof typeof WhatsappTemplateCategory];

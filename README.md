@@ -65,19 +65,21 @@ Class | Method | HTTP request | Description
 *WebhookEndpointsApi* | **update** | **PATCH** /webhookEndpoints/{id} | Update a webhook endpoint
 *WhatsappBusinessAccountsApi* | **list** | **GET** /whatsapp/businessAccounts | List WABAs
 *WhatsappBusinessAccountsApi* | **retrieve** | **GET** /whatsapp/businessAccounts/{id} | Retrieve a WABA
-*WhatsappMessagesApi* | **retrieve** | **GET** /whatsapp/messages/{id} | Retrieve a WhatsApp message
-*WhatsappMessagesApi* | **send** | **POST** /whatsapp/messages | Enqueue a WhatsApp message
-*WhatsappMessagesApi* | **sendDirectly** | **POST** /whatsapp/messages/sendDirectly | Send a WhatsApp message directly
-*WhatsappPhoneNumbersApi* | **list** | **GET** /whatsapp/phoneNumbers | List WhatsApp phone numbers
-*WhatsappPhoneNumbersApi* | **retrieve** | **GET** /whatsapp/phoneNumbers/{wabaId}/{phoneNumber} | Retrieve a WhatsApp phone number
-*WhatsappPhoneNumbersApi* | **retrieveProfile** | **GET** /whatsapp/phoneNumbers/{wabaId}/{phoneNumber}/profile | Retrieve a WhatsApp phone number profile
-*WhatsappPhoneNumbersApi* | **updateProfile** | **PATCH** /whatsapp/phoneNumbers/{wabaId}/{phoneNumber}/profile | Update a WhatsApp phone number profile
-*WhatsappTemplatesApi* | **create** | **POST** /whatsapp/templates | Create a WhatsApp template
-*WhatsappTemplatesApi* | **deleteByName** | **DELETE** /whatsapp/templates/{wabaId}/{name} | Delete WhatsApp templates by name
-*WhatsappTemplatesApi* | **deleteByNameAndLanguage** | **DELETE** /whatsapp/templates/{wabaId}/{name}/{language} | Delete a WhatsApp template
-*WhatsappTemplatesApi* | **editByNameAndLanguage** | **PATCH** /whatsapp/templates/{wabaId}/{name}/{language} | Edit a WhatsApp template
-*WhatsappTemplatesApi* | **list** | **GET** /whatsapp/templates | List WhatsApp templates
-*WhatsappTemplatesApi* | **retrieveByNameAndLanguage** | **GET** /whatsapp/templates/{wabaId}/{name}/{language} | Retrieve a WhatsApp template
+*WhatsappMessagesApi* | **retrieve** | **GET** /whatsapp/messages/{id} | Retrieve a message
+*WhatsappMessagesApi* | **send** | **POST** /whatsapp/messages | Enqueue a message
+*WhatsappMessagesApi* | **sendDirectly** | **POST** /whatsapp/messages/sendDirectly | Send a message directly
+*WhatsappPhoneNumbersApi* | **list** | **GET** /whatsapp/phoneNumbers | List phone numbers
+*WhatsappPhoneNumbersApi* | **retrieve** | **GET** /whatsapp/phoneNumbers/{wabaId}/{phoneNumber} | Retrieve a phone number
+*WhatsappPhoneNumbersApi* | **retrieveCommerceSettings** | **GET** /whatsapp/phoneNumbers/{wabaId}/{phoneNumber}/whatsappCommerceSettings | Retrieve commerce settings
+*WhatsappPhoneNumbersApi* | **retrieveProfile** | **GET** /whatsapp/phoneNumbers/{wabaId}/{phoneNumber}/profile | Retrieve a phone number profile
+*WhatsappPhoneNumbersApi* | **updateCommerceSettings** | **PATCH** /whatsapp/phoneNumbers/{wabaId}/{phoneNumber}/whatsappCommerceSettings | Update commerce settings
+*WhatsappPhoneNumbersApi* | **updateProfile** | **PATCH** /whatsapp/phoneNumbers/{wabaId}/{phoneNumber}/profile | Update a phone number profile
+*WhatsappTemplatesApi* | **create** | **POST** /whatsapp/templates | Create a template
+*WhatsappTemplatesApi* | **deleteByName** | **DELETE** /whatsapp/templates/{wabaId}/{name} | Delete templates by name
+*WhatsappTemplatesApi* | **deleteByNameAndLanguage** | **DELETE** /whatsapp/templates/{wabaId}/{name}/{language} | Delete a template
+*WhatsappTemplatesApi* | **editByNameAndLanguage** | **PATCH** /whatsapp/templates/{wabaId}/{name}/{language} | Edit a template
+*WhatsappTemplatesApi* | **list** | **GET** /whatsapp/templates | List templates
+*WhatsappTemplatesApi* | **retrieveByNameAndLanguage** | **GET** /whatsapp/templates/{wabaId}/{name}/{language} | Retrieve a template
 
 
 ## Documentation for Authorization

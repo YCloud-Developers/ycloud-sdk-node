@@ -54,7 +54,7 @@ export interface WhatsappMessageInteractiveAction {
      */
     'sections'?: Array<WhatsappMessageInteractiveActionSection>;
     /**
-     * Action name. Required for Call-To-Action (CTA) URL Button Messages.
+     * Action name. Required for Call-To-Action (CTA) URL Button Messages. - `cta_url`: Use for Call-To-Action (CTA) URL Buttons.
      * @type {string}
      * @memberof WhatsappMessageInteractiveAction
      */
@@ -68,9 +68,6 @@ export interface WhatsappMessageInteractiveAction {
 }
 
 export const WhatsappMessageInteractiveActionNameEnum = {
-    /**
-    * Use for Call-To-Action (CTA) URL Buttons.
-    */
     CtaUrl: 'cta_url'
 } as const;
 

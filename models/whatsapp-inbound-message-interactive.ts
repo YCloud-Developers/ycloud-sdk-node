@@ -43,13 +43,7 @@ export interface WhatsappInboundMessageInteractive {
 }
 
 export const WhatsappInboundMessageInteractiveTypeEnum = {
-    /**
-    * Sent when a customer clicks a button.
-    */
     ButtonReply: 'button_reply',
-    /**
-    * Sent when a customer selects an item from a list.
-    */
     ListReply: 'list_reply'
 } as const;
 

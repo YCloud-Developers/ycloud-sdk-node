@@ -15,23 +15,14 @@
 
 
 /**
- * Conversation type. There is a charge when the first business message of this conversation is delivered, initiating the 24-hour conversation session. As such, the conversation type can be `null` before the first message is delivered. `FREE_ENTRY`: Conversations originating from a [free entry point](https://developers.facebook.com/docs/whatsapp/pricing#free-entry-points). `FREE_TIER`: Conversations within the monthly [free tier](https://developers.facebook.com/docs/whatsapp/pricing#free-tier-conversations). `REGULAR`: Any conversations that did not originate from a [free entry point](https://developers.facebook.com/docs/whatsapp/pricing#free-entry-points) or are above the monthly [free tier](https://developers.facebook.com/docs/whatsapp/pricing#free-tier-conversations) allotment.
+ * Conversation type. There is a charge when the first business message of this conversation is delivered, initiating the 24-hour conversation session. As such, the conversation type can be `null` before the first message is delivered. - `FREE_ENTRY`: Conversations originating from a [free entry point](https://developers.facebook.com/docs/whatsapp/pricing#free-entry-points). - `FREE_TIER`: Conversations within the monthly [free tier](https://developers.facebook.com/docs/whatsapp/pricing#free-tier-conversations). - `REGULAR`: Any conversations that did not originate from a [free entry point](https://developers.facebook.com/docs/whatsapp/pricing#free-entry-points) or are above the monthly [free tier](https://developers.facebook.com/docs/whatsapp/pricing#free-tier-conversations) allotment.
  * @export
  * @enum {string}
  */
 
 export const WhatsappConversationType = {
-    /**
-    * Conversations originating from a [free entry point](https://developers.facebook.com/docs/whatsapp/pricing#free-entry-points).
-    */
     FreeEntry: 'FREE_ENTRY',
-    /**
-    * Conversations within the monthly [free tier](https://developers.facebook.com/docs/whatsapp/pricing#free-tier-conversations).
-    */
     FreeTier: 'FREE_TIER',
-    /**
-    * Any conversations that did not originate from a [free entry point](https://developers.facebook.com/docs/whatsapp/pricing#free-entry-points) or are above the monthly [free tier](https://developers.facebook.com/docs/whatsapp/pricing#free-tier-conversations) allotment.
-    */
     Regular: 'REGULAR'
 } as const;
 

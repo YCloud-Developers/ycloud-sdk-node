@@ -21,29 +21,11 @@
  */
 
 export const WhatsappPhoneNumberNameStatus = {
-    /**
-    * The name has been approved. You can download your certificate now.
-    */
     Approved: 'APPROVED',
-    /**
-    * The certificate for the phone is available and display name is ready to use without review.
-    */
     AvailableWithoutReview: 'AVAILABLE_WITHOUT_REVIEW',
-    /**
-    * The name has not been approved. You cannot download your certificate.
-    */
     Declined: 'DECLINED',
-    /**
-    * Your certificate has expire and can no longer be downloaded.
-    */
     Expired: 'EXPIRED',
-    /**
-    * Your name request is under review. You cannot download your certificate.
-    */
     PendingReview: 'PENDING_REVIEW',
-    /**
-    * No certificate is available.
-    */
     None: 'NONE'
 } as const;
 

@@ -29,7 +29,7 @@ export interface WhatsappTemplateComponentButton {
      */
     'type': WhatsappTemplateComponentButtonType;
     /**
-     * **Required for button type `PHONE_NUMBER` or `URL`.** Button text. For `CODE_CODE` buttons, the text is a pre-set value and cannot be customized. For `OTP` buttons, if omitted, the text will default to a pre-set value localized to the template\'s language. For example, `Copy Code` for English (US). If your template is using a one-tap autofill button and you supply this value, the authentication template message will display a copy code button with this text if we are unable to validate your [handshake](https://developers.facebook.com/docs/whatsapp/business-management-api/authentication-templates#handshake). Maximum 25 characters.
+     * **Required for button type `PHONE_NUMBER` or `URL`.** Button text. For `CODE_CODE` buttons, the text is a pre-set value and cannot be customized. For `OTP` buttons, if omitted, the text will default to a pre-set value localized to the template\'s language. For example, `Copy Code` for English (US). If your template is using a one-tap autofill button and you supply this value, the authentication template message will display a copy code button with this text if we are unable to validate your [handshake](https://developers.facebook.com/docs/whatsapp/business-management-api/authentication-templates/autofill-button-authentication-templates#handshake). Maximum 25 characters.
      * @type {string}
      * @memberof WhatsappTemplateComponentButton
      */
@@ -53,19 +53,19 @@ export interface WhatsappTemplateComponentButton {
      */
     'otp_type'?: WhatsappTemplateComponentButtonOtpType;
     /**
-     * **One-tap buttons only.** One-tap button text. Maximum 25 characters.
+     * **One-tap and zero-tap buttons only.** One-tap button text. Maximum 25 characters.
      * @type {string}
      * @memberof WhatsappTemplateComponentButton
      */
     'autofill_text'?: string;
     /**
-     * **One-tap buttons only.** Your Android app\'s package name.
+     * **One-tap and zero-tap buttons only.** Your Android app\'s package name.
      * @type {string}
      * @memberof WhatsappTemplateComponentButton
      */
     'package_name'?: string;
     /**
-     * **One-tap buttons only.** Your app signing key hash. See [App Signing Key Hash](https://developers.facebook.com/docs/whatsapp/business-management-api/authentication-templates#app-signing-key-hash).
+     * **One-tap and zero-tap buttons only.** Your app signing key hash. See [App Signing Key Hash](https://developers.facebook.com/docs/whatsapp/business-management-api/authentication-templates/zero-tap-authentication-templates#app-signing-key-hash).
      * @type {string}
      * @memberof WhatsappTemplateComponentButton
      */

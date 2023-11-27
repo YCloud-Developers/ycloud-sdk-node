@@ -31,7 +31,7 @@ import { WhatsappTemplate } from './whatsapp-template';
  */
 export interface Event {
     /**
-     * Unique ID for the object.
+     * Unique ID for the event.
      * @type {string}
      * @memberof Event
      */

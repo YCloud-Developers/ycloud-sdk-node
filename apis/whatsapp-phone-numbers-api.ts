@@ -23,6 +23,10 @@ import { BASE_PATH, USER_AGENT, COLLECTION_FORMATS, RequestArgs, BaseAPI, Requir
 // @ts-ignore
 import { ErrorResponse } from '../models';
 // @ts-ignore
+import { WhatsappCommerceSettings } from '../models';
+// @ts-ignore
+import { WhatsappCommerceSettingsUpdateRequest } from '../models';
+// @ts-ignore
 import { WhatsappPhoneNumber } from '../models';
 // @ts-ignore
 import { WhatsappPhoneNumberPage } from '../models';
@@ -37,8 +41,8 @@ import { WhatsappPhoneNumberProfileUpdateRequest } from '../models';
 const WhatsappPhoneNumbersApiAxiosParamCreator = function (configuration?: Configuration) {
     return {
         /**
-         * Returns a paginated list of WhatsApp business account phone numbers you\'ve registered on YCloud.
-         * @summary List WhatsApp phone numbers
+         * Returns a paginated list of WhatsApp business phone numbers you\'ve registered on YCloud.
+         * @summary List phone numbers
          * @param {WhatsappPhoneNumbersApiListRequest} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -95,8 +99,8 @@ const WhatsappPhoneNumbersApiAxiosParamCreator = function (configuration?: Confi
             };
         },
         /**
-         * Retrieves a WhatsApp business account phone number you\'ve registered on YCloud.
-         * @summary Retrieve a WhatsApp phone number
+         * Retrieves a WhatsApp business phone number you\'ve registered on YCloud.
+         * @summary Retrieve a phone number
          * @param {string} wabaId WhatsApp Business Account ID.
          * @param {string} phoneNumber Phone number in [E.164](https://en.wikipedia.org/wiki/E.164) format.
          * @param {*} [options] Override http request option.
@@ -140,8 +144,53 @@ const WhatsappPhoneNumbersApiAxiosParamCreator = function (configuration?: Confi
             };
         },
         /**
-         * Retrieves a WhatsApp business account phone number\'s profile. Customers can view your business profile by clicking your business\'s name or number in a conversation thread.
-         * @summary Retrieve a WhatsApp phone number profile
+         * Retrieves a WhatsApp business phone number\'s commerce settings.
+         * @summary Retrieve commerce settings
+         * @param {string} wabaId WhatsApp Business Account ID.
+         * @param {string} phoneNumber Phone number in [E.164](https://en.wikipedia.org/wiki/E.164) format.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        retrieveCommerceSettings: async (wabaId: string, phoneNumber: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'wabaId' is not null or undefined
+            assertParamExists('retrieveCommerceSettings', 'wabaId', wabaId)
+            // verify required parameter 'phoneNumber' is not null or undefined
+            assertParamExists('retrieveCommerceSettings', 'phoneNumber', phoneNumber)
+            const localVarPath = `/whatsapp/phoneNumbers/{wabaId}/{phoneNumber}/whatsappCommerceSettings`
+                .replace(`{${"wabaId"}}`, encodeURIComponent(String(wabaId)))
+                .replace(`{${"phoneNumber"}}`, encodeURIComponent(String(phoneNumber)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            // const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            if (USER_AGENT) {
+                localVarHeaderParameter['User-Agent'] = USER_AGENT;
+            }
+            const localVarQueryParameter = {} as any;
+
+            // authentication api_key required
+            await setApiKeyToObject(localVarHeaderParameter, "X-API-Key", configuration)
+
+
+    
+            // setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+            localVarRequestOptions.params = localVarQueryParameter;
+
+            return {
+                url: localVarPath,
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * Retrieves a WhatsApp business phone number\'s profile. Customers can view your business profile by clicking your business\'s name or number in a conversation thread.
+         * @summary Retrieve a phone number profile
          * @param {string} wabaId WhatsApp Business Account ID.
          * @param {string} phoneNumber Phone number in [E.164](https://en.wikipedia.org/wiki/E.164) format.
          * @param {*} [options] Override http request option.
@@ -185,8 +234,59 @@ const WhatsappPhoneNumbersApiAxiosParamCreator = function (configuration?: Confi
             };
         },
         /**
-         * Updates a WhatsApp phone number profile.
-         * @summary Update a WhatsApp phone number profile
+         * Updates a WhatsApp business phone number\'s commerce settings. Use this endpoint to enable or disable the shopping cart or the product catalog for a specific business phone number.
+         * @summary Update commerce settings
+         * @param {string} wabaId WhatsApp Business Account ID.
+         * @param {string} phoneNumber Phone number in [E.164](https://en.wikipedia.org/wiki/E.164) format.
+         * @param {WhatsappCommerceSettingsUpdateRequest} whatsappCommerceSettingsUpdateRequest 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        updateCommerceSettings: async (wabaId: string, phoneNumber: string, whatsappCommerceSettingsUpdateRequest: WhatsappCommerceSettingsUpdateRequest, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'wabaId' is not null or undefined
+            assertParamExists('updateCommerceSettings', 'wabaId', wabaId)
+            // verify required parameter 'phoneNumber' is not null or undefined
+            assertParamExists('updateCommerceSettings', 'phoneNumber', phoneNumber)
+            // verify required parameter 'whatsappCommerceSettingsUpdateRequest' is not null or undefined
+            assertParamExists('updateCommerceSettings', 'whatsappCommerceSettingsUpdateRequest', whatsappCommerceSettingsUpdateRequest)
+            const localVarPath = `/whatsapp/phoneNumbers/{wabaId}/{phoneNumber}/whatsappCommerceSettings`
+                .replace(`{${"wabaId"}}`, encodeURIComponent(String(wabaId)))
+                .replace(`{${"phoneNumber"}}`, encodeURIComponent(String(phoneNumber)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            // const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'PATCH', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            if (USER_AGENT) {
+                localVarHeaderParameter['User-Agent'] = USER_AGENT;
+            }
+            const localVarQueryParameter = {} as any;
+
+            // authentication api_key required
+            await setApiKeyToObject(localVarHeaderParameter, "X-API-Key", configuration)
+
+
+    
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+
+            // setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+            localVarRequestOptions.params = localVarQueryParameter;
+            localVarRequestOptions.data = serializeDataIfNeeded(whatsappCommerceSettingsUpdateRequest, localVarRequestOptions, configuration)
+
+            return {
+                url: localVarPath,
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * Updates a WhatsApp business phone number profile.
+         * @summary Update a phone number profile
          * @param {string} wabaId WhatsApp Business Account ID.
          * @param {string} phoneNumber Phone number in [E.164](https://en.wikipedia.org/wiki/E.164) format.
          * @param {WhatsappPhoneNumberProfileUpdateRequest} whatsappPhoneNumberProfileUpdateRequest 
@@ -246,8 +346,8 @@ const WhatsappPhoneNumbersApiFp = function(configuration?: Configuration) {
     const localVarAxiosParamCreator = WhatsappPhoneNumbersApiAxiosParamCreator(configuration)
     return {
         /**
-         * Returns a paginated list of WhatsApp business account phone numbers you\'ve registered on YCloud.
-         * @summary List WhatsApp phone numbers
+         * Returns a paginated list of WhatsApp business phone numbers you\'ve registered on YCloud.
+         * @summary List phone numbers
          * @param {WhatsappPhoneNumbersApiListRequest} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -257,8 +357,8 @@ const WhatsappPhoneNumbersApiFp = function(configuration?: Configuration) {
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
         /**
-         * Retrieves a WhatsApp business account phone number you\'ve registered on YCloud.
-         * @summary Retrieve a WhatsApp phone number
+         * Retrieves a WhatsApp business phone number you\'ve registered on YCloud.
+         * @summary Retrieve a phone number
          * @param {string} wabaId WhatsApp Business Account ID.
          * @param {string} phoneNumber Phone number in [E.164](https://en.wikipedia.org/wiki/E.164) format.
          * @param {*} [options] Override http request option.
@@ -269,8 +369,20 @@ const WhatsappPhoneNumbersApiFp = function(configuration?: Configuration) {
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
         /**
-         * Retrieves a WhatsApp business account phone number\'s profile. Customers can view your business profile by clicking your business\'s name or number in a conversation thread.
-         * @summary Retrieve a WhatsApp phone number profile
+         * Retrieves a WhatsApp business phone number\'s commerce settings.
+         * @summary Retrieve commerce settings
+         * @param {string} wabaId WhatsApp Business Account ID.
+         * @param {string} phoneNumber Phone number in [E.164](https://en.wikipedia.org/wiki/E.164) format.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async retrieveCommerceSettings(wabaId: string, phoneNumber: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<WhatsappCommerceSettings>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.retrieveCommerceSettings(wabaId, phoneNumber, options);
+            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+        },
+        /**
+         * Retrieves a WhatsApp business phone number\'s profile. Customers can view your business profile by clicking your business\'s name or number in a conversation thread.
+         * @summary Retrieve a phone number profile
          * @param {string} wabaId WhatsApp Business Account ID.
          * @param {string} phoneNumber Phone number in [E.164](https://en.wikipedia.org/wiki/E.164) format.
          * @param {*} [options] Override http request option.
@@ -281,8 +393,21 @@ const WhatsappPhoneNumbersApiFp = function(configuration?: Configuration) {
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
         /**
-         * Updates a WhatsApp phone number profile.
-         * @summary Update a WhatsApp phone number profile
+         * Updates a WhatsApp business phone number\'s commerce settings. Use this endpoint to enable or disable the shopping cart or the product catalog for a specific business phone number.
+         * @summary Update commerce settings
+         * @param {string} wabaId WhatsApp Business Account ID.
+         * @param {string} phoneNumber Phone number in [E.164](https://en.wikipedia.org/wiki/E.164) format.
+         * @param {WhatsappCommerceSettingsUpdateRequest} whatsappCommerceSettingsUpdateRequest 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async updateCommerceSettings(wabaId: string, phoneNumber: string, whatsappCommerceSettingsUpdateRequest: WhatsappCommerceSettingsUpdateRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<WhatsappCommerceSettings>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.updateCommerceSettings(wabaId, phoneNumber, whatsappCommerceSettingsUpdateRequest, options);
+            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+        },
+        /**
+         * Updates a WhatsApp business phone number profile.
+         * @summary Update a phone number profile
          * @param {string} wabaId WhatsApp Business Account ID.
          * @param {string} phoneNumber Phone number in [E.164](https://en.wikipedia.org/wiki/E.164) format.
          * @param {WhatsappPhoneNumberProfileUpdateRequest} whatsappPhoneNumberProfileUpdateRequest 
@@ -304,8 +429,8 @@ const WhatsappPhoneNumbersApiFactory = function (configuration?: Configuration, 
     const localVarFp = WhatsappPhoneNumbersApiFp(configuration)
     return {
         /**
-         * Returns a paginated list of WhatsApp business account phone numbers you\'ve registered on YCloud.
-         * @summary List WhatsApp phone numbers
+         * Returns a paginated list of WhatsApp business phone numbers you\'ve registered on YCloud.
+         * @summary List phone numbers
          * @param {WhatsappPhoneNumbersApiListRequest} requestParameters Request parameters.
          * @param {number} [page] Page number of the results to be returned, 1-based.
          * @param {number} [limit] A limit on the number of results to be returned, or number of results per page, between 1 and 100, defaults to 10.
@@ -318,8 +443,8 @@ const WhatsappPhoneNumbersApiFactory = function (configuration?: Configuration, 
             return localVarFp.list(requestParameters, options).then((request) => request(axios, basePath));
         },
         /**
-         * Retrieves a WhatsApp business account phone number you\'ve registered on YCloud.
-         * @summary Retrieve a WhatsApp phone number
+         * Retrieves a WhatsApp business phone number you\'ve registered on YCloud.
+         * @summary Retrieve a phone number
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -327,8 +452,17 @@ const WhatsappPhoneNumbersApiFactory = function (configuration?: Configuration, 
             return localVarFp.retrieve(wabaId, phoneNumber, options).then((request) => request(axios, basePath));
         },
         /**
-         * Retrieves a WhatsApp business account phone number\'s profile. Customers can view your business profile by clicking your business\'s name or number in a conversation thread.
-         * @summary Retrieve a WhatsApp phone number profile
+         * Retrieves a WhatsApp business phone number\'s commerce settings.
+         * @summary Retrieve commerce settings
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        retrieveCommerceSettings(wabaId: string, phoneNumber: string, options?: any): AxiosPromise<WhatsappCommerceSettings> {
+            return localVarFp.retrieveCommerceSettings(wabaId, phoneNumber, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * Retrieves a WhatsApp business phone number\'s profile. Customers can view your business profile by clicking your business\'s name or number in a conversation thread.
+         * @summary Retrieve a phone number profile
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -336,8 +470,17 @@ const WhatsappPhoneNumbersApiFactory = function (configuration?: Configuration, 
             return localVarFp.retrieveProfile(wabaId, phoneNumber, options).then((request) => request(axios, basePath));
         },
         /**
-         * Updates a WhatsApp phone number profile.
-         * @summary Update a WhatsApp phone number profile
+         * Updates a WhatsApp business phone number\'s commerce settings. Use this endpoint to enable or disable the shopping cart or the product catalog for a specific business phone number.
+         * @summary Update commerce settings
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        updateCommerceSettings(wabaId: string, phoneNumber: string, whatsappCommerceSettingsUpdateRequest: WhatsappCommerceSettingsUpdateRequest, options?: any): AxiosPromise<WhatsappCommerceSettings> {
+            return localVarFp.updateCommerceSettings(wabaId, phoneNumber, whatsappCommerceSettingsUpdateRequest, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * Updates a WhatsApp business phone number profile.
+         * @summary Update a phone number profile
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -390,8 +533,8 @@ export interface WhatsappPhoneNumbersApiListRequest {
  */
 export class WhatsappPhoneNumbersApi extends BaseAPI {
     /**
-     * Returns a paginated list of WhatsApp business account phone numbers you\'ve registered on YCloud.
-     * @summary List WhatsApp phone numbers
+     * Returns a paginated list of WhatsApp business phone numbers you\'ve registered on YCloud.
+     * @summary List phone numbers
      * @param {WhatsappPhoneNumbersApiListRequest} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
@@ -402,8 +545,8 @@ export class WhatsappPhoneNumbersApi extends BaseAPI {
     }
 
     /**
-     * Retrieves a WhatsApp business account phone number you\'ve registered on YCloud.
-     * @summary Retrieve a WhatsApp phone number
+     * Retrieves a WhatsApp business phone number you\'ve registered on YCloud.
+     * @summary Retrieve a phone number
      * @param {string} wabaId WhatsApp Business Account ID.
      * @param {string} phoneNumber Phone number in [E.164](https://en.wikipedia.org/wiki/E.164) format.
      * @param {*} [options] Override http request option.
@@ -415,8 +558,21 @@ export class WhatsappPhoneNumbersApi extends BaseAPI {
     }
 
     /**
-     * Retrieves a WhatsApp business account phone number\'s profile. Customers can view your business profile by clicking your business\'s name or number in a conversation thread.
-     * @summary Retrieve a WhatsApp phone number profile
+     * Retrieves a WhatsApp business phone number\'s commerce settings.
+     * @summary Retrieve commerce settings
+     * @param {string} wabaId WhatsApp Business Account ID.
+     * @param {string} phoneNumber Phone number in [E.164](https://en.wikipedia.org/wiki/E.164) format.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof WhatsappPhoneNumbersApi
+     */
+    public retrieveCommerceSettings(wabaId: string, phoneNumber: string, options?: AxiosRequestConfig) {
+        return WhatsappPhoneNumbersApiFp(this.configuration).retrieveCommerceSettings(wabaId, phoneNumber, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * Retrieves a WhatsApp business phone number\'s profile. Customers can view your business profile by clicking your business\'s name or number in a conversation thread.
+     * @summary Retrieve a phone number profile
      * @param {string} wabaId WhatsApp Business Account ID.
      * @param {string} phoneNumber Phone number in [E.164](https://en.wikipedia.org/wiki/E.164) format.
      * @param {*} [options] Override http request option.
@@ -428,8 +584,22 @@ export class WhatsappPhoneNumbersApi extends BaseAPI {
     }
 
     /**
-     * Updates a WhatsApp phone number profile.
-     * @summary Update a WhatsApp phone number profile
+     * Updates a WhatsApp business phone number\'s commerce settings. Use this endpoint to enable or disable the shopping cart or the product catalog for a specific business phone number.
+     * @summary Update commerce settings
+     * @param {string} wabaId WhatsApp Business Account ID.
+     * @param {string} phoneNumber Phone number in [E.164](https://en.wikipedia.org/wiki/E.164) format.
+     * @param {WhatsappCommerceSettingsUpdateRequest} whatsappCommerceSettingsUpdateRequest 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof WhatsappPhoneNumbersApi
+     */
+    public updateCommerceSettings(wabaId: string, phoneNumber: string, whatsappCommerceSettingsUpdateRequest: WhatsappCommerceSettingsUpdateRequest, options?: AxiosRequestConfig) {
+        return WhatsappPhoneNumbersApiFp(this.configuration).updateCommerceSettings(wabaId, phoneNumber, whatsappCommerceSettingsUpdateRequest, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * Updates a WhatsApp business phone number profile.
+     * @summary Update a phone number profile
      * @param {string} wabaId WhatsApp Business Account ID.
      * @param {string} phoneNumber Phone number in [E.164](https://en.wikipedia.org/wiki/E.164) format.
      * @param {WhatsappPhoneNumberProfileUpdateRequest} whatsappPhoneNumberProfileUpdateRequest 

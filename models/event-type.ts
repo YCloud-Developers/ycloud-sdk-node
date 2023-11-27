@@ -15,7 +15,7 @@
 
 
 /**
- * Type of webhook events.
+ * Type of event.
  * @export
  * @enum {string}
  */
@@ -58,15 +58,15 @@ export const EventType = {
     */
     WhatsappMessageUpdated: 'whatsapp.message.updated',
     /**
-    * Occurs when a WhatsApp business account phone number is deleted.
+    * Occurs when a WhatsApp business phone number is deleted.
     */
     WhatsappPhoneNumberDeleted: 'whatsapp.phone_number.deleted',
     /**
-    * Occurs when a WhatsApp business account phone number&#39;s name has been approved or rejected.
+    * Occurs when a WhatsApp business phone number&#39;s name has been approved or rejected.
     */
     WhatsappPhoneNumberNameUpdated: 'whatsapp.phone_number.name_updated',
     /**
-    * Occurs when a WhatsApp business account phone number&#39;s quality-related status is updated, and the status changes to &#x60;GREEN&#x60;, &#x60;YELLOW&#x60;, or &#x60;RED&#x60;.
+    * Occurs when a WhatsApp business phone number&#39;s quality-related status is updated, and the status changes to &#x60;GREEN&#x60;, &#x60;YELLOW&#x60;, or &#x60;RED&#x60;.
     */
     WhatsappPhoneNumberQualityUpdated: 'whatsapp.phone_number.quality_updated',
     /**
@@ -78,7 +78,7 @@ export const EventType = {
     */
     WhatsappTemplateQualityUpdated: 'whatsapp.template.quality_updated',
     /**
-    * Occurs when a WhatsApp template status is updated, and the status changes to REJECTED, APPROVED, PAUSED, DISABLED, or IN_APPEAL.
+    * Occurs when a WhatsApp template status is updated, and the status changes to &#x60;REJECTED&#x60;, &#x60;APPROVED&#x60;, &#x60;PAUSED&#x60;, &#x60;DISABLED&#x60;, or &#x60;IN_APPEAL&#x60;.
     */
     WhatsappTemplateReviewed: 'whatsapp.template.reviewed'
 } as const;

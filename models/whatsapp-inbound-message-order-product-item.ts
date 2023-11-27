@@ -34,10 +34,10 @@ export interface WhatsappInboundMessageOrderProductItem {
     'quantity'?: number;
     /**
      * Unitary price of item.
-     * @type {string}
+     * @type {number}
      * @memberof WhatsappInboundMessageOrderProductItem
      */
-    'item_price'?: string;
+    'item_price'?: number;
     /**
      * Price currency. [ISO 4217 currency code](https://en.wikipedia.org/wiki/ISO_4217).
      * @type {string}

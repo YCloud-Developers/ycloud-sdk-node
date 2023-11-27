@@ -15,7 +15,7 @@
 
 
 /**
- * Supports several independent channels for verification: `sms`: Sends an SMS message with a verification code. `voice`: Makes a voice call with a verification code. `email_code`: Sends an email with a verification code. `whatsapp`: Sends a WhatsApp message with a verification code.
+ * Supports several independent channels for verification: - `sms`: Sends an SMS message with a verification code. - `voice`: Makes a voice call with a verification code. - `email_code`: Sends an email with a verification code. - `whatsapp`: Sends a WhatsApp message with a verification code.
  * @export
  * @enum {string}
  */

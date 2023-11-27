@@ -21,7 +21,7 @@
  */
 export interface WhatsappInboundMessageInteractiveButtonReply {
     /**
-     * Unique ID of a button.
+     * Unique ID of the clicked button.
      * @type {string}
      * @memberof WhatsappInboundMessageInteractiveButtonReply
      */

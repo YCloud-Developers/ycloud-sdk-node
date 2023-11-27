@@ -15,19 +15,16 @@
 
 
 /**
- * Quality rating. One of `GREEN`, `YELLOW`, `RED`, or `UNKNOWN`. See also [Quality Rating](https://developers.facebook.com/docs/whatsapp/messaging-limits#quality-rating-and-messaging-limits). - `GREEN`: High quality. - `YELLOW`: Medium quality. - `RED`: Low quality. - `UNKNOWN`: Unknown quality.
+ * 
  * @export
- * @enum {string}
+ * @interface WhatsappMessageTemplateComponentParameterActionSectionProductItem
  */
-
-export const WhatsappPhoneNumberQualityRating = {
-    Green: 'GREEN',
-    Yellow: 'YELLOW',
-    Red: 'RED',
-    Unknown: 'UNKNOWN'
-} as const;
-
-export type WhatsappPhoneNumberQualityRating = typeof WhatsappPhoneNumberQualityRating[keyof typeof WhatsappPhoneNumberQualityRating];
-
-
+export interface WhatsappMessageTemplateComponentParameterActionSectionProductItem {
+    /**
+     * SKU number of the item you want to appear in the section. SKU numbers are labeled as **Content ID** in the [Commerce Manager](https://business.facebook.com/commerce/).
+     * @type {string}
+     * @memberof WhatsappMessageTemplateComponentParameterActionSectionProductItem
+     */
+    'product_retailer_id'?: string;
+}
 

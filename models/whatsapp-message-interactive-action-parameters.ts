@@ -32,5 +32,11 @@ export interface WhatsappMessageInteractiveActionParameters {
      * @memberof WhatsappMessageInteractiveActionParameters
      */
     'url'?: string;
+    /**
+     * Item SKU number. Labeled as **Content ID** in the [Commerce Manager](https://business.facebook.com/commerce/). The thumbnail of this item will be used as the message\'s header image.
+     * @type {string}
+     * @memberof WhatsappMessageInteractiveActionParameters
+     */
+    'thumbnail_product_retailer_id'?: string;
 }
 

@@ -15,39 +15,18 @@
 
 
 /**
- * Indicates who initiated the conversation. **Note: Starting June 1, 2023, `business_initiated` will be replaced with `authentication`, `marketing`, and `utility`, while `user_initiated` will be replaced with `service`. For more information, see also [Updates to conversation-based pricing: Effective June 1, 2023](https://developers.facebook.com/docs/whatsapp/updates-to-pricing).**  `business_initiated`: Indicates that the conversation started by a business sending the first message to a customer. This applies any time it has been more than 24 hours since the last customer message. `user_initiated`: Indicates that the conversation started by a business replying to a customer message. This applies only when the business reply is within 24 hours of the last customer message. `referral_conversion`: Indicates the user initiated the conversation by clicking a [Click to WhatsApp ad](https://www.facebook.com/business/help/447934475640650) or a [Facebook Page Call-to-Action button](https://www.facebook.com/help/977869848936797). `authentication`: Indicates the business initiated the conversation with a message template categorized as `AUTHENTICATION`. `marketing`: Indicates the business initiated the conversation with a message template categorized as `MARKETING`. `utility`: Indicates the business initiated the conversation with a message template categorized as `UTILITY`. `service`: Indicates the user initiated the conversation.
+ * Indicates who initiated the conversation. **Note: Starting June 1, 2023, `business_initiated` will be replaced with `authentication`, `marketing`, and `utility`, while `user_initiated` will be replaced with `service`. For more information, see also [Updates to conversation-based pricing: Effective June 1, 2023](https://developers.facebook.com/docs/whatsapp/updates-to-pricing).**  - `business_initiated`: Indicates that the conversation started by a business sending the first message to a customer. This applies any time it has been more than 24 hours since the last customer message. - `user_initiated`: Indicates that the conversation started by a business replying to a customer message. This applies only when the business reply is within 24 hours of the last customer message. - `referral_conversion`: Indicates the user initiated the conversation by clicking a [Click to WhatsApp ad](https://www.facebook.com/business/help/447934475640650) or a [Facebook Page Call-to-Action button](https://www.facebook.com/help/977869848936797). - `authentication`: Indicates the business initiated the conversation with a message template categorized as `AUTHENTICATION`. - `marketing`: Indicates the business initiated the conversation with a message template categorized as `MARKETING`. - `utility`: Indicates the business initiated the conversation with a message template categorized as `UTILITY`. - `service`: Indicates the user initiated the conversation.
  * @export
  * @enum {string}
  */
 
 export const WhatsappConversationOriginType = {
-    /**
-    * Indicates that the conversation started by a business sending the first message to a customer. This applies any time it has been more than 24 hours since the last customer message.
-    */
     BusinessInitiated: 'business_initiated',
-    /**
-    * Indicates that the conversation started by a business replying to a customer message. This applies only when the business reply is within 24 hours of the last customer message.
-    */
     UserInitiated: 'user_initiated',
-    /**
-    * Indicates the user initiated the conversation by clicking a [Click to WhatsApp ad](https://www.facebook.com/business/help/447934475640650) or a [Facebook Page Call-to-Action button](https://www.facebook.com/help/977869848936797).
-    */
     ReferralConversion: 'referral_conversion',
-    /**
-    * Indicates the business initiated the conversation with a message template categorized as &#x60;AUTHENTICATION&#x60;.
-    */
     Authentication: 'authentication',
-    /**
-    * Indicates the business initiated the conversation with a message template categorized as &#x60;MARKETING&#x60;.
-    */
     Marketing: 'marketing',
-    /**
-    * Indicates the business initiated the conversation with a message template categorized as &#x60;UTILITY&#x60;.
-    */
     Utility: 'utility',
-    /**
-    * Indicates the user initiated the conversation.
-    */
     Service: 'service'
 } as const;
 

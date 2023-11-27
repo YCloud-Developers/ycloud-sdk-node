@@ -27,7 +27,7 @@ import { WhatsappReviewDecision } from './whatsapp-review-decision';
  */
 export interface WhatsappBusinessAccount {
     /**
-     * ID of the WhatApp Business Account.
+     * WhatApp Business Account ID.
      * @type {string}
      * @memberof WhatsappBusinessAccount
      */
