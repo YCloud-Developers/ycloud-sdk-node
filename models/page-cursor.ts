@@ -14,16 +14,17 @@
 
 
 
-export * from './apis/balance-api';
-export * from './apis/contacts-api';
-export * from './apis/emails-api';
-export * from './apis/sms-api';
-export * from './apis/unsubscribers-api';
-export * from './apis/verify-api';
-export * from './apis/voices-api';
-export * from './apis/webhook-endpoints-api';
-export * from './apis/whatsapp-business-accounts-api';
-export * from './apis/whatsapp-messages-api';
-export * from './apis/whatsapp-phone-numbers-api';
-export * from './apis/whatsapp-templates-api';
+/**
+ * A cursor object is returned only if the endpoint you requested supports cursor pagination.
+ * @export
+ * @interface PageCursor
+ */
+export interface PageCursor {
+    /**
+     * A cursor to fetch the next page in cursor pagination. For example, if you make a list request, receive 100 objects and `cursor.after=id:foo`, your subsequent call can include `pageAfter=id:foo` in order to fetch the next page of the list. This field is returned only if there are more items in the list.
+     * @type {string}
+     * @memberof PageCursor
+     */
+    'after'?: string;
+}
 

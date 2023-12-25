@@ -14,16 +14,17 @@
 
 
 
-export * from './apis/balance-api';
-export * from './apis/contacts-api';
-export * from './apis/emails-api';
-export * from './apis/sms-api';
-export * from './apis/unsubscribers-api';
-export * from './apis/verify-api';
-export * from './apis/voices-api';
-export * from './apis/webhook-endpoints-api';
-export * from './apis/whatsapp-business-accounts-api';
-export * from './apis/whatsapp-messages-api';
-export * from './apis/whatsapp-phone-numbers-api';
-export * from './apis/whatsapp-templates-api';
+/**
+ * Channel of unsubscriber. - `whatsapp`: Indicates that the customer opts out of receiving WhatsApp messages from your business.
+ * @export
+ * @enum {string}
+ */
+
+export const UnsubscriberChannel = {
+    Whatsapp: 'whatsapp'
+} as const;
+
+export type UnsubscriberChannel = typeof UnsubscriberChannel[keyof typeof UnsubscriberChannel];
+
+
 

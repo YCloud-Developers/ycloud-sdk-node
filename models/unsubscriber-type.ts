@@ -14,16 +14,17 @@
 
 
 
-export * from './apis/balance-api';
-export * from './apis/contacts-api';
-export * from './apis/emails-api';
-export * from './apis/sms-api';
-export * from './apis/unsubscribers-api';
-export * from './apis/verify-api';
-export * from './apis/voices-api';
-export * from './apis/webhook-endpoints-api';
-export * from './apis/whatsapp-business-accounts-api';
-export * from './apis/whatsapp-messages-api';
-export * from './apis/whatsapp-phone-numbers-api';
-export * from './apis/whatsapp-templates-api';
+/**
+ * Type of unsubscriber. - `PHONE_NUMBER`: Indicates that the `customer` is a phone number in [E.164](https://en.wikipedia.org/wiki/E.164) format.
+ * @export
+ * @enum {string}
+ */
+
+export const UnsubscriberType = {
+    PhoneNumber: 'PHONE_NUMBER'
+} as const;
+
+export type UnsubscriberType = typeof UnsubscriberType[keyof typeof UnsubscriberType];
+
+
 

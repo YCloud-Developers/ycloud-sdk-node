@@ -53,6 +53,11 @@ Class | Method | HTTP request | Description
 *EmailsApi* | **send** | **POST** /emails | Send an email
 *SmsApi* | **list** | **GET** /sms | List SMS records
 *SmsApi* | **send** | **POST** /sms | Send an SMS
+*UnsubscribersApi* | **create** | **POST** /unsubscribers | Create an unsubscriber
+*UnsubscribersApi* | **deleteByCustomerAndChannel** | **DELETE** /unsubscribers/{customer}/{channel} | Delete an unsubscriber
+*UnsubscribersApi* | **list** | **GET** /unsubscribers | List unsubscribers
+*UnsubscribersApi* | **listAllByCustomer** | **GET** /unsubscribers/{customer} | List all unsubscribers by customer
+*UnsubscribersApi* | **retrieveByCustomerAndChannel** | **GET** /unsubscribers/{customer}/{channel} | Retrieve an unsubscriber
 *VerifyApi* | **check** | **POST** /verify/verificationChecks | Check a verification
 *VerifyApi* | **send** | **POST** /verify/verifications | Start a verification
 *VoicesApi* | **list** | **GET** /voices | List voice records

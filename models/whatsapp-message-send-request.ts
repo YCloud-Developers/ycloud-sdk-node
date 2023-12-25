@@ -125,5 +125,11 @@ export interface WhatsappMessageSendRequest {
      * @memberof WhatsappMessageSendRequest
      */
     'externalId'?: string;
+    /**
+     * **Optional.** If set to `true`, the message will not be sent to users who have unsubscribed from your account. Defaults to `false`.  Only use for `POST /v2/whatsapp/messages`. If the user has unsubscribed, we will push webhook notifications with `whatsappMessage.errorCode` set to `RECIPIENT_UNSUBSCRIBED`.  Not applicable to `POST /v2/whatsapp/message/sendDirectly`.
+     * @type {boolean}
+     * @memberof WhatsappMessageSendRequest
+     */
+    'filterUnsubscribed'?: boolean;
 }
 
