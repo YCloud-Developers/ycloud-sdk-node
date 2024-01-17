@@ -15,7 +15,7 @@
 
 
 /**
- * To see if a phone number has been verified via OTP (one-time password), check that number\'s `code_verification_status` field.
+ * To see if a phone number has been verified via OTP (one-time password).
  * @export
  * @enum {string}
  */

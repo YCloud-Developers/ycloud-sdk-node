@@ -99,6 +99,51 @@ const WhatsappPhoneNumbersApiAxiosParamCreator = function (configuration?: Confi
             };
         },
         /**
+         * Registers a WhatsApp business phone number.
+         * @summary Register a phone number
+         * @param {string} wabaId WhatsApp Business Account ID.
+         * @param {string} phoneNumber Phone number ID.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        register: async (wabaId: string, phoneNumber: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'wabaId' is not null or undefined
+            assertParamExists('register', 'wabaId', wabaId)
+            // verify required parameter 'phoneNumber' is not null or undefined
+            assertParamExists('register', 'phoneNumber', phoneNumber)
+            const localVarPath = `/whatsapp/phoneNumbers/{wabaId}/{phoneNumber}/register`
+                .replace(`{${"wabaId"}}`, encodeURIComponent(String(wabaId)))
+                .replace(`{${"phoneNumber"}}`, encodeURIComponent(String(phoneNumber)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            // const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            if (USER_AGENT) {
+                localVarHeaderParameter['User-Agent'] = USER_AGENT;
+            }
+            const localVarQueryParameter = {} as any;
+
+            // authentication api_key required
+            await setApiKeyToObject(localVarHeaderParameter, "X-API-Key", configuration)
+
+
+    
+            // setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+            localVarRequestOptions.params = localVarQueryParameter;
+
+            return {
+                url: localVarPath,
+                options: localVarRequestOptions,
+            };
+        },
+        /**
          * Retrieves a WhatsApp business phone number you\'ve registered on YCloud.
          * @summary Retrieve a phone number
          * @param {string} wabaId WhatsApp Business Account ID.
@@ -357,6 +402,18 @@ const WhatsappPhoneNumbersApiFp = function(configuration?: Configuration) {
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
         /**
+         * Registers a WhatsApp business phone number.
+         * @summary Register a phone number
+         * @param {string} wabaId WhatsApp Business Account ID.
+         * @param {string} phoneNumber Phone number ID.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async register(wabaId: string, phoneNumber: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<WhatsappPhoneNumber>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.register(wabaId, phoneNumber, options);
+            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+        },
+        /**
          * Retrieves a WhatsApp business phone number you\'ve registered on YCloud.
          * @summary Retrieve a phone number
          * @param {string} wabaId WhatsApp Business Account ID.
@@ -441,6 +498,15 @@ const WhatsappPhoneNumbersApiFactory = function (configuration?: Configuration, 
          */
         list(requestParameters: WhatsappPhoneNumbersApiListRequest = {}, options?: any): AxiosPromise<WhatsappPhoneNumberPage> {
             return localVarFp.list(requestParameters, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * Registers a WhatsApp business phone number.
+         * @summary Register a phone number
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        register(wabaId: string, phoneNumber: string, options?: any): AxiosPromise<WhatsappPhoneNumber> {
+            return localVarFp.register(wabaId, phoneNumber, options).then((request) => request(axios, basePath));
         },
         /**
          * Retrieves a WhatsApp business phone number you\'ve registered on YCloud.
@@ -542,6 +608,19 @@ export class WhatsappPhoneNumbersApi extends BaseAPI {
      */
     public list(requestParameters: WhatsappPhoneNumbersApiListRequest = {}, options?: AxiosRequestConfig) {
         return WhatsappPhoneNumbersApiFp(this.configuration).list(requestParameters, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * Registers a WhatsApp business phone number.
+     * @summary Register a phone number
+     * @param {string} wabaId WhatsApp Business Account ID.
+     * @param {string} phoneNumber Phone number ID.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof WhatsappPhoneNumbersApi
+     */
+    public register(wabaId: string, phoneNumber: string, options?: AxiosRequestConfig) {
+        return WhatsappPhoneNumbersApiFp(this.configuration).register(wabaId, phoneNumber, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**

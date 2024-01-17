@@ -74,6 +74,7 @@ Class | Method | HTTP request | Description
 *WhatsappMessagesApi* | **send** | **POST** /whatsapp/messages | Enqueue a message
 *WhatsappMessagesApi* | **sendDirectly** | **POST** /whatsapp/messages/sendDirectly | Send a message directly
 *WhatsappPhoneNumbersApi* | **list** | **GET** /whatsapp/phoneNumbers | List phone numbers
+*WhatsappPhoneNumbersApi* | **register** | **POST** /whatsapp/phoneNumbers/{wabaId}/{phoneNumber}/register | Register a phone number
 *WhatsappPhoneNumbersApi* | **retrieve** | **GET** /whatsapp/phoneNumbers/{wabaId}/{phoneNumber} | Retrieve a phone number
 *WhatsappPhoneNumbersApi* | **retrieveCommerceSettings** | **GET** /whatsapp/phoneNumbers/{wabaId}/{phoneNumber}/whatsappCommerceSettings | Retrieve commerce settings
 *WhatsappPhoneNumbersApi* | **retrieveProfile** | **GET** /whatsapp/phoneNumbers/{wabaId}/{phoneNumber}/profile | Retrieve a phone number profile

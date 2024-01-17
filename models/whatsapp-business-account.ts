@@ -75,6 +75,12 @@ export interface WhatsappBusinessAccount {
      */
     'ownershipType'?: string;
     /**
+     * Whether we have attached a payment method to the WhatsApp Business Account.
+     * @type {boolean}
+     * @memberof WhatsappBusinessAccount
+     */
+    'paymentMethodAttached'?: boolean;
+    /**
      * Primary funding ID for the WhatsApp Business Account paid service.
      * @type {string}
      * @memberof WhatsappBusinessAccount

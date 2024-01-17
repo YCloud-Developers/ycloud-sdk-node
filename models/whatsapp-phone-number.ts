@@ -27,6 +27,12 @@ import { WhatsappReviewDecision } from './whatsapp-review-decision';
  */
 export interface WhatsappPhoneNumber {
     /**
+     * Phone number ID.
+     * @type {string}
+     * @memberof WhatsappPhoneNumber
+     */
+    'id'?: string;
+    /**
      * Phone number in [E.164](https://en.wikipedia.org/wiki/E.164) format.
      * @type {string}
      * @memberof WhatsappPhoneNumber
