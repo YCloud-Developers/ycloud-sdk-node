@@ -39,7 +39,7 @@ export interface SmsSendRequest {
      */
     'senderId'?: string;
     /**
-     * This parameter is only required for Chinese mainland SMS messages. You must specify an approved signature such as `YCloud`. It will be added to the beginning of SMS body and wrapped with `【】`, e.g. `【YCloud】Your verification code is 123456`.
+     * This parameter is only required for Chinese mainland SMS messages. You must specify an approved signature such as `Brand`. It will be added to the beginning of SMS body and wrapped with `【】`, e.g. `【Brand】Your verification code is 123456`.
      * @type {string}
      * @memberof SmsSendRequest
      */

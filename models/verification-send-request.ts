@@ -34,7 +34,7 @@ export interface VerificationSendRequest {
      */
     'to': string;
     /**
-     * Verification code to be sent. This field is optional. If not provided, YCloud will automatically generate a code.
+     * Verification code to be sent. This field is optional. If not provided, we will automatically generate a code.
      * @type {string}
      * @memberof VerificationSendRequest
      */
@@ -46,7 +46,7 @@ export interface VerificationSendRequest {
      */
     'senderId'?: string;
     /**
-     * This parameter is only required for Chinese mainland SMS messages. You must specify an approved signature such as `YCloud`. It will be added to the beginning of SMS body and wrapped with `【】`, e.g. `【YCloud】Your verification code is 123456`.
+     * This parameter is only required for Chinese mainland SMS messages. You must specify an approved signature such as `Brand`. It will be added to the beginning of SMS body and wrapped with `【】`, e.g. `【Brand】Your verification code is 123456`.
      * @type {string}
      * @memberof VerificationSendRequest
      */

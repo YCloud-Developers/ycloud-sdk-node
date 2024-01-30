@@ -22,7 +22,8 @@
 
 export const WhatsappPhoneNumberCodeVerificationStatus = {
     Verified: 'VERIFIED',
-    NotVerified: 'NOT_VERIFIED'
+    NotVerified: 'NOT_VERIFIED',
+    Expired: 'EXPIRED'
 } as const;
 
 export type WhatsappPhoneNumberCodeVerificationStatus = typeof WhatsappPhoneNumberCodeVerificationStatus[keyof typeof WhatsappPhoneNumberCodeVerificationStatus];

@@ -41,7 +41,7 @@ import { WhatsappPhoneNumberProfileUpdateRequest } from '../models';
 const WhatsappPhoneNumbersApiAxiosParamCreator = function (configuration?: Configuration) {
     return {
         /**
-         * Returns a paginated list of WhatsApp business phone numbers you\'ve registered on YCloud.
+         * Returns a paginated list of WhatsApp business phone numbers you\'ve registered.
          * @summary List phone numbers
          * @param {WhatsappPhoneNumbersApiListRequest} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
@@ -144,7 +144,7 @@ const WhatsappPhoneNumbersApiAxiosParamCreator = function (configuration?: Confi
             };
         },
         /**
-         * Retrieves a WhatsApp business phone number you\'ve registered on YCloud.
+         * Retrieves a WhatsApp business phone number you\'ve registered.
          * @summary Retrieve a phone number
          * @param {string} wabaId WhatsApp Business Account ID.
          * @param {string} phoneNumber Phone number in [E.164](https://en.wikipedia.org/wiki/E.164) format.
@@ -391,7 +391,7 @@ const WhatsappPhoneNumbersApiFp = function(configuration?: Configuration) {
     const localVarAxiosParamCreator = WhatsappPhoneNumbersApiAxiosParamCreator(configuration)
     return {
         /**
-         * Returns a paginated list of WhatsApp business phone numbers you\'ve registered on YCloud.
+         * Returns a paginated list of WhatsApp business phone numbers you\'ve registered.
          * @summary List phone numbers
          * @param {WhatsappPhoneNumbersApiListRequest} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
@@ -414,7 +414,7 @@ const WhatsappPhoneNumbersApiFp = function(configuration?: Configuration) {
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
         /**
-         * Retrieves a WhatsApp business phone number you\'ve registered on YCloud.
+         * Retrieves a WhatsApp business phone number you\'ve registered.
          * @summary Retrieve a phone number
          * @param {string} wabaId WhatsApp Business Account ID.
          * @param {string} phoneNumber Phone number in [E.164](https://en.wikipedia.org/wiki/E.164) format.
@@ -486,7 +486,7 @@ const WhatsappPhoneNumbersApiFactory = function (configuration?: Configuration, 
     const localVarFp = WhatsappPhoneNumbersApiFp(configuration)
     return {
         /**
-         * Returns a paginated list of WhatsApp business phone numbers you\'ve registered on YCloud.
+         * Returns a paginated list of WhatsApp business phone numbers you\'ve registered.
          * @summary List phone numbers
          * @param {WhatsappPhoneNumbersApiListRequest} requestParameters Request parameters.
          * @param {number} [page] Page number of the results to be returned, 1-based.
@@ -509,7 +509,7 @@ const WhatsappPhoneNumbersApiFactory = function (configuration?: Configuration, 
             return localVarFp.register(wabaId, phoneNumber, options).then((request) => request(axios, basePath));
         },
         /**
-         * Retrieves a WhatsApp business phone number you\'ve registered on YCloud.
+         * Retrieves a WhatsApp business phone number you\'ve registered.
          * @summary Retrieve a phone number
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -599,7 +599,7 @@ export interface WhatsappPhoneNumbersApiListRequest {
  */
 export class WhatsappPhoneNumbersApi extends BaseAPI {
     /**
-     * Returns a paginated list of WhatsApp business phone numbers you\'ve registered on YCloud.
+     * Returns a paginated list of WhatsApp business phone numbers you\'ve registered.
      * @summary List phone numbers
      * @param {WhatsappPhoneNumbersApiListRequest} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -624,7 +624,7 @@ export class WhatsappPhoneNumbersApi extends BaseAPI {
     }
 
     /**
-     * Retrieves a WhatsApp business phone number you\'ve registered on YCloud.
+     * Retrieves a WhatsApp business phone number you\'ve registered.
      * @summary Retrieve a phone number
      * @param {string} wabaId WhatsApp Business Account ID.
      * @param {string} phoneNumber Phone number in [E.164](https://en.wikipedia.org/wiki/E.164) format.

@@ -33,7 +33,7 @@ import { WhatsappBusinessAccountPage } from '../models';
 const WhatsappBusinessAccountsApiAxiosParamCreator = function (configuration?: Configuration) {
     return {
         /**
-         * Returns a paginated list of WhatsApp business accounts you\'ve registered on YCloud.
+         * Returns a paginated list of WhatsApp business accounts you\'ve registered.
          * @summary List WABAs
          * @param {WhatsappBusinessAccountsApiListRequest} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
@@ -91,7 +91,7 @@ const WhatsappBusinessAccountsApiAxiosParamCreator = function (configuration?: C
             };
         },
         /**
-         * Retrieves a WABA you\'ve registered on YCloud.
+         * Retrieves a WABA you\'ve registered.
          * @summary Retrieve a WABA
          * @param {string} id WhatsApp Business Account ID.
          * @param {*} [options] Override http request option.
@@ -142,7 +142,7 @@ const WhatsappBusinessAccountsApiFp = function(configuration?: Configuration) {
     const localVarAxiosParamCreator = WhatsappBusinessAccountsApiAxiosParamCreator(configuration)
     return {
         /**
-         * Returns a paginated list of WhatsApp business accounts you\'ve registered on YCloud.
+         * Returns a paginated list of WhatsApp business accounts you\'ve registered.
          * @summary List WABAs
          * @param {WhatsappBusinessAccountsApiListRequest} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
@@ -153,7 +153,7 @@ const WhatsappBusinessAccountsApiFp = function(configuration?: Configuration) {
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
         /**
-         * Retrieves a WABA you\'ve registered on YCloud.
+         * Retrieves a WABA you\'ve registered.
          * @summary Retrieve a WABA
          * @param {string} id WhatsApp Business Account ID.
          * @param {*} [options] Override http request option.
@@ -174,7 +174,7 @@ const WhatsappBusinessAccountsApiFactory = function (configuration?: Configurati
     const localVarFp = WhatsappBusinessAccountsApiFp(configuration)
     return {
         /**
-         * Returns a paginated list of WhatsApp business accounts you\'ve registered on YCloud.
+         * Returns a paginated list of WhatsApp business accounts you\'ve registered.
          * @summary List WABAs
          * @param {WhatsappBusinessAccountsApiListRequest} requestParameters Request parameters.
          * @param {number} [page] Page number of the results to be returned, 1-based.
@@ -188,7 +188,7 @@ const WhatsappBusinessAccountsApiFactory = function (configuration?: Configurati
             return localVarFp.list(requestParameters, options).then((request) => request(axios, basePath));
         },
         /**
-         * Retrieves a WABA you\'ve registered on YCloud.
+         * Retrieves a WABA you\'ve registered.
          * @summary Retrieve a WABA
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -242,7 +242,7 @@ export interface WhatsappBusinessAccountsApiListRequest {
  */
 export class WhatsappBusinessAccountsApi extends BaseAPI {
     /**
-     * Returns a paginated list of WhatsApp business accounts you\'ve registered on YCloud.
+     * Returns a paginated list of WhatsApp business accounts you\'ve registered.
      * @summary List WABAs
      * @param {WhatsappBusinessAccountsApiListRequest} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -254,7 +254,7 @@ export class WhatsappBusinessAccountsApi extends BaseAPI {
     }
 
     /**
-     * Retrieves a WABA you\'ve registered on YCloud.
+     * Retrieves a WABA you\'ve registered.
      * @summary Retrieve a WABA
      * @param {string} id WhatsApp Business Account ID.
      * @param {*} [options] Override http request option.

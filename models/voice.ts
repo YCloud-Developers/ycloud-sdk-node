@@ -69,7 +69,7 @@ export interface Voice {
      */
     'currency'?: string;
     /**
-     * Delivery status. One of `accepted`, `sent`, `delivered`, `undelivered`, or `failed`. - `accepted`: The messaging request is accepted by our system. - `failed`: The message failed to be sent from our system. - `sent`: The message has been sent from our system. - `delivered`: YCloud has received a delivery receipt indicating that message is delivered. - `undelivered`: YCloud has received a delivery receipt indicating that message is not delivered.
+     * Delivery status. One of `accepted`, `sent`, `delivered`, `undelivered`, or `failed`. - `accepted`: The messaging request is accepted by our system. - `failed`: The message failed to be sent from our system. - `sent`: The message has been sent from our system. - `delivered`: Our system has received a delivery receipt indicating that message is delivered. - `undelivered`: Our system has received a delivery receipt indicating that message is not delivered.
      * @type {string}
      * @memberof Voice
      */
@@ -105,7 +105,7 @@ export interface Voice {
      */
     'callbackUrl'?: string;
     /**
-     * This can be either empty or one of `voice`, or `verify`. Defaults to `voice`. - `voice`: Indicates that the message is sent via [Voice](https://www.ycloud.com/voice) product. - `verify`: Indicates that the message is sent via [Verify](https://www.ycloud.com/verify) product.
+     * This can be either empty or one of `voice`, or `verify`. Defaults to `voice`. - `voice`: Indicates that the message is sent via the **Voice** product. - `verify`: Indicates that the message is sent via **Verify** product.
      * @type {string}
      * @memberof Voice
      */

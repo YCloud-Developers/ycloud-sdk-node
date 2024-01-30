@@ -32,6 +32,7 @@ export const WhatsappInboundMessageType = {
     Interactive: 'interactive',
     Button: 'button',
     Reaction: 'reaction',
+    RequestWelcome: 'request_welcome',
     Order: 'order',
     System: 'system',
     Unsupported: 'unsupported',
