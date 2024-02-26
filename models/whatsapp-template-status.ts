@@ -15,7 +15,7 @@
 
 
 /**
- * The status of a WhatsApp template. - `PENDING`: The template is still under review. Review can take up to 24 hours. - `REJECTED`: The template has been rejected during review process. - `APPROVED`: The template is approved, and you may begin sending it to customers. - `PAUSED`: The template has been paused due to recurring negative feedback from customers. Message templates with this status cannot be sent to customers. See [Template Pausing](https://developers.facebook.com/docs/whatsapp/message-templates/guidelines#template-pausing). - `DISABLED`: The template has been disabled due to recurring negative feedback from customers or for violating one or more of our policies. Message templates with this status cannot be sent to customers. You may be able to edit a disabled message template and request an appeal. See [Appeals](https://developers.facebook.com/docs/whatsapp/message-templates/guidelines#appeals). - `IN_APPEAL`: The template is in appeal. See also [Template Appeals](https://developers.facebook.com/docs/whatsapp/message-templates/guidelines#appeals). - `PENDING_DELETION`: The template is pending deletion.
+ * The status of a WhatsApp template. - `PENDING`: The template is still under review. Review can take up to 24 hours. - `REJECTED`: The template has been rejected during review process. - `APPROVED`: The template is approved, and you may begin sending it to customers. - `PAUSED`: The template has been paused due to recurring negative feedback from customers. Message templates with this status cannot be sent to customers. See [Template Pausing](https://developers.facebook.com/docs/whatsapp/message-templates/guidelines#template-pausing). - `DISABLED`: The template has been disabled due to recurring negative feedback from customers or for violating one or more of our policies. Message templates with this status cannot be sent to customers. You may be able to edit a disabled message template and request an appeal. See [Appeals](https://developers.facebook.com/docs/whatsapp/message-templates/guidelines#appeals). - `IN_APPEAL`: The template is in appeal. See also [Template Appeals](https://developers.facebook.com/docs/whatsapp/message-templates/guidelines#appeals). - `DELETED`: The template is deleted.
  * @export
  * @enum {string}
  */
@@ -27,7 +27,7 @@ export const WhatsappTemplateStatus = {
     Paused: 'PAUSED',
     Disabled: 'DISABLED',
     InAppeal: 'IN_APPEAL',
-    PendingDeletion: 'PENDING_DELETION'
+    Deleted: 'DELETED'
 } as const;
 
 export type WhatsappTemplateStatus = typeof WhatsappTemplateStatus[keyof typeof WhatsappTemplateStatus];
