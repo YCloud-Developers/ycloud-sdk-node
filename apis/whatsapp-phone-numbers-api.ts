@@ -492,7 +492,7 @@ const WhatsappPhoneNumbersApiFactory = function (configuration?: Configuration, 
          * @param {number} [page] Page number of the results to be returned, 1-based.
          * @param {number} [limit] A limit on the number of results to be returned, or number of results per page, between 1 and 100, defaults to 10.
          * @param {boolean} [includeTotal] Return results inside an object that contains the total result count or not.
-         * @param {string} [filterWabaId] WhatsApp Business Account ID.
+         * @param {string} [filterWabaId] **Required**. WhatsApp Business Account ID.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -584,7 +584,7 @@ export interface WhatsappPhoneNumbersApiListRequest {
     readonly includeTotal?: boolean
 
     /**
-     * WhatsApp Business Account ID.
+     * **Required**. WhatsApp Business Account ID.
      * @type {string}
      * @memberof WhatsappPhoneNumbersApiList
      */

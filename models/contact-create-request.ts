@@ -57,5 +57,11 @@ export interface ContactCreateRequest {
      * @memberof ContactCreateRequest
      */
     'customAttributes'?: Array<ContactCustomAttribute>;
+    /**
+     * The email address of the contact\'s owner.
+     * @type {string}
+     * @memberof ContactCreateRequest
+     */
+    'ownerEmail'?: string;
 }
 

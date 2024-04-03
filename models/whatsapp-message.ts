@@ -213,6 +213,12 @@ export interface WhatsappMessage {
      */
     'currency'?: string;
     /**
+     * The [region code](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2) of the recipient phone number.
+     * @type {string}
+     * @memberof WhatsappMessage
+     */
+    'regionCode'?: string;
+    /**
      * 
      * @type {WhatsappApiError}
      * @memberof WhatsappMessage

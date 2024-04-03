@@ -57,5 +57,11 @@ export interface ContactUpdateRequest {
      * @memberof ContactUpdateRequest
      */
     'customAttributes'?: Array<ContactCustomAttribute>;
+    /**
+     * The email address of the contact\'s owner.
+     * @type {string}
+     * @memberof ContactUpdateRequest
+     */
+    'ownerEmail'?: string;
 }
 
