@@ -21,7 +21,7 @@ import { WhatsappMessageContactPhone } from './whatsapp-message-contact-phone';
 import { WhatsappMessageContactUrl } from './whatsapp-message-contact-url';
 
 /**
- * When the message type filed is set to `contacts`, this object is included in the message object. See also [WhatsApp message contacts object](https://developers.facebook.com/docs/whatsapp/cloud-api/reference/messages#contacts-object).
+ * When the message type filed is set to `contacts`, this object is included in the message object.
  * @export
  * @interface WhatsappMessageContact
  */

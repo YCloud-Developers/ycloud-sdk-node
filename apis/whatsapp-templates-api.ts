@@ -174,7 +174,7 @@ const WhatsappTemplatesApiAxiosParamCreator = function (configuration?: Configur
             };
         },
         /**
-         * Edits a WhatsApp template by name and language. Editing a template replaces its old contents entirely, so include any components you wish to preserve as well as components you wish to update using the components parameter. See also [Edit a Message Template](https://developers.facebook.com/docs/whatsapp/business-management-api/message-templates#edit-a-message-template).
+         * Edits a WhatsApp template by name and language. Editing a template replaces its old contents entirely, so include any components you wish to preserve as well as components you wish to update using the components parameter.
          * @summary Edit a template
          * @param {string} wabaId WhatsApp Business Account ID.
          * @param {string} name Name of the template.
@@ -390,7 +390,7 @@ const WhatsappTemplatesApiFp = function(configuration?: Configuration) {
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
         /**
-         * Edits a WhatsApp template by name and language. Editing a template replaces its old contents entirely, so include any components you wish to preserve as well as components you wish to update using the components parameter. See also [Edit a Message Template](https://developers.facebook.com/docs/whatsapp/business-management-api/message-templates#edit-a-message-template).
+         * Edits a WhatsApp template by name and language. Editing a template replaces its old contents entirely, so include any components you wish to preserve as well as components you wish to update using the components parameter.
          * @summary Edit a template
          * @param {string} wabaId WhatsApp Business Account ID.
          * @param {string} name Name of the template.
@@ -465,7 +465,7 @@ const WhatsappTemplatesApiFactory = function (configuration?: Configuration, bas
             return localVarFp.deleteByNameAndLanguage(wabaId, name, language, options).then((request) => request(axios, basePath));
         },
         /**
-         * Edits a WhatsApp template by name and language. Editing a template replaces its old contents entirely, so include any components you wish to preserve as well as components you wish to update using the components parameter. See also [Edit a Message Template](https://developers.facebook.com/docs/whatsapp/business-management-api/message-templates#edit-a-message-template).
+         * Edits a WhatsApp template by name and language. Editing a template replaces its old contents entirely, so include any components you wish to preserve as well as components you wish to update using the components parameter.
          * @summary Edit a template
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -480,7 +480,7 @@ const WhatsappTemplatesApiFactory = function (configuration?: Configuration, bas
          * @param {number} [page] Page number of the results to be returned, 1-based.
          * @param {number} [limit] A limit on the number of results to be returned, or number of results per page, between 1 and 100, defaults to 10.
          * @param {boolean} [includeTotal] Return results inside an object that contains the total result count or not.
-         * @param {string} [filterWabaId] **Required**. WhatsApp Business Account ID.
+         * @param {string} [filterWabaId] **Required if you have more than 100 WABAs.** WhatsApp Business Account ID.
          * @param {string} [filterName] Name of the template.
          * @param {string} [filterLanguage] Language code of the template. See [Supported Languages](https://developers.facebook.com/docs/whatsapp/api/messages/message-templates#supported-languages) for all codes.
          * @param {*} [options] Override http request option.
@@ -529,7 +529,7 @@ export interface WhatsappTemplatesApiListRequest {
     readonly includeTotal?: boolean
 
     /**
-     * **Required**. WhatsApp Business Account ID.
+     * **Required if you have more than 100 WABAs.** WhatsApp Business Account ID.
      * @type {string}
      * @memberof WhatsappTemplatesApiList
      */
@@ -597,7 +597,7 @@ export class WhatsappTemplatesApi extends BaseAPI {
     }
 
     /**
-     * Edits a WhatsApp template by name and language. Editing a template replaces its old contents entirely, so include any components you wish to preserve as well as components you wish to update using the components parameter. See also [Edit a Message Template](https://developers.facebook.com/docs/whatsapp/business-management-api/message-templates#edit-a-message-template).
+     * Edits a WhatsApp template by name and language. Editing a template replaces its old contents entirely, so include any components you wish to preserve as well as components you wish to update using the components parameter.
      * @summary Edit a template
      * @param {string} wabaId WhatsApp Business Account ID.
      * @param {string} name Name of the template.

@@ -17,7 +17,7 @@ import { WhatsappMessageInteractiveActionSectionProductItem } from './whatsapp-m
 import { WhatsappMessageInteractiveActionSectionRow } from './whatsapp-message-interactive-action-section-row';
 
 /**
- * [WhatsApp Section Object](https://developers.facebook.com/docs/whatsapp/cloud-api/reference/messages#section-object).
+ * WhatsApp Message Interactive Section Object.
  * @export
  * @interface WhatsappMessageInteractiveActionSection
  */

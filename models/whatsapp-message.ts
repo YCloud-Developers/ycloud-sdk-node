@@ -25,6 +25,7 @@ import { WhatsappMessageStatus } from './whatsapp-message-status';
 import { WhatsappMessageTemplate } from './whatsapp-message-template';
 import { WhatsappMessageText } from './whatsapp-message-text';
 import { WhatsappMessageType } from './whatsapp-message-type';
+import { WhatsappPricingCategory } from './whatsapp-pricing-category';
 
 /**
  * WhatsApp outbound message object.
@@ -218,6 +219,12 @@ export interface WhatsappMessage {
      * @memberof WhatsappMessage
      */
     'regionCode'?: string;
+    /**
+     * 
+     * @type {WhatsappPricingCategory}
+     * @memberof WhatsappMessage
+     */
+    'pricingCategory'?: WhatsappPricingCategory;
     /**
      * 
      * @type {WhatsappApiError}

@@ -16,7 +16,7 @@
 import { WhatsappPhoneNumberProfileVertical } from './whatsapp-phone-number-profile-vertical';
 
 /**
- * WhatsApp Phone Number Business Profile. Customers can view your business profile by clicking your business\'s name or number in a conversation thread. See also [Business Profiles](https://developers.facebook.com/docs/whatsapp/cloud-api/reference/business-profiles).
+ * WhatsApp Phone Number Business Profile. Customers can view your business profile by clicking your business\'s name or number in a conversation thread.
  * @export
  * @interface WhatsappPhoneNumberProfileUpdateRequest
  */

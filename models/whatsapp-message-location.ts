@@ -15,7 +15,7 @@
 
 
 /**
- * Use for `location` messages. See also [WhatsApp Location Object](https://developers.facebook.com/docs/whatsapp/cloud-api/reference/messages#location-object).
+ * Use for `location` messages.
  * @export
  * @interface WhatsappMessageLocation
  */

@@ -14,6 +14,7 @@
 
 
 import { MetaBusinessAccountVerificationStatus } from './meta-business-account-verification-status';
+import { WhatsappAuthIntlRateEligibilityCountry } from './whatsapp-auth-intl-rate-eligibility-country';
 import { WhatsappBusinessAccountBanState } from './whatsapp-business-account-ban-state';
 import { WhatsappBusinessAccountRestrictionInfo } from './whatsapp-business-account-restriction-info';
 import { WhatsappBusinessAccountReviewStatus } from './whatsapp-business-account-review-status';
@@ -21,7 +22,7 @@ import { WhatsappBusinessAccountUpdateEventEnum } from './whatsapp-business-acco
 import { WhatsappReviewDecision } from './whatsapp-review-decision';
 
 /**
- * Represents a specific [WhatsApp Business Account (WABA)](https://www.facebook.com/business/help/1499554293524119).
+ * Represents a specific [WhatsApp Business Account (WABA)](https://developers.facebook.com/docs/whatsapp/overview/business-accounts).
  * @export
  * @interface WhatsappBusinessAccount
  */
@@ -134,5 +135,17 @@ export interface WhatsappBusinessAccount {
      * @memberof WhatsappBusinessAccount
      */
     'restrictions'?: Array<WhatsappBusinessAccountRestrictionInfo>;
+    /**
+     * Starting June 1, 2024, we are updating our authentication rate card and introducing a new authentication-international rate. This rate will apply in the the following countries: - June 1, 2024 – Indonesia (country calling code +62, country code `ID`) - July 1, 2024 – India (country calling code +91, country code `IN`)  See also [Authentication-International Rates](https://developers.facebook.com/docs/whatsapp/pricing/authentication-international-rates).
+     * @type {Array<WhatsappAuthIntlRateEligibilityCountry>}
+     * @memberof WhatsappBusinessAccount
+     */
+    'authIntlRateEligibilityCountries'?: Array<WhatsappAuthIntlRateEligibilityCountry>;
+    /**
+     * Your primary business location is the country where your business is based. It will appear in the Business Manager under the Primary Business Location field starting May 1, 2024. [ISO 3166-1 alpha-2 country code](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2).
+     * @type {string}
+     * @memberof WhatsappBusinessAccount
+     */
+    'primaryBusinessLocation'?: string;
 }
 

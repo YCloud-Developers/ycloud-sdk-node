@@ -15,7 +15,7 @@
 
 
 /**
- * Quality rating. One of `GREEN`, `YELLOW`, `RED`, or `UNKNOWN`. See also [Quality Rating](https://developers.facebook.com/docs/whatsapp/messaging-limits#quality-rating-and-messaging-limits). - `GREEN`: High quality. - `YELLOW`: Medium quality. - `RED`: Low quality. - `UNKNOWN`: Unknown quality.
+ * Quality rating. One of `GREEN`, `YELLOW`, `RED`, or `UNKNOWN`. See also [Phone Number Quality Rating](https://www.facebook.com/business/help/896873687365001). - `GREEN`: High quality. - `YELLOW`: Medium quality. - `RED`: Low quality. - `UNKNOWN`: Unknown quality.
  * @export
  * @enum {string}
  */

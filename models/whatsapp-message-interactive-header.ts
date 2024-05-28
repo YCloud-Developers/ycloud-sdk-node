@@ -16,13 +16,13 @@
 import { WhatsappMessageMedia } from './whatsapp-message-media';
 
 /**
- * Required for type `product_list`. Optional for other types. See also [WhatsApp Header Object](https://developers.facebook.com/docs/whatsapp/cloud-api/reference/messages#header-object).
+ * Required for type `product_list`. Optional for other types.
  * @export
  * @interface WhatsappMessageInteractiveHeader
  */
 export interface WhatsappMessageInteractiveHeader {
     /**
-     * **Required.** The header type you would like to use. - `text`: Used for List Messages and Reply Buttons. - `video`: Used for Reply Buttons. - `image`: Used for Reply Buttons. - `document`: Used for Reply Buttons.
+     * **Required.** The header type you would like to use. - `text`: Used for List Messages, Reply Buttons, and Multi-Product Messages. - `video`: Used for Reply Buttons. - `image`: Used for Reply Buttons. - `document`: Used for Reply Buttons.
      * @type {string}
      * @memberof WhatsappMessageInteractiveHeader
      */

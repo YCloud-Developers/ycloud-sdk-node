@@ -1,5 +1,11 @@
 # Changelog
 
+## 1.13.0 (2024-05-28)
+
+- Add `pricingCategory` to the WhatsApp Message object.
+- Add `authIntlRateEligibilityCountries` and `primaryBusinessLocation` to the WhatsApp Business Account object.
+- Our GitHub has been renamed to YCloud-Developers.
+
 ## 1.12.2 (2024-04-03)
 
 - Add `regionCode` to the WhatsApp message object.

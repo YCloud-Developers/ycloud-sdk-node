@@ -19,7 +19,7 @@ import { WhatsappMessageInteractiveFooter } from './whatsapp-message-interactive
 import { WhatsappMessageInteractiveHeader } from './whatsapp-message-interactive-header';
 
 /**
- * Use for `interactive` messages. See also [WhatsApp Interactive Object](https://developers.facebook.com/docs/whatsapp/cloud-api/reference/messages#interactive-object).
+ * Use for `interactive` messages.
  * @export
  * @interface WhatsappMessageInteractive
  */

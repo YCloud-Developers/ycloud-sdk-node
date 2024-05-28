@@ -15,14 +15,12 @@
 
 
 /**
- * Indicates who initiated the conversation. **Note: Starting June 1, 2023, `business_initiated` will be replaced with `authentication`, `marketing`, and `utility`, while `user_initiated` will be replaced with `service`. For more information, see also [Updates to conversation-based pricing: Effective June 1, 2023](https://developers.facebook.com/docs/whatsapp/updates-to-pricing).**  - `business_initiated`: Indicates that the conversation started by a business sending the first message to a customer. This applies any time it has been more than 24 hours since the last customer message. - `user_initiated`: Indicates that the conversation started by a business replying to a customer message. This applies only when the business reply is within 24 hours of the last customer message. - `referral_conversion`: Indicates the user initiated the conversation by clicking a [Click to WhatsApp ad](https://www.facebook.com/business/help/447934475640650) or a [Facebook Page Call-to-Action button](https://www.facebook.com/help/977869848936797). - `authentication`: Indicates the business initiated the conversation with a message template categorized as `AUTHENTICATION`. - `marketing`: Indicates the business initiated the conversation with a message template categorized as `MARKETING`. - `utility`: Indicates the business initiated the conversation with a message template categorized as `UTILITY`. - `service`: Indicates the user initiated the conversation.
+ * Indicates [conversation category](https://developers.facebook.com/docs/whatsapp/pricing#conversation-categories). This can also be referred to as a conversation entry point. - `referral_conversion`: Indicates a [free entry point conversation](https://developers.facebook.com/docs/whatsapp/pricing#free-entry-point-conversations). - `authentication`: Indicates the conversation was opened by a business sending template categorized as `AUTHENTICATION` to the customer. This applies any time it has been more than 24 hours since the last customer message. - `marketing`: Indicates the conversation was opened by a business sending template categorized as `MARKETING` to the customer. This applies any time it has been more than 24 hours since the last customer message. - `utility`: Indicates the conversation was opened by a business sending template categorized as `UTILITY` to the customer. This applies any time it has been more than 24 hours since the last customer message. - `service`: Indicates that the conversation opened by a business replying to a customer within a [customer service window](https://developers.facebook.com/docs/whatsapp/pricing#customer-service-windows).
  * @export
  * @enum {string}
  */
 
 export const WhatsappConversationOriginType = {
-    BusinessInitiated: 'business_initiated',
-    UserInitiated: 'user_initiated',
     ReferralConversion: 'referral_conversion',
     Authentication: 'authentication',
     Marketing: 'marketing',

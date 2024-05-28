@@ -35,8 +35,7 @@ export const WhatsappInboundMessageType = {
     RequestWelcome: 'request_welcome',
     Order: 'order',
     System: 'system',
-    Unsupported: 'unsupported',
-    Unknown: 'unknown'
+    Unsupported: 'unsupported'
 } as const;
 
 export type WhatsappInboundMessageType = typeof WhatsappInboundMessageType[keyof typeof WhatsappInboundMessageType];

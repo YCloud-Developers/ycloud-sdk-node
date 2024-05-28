@@ -17,7 +17,7 @@ import { WhatsappMessageTemplateComponent } from './whatsapp-message-template-co
 import { WhatsappMessageTemplateLanguage } from './whatsapp-message-template-language';
 
 /**
- * Use for sending a WhatsApp `template` message. See also [WhatsApp Template Object](https://developers.facebook.com/docs/whatsapp/cloud-api/reference/messages#template-object).
+ * Use for sending a WhatsApp `template` message.
  * @export
  * @interface WhatsappMessageTemplate
  */

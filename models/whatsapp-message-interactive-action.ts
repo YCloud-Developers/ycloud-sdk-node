@@ -18,7 +18,7 @@ import { WhatsappMessageInteractiveActionParameters } from './whatsapp-message-i
 import { WhatsappMessageInteractiveActionSection } from './whatsapp-message-interactive-action-section';
 
 /**
- * **Required.** Action you want the user to perform after reading the `interactive` message. See also [WhatsApp Interactive Action Object](https://developers.facebook.com/docs/whatsapp/cloud-api/reference/messages#action-object).
+ * **Required.** Action you want the user to perform after reading the `interactive` message.
  * @export
  * @interface WhatsappMessageInteractiveAction
  */
@@ -36,7 +36,7 @@ export interface WhatsappMessageInteractiveAction {
      */
     'button'?: string;
     /**
-     * Required for Single Product Messages and Multi-Product Messages. Unique identifier of the Facebook catalog linked to your WhatsApp Business Account. This ID can be retrieved via the [Meta Commerce Manager](https://business.facebook.com/commerce/).
+     * Required for Single Product Messages and Multi-Product Messages. Unique identifier of the Facebook catalog linked to your WhatsApp Business Account. This ID can be retrieved via the [Meta Commerce Manager](https://business.facebook.com/commerce).
      * @type {string}
      * @memberof WhatsappMessageInteractiveAction
      */

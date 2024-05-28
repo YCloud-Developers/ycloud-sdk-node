@@ -15,7 +15,7 @@
 
 
 /**
- * [WhatsApp Text Object](https://developers.facebook.com/docs/whatsapp/cloud-api/reference/messages#text-object).
+ * WhatsApp Message Text Object.
  * @export
  * @interface WhatsappMessageText
  */
