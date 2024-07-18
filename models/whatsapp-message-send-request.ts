@@ -131,5 +131,11 @@ export interface WhatsappMessageSendRequest {
      * @memberof WhatsappMessageSendRequest
      */
     'filterUnsubscribed'?: boolean;
+    /**
+     * **Optional.** If set to `true`, the message will not be sent to users in your block list. Defaults to `false`.  Only use for `POST /v2/whatsapp/messages`. If the user is in your block list, we will push webhook notifications with `whatsappMessage.errorCode` set to `RECIPIENT_IN_BLOCK_LIST`.  Not applicable to `POST /v2/whatsapp/message/sendDirectly`.
+     * @type {boolean}
+     * @memberof WhatsappMessageSendRequest
+     */
+    'filterBlocked'?: boolean;
 }
 
