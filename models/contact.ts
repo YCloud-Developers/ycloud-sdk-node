@@ -58,11 +58,17 @@ export interface Contact {
      */
     'email'?: string;
     /**
-     * The time at which the latest inbound message was created, formatted in [RFC 3339](https://datatracker.ietf.org/doc/html/rfc3339). e.g., `2022-06-01T12:00:00.000Z`.
+     * The time at which the contact last sent a message to your business, formatted in [RFC 3339](https://datatracker.ietf.org/doc/html/rfc3339). e.g., `2022-06-01T12:00:00.000Z`.
      * @type {string}
      * @memberof Contact
      */
     'lastSeen'?: string;
+    /**
+     * The business phone number that the contact last sent a message to.
+     * @type {string}
+     * @memberof Contact
+     */
+    'lastMessageToPhoneNumber'?: string;
     /**
      * Contact\'s tags.
      * @type {Array<string>}

@@ -50,6 +50,13 @@ Class | Method | HTTP request | Description
 *ContactsApi* | **list** | **GET** /contact/contacts | List contacts
 *ContactsApi* | **retrieve** | **GET** /contact/contacts/{id} | Retrieve a contact
 *ContactsApi* | **update** | **PATCH** /contact/contacts/{id} | Update a contact
+*CustomEventsApi* | **createDefinition** | **POST** /event/definitions | Create an event definition
+*CustomEventsApi* | **createPropertyDefinition** | **POST** /event/definitions/{name}/properties | Create an event property definition
+*CustomEventsApi* | **propertyDefinition** | **DELETE** /event/definitions/{name}/properties/{propertyName} | Delete an event property definition
+*CustomEventsApi* | **propertyDefinition_0** | **PATCH** /event/definitions/{name}/properties/{propertyName} | Update an event property definition
+*CustomEventsApi* | **retrieveDefinition** | **GET** /event/definitions/{name} | Retrieve an event definition
+*CustomEventsApi* | **sendEvent** | **POST** /event/events | Send an event
+*CustomEventsApi* | **updateDefinition** | **PATCH** /event/definitions/{name} | Update an event definition
 *EmailsApi* | **send** | **POST** /emails | Send an email
 *SmsApi* | **list** | **GET** /sms | List SMS records
 *SmsApi* | **send** | **POST** /sms | Send an SMS

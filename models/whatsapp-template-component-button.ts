@@ -82,5 +82,23 @@ export interface WhatsappTemplateComponentButton {
      * @memberof WhatsappTemplateComponentButton
      */
     'example'?: Array<string>;
+    /**
+     * **Required for button type `FLOW`.** The unique ID of a Flow.
+     * @type {string}
+     * @memberof WhatsappTemplateComponentButton
+     */
+    'flow_id'?: string;
+    /**
+     * **Use for button type `FLOW`.** Either `navigate` or `data_exchange`. Defaults to `navigate`.
+     * @type {string}
+     * @memberof WhatsappTemplateComponentButton
+     */
+    'flow_action'?: string;
+    /**
+     * **Required if `flow_action` is `navigate`.** The unique ID of the Screen in the Flow.
+     * @type {string}
+     * @memberof WhatsappTemplateComponentButton
+     */
+    'navigate_screen'?: string;
 }
 

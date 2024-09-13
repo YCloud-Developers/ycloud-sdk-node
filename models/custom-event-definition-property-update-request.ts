@@ -14,18 +14,23 @@
 
 
 
-export * from './apis/balance-api';
-export * from './apis/contacts-api';
-export * from './apis/custom-events-api';
-export * from './apis/emails-api';
-export * from './apis/sms-api';
-export * from './apis/unsubscribers-api';
-export * from './apis/verify-api';
-export * from './apis/voices-api';
-export * from './apis/webhook-endpoints-api';
-export * from './apis/whatsapp-business-accounts-api';
-export * from './apis/whatsapp-inbound-messages-api';
-export * from './apis/whatsapp-messages-api';
-export * from './apis/whatsapp-phone-numbers-api';
-export * from './apis/whatsapp-templates-api';
+/**
+ * Contains the properties of the event property definition to be updated.
+ * @export
+ * @interface CustomEventDefinitionPropertyUpdateRequest
+ */
+export interface CustomEventDefinitionPropertyUpdateRequest {
+    /**
+     * The label of the event property definition.
+     * @type {string}
+     * @memberof CustomEventDefinitionPropertyUpdateRequest
+     */
+    'label'?: string;
+    /**
+     * The description of the event property definition.
+     * @type {string}
+     * @memberof CustomEventDefinitionPropertyUpdateRequest
+     */
+    'description'?: string;
+}
 
