@@ -19,6 +19,7 @@ import { WhatsappTemplateComponent } from './whatsapp-template-component';
 import { WhatsappTemplateQualityRating } from './whatsapp-template-quality-rating';
 import { WhatsappTemplateStatus } from './whatsapp-template-status';
 import { WhatsappTemplateStatusUpdateEventEnum } from './whatsapp-template-status-update-event-enum';
+import { WhatsappTemplateSubCategory } from './whatsapp-template-sub-category';
 
 /**
  * See [WhatsApp Templates](https://developers.facebook.com/docs/whatsapp/business-management-api/message-templates).
@@ -50,6 +51,12 @@ export interface WhatsappTemplate {
      * @memberof WhatsappTemplate
      */
     'category'?: WhatsappTemplateCategory;
+    /**
+     * 
+     * @type {WhatsappTemplateSubCategory}
+     * @memberof WhatsappTemplate
+     */
+    'subCategory'?: WhatsappTemplateSubCategory;
     /**
      * This field indicates the template\'s previous category (or `null`, for newly created templates after April 1, 2023). Compare this value to the template\'s `category` field value, which indicates the template\'s current category.
      * @type {string}

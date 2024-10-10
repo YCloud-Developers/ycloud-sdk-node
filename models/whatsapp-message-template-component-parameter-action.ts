@@ -13,6 +13,7 @@
  */
 
 
+import { WhatsappMessageOrderDetails } from './whatsapp-message-order-details';
 import { WhatsappMessageTemplateComponentParameterActionSection } from './whatsapp-message-template-component-parameter-action-section';
 
 /**
@@ -45,5 +46,11 @@ export interface WhatsappMessageTemplateComponentParameterAction {
      * @memberof WhatsappMessageTemplateComponentParameterAction
      */
     'flow_action_data'?: { [key: string]: object; };
+    /**
+     * 
+     * @type {WhatsappMessageOrderDetails}
+     * @memberof WhatsappMessageTemplateComponentParameterAction
+     */
+    'order_details'?: WhatsappMessageOrderDetails;
 }
 

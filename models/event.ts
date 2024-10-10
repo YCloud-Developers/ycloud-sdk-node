@@ -21,6 +21,7 @@ import { Voice } from './voice';
 import { WhatsappBusinessAccount } from './whatsapp-business-account';
 import { WhatsappInboundMessage } from './whatsapp-inbound-message';
 import { WhatsappMessage } from './whatsapp-message';
+import { WhatsappPayment } from './whatsapp-payment';
 import { WhatsappPhoneNumber } from './whatsapp-phone-number';
 import { WhatsappTemplate } from './whatsapp-template';
 
@@ -102,6 +103,12 @@ export interface Event {
      * @memberof Event
      */
     'whatsappPhoneNumber'?: WhatsappPhoneNumber;
+    /**
+     * 
+     * @type {WhatsappPayment}
+     * @memberof Event
+     */
+    'whatsappPayment'?: WhatsappPayment;
     /**
      * 
      * @type {WhatsappTemplate}

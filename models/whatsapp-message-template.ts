@@ -35,7 +35,7 @@ export interface WhatsappMessageTemplate {
      */
     'language': WhatsappMessageTemplateLanguage;
     /**
-     * **Required when the specified template contains variables or media.** Array of components objects containing the parameters of the message.
+     * **Required when the specified template contains variables or media.** Array of component objects containing the parameters of the message.
      * @type {Array<WhatsappMessageTemplateComponent>}
      * @memberof WhatsappMessageTemplate
      */
