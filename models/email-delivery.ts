@@ -51,7 +51,7 @@ export interface EmailDelivery {
      */
     'errorMessage'?: string;
     /**
-     * The `externalId` you specified when you sent the email.
+     * The `externalId` you set when you sent the email.
      * @type {string}
      * @memberof EmailDelivery
      */

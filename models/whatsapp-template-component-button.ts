@@ -83,11 +83,23 @@ export interface WhatsappTemplateComponentButton {
      */
     'example'?: Array<string>;
     /**
-     * **Required for button type `FLOW`.** The unique ID of a Flow.
+     * **Conditionally required for button type `FLOW`.** The unique ID of the Flow. Cannot be used if `flow_name` or `flow_json` parameters are provided. Only one of these parameters is allowed.
      * @type {string}
      * @memberof WhatsappTemplateComponentButton
      */
     'flow_id'?: string;
+    /**
+     * **Conditionally required for button type `FLOW`.** The name of the Flow. Cannot be used if `flow_id` or `flow_json` parameters are provided. Only one of these parameters is allowed. The Flow ID is stored in the message template, not the name, so changing the Flow name will not affect existing message templates.
+     * @type {string}
+     * @memberof WhatsappTemplateComponentButton
+     */
+    'flow_name'?: string;
+    /**
+     * **Conditionally required for button type `FLOW`.** The Flow JSON encoded as string with escaping. The Flow JSON specifies the content of the Flow. Cannot be used if `flow_id` or `flow_name` parameters are provided. Only one of these parameters is allowed.
+     * @type {string}
+     * @memberof WhatsappTemplateComponentButton
+     */
+    'flow_json'?: string;
     /**
      * **Use for button type `FLOW`.** Either `navigate` or `data_exchange`. Defaults to `navigate`.
      * @type {string}

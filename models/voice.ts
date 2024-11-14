@@ -93,7 +93,7 @@ export interface Voice {
      */
     'updateTime'?: string;
     /**
-     * A unique string to reference the object. This can be an order number or similar, and can be used to reconcile the object with your internal systems.
+     * A unique (recommended) string to reference the object. This can be an order number or similar, and can be used to reconcile the object with your internal systems.
      * @type {string}
      * @memberof Voice
      */

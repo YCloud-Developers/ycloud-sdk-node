@@ -94,7 +94,8 @@ export const WhatsappTemplateComponentFormatEnum = {
     Text: 'TEXT',
     Image: 'IMAGE',
     Video: 'VIDEO',
-    Document: 'DOCUMENT'
+    Document: 'DOCUMENT',
+    Location: 'LOCATION'
 } as const;
 
 export type WhatsappTemplateComponentFormatEnum = typeof WhatsappTemplateComponentFormatEnum[keyof typeof WhatsappTemplateComponentFormatEnum];

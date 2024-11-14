@@ -56,11 +56,17 @@ export interface WhatsappMessageInteractiveActionParameters {
      */
     'flow_token'?: string;
     /**
-     * Required for `flow` buttons. Unique ID of the Flow provided by WhatsApp.
+     * Conditionally required for `flow` buttons. Unique ID of the Flow provided by WhatsApp. Cannot be used with the `flow_name` parameter.
      * @type {string}
      * @memberof WhatsappMessageInteractiveActionParameters
      */
     'flow_id'?: string;
+    /**
+     * Conditionally required for `flow` buttons. The name of the Flow that you created. Cannot be used with the `flow_id` parameter. Changing the Flow name will require updating this parameter to match the new name.
+     * @type {string}
+     * @memberof WhatsappMessageInteractiveActionParameters
+     */
+    'flow_name'?: string;
     /**
      * Required for `flow` buttons. Text on the CTA button. For example: \"Open flow!\". Maximum length: 20 characters.
      * @type {string}

@@ -13,6 +13,7 @@
  */
 
 
+import { WhatsappMessageLocation } from './whatsapp-message-location';
 import { WhatsappMessageMedia } from './whatsapp-message-media';
 import { WhatsappMessageOrderStatus } from './whatsapp-message-order-status';
 import { WhatsappMessageTemplateComponentParameterAction } from './whatsapp-message-template-component-parameter-action';
@@ -25,7 +26,7 @@ import { WhatsappMessageTemplateComponentParameterLimitedTimeOffer } from './wha
  */
 export interface WhatsappMessageTemplateComponentParameter {
     /**
-     * **Required.** Component parameter type. - `text`: Used when the template component type is `BODY`, or the `HEADER` component format is `TEXT`. - `image`: Used when the template `HEADER` component is `IMAGE`. - `video`: Used when the template `HEADER` component is `VIDEO`. - `document`: Used when the template `HEADER` component is `DOCUMENT`. - `payload`: Used when the template component button type is `QUICK_REPLY`. - `coupon_code`: Used when the template component button type is `COPY_CODE`. - `limited_time_offer`: Used when the template component type is `LIMITED_TIME_OFFER`. - `action`: Used when the template component button type is `CATALOG`, `MPM`, `FLOW`, or `ORDER_DETAILS`. - `order_status`: Used when the template subcategory is `ORDER_STATUS`.
+     * **Required.** Component parameter type. - `text`: Used when the template component type is `BODY`, or the `HEADER` component format is `TEXT`. - `image`: Used when the template `HEADER` component is `IMAGE`. - `video`: Used when the template `HEADER` component is `VIDEO`. - `document`: Used when the template `HEADER` component is `DOCUMENT`. - `payload`: Used when the template component button type is `QUICK_REPLY`. - `coupon_code`: Used when the template component button type is `COPY_CODE`. - `limited_time_offer`: Used when the template component type is `LIMITED_TIME_OFFER`. - `action`: Used when the template component button type is `CATALOG`, `MPM`, `FLOW`, or `ORDER_DETAILS`. - `order_status`: Used when the template subcategory is `ORDER_STATUS`. - `location`: Used when the template `HEADER` component is `LOCATION`.
      * @type {string}
      * @memberof WhatsappMessageTemplateComponentParameter
      */
@@ -84,6 +85,12 @@ export interface WhatsappMessageTemplateComponentParameter {
      * @memberof WhatsappMessageTemplateComponentParameter
      */
     'order_status'?: WhatsappMessageOrderStatus;
+    /**
+     * 
+     * @type {WhatsappMessageLocation}
+     * @memberof WhatsappMessageTemplateComponentParameter
+     */
+    'location'?: WhatsappMessageLocation;
 }
 
 export const WhatsappMessageTemplateComponentParameterTypeEnum = {
@@ -95,7 +102,8 @@ export const WhatsappMessageTemplateComponentParameterTypeEnum = {
     CouponCode: 'coupon_code',
     LimitedTimeOffer: 'limited_time_offer',
     Action: 'action',
-    OrderStatus: 'order_status'
+    OrderStatus: 'order_status',
+    Location: 'location'
 } as const;
 
 export type WhatsappMessageTemplateComponentParameterTypeEnum = typeof WhatsappMessageTemplateComponentParameterTypeEnum[keyof typeof WhatsappMessageTemplateComponentParameterTypeEnum];
