@@ -54,7 +54,7 @@ export interface WhatsappMessageInteractiveAction {
      */
     'sections'?: Array<WhatsappMessageInteractiveActionSection>;
     /**
-     * Action name. Required for Call-To-Action (CTA) buttons. - `cta_url`: Use for Call-To-Action (CTA) URL buttons. - `send_location`: Use for Location Request buttons. - `flow`: Use for Flow buttons. - `review_and_pay`: Use for Order Details buttons. - `review_order`: Use for Order Status buttons.
+     * Action name. Required for Call-To-Action (CTA) buttons. - `cta_url`: Use for Call-To-Action (CTA) URL buttons. - `send_location`: Use for Location Request buttons. - `flow`: Use for Flow buttons. - `review_and_pay`: Use for Order Details buttons. - `review_order`: Use for Order Status buttons. - `voice_call`: Use for Voice Call buttons.
      * @type {string}
      * @memberof WhatsappMessageInteractiveAction
      */
@@ -72,7 +72,8 @@ export const WhatsappMessageInteractiveActionNameEnum = {
     SendLocation: 'send_location',
     Flow: 'flow',
     ReviewAndPay: 'review_and_pay',
-    ReviewOrder: 'review_order'
+    ReviewOrder: 'review_order',
+    VoiceCall: 'voice_call'
 } as const;
 
 export type WhatsappMessageInteractiveActionNameEnum = typeof WhatsappMessageInteractiveActionNameEnum[keyof typeof WhatsappMessageInteractiveActionNameEnum];
