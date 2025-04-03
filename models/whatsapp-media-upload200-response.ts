@@ -15,18 +15,16 @@
 
 
 /**
- * Used if a decision about WhatsApp accounts or phone numbers has been made.
+ * 
  * @export
- * @enum {string}
+ * @interface WhatsappMediaUpload200Response
  */
-
-export const WhatsappReviewDecision = {
-    Approved: 'APPROVED',
-    Rejected: 'REJECTED',
-    Deferred: 'DEFERRED'
-} as const;
-
-export type WhatsappReviewDecision = typeof WhatsappReviewDecision[keyof typeof WhatsappReviewDecision];
-
-
+export interface WhatsappMediaUpload200Response {
+    /**
+     * The ID of the uploaded media that can be used in subsequent message requests.
+     * @type {string}
+     * @memberof WhatsappMediaUpload200Response
+     */
+    'id'?: string;
+}
 

@@ -78,6 +78,7 @@ Class | Method | HTTP request | Description
 *WhatsappBusinessAccountsApi* | **list** | **GET** /whatsapp/businessAccounts | List WABAs
 *WhatsappBusinessAccountsApi* | **retrieve** | **GET** /whatsapp/businessAccounts/{id} | Retrieve a WABA
 *WhatsappInboundMessagesApi* | **markAsRead** | **POST** /whatsapp/inboundMessages/{id}/markAsRead | Mark message as read
+*WhatsappMediaApi* | **upload** | **POST** /whatsapp/media/{phoneNumber}/upload | Upload media
 *WhatsappMessagesApi* | **retrieve** | **GET** /whatsapp/messages/{id} | Retrieve a message
 *WhatsappMessagesApi* | **send** | **POST** /whatsapp/messages | Enqueue a message
 *WhatsappMessagesApi* | **sendDirectly** | **POST** /whatsapp/messages/sendDirectly | Send a message directly

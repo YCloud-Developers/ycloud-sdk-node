@@ -76,6 +76,8 @@ export * from './whatsapp-inbound-message-referred-product';
 export * from './whatsapp-inbound-message-system';
 export * from './whatsapp-inbound-message-text';
 export * from './whatsapp-inbound-message-type';
+export * from './whatsapp-media';
+export * from './whatsapp-media-upload200-response';
 export * from './whatsapp-message';
 export * from './whatsapp-message-contact';
 export * from './whatsapp-message-contact-address';
