@@ -145,6 +145,8 @@ export * from './whatsapp-phone-number-quality-rating';
 export * from './whatsapp-phone-number-quality-update-event-enum';
 export * from './whatsapp-phone-number-status';
 export * from './whatsapp-pricing-category';
+export * from './whatsapp-pricing-model';
+export * from './whatsapp-pricing-type';
 export * from './whatsapp-profile';
 export * from './whatsapp-review-decision';
 export * from './whatsapp-template';

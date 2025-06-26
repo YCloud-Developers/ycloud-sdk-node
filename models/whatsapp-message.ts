@@ -26,6 +26,8 @@ import { WhatsappMessageTemplate } from './whatsapp-message-template';
 import { WhatsappMessageText } from './whatsapp-message-text';
 import { WhatsappMessageType } from './whatsapp-message-type';
 import { WhatsappPricingCategory } from './whatsapp-pricing-category';
+import { WhatsappPricingModel } from './whatsapp-pricing-model';
+import { WhatsappPricingType } from './whatsapp-pricing-type';
 
 /**
  * WhatsApp outbound message object.
@@ -225,6 +227,18 @@ export interface WhatsappMessage {
      * @memberof WhatsappMessage
      */
     'pricingCategory'?: WhatsappPricingCategory;
+    /**
+     * 
+     * @type {WhatsappPricingModel}
+     * @memberof WhatsappMessage
+     */
+    'pricingModel'?: WhatsappPricingModel;
+    /**
+     * 
+     * @type {WhatsappPricingType}
+     * @memberof WhatsappMessage
+     */
+    'pricingType'?: WhatsappPricingType;
     /**
      * 
      * @type {WhatsappApiError}
