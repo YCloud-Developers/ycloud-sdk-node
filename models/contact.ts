@@ -14,6 +14,7 @@
 
 
 import { ContactCustomAttribute } from './contact-custom-attribute';
+import { ContactSourceType } from './contact-source-type';
 
 /**
  * Represents a contact.
@@ -93,5 +94,23 @@ export interface Contact {
      * @memberof Contact
      */
     'ownerEmail'?: string;
+    /**
+     * 
+     * @type {ContactSourceType}
+     * @memberof Contact
+     */
+    'sourceType'?: ContactSourceType;
+    /**
+     * 来源标识符。与联系人创建来源相关的唯一标识符。
+     * @type {string}
+     * @memberof Contact
+     */
+    'sourceId'?: string;
+    /**
+     * 来源URL。联系人创建时的来源链接地址。
+     * @type {string}
+     * @memberof Contact
+     */
+    'sourceUrl'?: string;
 }
 

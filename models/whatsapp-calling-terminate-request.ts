@@ -15,16 +15,22 @@
 
 
 /**
- * Used to mention a specific message you are replying to. The reply can be any message type.
+ * 
  * @export
- * @interface WhatsappMessageContext
+ * @interface WhatsappCallingTerminateRequest
  */
-export interface WhatsappMessageContext {
+export interface WhatsappCallingTerminateRequest {
     /**
-     * Specifies the `wamid` of the message your are replying to. `wamid` is the original message ID on WhatsApp\'s platform.
+     * The WhatsApp Business phone number ID.
      * @type {string}
-     * @memberof WhatsappMessageContext
+     * @memberof WhatsappCallingTerminateRequest
      */
-    'message_id'?: string;
+    'phoneId': string;
+    /**
+     * The WhatsApp call ID. Required for terminate operations. This ID is received from the Call Connect webhook when a WhatsApp user initiates the call.
+     * @type {string}
+     * @memberof WhatsappCallingTerminateRequest
+     */
+    'wacid': string;
 }
 

@@ -45,6 +45,7 @@ All URIs are relative to *https://api.ycloud.com/v2*
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
 *BalanceApi* | **retrieve** | **GET** /balance | Retrieve balance
+*ContactsApi* | **attributesList** | **GET** /contact/contacts/attributes | List contact attributes
 *ContactsApi* | **create** | **POST** /contact/contacts | Create a contact
 *ContactsApi* | **delete** | **DELETE** /contact/contacts/{id} | Delete a contact
 *ContactsApi* | **list** | **GET** /contact/contacts | List contacts
@@ -77,6 +78,20 @@ Class | Method | HTTP request | Description
 *WebhookEndpointsApi* | **update** | **PATCH** /webhookEndpoints/{id} | Update a webhook endpoint
 *WhatsappBusinessAccountsApi* | **list** | **GET** /whatsapp/businessAccounts | List WABAs
 *WhatsappBusinessAccountsApi* | **retrieve** | **GET** /whatsapp/businessAccounts/{id} | Retrieve a WABA
+*WhatsappCallingApi* | **accept** | **POST** /whatsapp/calls/accept | Accept a call
+*WhatsappCallingApi* | **connect** | **POST** /whatsapp/calls/connect | Connect a call
+*WhatsappCallingApi* | **preAccept** | **POST** /whatsapp/calls/preAccept | Pre-accept a call
+*WhatsappCallingApi* | **reject** | **POST** /whatsapp/calls/reject | Reject a call
+*WhatsappCallingApi* | **terminate** | **POST** /whatsapp/calls/terminate | Terminate a call
+*WhatsappFlowsApi* | **create** | **POST** /whatsapp/flows | Create a flow
+*WhatsappFlowsApi* | **delete** | **DELETE** /whatsapp/flows/{flowId} | Delete a flow
+*WhatsappFlowsApi* | **deprecate** | **POST** /whatsapp/flows/{flowId}/deprecate | Deprecate a flow
+*WhatsappFlowsApi* | **list** | **GET** /whatsapp/flows | List flows
+*WhatsappFlowsApi* | **preview** | **GET** /whatsapp/flows/{flowId}/preview | generate a web preview URL with this flow.
+*WhatsappFlowsApi* | **publish** | **POST** /whatsapp/flows/{flowId}/publish | Publish a flow
+*WhatsappFlowsApi* | **retrieve** | **GET** /whatsapp/flows/{flowId} | Retrieve a flow
+*WhatsappFlowsApi* | **updateMetadata** | **PATCH** /whatsapp/flows/{flowId}/metadata | Update flow metadata
+*WhatsappFlowsApi* | **updateStructure** | **PATCH** /whatsapp/flows/{flowId}/assets | Update flow structure
 *WhatsappInboundMessagesApi* | **markAsRead** | **POST** /whatsapp/inboundMessages/{id}/markAsRead | Mark message as read
 *WhatsappInboundMessagesApi* | **typingIndicator** | **POST** /whatsapp/inboundMessages/{id}/typingIndicator | Mark message as read and display a typing indicator
 *WhatsappMediaApi* | **upload** | **POST** /whatsapp/media/{phoneNumber}/upload | Upload media
@@ -88,6 +103,8 @@ Class | Method | HTTP request | Description
 *WhatsappPhoneNumbersApi* | **retrieve** | **GET** /whatsapp/phoneNumbers/{wabaId}/{phoneNumber} | Retrieve a phone number
 *WhatsappPhoneNumbersApi* | **retrieveCommerceSettings** | **GET** /whatsapp/phoneNumbers/{wabaId}/{phoneNumber}/whatsappCommerceSettings | Retrieve commerce settings
 *WhatsappPhoneNumbersApi* | **retrieveProfile** | **GET** /whatsapp/phoneNumbers/{wabaId}/{phoneNumber}/profile | Retrieve a phone number profile
+*WhatsappPhoneNumbersApi* | **retrieveSettings** | **GET** /whatsapp/phoneNumbers/{wabaId}/{phoneNumber}/settings | Retrieve phone number settings
+*WhatsappPhoneNumbersApi* | **saveSettings** | **POST** /whatsapp/phoneNumbers/{wabaId}/{phoneNumber}/settings | Save phone number settings
 *WhatsappPhoneNumbersApi* | **updateCommerceSettings** | **PATCH** /whatsapp/phoneNumbers/{wabaId}/{phoneNumber}/whatsappCommerceSettings | Update commerce settings
 *WhatsappPhoneNumbersApi* | **updateProfile** | **PATCH** /whatsapp/phoneNumbers/{wabaId}/{phoneNumber}/profile | Update a phone number profile
 *WhatsappTemplatesApi* | **create** | **POST** /whatsapp/templates | Create a template

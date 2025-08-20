@@ -13,18 +13,19 @@
  */
 
 
+import { WhatsappPhoneNumberSettingsCalling } from './whatsapp-phone-number-settings-calling';
 
 /**
- * Used to mention a specific message you are replying to. The reply can be any message type.
+ * WhatsApp business phone number settings.
  * @export
- * @interface WhatsappMessageContext
+ * @interface WhatsappPhoneNumberSettings
  */
-export interface WhatsappMessageContext {
+export interface WhatsappPhoneNumberSettings {
     /**
-     * Specifies the `wamid` of the message your are replying to. `wamid` is the original message ID on WhatsApp\'s platform.
-     * @type {string}
-     * @memberof WhatsappMessageContext
+     * 
+     * @type {WhatsappPhoneNumberSettingsCalling}
+     * @memberof WhatsappPhoneNumberSettings
      */
-    'message_id'?: string;
+    'calling'?: WhatsappPhoneNumberSettingsCalling;
 }
 

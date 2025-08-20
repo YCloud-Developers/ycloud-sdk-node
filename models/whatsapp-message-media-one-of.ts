@@ -15,16 +15,16 @@
 
 
 /**
- * Used to mention a specific message you are replying to. The reply can be any message type.
+ * 
  * @export
- * @interface WhatsappMessageContext
+ * @interface WhatsappMessageMediaOneOf
  */
-export interface WhatsappMessageContext {
+export interface WhatsappMessageMediaOneOf {
     /**
-     * Specifies the `wamid` of the message your are replying to. `wamid` is the original message ID on WhatsApp\'s platform.
+     * Required when using media that has been uploaded to WhatsApp servers.  Provide the media object ID obtained from WhatsApp media upload API (https://docs.ycloud.com/update/reference/whatsapp_media-upload#/).
      * @type {string}
-     * @memberof WhatsappMessageContext
+     * @memberof WhatsappMessageMediaOneOf
      */
-    'message_id'?: string;
+    'id': string;
 }
 

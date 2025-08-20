@@ -15,16 +15,18 @@
 
 
 /**
- * Used to mention a specific message you are replying to. The reply can be any message type.
+ * Status of the WhatsApp Flow. - `DRAFT`: The Flow is in draft state and can be modified. - `PUBLISHED`: The Flow is published and cannot be modified. - `DEPRECATED`: The Flow is deprecated and cannot be used.
  * @export
- * @interface WhatsappMessageContext
+ * @enum {string}
  */
-export interface WhatsappMessageContext {
-    /**
-     * Specifies the `wamid` of the message your are replying to. `wamid` is the original message ID on WhatsApp\'s platform.
-     * @type {string}
-     * @memberof WhatsappMessageContext
-     */
-    'message_id'?: string;
-}
+
+export const WhatsappFlowStatus = {
+    Draft: 'DRAFT',
+    Published: 'PUBLISHED',
+    Deprecated: 'DEPRECATED'
+} as const;
+
+export type WhatsappFlowStatus = typeof WhatsappFlowStatus[keyof typeof WhatsappFlowStatus];
+
+
 

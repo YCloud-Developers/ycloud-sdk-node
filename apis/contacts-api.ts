@@ -23,6 +23,8 @@ import { BASE_PATH, USER_AGENT, COLLECTION_FORMATS, RequestArgs, BaseAPI, Requir
 // @ts-ignore
 import { Contact } from '../models';
 // @ts-ignore
+import { ContactAttribute } from '../models';
+// @ts-ignore
 import { ContactCreateRequest } from '../models';
 // @ts-ignore
 import { ContactPage } from '../models';
@@ -36,6 +38,43 @@ import { ErrorResponse } from '../models';
  */
 const ContactsApiAxiosParamCreator = function (configuration?: Configuration) {
     return {
+        /**
+         * Returns a list of all available contact attributes and their configurations.
+         * @summary List contact attributes
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        attributesList: async (options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            const localVarPath = `/contact/contacts/attributes`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            // const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            if (USER_AGENT) {
+                localVarHeaderParameter['User-Agent'] = USER_AGENT;
+            }
+            const localVarQueryParameter = {} as any;
+
+            // authentication api_key required
+            await setApiKeyToObject(localVarHeaderParameter, "X-API-Key", configuration)
+
+
+    
+            // setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+            localVarRequestOptions.params = localVarQueryParameter;
+
+            return {
+                url: localVarPath,
+                options: localVarRequestOptions,
+            };
+        },
         /**
          * Creates a contact.
          * @summary Create a contact
@@ -290,6 +329,16 @@ const ContactsApiFp = function(configuration?: Configuration) {
     const localVarAxiosParamCreator = ContactsApiAxiosParamCreator(configuration)
     return {
         /**
+         * Returns a list of all available contact attributes and their configurations.
+         * @summary List contact attributes
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async attributesList(options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<ContactAttribute>>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.attributesList(options);
+            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+        },
+        /**
          * Creates a contact.
          * @summary Create a contact
          * @param {ContactCreateRequest} contactCreateRequest 
@@ -355,6 +404,15 @@ const ContactsApiFp = function(configuration?: Configuration) {
 const ContactsApiFactory = function (configuration?: Configuration, basePath?: string, axios?: AxiosInstance) {
     const localVarFp = ContactsApiFp(configuration)
     return {
+        /**
+         * Returns a list of all available contact attributes and their configurations.
+         * @summary List contact attributes
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        attributesList(options?: any): AxiosPromise<Array<ContactAttribute>> {
+            return localVarFp.attributesList(options).then((request) => request(axios, basePath));
+        },
         /**
          * Creates a contact.
          * @summary Create a contact
@@ -474,6 +532,17 @@ export interface ContactsApiListRequest {
  * @extends {BaseAPI}
  */
 export class ContactsApi extends BaseAPI {
+    /**
+     * Returns a list of all available contact attributes and their configurations.
+     * @summary List contact attributes
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof ContactsApi
+     */
+    public attributesList(options?: AxiosRequestConfig) {
+        return ContactsApiFp(this.configuration).attributesList(options).then((request) => request(this.axios, this.basePath));
+    }
+
     /**
      * Creates a contact.
      * @summary Create a contact

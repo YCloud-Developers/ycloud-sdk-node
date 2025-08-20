@@ -13,6 +13,7 @@
  */
 
 
+import { EventProperty } from './event-property';
 import { EventType } from './event-type';
 import { WebhookEndpointStatus } from './webhook-endpoint-status';
 
@@ -34,6 +35,12 @@ export interface WebhookEndpointCreateRequest {
      * @memberof WebhookEndpointCreateRequest
      */
     'enabledEvents': Array<EventType>;
+    /**
+     * Optional configuration for event properties in webhook payloads. Specifies which properties should be included for specific event types. When `enabledEvents` contains `contact.attributes_changed`, this field is required and must contain at least one event property configuration for that event type.
+     * @type {Array<EventProperty>}
+     * @memberof WebhookEndpointCreateRequest
+     */
+    'eventProperties'?: Array<EventProperty>;
     /**
      * An optional description of what the webhook is used for.
      * @type {string}

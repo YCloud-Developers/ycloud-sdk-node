@@ -15,16 +15,10 @@
 
 
 /**
- * Used to mention a specific message you are replying to. The reply can be any message type.
+ * @type ContactAttributeChangeNewValue
+ * The new value of the attribute after the change. Can be a string, number, array, or null. Not included when the value is null.
  * @export
- * @interface WhatsappMessageContext
  */
-export interface WhatsappMessageContext {
-    /**
-     * Specifies the `wamid` of the message your are replying to. `wamid` is the original message ID on WhatsApp\'s platform.
-     * @type {string}
-     * @memberof WhatsappMessageContext
-     */
-    'message_id'?: string;
-}
+export type ContactAttributeChangeNewValue = Array<string> | number | string;
+
 

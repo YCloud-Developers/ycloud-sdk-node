@@ -15,16 +15,28 @@
 
 
 /**
- * Used to mention a specific message you are replying to. The reply can be any message type.
+ * WhatsApp Business Account information.
  * @export
- * @interface WhatsappMessageContext
+ * @interface WhatsappFlowWhatsappBusinessAccount
  */
-export interface WhatsappMessageContext {
+export interface WhatsappFlowWhatsappBusinessAccount {
     /**
-     * Specifies the `wamid` of the message your are replying to. `wamid` is the original message ID on WhatsApp\'s platform.
+     * WhatsApp Business Account ID.
      * @type {string}
-     * @memberof WhatsappMessageContext
+     * @memberof WhatsappFlowWhatsappBusinessAccount
      */
-    'message_id'?: string;
+    'id'?: string;
+    /**
+     * WhatsApp Business Account name.
+     * @type {string}
+     * @memberof WhatsappFlowWhatsappBusinessAccount
+     */
+    'name'?: string;
+    /**
+     * Currency used by the WhatsApp Business Account.
+     * @type {string}
+     * @memberof WhatsappFlowWhatsappBusinessAccount
+     */
+    'currency'?: string;
 }
 

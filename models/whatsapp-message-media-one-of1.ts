@@ -15,16 +15,16 @@
 
 
 /**
- * Used to mention a specific message you are replying to. The reply can be any message type.
+ * 
  * @export
- * @interface WhatsappMessageContext
+ * @interface WhatsappMessageMediaOneOf1
  */
-export interface WhatsappMessageContext {
+export interface WhatsappMessageMediaOneOf1 {
     /**
-     * Specifies the `wamid` of the message your are replying to. `wamid` is the original message ID on WhatsApp\'s platform.
+     * Required when sending media directly from your server.  The protocol and URL of the media to be sent. Use only with HTTP/HTTPS URLs. Note: WhatsApp Cloud API caches media resources for 10 minutes. To ensure latest content, add random query strings to the URL.
      * @type {string}
-     * @memberof WhatsappMessageContext
+     * @memberof WhatsappMessageMediaOneOf1
      */
-    'message_id'?: string;
+    'link': string;
 }
 

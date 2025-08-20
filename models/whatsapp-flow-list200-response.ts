@@ -13,18 +13,19 @@
  */
 
 
+import { WhatsappFlow } from './whatsapp-flow';
 
 /**
- * Used to mention a specific message you are replying to. The reply can be any message type.
+ * 
  * @export
- * @interface WhatsappMessageContext
+ * @interface WhatsappFlowList200Response
  */
-export interface WhatsappMessageContext {
+export interface WhatsappFlowList200Response {
     /**
-     * Specifies the `wamid` of the message your are replying to. `wamid` is the original message ID on WhatsApp\'s platform.
-     * @type {string}
-     * @memberof WhatsappMessageContext
+     * List of flows.
+     * @type {Array<WhatsappFlow>}
+     * @memberof WhatsappFlowList200Response
      */
-    'message_id'?: string;
+    'items'?: Array<WhatsappFlow>;
 }
 

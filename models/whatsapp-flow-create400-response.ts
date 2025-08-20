@@ -13,18 +13,25 @@
  */
 
 
+import { WhatsappFlowValidationError } from './whatsapp-flow-validation-error';
 
 /**
- * Used to mention a specific message you are replying to. The reply can be any message type.
+ * 
  * @export
- * @interface WhatsappMessageContext
+ * @interface WhatsappFlowCreate400Response
  */
-export interface WhatsappMessageContext {
+export interface WhatsappFlowCreate400Response {
     /**
-     * Specifies the `wamid` of the message your are replying to. `wamid` is the original message ID on WhatsApp\'s platform.
-     * @type {string}
-     * @memberof WhatsappMessageContext
+     * Whether the operation was successful.
+     * @type {boolean}
+     * @memberof WhatsappFlowCreate400Response
      */
-    'message_id'?: string;
+    'success'?: boolean;
+    /**
+     * List of validation errors.
+     * @type {Array<WhatsappFlowValidationError>}
+     * @memberof WhatsappFlowCreate400Response
+     */
+    'validationErrors'?: Array<WhatsappFlowValidationError>;
 }
 

@@ -15,16 +15,16 @@
 
 
 /**
- * Used to mention a specific message you are replying to. The reply can be any message type.
+ * 
  * @export
- * @interface WhatsappMessageContext
+ * @interface WhatsappFlowUpdateMetadata200Response
  */
-export interface WhatsappMessageContext {
+export interface WhatsappFlowUpdateMetadata200Response {
     /**
-     * Specifies the `wamid` of the message your are replying to. `wamid` is the original message ID on WhatsApp\'s platform.
-     * @type {string}
-     * @memberof WhatsappMessageContext
+     * Whether the operation was successful.
+     * @type {boolean}
+     * @memberof WhatsappFlowUpdateMetadata200Response
      */
-    'message_id'?: string;
+    'success'?: boolean;
 }
 

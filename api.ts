@@ -24,6 +24,8 @@ export * from './apis/verify-api';
 export * from './apis/voices-api';
 export * from './apis/webhook-endpoints-api';
 export * from './apis/whatsapp-business-accounts-api';
+export * from './apis/whatsapp-calling-api';
+export * from './apis/whatsapp-flows-api';
 export * from './apis/whatsapp-inbound-messages-api';
 export * from './apis/whatsapp-media-api';
 export * from './apis/whatsapp-messages-api';

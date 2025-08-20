@@ -13,30 +13,14 @@
  */
 
 
+import { WhatsappMessageMediaOneOf } from './whatsapp-message-media-one-of';
+import { WhatsappMessageMediaOneOf1 } from './whatsapp-message-media-one-of1';
 
 /**
- * Use for `image`, `video`, `audio`, `document`, or `sticker` messages.  See also [Supported Media Types](https://developers.facebook.com/docs/whatsapp/cloud-api/reference/media#supported-media-types).
+ * @type WhatsappMessageMedia
+ * Use for `image`, `video`, `audio`, `document`, or `sticker` messages.  See also [Supported Media Types](https://developers.facebook.com/docs/whatsapp/cloud-api/reference/media#supported-media-types).  **Note**: Either `id` or `link` must be provided, but not both. These parameters are mutually exclusive.  Reference: [WhatsApp Cloud API Media Object](https://developers.facebook.com/docs/whatsapp/cloud-api/reference/messages#media-object)
  * @export
- * @interface WhatsappMessageMedia
  */
-export interface WhatsappMessageMedia {
-    /**
-     * The protocol and URL of the media to be sent. Use only with HTTP/HTTPS URLs.
-     * @type {string}
-     * @memberof WhatsappMessageMedia
-     */
-    'link': string;
-    /**
-     * Describes the specified `image`, `video`, or `document` media. Not applicable in the `header` of `template` or `interactive` messages.
-     * @type {string}
-     * @memberof WhatsappMessageMedia
-     */
-    'caption'?: string;
-    /**
-     * Describes the filename for the specific document. Use only with `document` media.
-     * @type {string}
-     * @memberof WhatsappMessageMedia
-     */
-    'filename'?: string;
-}
+export type WhatsappMessageMedia = WhatsappMessageMediaOneOf | WhatsappMessageMediaOneOf1;
+
 

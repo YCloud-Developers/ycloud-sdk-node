@@ -13,6 +13,9 @@
  */
 
 
+import { ContactAttributesChanged } from './contact-attributes-changed';
+import { ContactCreated } from './contact-created';
+import { ContactDeleted } from './contact-deleted';
 import { EmailDelivery } from './email-delivery';
 import { EventType } from './event-type';
 import { Sms } from './sms';
@@ -115,5 +118,23 @@ export interface Event {
      * @memberof Event
      */
     'whatsappTemplate'?: WhatsappTemplate;
+    /**
+     * 
+     * @type {ContactAttributesChanged}
+     * @memberof Event
+     */
+    'contactAttributesChanged'?: ContactAttributesChanged;
+    /**
+     * 
+     * @type {ContactCreated}
+     * @memberof Event
+     */
+    'contactCreated'?: ContactCreated;
+    /**
+     * 
+     * @type {ContactDeleted}
+     * @memberof Event
+     */
+    'contactDeleted'?: ContactDeleted;
 }
 

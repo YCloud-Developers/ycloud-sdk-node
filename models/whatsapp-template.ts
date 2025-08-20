@@ -28,6 +28,12 @@ import { WhatsappTemplateSubCategory } from './whatsapp-template-sub-category';
  */
 export interface WhatsappTemplate {
     /**
+     * Official template ID assigned by WhatsApp. This ID is used to identify the template in WhatsApp\'s system.
+     * @type {string}
+     * @memberof WhatsappTemplate
+     */
+    'officialTemplateId'?: string;
+    /**
      * WhatsApp Business Account ID.
      * @type {string}
      * @memberof WhatsappTemplate

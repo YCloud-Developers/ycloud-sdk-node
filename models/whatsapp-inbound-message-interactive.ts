@@ -14,7 +14,9 @@
 
 
 import { WhatsappInboundMessageInteractiveButtonReply } from './whatsapp-inbound-message-interactive-button-reply';
+import { WhatsappInboundMessageInteractiveCallPermissionReply } from './whatsapp-inbound-message-interactive-call-permission-reply';
 import { WhatsappInboundMessageInteractiveListReply } from './whatsapp-inbound-message-interactive-list-reply';
+import { WhatsappInboundMessageInteractiveNfmReply } from './whatsapp-inbound-message-interactive-nfm-reply';
 
 /**
  * When a customer has interacted with your message, this object is included in the message object.
@@ -23,7 +25,7 @@ import { WhatsappInboundMessageInteractiveListReply } from './whatsapp-inbound-m
  */
 export interface WhatsappInboundMessageInteractive {
     /**
-     * The type of interactive message received. - `button_reply`: Sent when a customer clicks a button. - `list_reply`: Sent when a customer selects an item from a list.
+     * The type of interactive message received. - `button_reply`: Sent when a customer clicks a button. - `list_reply`: Sent when a customer selects an item from a list. - `nfm_reply`: Sent when a customer responds to a WhatsApp Flow (Next Feature Messaging). - `call_permission_reply`: Sent when a customer responds to a call permission request.
      * @type {string}
      * @memberof WhatsappInboundMessageInteractive
      */
@@ -40,11 +42,25 @@ export interface WhatsappInboundMessageInteractive {
      * @memberof WhatsappInboundMessageInteractive
      */
     'list_reply'?: WhatsappInboundMessageInteractiveListReply;
+    /**
+     * 
+     * @type {WhatsappInboundMessageInteractiveNfmReply}
+     * @memberof WhatsappInboundMessageInteractive
+     */
+    'nfm_reply'?: WhatsappInboundMessageInteractiveNfmReply;
+    /**
+     * 
+     * @type {WhatsappInboundMessageInteractiveCallPermissionReply}
+     * @memberof WhatsappInboundMessageInteractive
+     */
+    'call_permission_reply'?: WhatsappInboundMessageInteractiveCallPermissionReply;
 }
 
 export const WhatsappInboundMessageInteractiveTypeEnum = {
     ButtonReply: 'button_reply',
-    ListReply: 'list_reply'
+    ListReply: 'list_reply',
+    NfmReply: 'nfm_reply',
+    CallPermissionReply: 'call_permission_reply'
 } as const;
 
 export type WhatsappInboundMessageInteractiveTypeEnum = typeof WhatsappInboundMessageInteractiveTypeEnum[keyof typeof WhatsappInboundMessageInteractiveTypeEnum];

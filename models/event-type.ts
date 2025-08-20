@@ -58,6 +58,14 @@ export const EventType = {
     */
     WhatsappMessageUpdated: 'whatsapp.message.updated',
     /**
+    * Occurs when WhatsApp Business app sync history message.
+    */
+    WhatsappSmbHistory: 'whatsapp.smb.history',
+    /**
+    * Occurs when WhatsApp Business app send message.
+    */
+    WhatsappSmbMessageCreated: 'whatsapp.smb.message.created',
+    /**
     * Occurs when a WhatsApp business phone number is deleted.
     */
     WhatsappPhoneNumberDeleted: 'whatsapp.phone_number.deleted',
@@ -80,7 +88,19 @@ export const EventType = {
     /**
     * Occurs when a WhatsApp template status is updated, and the status changes to &#x60;REJECTED&#x60;, &#x60;APPROVED&#x60;, &#x60;PAUSED&#x60;, &#x60;DISABLED&#x60;, or &#x60;IN_APPEAL&#x60;.
     */
-    WhatsappTemplateReviewed: 'whatsapp.template.reviewed'
+    WhatsappTemplateReviewed: 'whatsapp.template.reviewed',
+    /**
+    * Occurs when a contact&#39;s attributes are changed.
+    */
+    ContactAttributesChanged: 'contact.attributes_changed',
+    /**
+    * Occurs when a contact is created.
+    */
+    ContactCreated: 'contact.created',
+    /**
+    * Occurs when a contact is deleted.
+    */
+    ContactDeleted: 'contact.deleted'
 } as const;
 
 export type EventType = typeof EventType[keyof typeof EventType];

@@ -13,6 +13,7 @@
  */
 
 
+import { WhatsappTemplateComponentButtonOtpSupportedApp } from './whatsapp-template-component-button-otp-supported-app';
 import { WhatsappTemplateComponentButtonOtpType } from './whatsapp-template-component-button-otp-type';
 import { WhatsappTemplateComponentButtonType } from './whatsapp-template-component-button-type';
 
@@ -59,17 +60,25 @@ export interface WhatsappTemplateComponentButton {
      */
     'autofill_text'?: string;
     /**
-     * **One-tap and zero-tap buttons only.** Your Android app\'s package name.
+     * **Deprecated since 2025-07-23. Use `supported_apps` instead.** **One-tap and zero-tap buttons only.** Your Android app\'s package name.
      * @type {string}
      * @memberof WhatsappTemplateComponentButton
+     * @deprecated
      */
     'package_name'?: string;
     /**
-     * **One-tap and zero-tap buttons only.** Your app signing key hash. See [App Signing Key Hash](https://developers.facebook.com/docs/whatsapp/business-management-api/authentication-templates/zero-tap-authentication-templates#app-signing-key-hash).
+     * **Deprecated since 2025-07-23. Use `supported_apps` instead.** **One-tap and zero-tap buttons only.** Your app signing key hash. See [App Signing Key Hash](https://developers.facebook.com/docs/whatsapp/business-management-api/authentication-templates/zero-tap-authentication-templates#app-signing-key-hash).
      * @type {string}
      * @memberof WhatsappTemplateComponentButton
+     * @deprecated
      */
     'signature_hash'?: string;
+    /**
+     * **One-tap and zero-tap buttons only.** List of supported apps.
+     * @type {Array<WhatsappTemplateComponentButtonOtpSupportedApp>}
+     * @memberof WhatsappTemplateComponentButton
+     */
+    'supported_apps'?: Array<WhatsappTemplateComponentButtonOtpSupportedApp>;
     /**
      * **Zero-tap buttons only.** Set to `true` to indicate that you understand that your use of zero-tap authentication is subject to the WhatsApp Business Terms of Service, and that it\'s your responsibility to ensure your customers expect that the code will be automatically filled in on their behalf when they choose to receive the zero-tap code through WhatsApp. If set to `false`, the template will not be created as you need to accept zero-tap terms before creating zero-tap enabled message templates.
      * @type {boolean}

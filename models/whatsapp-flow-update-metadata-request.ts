@@ -13,18 +13,25 @@
  */
 
 
+import { WhatsappFlowCategory } from './whatsapp-flow-category';
 
 /**
- * Used to mention a specific message you are replying to. The reply can be any message type.
+ * 
  * @export
- * @interface WhatsappMessageContext
+ * @interface WhatsappFlowUpdateMetadataRequest
  */
-export interface WhatsappMessageContext {
+export interface WhatsappFlowUpdateMetadataRequest {
     /**
-     * Specifies the `wamid` of the message your are replying to. `wamid` is the original message ID on WhatsApp\'s platform.
+     * Flow name.
      * @type {string}
-     * @memberof WhatsappMessageContext
+     * @memberof WhatsappFlowUpdateMetadataRequest
      */
-    'message_id'?: string;
+    'name'?: string;
+    /**
+     * Flow categories.
+     * @type {Array<WhatsappFlowCategory>}
+     * @memberof WhatsappFlowUpdateMetadataRequest
+     */
+    'categories'?: Array<WhatsappFlowCategory>;
 }
 

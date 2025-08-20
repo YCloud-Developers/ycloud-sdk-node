@@ -34,6 +34,8 @@ import { WhatsappPhoneNumberPage } from '../models';
 import { WhatsappPhoneNumberProfile } from '../models';
 // @ts-ignore
 import { WhatsappPhoneNumberProfileUpdateRequest } from '../models';
+// @ts-ignore
+import { WhatsappPhoneNumberSettings } from '../models';
 /**
  * WhatsappPhoneNumbersApi - axios parameter creator
  * @export
@@ -279,6 +281,102 @@ const WhatsappPhoneNumbersApiAxiosParamCreator = function (configuration?: Confi
             };
         },
         /**
+         * Retrieves phone number specific settings.
+         * @summary Retrieve phone number settings
+         * @param {string} wabaId WhatsApp Business Account ID.
+         * @param {string} phoneNumber Phone number in [E.164](https://en.wikipedia.org/wiki/E.164) format.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        retrieveSettings: async (wabaId: string, phoneNumber: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'wabaId' is not null or undefined
+            assertParamExists('retrieveSettings', 'wabaId', wabaId)
+            // verify required parameter 'phoneNumber' is not null or undefined
+            assertParamExists('retrieveSettings', 'phoneNumber', phoneNumber)
+            const localVarPath = `/whatsapp/phoneNumbers/{wabaId}/{phoneNumber}/settings`
+                .replace(`{${"wabaId"}}`, encodeURIComponent(String(wabaId)))
+                .replace(`{${"phoneNumber"}}`, encodeURIComponent(String(phoneNumber)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            // const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            if (USER_AGENT) {
+                localVarHeaderParameter['User-Agent'] = USER_AGENT;
+            }
+            const localVarQueryParameter = {} as any;
+
+            // authentication api_key required
+            await setApiKeyToObject(localVarHeaderParameter, "X-API-Key", configuration)
+
+
+    
+            // setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+            localVarRequestOptions.params = localVarQueryParameter;
+
+            return {
+                url: localVarPath,
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * Saves phone number specific settings.
+         * @summary Save phone number settings
+         * @param {string} wabaId WhatsApp Business Account ID.
+         * @param {string} phoneNumber Phone number in [E.164](https://en.wikipedia.org/wiki/E.164) format.
+         * @param {WhatsappPhoneNumberSettings} whatsappPhoneNumberSettings Phone number settings to save.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        saveSettings: async (wabaId: string, phoneNumber: string, whatsappPhoneNumberSettings: WhatsappPhoneNumberSettings, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'wabaId' is not null or undefined
+            assertParamExists('saveSettings', 'wabaId', wabaId)
+            // verify required parameter 'phoneNumber' is not null or undefined
+            assertParamExists('saveSettings', 'phoneNumber', phoneNumber)
+            // verify required parameter 'whatsappPhoneNumberSettings' is not null or undefined
+            assertParamExists('saveSettings', 'whatsappPhoneNumberSettings', whatsappPhoneNumberSettings)
+            const localVarPath = `/whatsapp/phoneNumbers/{wabaId}/{phoneNumber}/settings`
+                .replace(`{${"wabaId"}}`, encodeURIComponent(String(wabaId)))
+                .replace(`{${"phoneNumber"}}`, encodeURIComponent(String(phoneNumber)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            // const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            if (USER_AGENT) {
+                localVarHeaderParameter['User-Agent'] = USER_AGENT;
+            }
+            const localVarQueryParameter = {} as any;
+
+            // authentication api_key required
+            await setApiKeyToObject(localVarHeaderParameter, "X-API-Key", configuration)
+
+
+    
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+
+            // setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+            localVarRequestOptions.params = localVarQueryParameter;
+            localVarRequestOptions.data = serializeDataIfNeeded(whatsappPhoneNumberSettings, localVarRequestOptions, configuration)
+
+            return {
+                url: localVarPath,
+                options: localVarRequestOptions,
+            };
+        },
+        /**
          * Updates a WhatsApp business phone number\'s commerce settings. Use this endpoint to enable or disable the shopping cart or the product catalog for a specific business phone number.
          * @summary Update commerce settings
          * @param {string} wabaId WhatsApp Business Account ID.
@@ -450,6 +548,31 @@ const WhatsappPhoneNumbersApiFp = function(configuration?: Configuration) {
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
         /**
+         * Retrieves phone number specific settings.
+         * @summary Retrieve phone number settings
+         * @param {string} wabaId WhatsApp Business Account ID.
+         * @param {string} phoneNumber Phone number in [E.164](https://en.wikipedia.org/wiki/E.164) format.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async retrieveSettings(wabaId: string, phoneNumber: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<WhatsappPhoneNumberSettings>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.retrieveSettings(wabaId, phoneNumber, options);
+            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+        },
+        /**
+         * Saves phone number specific settings.
+         * @summary Save phone number settings
+         * @param {string} wabaId WhatsApp Business Account ID.
+         * @param {string} phoneNumber Phone number in [E.164](https://en.wikipedia.org/wiki/E.164) format.
+         * @param {WhatsappPhoneNumberSettings} whatsappPhoneNumberSettings Phone number settings to save.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async saveSettings(wabaId: string, phoneNumber: string, whatsappPhoneNumberSettings: WhatsappPhoneNumberSettings, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<WhatsappPhoneNumberSettings>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.saveSettings(wabaId, phoneNumber, whatsappPhoneNumberSettings, options);
+            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+        },
+        /**
          * Updates a WhatsApp business phone number\'s commerce settings. Use this endpoint to enable or disable the shopping cart or the product catalog for a specific business phone number.
          * @summary Update commerce settings
          * @param {string} wabaId WhatsApp Business Account ID.
@@ -534,6 +657,24 @@ const WhatsappPhoneNumbersApiFactory = function (configuration?: Configuration, 
          */
         retrieveProfile(wabaId: string, phoneNumber: string, options?: any): AxiosPromise<WhatsappPhoneNumberProfile> {
             return localVarFp.retrieveProfile(wabaId, phoneNumber, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * Retrieves phone number specific settings.
+         * @summary Retrieve phone number settings
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        retrieveSettings(wabaId: string, phoneNumber: string, options?: any): AxiosPromise<WhatsappPhoneNumberSettings> {
+            return localVarFp.retrieveSettings(wabaId, phoneNumber, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * Saves phone number specific settings.
+         * @summary Save phone number settings
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        saveSettings(wabaId: string, phoneNumber: string, whatsappPhoneNumberSettings: WhatsappPhoneNumberSettings, options?: any): AxiosPromise<WhatsappPhoneNumberSettings> {
+            return localVarFp.saveSettings(wabaId, phoneNumber, whatsappPhoneNumberSettings, options).then((request) => request(axios, basePath));
         },
         /**
          * Updates a WhatsApp business phone number\'s commerce settings. Use this endpoint to enable or disable the shopping cart or the product catalog for a specific business phone number.
@@ -660,6 +801,33 @@ export class WhatsappPhoneNumbersApi extends BaseAPI {
      */
     public retrieveProfile(wabaId: string, phoneNumber: string, options?: AxiosRequestConfig) {
         return WhatsappPhoneNumbersApiFp(this.configuration).retrieveProfile(wabaId, phoneNumber, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * Retrieves phone number specific settings.
+     * @summary Retrieve phone number settings
+     * @param {string} wabaId WhatsApp Business Account ID.
+     * @param {string} phoneNumber Phone number in [E.164](https://en.wikipedia.org/wiki/E.164) format.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof WhatsappPhoneNumbersApi
+     */
+    public retrieveSettings(wabaId: string, phoneNumber: string, options?: AxiosRequestConfig) {
+        return WhatsappPhoneNumbersApiFp(this.configuration).retrieveSettings(wabaId, phoneNumber, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * Saves phone number specific settings.
+     * @summary Save phone number settings
+     * @param {string} wabaId WhatsApp Business Account ID.
+     * @param {string} phoneNumber Phone number in [E.164](https://en.wikipedia.org/wiki/E.164) format.
+     * @param {WhatsappPhoneNumberSettings} whatsappPhoneNumberSettings Phone number settings to save.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof WhatsappPhoneNumbersApi
+     */
+    public saveSettings(wabaId: string, phoneNumber: string, whatsappPhoneNumberSettings: WhatsappPhoneNumberSettings, options?: AxiosRequestConfig) {
+        return WhatsappPhoneNumbersApiFp(this.configuration).saveSettings(wabaId, phoneNumber, whatsappPhoneNumberSettings, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**

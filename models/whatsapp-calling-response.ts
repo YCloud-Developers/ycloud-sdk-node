@@ -15,16 +15,22 @@
 
 
 /**
- * Used to mention a specific message you are replying to. The reply can be any message type.
+ * 
  * @export
- * @interface WhatsappMessageContext
+ * @interface WhatsappCallingResponse
  */
-export interface WhatsappMessageContext {
+export interface WhatsappCallingResponse {
     /**
-     * Specifies the `wamid` of the message your are replying to. `wamid` is the original message ID on WhatsApp\'s platform.
+     * The WhatsApp call ID associated with this calling operation.
      * @type {string}
-     * @memberof WhatsappMessageContext
+     * @memberof WhatsappCallingResponse
      */
-    'message_id'?: string;
+    'wacid'?: string;
+    /**
+     * Indicates whether the calling operation was successful.
+     * @type {boolean}
+     * @memberof WhatsappCallingResponse
+     */
+    'success': boolean;
 }
 
