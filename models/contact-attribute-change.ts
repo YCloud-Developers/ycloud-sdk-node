@@ -14,8 +14,6 @@
 
 
 import { AttributeChangeAction } from './attribute-change-action';
-import { ContactAttributeChangeNewValue } from './contact-attribute-change-new-value';
-import { ContactAttributeChangeOldValue } from './contact-attribute-change-old-value';
 
 /**
  * Represents a single attribute change, containing the old value, new value, and change actions.
@@ -24,17 +22,17 @@ import { ContactAttributeChangeOldValue } from './contact-attribute-change-old-v
  */
 export interface ContactAttributeChange {
     /**
-     * 
-     * @type {ContactAttributeChangeOldValue}
+     * The previous value of the attribute before the change. Can be a string, number, array, or boolean depending on the attribute type. This field is not included when the value is null.
+     * @type {any}
      * @memberof ContactAttributeChange
      */
-    'oldValue'?: ContactAttributeChangeOldValue;
+    'oldValue'?: any;
     /**
-     * 
-     * @type {ContactAttributeChangeNewValue}
+     * The new value of the attribute after the change. Can be a string, number, array, or boolean depending on the attribute type. This field is not included when the value is null.
+     * @type {any}
      * @memberof ContactAttributeChange
      */
-    'newValue'?: ContactAttributeChangeNewValue;
+    'newValue'?: any;
     /**
      * An array of change actions that describe what operations were performed on this attribute.
      * @type {Array<AttributeChangeAction>}

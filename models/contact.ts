@@ -101,13 +101,13 @@ export interface Contact {
      */
     'sourceType'?: ContactSourceType;
     /**
-     * 来源标识符。与联系人创建来源相关的唯一标识符。
+     * Source identifier. A unique identifier related to the contact creation source.
      * @type {string}
      * @memberof Contact
      */
     'sourceId'?: string;
     /**
-     * 来源URL。联系人创建时的来源链接地址。
+     * Source URL. The source link address where the contact was created.
      * @type {string}
      * @memberof Contact
      */

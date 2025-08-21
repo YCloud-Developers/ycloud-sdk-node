@@ -3,8 +3,6 @@ export * from './balance';
 export * from './contact';
 export * from './contact-attribute';
 export * from './contact-attribute-change';
-export * from './contact-attribute-change-new-value';
-export * from './contact-attribute-change-old-value';
 export * from './contact-attributes-changed';
 export * from './contact-create-request';
 export * from './contact-created';

@@ -15,7 +15,7 @@
 
 
 /**
- * 联系人来源类型的枚举值。此为内部类型标识，非页面显示名称。 每个枚举值对应的显示名称如下： - WHATSAPP: \"Inbound message\" - GROWTH_TOOL: \"Link/QR Code\" - MANUALLY_ADDED: \"Manually added\" - FILE_IMPORT: \"File import\" - SHOPIFY: \"Shopify\" - API: \"API added\" - AD: \"AD\" - POST: \"Post\" - CALLING: \"Calling\" - SMB: \"Whatsapp Business App\" - UNKNOWN: \"Unknown\"
+ * Contact source type enumeration values. These are internal type identifiers, not the display names shown on the contact page. Each enumeration value corresponds to the following display names: - WHATSAPP: \"Inbound message\" - GROWTH_TOOL: \"Link/QR Code\" - MANUALLY_ADDED: \"Manually added\" - FILE_IMPORT: \"File import\" - SHOPIFY: \"Shopify\" - API: \"API added\" - AD: \"AD\" - POST: \"Post\" - CALLING: \"Calling\" - SMB: \"Whatsapp Business App\" - UNKNOWN: \"Unknown\"
  * @export
  * @enum {string}
  */
