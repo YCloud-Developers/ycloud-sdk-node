@@ -27,6 +27,10 @@ import { WhatsappCommerceSettings } from '../models';
 // @ts-ignore
 import { WhatsappCommerceSettingsUpdateRequest } from '../models';
 // @ts-ignore
+import { WhatsappPhoneNameUpdateRequest } from '../models';
+// @ts-ignore
+import { WhatsappPhoneNameUpdateResponse } from '../models';
+// @ts-ignore
 import { WhatsappPhoneNumber } from '../models';
 // @ts-ignore
 import { WhatsappPhoneNumberPage } from '../models';
@@ -428,6 +432,57 @@ const WhatsappPhoneNumbersApiAxiosParamCreator = function (configuration?: Confi
             };
         },
         /**
+         * Updates a WhatsApp business phone number display name.
+         * @summary Update a phone number display name
+         * @param {string} wabaId WhatsApp Business Account ID.
+         * @param {string} phoneNumber Phone number in [E.164](https://en.wikipedia.org/wiki/E.164) format.
+         * @param {WhatsappPhoneNameUpdateRequest} whatsappPhoneNameUpdateRequest 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        updateDisplayName: async (wabaId: string, phoneNumber: string, whatsappPhoneNameUpdateRequest: WhatsappPhoneNameUpdateRequest, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'wabaId' is not null or undefined
+            assertParamExists('updateDisplayName', 'wabaId', wabaId)
+            // verify required parameter 'phoneNumber' is not null or undefined
+            assertParamExists('updateDisplayName', 'phoneNumber', phoneNumber)
+            // verify required parameter 'whatsappPhoneNameUpdateRequest' is not null or undefined
+            assertParamExists('updateDisplayName', 'whatsappPhoneNameUpdateRequest', whatsappPhoneNameUpdateRequest)
+            const localVarPath = `/whatsapp/phoneNumbers/{wabaId}/{phoneNumber}/displayName`
+                .replace(`{${"wabaId"}}`, encodeURIComponent(String(wabaId)))
+                .replace(`{${"phoneNumber"}}`, encodeURIComponent(String(phoneNumber)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            // const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'PATCH', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            if (USER_AGENT) {
+                localVarHeaderParameter['User-Agent'] = USER_AGENT;
+            }
+            const localVarQueryParameter = {} as any;
+
+            // authentication api_key required
+            await setApiKeyToObject(localVarHeaderParameter, "X-API-Key", configuration)
+
+
+    
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+
+            // setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+            localVarRequestOptions.params = localVarQueryParameter;
+            localVarRequestOptions.data = serializeDataIfNeeded(whatsappPhoneNameUpdateRequest, localVarRequestOptions, configuration)
+
+            return {
+                url: localVarPath,
+                options: localVarRequestOptions,
+            };
+        },
+        /**
          * Updates a WhatsApp business phone number profile.
          * @summary Update a phone number profile
          * @param {string} wabaId WhatsApp Business Account ID.
@@ -586,6 +641,19 @@ const WhatsappPhoneNumbersApiFp = function(configuration?: Configuration) {
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
         /**
+         * Updates a WhatsApp business phone number display name.
+         * @summary Update a phone number display name
+         * @param {string} wabaId WhatsApp Business Account ID.
+         * @param {string} phoneNumber Phone number in [E.164](https://en.wikipedia.org/wiki/E.164) format.
+         * @param {WhatsappPhoneNameUpdateRequest} whatsappPhoneNameUpdateRequest 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async updateDisplayName(wabaId: string, phoneNumber: string, whatsappPhoneNameUpdateRequest: WhatsappPhoneNameUpdateRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<WhatsappPhoneNameUpdateResponse>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.updateDisplayName(wabaId, phoneNumber, whatsappPhoneNameUpdateRequest, options);
+            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+        },
+        /**
          * Updates a WhatsApp business phone number profile.
          * @summary Update a phone number profile
          * @param {string} wabaId WhatsApp Business Account ID.
@@ -684,6 +752,15 @@ const WhatsappPhoneNumbersApiFactory = function (configuration?: Configuration, 
          */
         updateCommerceSettings(wabaId: string, phoneNumber: string, whatsappCommerceSettingsUpdateRequest: WhatsappCommerceSettingsUpdateRequest, options?: any): AxiosPromise<WhatsappCommerceSettings> {
             return localVarFp.updateCommerceSettings(wabaId, phoneNumber, whatsappCommerceSettingsUpdateRequest, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * Updates a WhatsApp business phone number display name.
+         * @summary Update a phone number display name
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        updateDisplayName(wabaId: string, phoneNumber: string, whatsappPhoneNameUpdateRequest: WhatsappPhoneNameUpdateRequest, options?: any): AxiosPromise<WhatsappPhoneNameUpdateResponse> {
+            return localVarFp.updateDisplayName(wabaId, phoneNumber, whatsappPhoneNameUpdateRequest, options).then((request) => request(axios, basePath));
         },
         /**
          * Updates a WhatsApp business phone number profile.
@@ -842,6 +919,20 @@ export class WhatsappPhoneNumbersApi extends BaseAPI {
      */
     public updateCommerceSettings(wabaId: string, phoneNumber: string, whatsappCommerceSettingsUpdateRequest: WhatsappCommerceSettingsUpdateRequest, options?: AxiosRequestConfig) {
         return WhatsappPhoneNumbersApiFp(this.configuration).updateCommerceSettings(wabaId, phoneNumber, whatsappCommerceSettingsUpdateRequest, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * Updates a WhatsApp business phone number display name.
+     * @summary Update a phone number display name
+     * @param {string} wabaId WhatsApp Business Account ID.
+     * @param {string} phoneNumber Phone number in [E.164](https://en.wikipedia.org/wiki/E.164) format.
+     * @param {WhatsappPhoneNameUpdateRequest} whatsappPhoneNameUpdateRequest 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof WhatsappPhoneNumbersApi
+     */
+    public updateDisplayName(wabaId: string, phoneNumber: string, whatsappPhoneNameUpdateRequest: WhatsappPhoneNameUpdateRequest, options?: AxiosRequestConfig) {
+        return WhatsappPhoneNumbersApiFp(this.configuration).updateDisplayName(wabaId, phoneNumber, whatsappPhoneNameUpdateRequest, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**

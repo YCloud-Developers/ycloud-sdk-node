@@ -13,19 +13,24 @@
  */
 
 
-import { WhatsappListFlowItem } from './whatsapp-list-flow-item';
 
 /**
  * 
  * @export
- * @interface WhatsappFlowList200Response
+ * @interface WhatsappMessageMediaAllOf
  */
-export interface WhatsappFlowList200Response {
+export interface WhatsappMessageMediaAllOf {
     /**
-     * List of flows.
-     * @type {Array<WhatsappListFlowItem>}
-     * @memberof WhatsappFlowList200Response
+     * Describes the specified `image`, `video`, or `document` media. Not applicable in the `header` of `template` or `interactive` messages.
+     * @type {string}
+     * @memberof WhatsappMessageMediaAllOf
      */
-    'items'?: Array<WhatsappListFlowItem>;
+    'caption'?: string;
+    /**
+     * Describes the filename for the specific document. Use only with `document` media.
+     * @type {string}
+     * @memberof WhatsappMessageMediaAllOf
+     */
+    'filename'?: string;
 }
 

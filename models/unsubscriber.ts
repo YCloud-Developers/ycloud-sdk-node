@@ -47,10 +47,25 @@ export interface Unsubscriber {
      */
     'regionCode'?: string;
     /**
+     * The source from which a customer resumed their subscription - `Whatsapp`: The customer resumed their subscription on the whatsapp client - `API`: You remove the customer from the unsubscribe list through the OpenAPI of YCloud - `Manual`: You remove the customer from the unsubscribe list on the Contact page of YCloud.
+     * @type {string}
+     * @memberof Unsubscriber
+     */
+    'source'?: UnsubscriberSourceEnum;
+    /**
      * The time at which this object was created, formatted in [RFC 3339](https://datatracker.ietf.org/doc/html/rfc3339). e.g., `2022-06-01T12:00:00.000Z`.
      * @type {string}
      * @memberof Unsubscriber
      */
     'createTime'?: string;
 }
+
+export const UnsubscriberSourceEnum = {
+    Whatsapp: 'Whatsapp',
+    Api: 'API',
+    Manual: 'Manual'
+} as const;
+
+export type UnsubscriberSourceEnum = typeof UnsubscriberSourceEnum[keyof typeof UnsubscriberSourceEnum];
+
 

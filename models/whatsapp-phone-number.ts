@@ -63,11 +63,23 @@ export interface WhatsappPhoneNumber {
      */
     'messagingLimit'?: string;
     /**
+     * The owning business portfolio\'s messaging limit. Starting October 7, 2025, messaging limits will instead be calculated and set on a business portfolio basis, and will be shared by all business phone numbers within each portfolio. See also [phone_number_quality_update webhook reference](https://developers.facebook.com/docs/whatsapp/cloud-api/webhooks/reference/phone_number_quality_update). - `TIER_NOT_SET`: The business phone number has not been used to send a message yet. - `TIER_50`: Messaging limit of 50 business-initiated conversations in a rolling 24-hour period. - `TIER_250`: Messaging limit of 250 business-initiated conversations in a rolling 24-hour period. - `TIER_2K`: Messaging limit of 2,000 business-initiated conversations in a rolling 24-hour period. - `TIER_10K`: Messaging limit of 10,000 business-initiated conversations in a rolling 24-hour period. - `TIER_100K`: Messaging limit of 100,000 business-initiated conversations in a rolling 24-hour period. - `TIER_UNLIMITED`: The business phone number has higher throughput with unlimited business-initiated conversations.
+     * @type {string}
+     * @memberof WhatsappPhoneNumber
+     */
+    'whatsappBusinessManagerMessagingLimit'?: string;
+    /**
      * Verified name.
      * @type {string}
      * @memberof WhatsappPhoneNumber
      */
     'verifiedName'?: string;
+    /**
+     * The modified name
+     * @type {string}
+     * @memberof WhatsappPhoneNumber
+     */
+    'newName'?: string;
     /**
      * 
      * @type {WhatsappPhoneNumberCodeVerificationStatus}

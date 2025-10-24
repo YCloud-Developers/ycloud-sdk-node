@@ -13,19 +13,18 @@
  */
 
 
-import { WhatsappListFlowItem } from './whatsapp-list-flow-item';
 
 /**
- * 
+ * WhatsApp Phone Number Display Name
  * @export
- * @interface WhatsappFlowList200Response
+ * @interface WhatsappPhoneNameUpdateRequest
  */
-export interface WhatsappFlowList200Response {
+export interface WhatsappPhoneNameUpdateRequest {
     /**
-     * List of flows.
-     * @type {Array<WhatsappListFlowItem>}
-     * @memberof WhatsappFlowList200Response
+     * The new name you want to modify
+     * @type {string}
+     * @memberof WhatsappPhoneNameUpdateRequest
      */
-    'items'?: Array<WhatsappListFlowItem>;
+    'newName'?: string;
 }
 

@@ -106,6 +106,7 @@ Class | Method | HTTP request | Description
 *WhatsappPhoneNumbersApi* | **retrieveSettings** | **GET** /whatsapp/phoneNumbers/{wabaId}/{phoneNumber}/settings | Retrieve phone number settings
 *WhatsappPhoneNumbersApi* | **saveSettings** | **POST** /whatsapp/phoneNumbers/{wabaId}/{phoneNumber}/settings | Save phone number settings
 *WhatsappPhoneNumbersApi* | **updateCommerceSettings** | **PATCH** /whatsapp/phoneNumbers/{wabaId}/{phoneNumber}/whatsappCommerceSettings | Update commerce settings
+*WhatsappPhoneNumbersApi* | **updateDisplayName** | **PATCH** /whatsapp/phoneNumbers/{wabaId}/{phoneNumber}/displayName | Update a phone number display name
 *WhatsappPhoneNumbersApi* | **updateProfile** | **PATCH** /whatsapp/phoneNumbers/{wabaId}/{phoneNumber}/profile | Update a phone number profile
 *WhatsappTemplatesApi* | **create** | **POST** /whatsapp/templates | Create a template
 *WhatsappTemplatesApi* | **deleteByName** | **DELETE** /whatsapp/templates/{wabaId}/{name} | Delete templates by name

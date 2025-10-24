@@ -13,6 +13,7 @@
  */
 
 
+import { WhatsappPhoneNumberNameStatus } from './whatsapp-phone-number-name-status';
 import { WhatsappPhoneNumberProfileVertical } from './whatsapp-phone-number-profile-vertical';
 
 /**
@@ -27,6 +28,30 @@ export interface WhatsappPhoneNumberProfile {
      * @memberof WhatsappPhoneNumberProfile
      */
     'about'?: string;
+    /**
+     * The verified name
+     * @type {string}
+     * @memberof WhatsappPhoneNumberProfile
+     */
+    'verifiedName'?: string;
+    /**
+     * 
+     * @type {WhatsappPhoneNumberNameStatus}
+     * @memberof WhatsappPhoneNumberProfile
+     */
+    'nameStatus'?: WhatsappPhoneNumberNameStatus;
+    /**
+     * The modified name
+     * @type {string}
+     * @memberof WhatsappPhoneNumberProfile
+     */
+    'newName'?: string;
+    /**
+     * 
+     * @type {WhatsappPhoneNumberNameStatus}
+     * @memberof WhatsappPhoneNumberProfile
+     */
+    'newNameStatus'?: WhatsappPhoneNumberNameStatus;
     /**
      * Address of the business. Character limit 256.
      * @type {string}

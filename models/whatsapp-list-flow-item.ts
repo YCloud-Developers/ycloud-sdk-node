@@ -14,30 +14,44 @@
 
 
 import { WhatsappFlowCategory } from './whatsapp-flow-category';
+import { WhatsappFlowStatus } from './whatsapp-flow-status';
+import { WhatsappFlowValidationError } from './whatsapp-flow-validation-error';
 
 /**
- * 
+ * Represents a list item of WhatsApp Flows.
  * @export
- * @interface WhatsappFlowUpdateMetadataRequest
+ * @interface WhatsappListFlowItem
  */
-export interface WhatsappFlowUpdateMetadataRequest {
+export interface WhatsappListFlowItem {
+    /**
+     * Flow ID.
+     * @type {string}
+     * @memberof WhatsappListFlowItem
+     */
+    'id'?: string;
     /**
      * Flow name.
      * @type {string}
-     * @memberof WhatsappFlowUpdateMetadataRequest
+     * @memberof WhatsappListFlowItem
      */
     'name'?: string;
     /**
+     * 
+     * @type {WhatsappFlowStatus}
+     * @memberof WhatsappListFlowItem
+     */
+    'status'?: WhatsappFlowStatus;
+    /**
      * Flow categories.
      * @type {Array<WhatsappFlowCategory>}
-     * @memberof WhatsappFlowUpdateMetadataRequest
+     * @memberof WhatsappListFlowItem
      */
     'categories'?: Array<WhatsappFlowCategory>;
     /**
-     * The endpoint URI for the Flow.
-     * @type {string}
-     * @memberof WhatsappFlowUpdateMetadataRequest
+     * List of validation errors.
+     * @type {Array<WhatsappFlowValidationError>}
+     * @memberof WhatsappListFlowItem
      */
-    'endpointUri'?: string;
+    'validationErrors'?: Array<WhatsappFlowValidationError>;
 }
 

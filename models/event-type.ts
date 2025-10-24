@@ -100,7 +100,9 @@ export const EventType = {
     /**
     * Occurs when a contact is deleted.
     */
-    ContactDeleted: 'contact.deleted'
+    ContactDeleted: 'contact.deleted',
+    ContactUnsubscribeCreated: 'contact.unsubscribe.created',
+    ContactUnsubscribeDeleted: 'contact.unsubscribe.deleted'
 } as const;
 
 export type EventType = typeof EventType[keyof typeof EventType];

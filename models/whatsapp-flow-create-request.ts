@@ -57,5 +57,11 @@ export interface WhatsappFlowCreateRequest {
      * @memberof WhatsappFlowCreateRequest
      */
     'cloneFlowId'?: string;
+    /**
+     * The endpoint URI for the Flow.
+     * @type {string}
+     * @memberof WhatsappFlowCreateRequest
+     */
+    'endpointUri'?: string;
 }
 

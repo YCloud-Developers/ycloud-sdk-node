@@ -16,6 +16,8 @@
 import { ContactAttributesChanged } from './contact-attributes-changed';
 import { ContactCreated } from './contact-created';
 import { ContactDeleted } from './contact-deleted';
+import { ContactUnsubscribeCreated } from './contact-unsubscribe-created';
+import { ContactUnsubscribeDeleted } from './contact-unsubscribe-deleted';
 import { EmailDelivery } from './email-delivery';
 import { EventType } from './event-type';
 import { Sms } from './sms';
@@ -136,5 +138,17 @@ export interface Event {
      * @memberof Event
      */
     'contactDeleted'?: ContactDeleted;
+    /**
+     * 
+     * @type {ContactUnsubscribeCreated}
+     * @memberof Event
+     */
+    'contactUnsubscribeCreated'?: ContactUnsubscribeCreated;
+    /**
+     * 
+     * @type {ContactUnsubscribeDeleted}
+     * @memberof Event
+     */
+    'contactUnsubscribeDeleted'?: ContactUnsubscribeDeleted;
 }
 

@@ -72,5 +72,11 @@ export interface WhatsappFlow {
      * @memberof WhatsappFlow
      */
     'dataApiVersion'?: string;
+    /**
+     * The endpoint URI for the Flow.
+     * @type {string}
+     * @memberof WhatsappFlow
+     */
+    'endpointUri'?: string;
 }
 

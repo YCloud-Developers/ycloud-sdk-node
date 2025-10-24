@@ -13,14 +13,37 @@
  */
 
 
-import { WhatsappMessageMediaOneOf } from './whatsapp-message-media-one-of';
-import { WhatsappMessageMediaOneOf1 } from './whatsapp-message-media-one-of1';
+import { WhatsappMessageMediaAllOf } from './whatsapp-message-media-all-of';
 
 /**
- * @type WhatsappMessageMedia
  * Use for `image`, `video`, `audio`, `document`, or `sticker` messages.  See also [Supported Media Types](https://developers.facebook.com/docs/whatsapp/cloud-api/reference/media#supported-media-types).  **Note**: Either `id` or `link` must be provided, but not both. These parameters are mutually exclusive.  Reference: [WhatsApp Cloud API Media Object](https://developers.facebook.com/docs/whatsapp/cloud-api/reference/messages#media-object)
  * @export
+ * @interface WhatsappMessageMedia
  */
-export type WhatsappMessageMedia = WhatsappMessageMediaOneOf | WhatsappMessageMediaOneOf1;
-
+export interface WhatsappMessageMedia {
+    /**
+     * Describes the specified `image`, `video`, or `document` media. Not applicable in the `header` of `template` or `interactive` messages.
+     * @type {string}
+     * @memberof WhatsappMessageMedia
+     */
+    'caption'?: string;
+    /**
+     * Describes the filename for the specific document. Use only with `document` media.
+     * @type {string}
+     * @memberof WhatsappMessageMedia
+     */
+    'filename'?: string;
+    /**
+     * Required when using media that has been uploaded to WhatsApp servers.  Provide the media object ID obtained from WhatsApp media upload API (https://docs.ycloud.com/update/reference/whatsapp_media-upload#/).
+     * @type {string}
+     * @memberof WhatsappMessageMedia
+     */
+    'id': string;
+    /**
+     * Required when sending media directly from your server.  The protocol and URL of the media to be sent. Use only with HTTP/HTTPS URLs. Note: WhatsApp Cloud API caches media resources for 10 minutes. To ensure latest content, add random query strings to the URL.
+     * @type {string}
+     * @memberof WhatsappMessageMedia
+     */
+    'link': string;
+}
 
