@@ -64,7 +64,7 @@ const ContactsApiAxiosParamCreator = function (configuration?: Configuration) {
             await setApiKeyToObject(localVarHeaderParameter, "X-API-Key", configuration)
 
 
-    
+
             // setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
@@ -78,7 +78,7 @@ const ContactsApiAxiosParamCreator = function (configuration?: Configuration) {
         /**
          * Creates a contact.
          * @summary Create a contact
-         * @param {ContactCreateRequest} contactCreateRequest 
+         * @param {ContactCreateRequest} contactCreateRequest
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -104,7 +104,7 @@ const ContactsApiAxiosParamCreator = function (configuration?: Configuration) {
             await setApiKeyToObject(localVarHeaderParameter, "X-API-Key", configuration)
 
 
-    
+
             localVarHeaderParameter['Content-Type'] = 'application/json';
 
             // setSearchParams(localVarUrlObj, localVarQueryParameter);
@@ -121,7 +121,7 @@ const ContactsApiAxiosParamCreator = function (configuration?: Configuration) {
         /**
          * Deletes a contact.
          * @summary Delete a contact
-         * @param {string} id ID of the contact.
+         * @param {string} id ID of the contact. Also support phone number([E.164](https://en.wikipedia.org/wiki/E.164) format, start with character \&#39;+\&#39;), example: +16315551111
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -148,7 +148,7 @@ const ContactsApiAxiosParamCreator = function (configuration?: Configuration) {
             await setApiKeyToObject(localVarHeaderParameter, "X-API-Key", configuration)
 
 
-    
+
             // setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
@@ -221,7 +221,7 @@ const ContactsApiAxiosParamCreator = function (configuration?: Configuration) {
             }
 
 
-    
+
             // setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
@@ -235,7 +235,7 @@ const ContactsApiAxiosParamCreator = function (configuration?: Configuration) {
         /**
          * Retrieves a contact.
          * @summary Retrieve a contact
-         * @param {string} id ID of the contact.
+         * @param {string} id ID of the contact. Also support phone number([E.164](https://en.wikipedia.org/wiki/E.164) format, start with character \&#39;+\&#39;), example: +16315551111
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -262,7 +262,7 @@ const ContactsApiAxiosParamCreator = function (configuration?: Configuration) {
             await setApiKeyToObject(localVarHeaderParameter, "X-API-Key", configuration)
 
 
-    
+
             // setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
@@ -276,8 +276,8 @@ const ContactsApiAxiosParamCreator = function (configuration?: Configuration) {
         /**
          * Updates a contact.
          * @summary Update a contact
-         * @param {string} id ID of the contact.
-         * @param {ContactUpdateRequest} [contactUpdateRequest] 
+         * @param {string} id ID of the contact. Also support phone number([E.164](https://en.wikipedia.org/wiki/E.164) format, start with character \&#39;+\&#39;), example: +16315551111
+         * @param {ContactUpdateRequest} [contactUpdateRequest]
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -304,7 +304,7 @@ const ContactsApiAxiosParamCreator = function (configuration?: Configuration) {
             await setApiKeyToObject(localVarHeaderParameter, "X-API-Key", configuration)
 
 
-    
+
             localVarHeaderParameter['Content-Type'] = 'application/json';
 
             // setSearchParams(localVarUrlObj, localVarQueryParameter);
@@ -341,7 +341,7 @@ const ContactsApiFp = function(configuration?: Configuration) {
         /**
          * Creates a contact.
          * @summary Create a contact
-         * @param {ContactCreateRequest} contactCreateRequest 
+         * @param {ContactCreateRequest} contactCreateRequest
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -352,7 +352,7 @@ const ContactsApiFp = function(configuration?: Configuration) {
         /**
          * Deletes a contact.
          * @summary Delete a contact
-         * @param {string} id ID of the contact.
+         * @param {string} id ID of the contact. Also support phone number([E.164](https://en.wikipedia.org/wiki/E.164) format, start with character \&#39;+\&#39;), example: +16315551111
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -374,7 +374,7 @@ const ContactsApiFp = function(configuration?: Configuration) {
         /**
          * Retrieves a contact.
          * @summary Retrieve a contact
-         * @param {string} id ID of the contact.
+         * @param {string} id ID of the contact. Also support phone number([E.164](https://en.wikipedia.org/wiki/E.164) format, start with character \&#39;+\&#39;), example: +16315551111
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -385,8 +385,8 @@ const ContactsApiFp = function(configuration?: Configuration) {
         /**
          * Updates a contact.
          * @summary Update a contact
-         * @param {string} id ID of the contact.
-         * @param {ContactUpdateRequest} [contactUpdateRequest] 
+         * @param {string} id ID of the contact. Also support phone number([E.164](https://en.wikipedia.org/wiki/E.164) format, start with character \&#39;+\&#39;), example: +16315551111
+         * @param {ContactUpdateRequest} [contactUpdateRequest]
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -438,7 +438,7 @@ const ContactsApiFactory = function (configuration?: Configuration, basePath?: s
          * @param {number} [page] Page number of the results to be returned, 1-based.
          * @param {number} [limit] A limit on the number of results to be returned, or number of results per page, between 1 and 100, defaults to 10.
          * @param {boolean} [includeTotal] Return results inside an object that contains the total result count or not.
-         * @param {string} [filterTags] Comma-separated list of tags.
+         * @param {string} [filterTags] Comma-separated list of tags\&#39; id.
          * @param {string} [filterCountryCode] Two-letter country abbreviation. See [ISO 3166-1 alpha-2 country code](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2).
          * @param {string} [filterPhoneNumber] Phone number in [E.164](https://en.wikipedia.org/wiki/E.164) format.
          * @param {string} [filterEmail] The contact\&#39;s email address.
@@ -497,7 +497,7 @@ export interface ContactsApiListRequest {
     readonly includeTotal?: boolean
 
     /**
-     * Comma-separated list of tags.
+     * Comma-separated list of tags\&#39; id.
      * @type {string}
      * @memberof ContactsApiList
      */
@@ -546,7 +546,7 @@ export class ContactsApi extends BaseAPI {
     /**
      * Creates a contact.
      * @summary Create a contact
-     * @param {ContactCreateRequest} contactCreateRequest 
+     * @param {ContactCreateRequest} contactCreateRequest
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof ContactsApi
@@ -558,7 +558,7 @@ export class ContactsApi extends BaseAPI {
     /**
      * Deletes a contact.
      * @summary Delete a contact
-     * @param {string} id ID of the contact.
+     * @param {string} id ID of the contact. Also support phone number([E.164](https://en.wikipedia.org/wiki/E.164) format, start with character \&#39;+\&#39;), example: +16315551111
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof ContactsApi
@@ -582,7 +582,7 @@ export class ContactsApi extends BaseAPI {
     /**
      * Retrieves a contact.
      * @summary Retrieve a contact
-     * @param {string} id ID of the contact.
+     * @param {string} id ID of the contact. Also support phone number([E.164](https://en.wikipedia.org/wiki/E.164) format, start with character \&#39;+\&#39;), example: +16315551111
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof ContactsApi
@@ -594,8 +594,8 @@ export class ContactsApi extends BaseAPI {
     /**
      * Updates a contact.
      * @summary Update a contact
-     * @param {string} id ID of the contact.
-     * @param {ContactUpdateRequest} [contactUpdateRequest] 
+     * @param {string} id ID of the contact. Also support phone number([E.164](https://en.wikipedia.org/wiki/E.164) format, start with character \&#39;+\&#39;), example: +16315551111
+     * @param {ContactUpdateRequest} [contactUpdateRequest]
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof ContactsApi

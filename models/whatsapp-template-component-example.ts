@@ -15,7 +15,7 @@
 
 
 /**
- * **Required** when: - `type` is `HEADER`, and `format` is one of `IMAGE`, `VIDEO`, or `DOCUMENT`. Provide a sample media URL in `header_url`. - `type` is `HEADER`, `format` is `TEXT`, and a variable is used in `text`. Provide a sample value for that variable in `header_text`. There can be at most 1 variable in `HEADER` text. - `type` is `BODY`, and variables are used in `text`. Provide sample values for those variables in `body_text`.
+ * **Required** when: - `type` is `HEADER`, and `format` is one of `IMAGE`, `GIF`, `VIDEO`, or `DOCUMENT`. Provide a sample media URL in `header_url`. - `type` is `HEADER`, `format` is `TEXT`, and a variable is used in `text`. Provide a sample value for that variable in `header_text`. There can be at most 1 variable in `HEADER` text. - `type` is `BODY`, and variables are used in `text`. Provide sample values for those variables in `body_text`.
  * @export
  * @interface WhatsappTemplateComponentExample
  */
@@ -33,7 +33,7 @@ export interface WhatsappTemplateComponentExample {
      */
     'header_text'?: Array<string>;
     /**
-     * Sample media URL for a `HEADER` component whose format is one of `IMAGE`, `VIDEO`, or `DOCUMENT`. Supported types: - For `IMAGE`, the URL must end with one of `.jpg`, `.jpeg`, or `.png`, size limit is 5MB. - For `VIDEO`, the URL must end with `.mp4`, size limit is 16MB. - For `DOCUMENT`, the URL must end with `.pdf`, size limit is 100MB.
+     * Sample media URL for a `HEADER` component whose format is one of `IMAGE`, `GIF`, `VIDEO`, or `DOCUMENT`. Supported types: - For `IMAGE`, the URL must end with one of `.jpg`, `.jpeg`, or `.png`, size limit is 5MB. - For `GIF`, the URL must end with `.mp4`, size limit is 3.5MB. - For `VIDEO`, the URL must end with `.mp4`, size limit is 16MB. - For `DOCUMENT`, the URL must end with `.pdf`, size limit is 100MB.
      * @type {Array<string>}
      * @memberof WhatsappTemplateComponentExample
      */

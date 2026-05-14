@@ -39,7 +39,7 @@ const WhatsappTemplatesApiAxiosParamCreator = function (configuration?: Configur
         /**
          * Creates a WhatsApp template.
          * @summary Create a template
-         * @param {WhatsappTemplateCreateRequest} whatsappTemplateCreateRequest 
+         * @param {WhatsappTemplateCreateRequest} whatsappTemplateCreateRequest
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -65,7 +65,7 @@ const WhatsappTemplatesApiAxiosParamCreator = function (configuration?: Configur
             await setApiKeyToObject(localVarHeaderParameter, "X-API-Key", configuration)
 
 
-    
+
             localVarHeaderParameter['Content-Type'] = 'application/json';
 
             // setSearchParams(localVarUrlObj, localVarQueryParameter);
@@ -113,7 +113,7 @@ const WhatsappTemplatesApiAxiosParamCreator = function (configuration?: Configur
             await setApiKeyToObject(localVarHeaderParameter, "X-API-Key", configuration)
 
 
-    
+
             // setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
@@ -129,7 +129,7 @@ const WhatsappTemplatesApiAxiosParamCreator = function (configuration?: Configur
          * @summary Delete a template
          * @param {string} wabaId WhatsApp Business Account ID.
          * @param {string} name Name of the template.
-         * @param {string} language Language code of the template. See [Supported Languages](https://developers.facebook.com/docs/whatsapp/api/messages/message-templates#supported-languages) for all codes.
+         * @param {string} language Language code of the template. See [Supported Languages](https://developers.facebook.com/documentation/business-messaging/whatsapp/templates/supported-languages) for all codes.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -162,7 +162,7 @@ const WhatsappTemplatesApiAxiosParamCreator = function (configuration?: Configur
             await setApiKeyToObject(localVarHeaderParameter, "X-API-Key", configuration)
 
 
-    
+
             // setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
@@ -174,12 +174,12 @@ const WhatsappTemplatesApiAxiosParamCreator = function (configuration?: Configur
             };
         },
         /**
-         * Edits a WhatsApp template by name and language. Editing a template replaces its old contents entirely, so include any components you wish to preserve as well as components you wish to update using the components parameter.
+         * Edits a WhatsApp template by name and language. Editing a template replaces its old contents entirely, so include any components you wish to preserve as well as components you wish to update using the components parameter.  Only templates in `APPROVED`, `REJECTED`, or `PAUSED` status can be edited. `ARCHIVED` templates cannot be edited.
          * @summary Edit a template
          * @param {string} wabaId WhatsApp Business Account ID.
          * @param {string} name Name of the template.
-         * @param {string} language Language code of the template. See [Supported Languages](https://developers.facebook.com/docs/whatsapp/api/messages/message-templates#supported-languages) for all codes.
-         * @param {WhatsappTemplateEditRequest} [whatsappTemplateEditRequest] 
+         * @param {string} language Language code of the template. See [Supported Languages](https://developers.facebook.com/documentation/business-messaging/whatsapp/templates/supported-languages) for all codes.
+         * @param {WhatsappTemplateEditRequest} [whatsappTemplateEditRequest]
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -212,7 +212,7 @@ const WhatsappTemplatesApiAxiosParamCreator = function (configuration?: Configur
             await setApiKeyToObject(localVarHeaderParameter, "X-API-Key", configuration)
 
 
-    
+
             localVarHeaderParameter['Content-Type'] = 'application/json';
 
             // setSearchParams(localVarUrlObj, localVarQueryParameter);
@@ -227,7 +227,7 @@ const WhatsappTemplatesApiAxiosParamCreator = function (configuration?: Configur
             };
         },
         /**
-         * Returns a paginated list of WhatsApp templates you\'ve previously created.
+         * Returns a paginated list of WhatsApp templates you\'ve previously created.  Archived templates are included when they match the query. Use `filter.status=ARCHIVED` to list archived templates explicitly.
          * @summary List templates
          * @param {WhatsappTemplatesApiListRequest} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
@@ -240,6 +240,7 @@ const WhatsappTemplatesApiAxiosParamCreator = function (configuration?: Configur
             let filterWabaId = requestParameters['filterWabaId'];
             let filterName = requestParameters['filterName'];
             let filterLanguage = requestParameters['filterLanguage'];
+            let filterStatus = requestParameters['filterStatus'];
             const localVarPath = `/whatsapp/templates`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             // const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -282,8 +283,12 @@ const WhatsappTemplatesApiAxiosParamCreator = function (configuration?: Configur
                 localVarQueryParameter['filter.language'] = filterLanguage;
             }
 
+            if (filterStatus !== undefined) {
+                localVarQueryParameter['filter.status'] = filterStatus;
+            }
 
-    
+
+
             // setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
@@ -295,11 +300,11 @@ const WhatsappTemplatesApiAxiosParamCreator = function (configuration?: Configur
             };
         },
         /**
-         * Retrieves a WhatsApp template by name and language.
+         * Retrieves a WhatsApp template by name and language.  The returned template `status` may be `ARCHIVED`.
          * @summary Retrieve a template
          * @param {string} wabaId WhatsApp Business Account ID.
          * @param {string} name Name of the template.
-         * @param {string} language Language code of the template. See [Supported Languages](https://developers.facebook.com/docs/whatsapp/api/messages/message-templates#supported-languages) for all codes.
+         * @param {string} language Language code of the template. See [Supported Languages](https://developers.facebook.com/documentation/business-messaging/whatsapp/templates/supported-languages) for all codes.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -332,7 +337,7 @@ const WhatsappTemplatesApiAxiosParamCreator = function (configuration?: Configur
             await setApiKeyToObject(localVarHeaderParameter, "X-API-Key", configuration)
 
 
-    
+
             // setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
@@ -356,7 +361,7 @@ const WhatsappTemplatesApiFp = function(configuration?: Configuration) {
         /**
          * Creates a WhatsApp template.
          * @summary Create a template
-         * @param {WhatsappTemplateCreateRequest} whatsappTemplateCreateRequest 
+         * @param {WhatsappTemplateCreateRequest} whatsappTemplateCreateRequest
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -381,7 +386,7 @@ const WhatsappTemplatesApiFp = function(configuration?: Configuration) {
          * @summary Delete a template
          * @param {string} wabaId WhatsApp Business Account ID.
          * @param {string} name Name of the template.
-         * @param {string} language Language code of the template. See [Supported Languages](https://developers.facebook.com/docs/whatsapp/api/messages/message-templates#supported-languages) for all codes.
+         * @param {string} language Language code of the template. See [Supported Languages](https://developers.facebook.com/documentation/business-messaging/whatsapp/templates/supported-languages) for all codes.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -390,12 +395,12 @@ const WhatsappTemplatesApiFp = function(configuration?: Configuration) {
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
         /**
-         * Edits a WhatsApp template by name and language. Editing a template replaces its old contents entirely, so include any components you wish to preserve as well as components you wish to update using the components parameter.
+         * Edits a WhatsApp template by name and language. Editing a template replaces its old contents entirely, so include any components you wish to preserve as well as components you wish to update using the components parameter.  Only templates in `APPROVED`, `REJECTED`, or `PAUSED` status can be edited. `ARCHIVED` templates cannot be edited.
          * @summary Edit a template
          * @param {string} wabaId WhatsApp Business Account ID.
          * @param {string} name Name of the template.
-         * @param {string} language Language code of the template. See [Supported Languages](https://developers.facebook.com/docs/whatsapp/api/messages/message-templates#supported-languages) for all codes.
-         * @param {WhatsappTemplateEditRequest} [whatsappTemplateEditRequest] 
+         * @param {string} language Language code of the template. See [Supported Languages](https://developers.facebook.com/documentation/business-messaging/whatsapp/templates/supported-languages) for all codes.
+         * @param {WhatsappTemplateEditRequest} [whatsappTemplateEditRequest]
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -404,7 +409,7 @@ const WhatsappTemplatesApiFp = function(configuration?: Configuration) {
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
         /**
-         * Returns a paginated list of WhatsApp templates you\'ve previously created.
+         * Returns a paginated list of WhatsApp templates you\'ve previously created.  Archived templates are included when they match the query. Use `filter.status=ARCHIVED` to list archived templates explicitly.
          * @summary List templates
          * @param {WhatsappTemplatesApiListRequest} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
@@ -415,11 +420,11 @@ const WhatsappTemplatesApiFp = function(configuration?: Configuration) {
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
         /**
-         * Retrieves a WhatsApp template by name and language.
+         * Retrieves a WhatsApp template by name and language.  The returned template `status` may be `ARCHIVED`.
          * @summary Retrieve a template
          * @param {string} wabaId WhatsApp Business Account ID.
          * @param {string} name Name of the template.
-         * @param {string} language Language code of the template. See [Supported Languages](https://developers.facebook.com/docs/whatsapp/api/messages/message-templates#supported-languages) for all codes.
+         * @param {string} language Language code of the template. See [Supported Languages](https://developers.facebook.com/documentation/business-messaging/whatsapp/templates/supported-languages) for all codes.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -465,7 +470,7 @@ const WhatsappTemplatesApiFactory = function (configuration?: Configuration, bas
             return localVarFp.deleteByNameAndLanguage(wabaId, name, language, options).then((request) => request(axios, basePath));
         },
         /**
-         * Edits a WhatsApp template by name and language. Editing a template replaces its old contents entirely, so include any components you wish to preserve as well as components you wish to update using the components parameter.
+         * Edits a WhatsApp template by name and language. Editing a template replaces its old contents entirely, so include any components you wish to preserve as well as components you wish to update using the components parameter.  Only templates in `APPROVED`, `REJECTED`, or `PAUSED` status can be edited. `ARCHIVED` templates cannot be edited.
          * @summary Edit a template
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -474,7 +479,7 @@ const WhatsappTemplatesApiFactory = function (configuration?: Configuration, bas
             return localVarFp.editByNameAndLanguage(wabaId, name, language, whatsappTemplateEditRequest, options).then((request) => request(axios, basePath));
         },
         /**
-         * Returns a paginated list of WhatsApp templates you\'ve previously created.
+         * Returns a paginated list of WhatsApp templates you\'ve previously created.  Archived templates are included when they match the query. Use `filter.status=ARCHIVED` to list archived templates explicitly.
          * @summary List templates
          * @param {WhatsappTemplatesApiListRequest} requestParameters Request parameters.
          * @param {number} [page] Page number of the results to be returned, 1-based.
@@ -482,7 +487,8 @@ const WhatsappTemplatesApiFactory = function (configuration?: Configuration, bas
          * @param {boolean} [includeTotal] Return results inside an object that contains the total result count or not.
          * @param {string} [filterWabaId] **Required if you have more than 100 WABAs.** WhatsApp Business Account ID.
          * @param {string} [filterName] Name of the template.
-         * @param {string} [filterLanguage] Language code of the template. See [Supported Languages](https://developers.facebook.com/docs/whatsapp/api/messages/message-templates#supported-languages) for all codes.
+         * @param {string} [filterLanguage] Language code of the template. See [Supported Languages](https://developers.facebook.com/documentation/business-messaging/whatsapp/templates/supported-languages) for all codes.
+         * @param {string} [filterStatus] Comma-separated template statuses to filter by. Supported values include &#x60;PENDING&#x60;, &#x60;REJECTED&#x60;, &#x60;APPROVED&#x60;, &#x60;PAUSED&#x60;, &#x60;DISABLED&#x60;, &#x60;ARCHIVED&#x60;, &#x60;IN_APPEAL&#x60;, and &#x60;DELETED&#x60;.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -490,7 +496,7 @@ const WhatsappTemplatesApiFactory = function (configuration?: Configuration, bas
             return localVarFp.list(requestParameters, options).then((request) => request(axios, basePath));
         },
         /**
-         * Retrieves a WhatsApp template by name and language.
+         * Retrieves a WhatsApp template by name and language.  The returned template `status` may be `ARCHIVED`.
          * @summary Retrieve a template
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -543,11 +549,18 @@ export interface WhatsappTemplatesApiListRequest {
     readonly filterName?: string
 
     /**
-     * Language code of the template. See [Supported Languages](https://developers.facebook.com/docs/whatsapp/api/messages/message-templates#supported-languages) for all codes.
+     * Language code of the template. See [Supported Languages](https://developers.facebook.com/documentation/business-messaging/whatsapp/templates/supported-languages) for all codes.
      * @type {string}
      * @memberof WhatsappTemplatesApiList
      */
     readonly filterLanguage?: string
+
+    /**
+     * Comma-separated template statuses to filter by. Supported values include &#x60;PENDING&#x60;, &#x60;REJECTED&#x60;, &#x60;APPROVED&#x60;, &#x60;PAUSED&#x60;, &#x60;DISABLED&#x60;, &#x60;ARCHIVED&#x60;, &#x60;IN_APPEAL&#x60;, and &#x60;DELETED&#x60;.
+     * @type {string}
+     * @memberof WhatsappTemplatesApiList
+     */
+    readonly filterStatus?: string
 }
 
 /**
@@ -560,7 +573,7 @@ export class WhatsappTemplatesApi extends BaseAPI {
     /**
      * Creates a WhatsApp template.
      * @summary Create a template
-     * @param {WhatsappTemplateCreateRequest} whatsappTemplateCreateRequest 
+     * @param {WhatsappTemplateCreateRequest} whatsappTemplateCreateRequest
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof WhatsappTemplatesApi
@@ -587,7 +600,7 @@ export class WhatsappTemplatesApi extends BaseAPI {
      * @summary Delete a template
      * @param {string} wabaId WhatsApp Business Account ID.
      * @param {string} name Name of the template.
-     * @param {string} language Language code of the template. See [Supported Languages](https://developers.facebook.com/docs/whatsapp/api/messages/message-templates#supported-languages) for all codes.
+     * @param {string} language Language code of the template. See [Supported Languages](https://developers.facebook.com/documentation/business-messaging/whatsapp/templates/supported-languages) for all codes.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof WhatsappTemplatesApi
@@ -597,12 +610,12 @@ export class WhatsappTemplatesApi extends BaseAPI {
     }
 
     /**
-     * Edits a WhatsApp template by name and language. Editing a template replaces its old contents entirely, so include any components you wish to preserve as well as components you wish to update using the components parameter.
+     * Edits a WhatsApp template by name and language. Editing a template replaces its old contents entirely, so include any components you wish to preserve as well as components you wish to update using the components parameter.  Only templates in `APPROVED`, `REJECTED`, or `PAUSED` status can be edited. `ARCHIVED` templates cannot be edited.
      * @summary Edit a template
      * @param {string} wabaId WhatsApp Business Account ID.
      * @param {string} name Name of the template.
-     * @param {string} language Language code of the template. See [Supported Languages](https://developers.facebook.com/docs/whatsapp/api/messages/message-templates#supported-languages) for all codes.
-     * @param {WhatsappTemplateEditRequest} [whatsappTemplateEditRequest] 
+     * @param {string} language Language code of the template. See [Supported Languages](https://developers.facebook.com/documentation/business-messaging/whatsapp/templates/supported-languages) for all codes.
+     * @param {WhatsappTemplateEditRequest} [whatsappTemplateEditRequest]
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof WhatsappTemplatesApi
@@ -612,7 +625,7 @@ export class WhatsappTemplatesApi extends BaseAPI {
     }
 
     /**
-     * Returns a paginated list of WhatsApp templates you\'ve previously created.
+     * Returns a paginated list of WhatsApp templates you\'ve previously created.  Archived templates are included when they match the query. Use `filter.status=ARCHIVED` to list archived templates explicitly.
      * @summary List templates
      * @param {WhatsappTemplatesApiListRequest} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -624,11 +637,11 @@ export class WhatsappTemplatesApi extends BaseAPI {
     }
 
     /**
-     * Retrieves a WhatsApp template by name and language.
+     * Retrieves a WhatsApp template by name and language.  The returned template `status` may be `ARCHIVED`.
      * @summary Retrieve a template
      * @param {string} wabaId WhatsApp Business Account ID.
      * @param {string} name Name of the template.
-     * @param {string} language Language code of the template. See [Supported Languages](https://developers.facebook.com/docs/whatsapp/api/messages/message-templates#supported-languages) for all codes.
+     * @param {string} language Language code of the template. See [Supported Languages](https://developers.facebook.com/documentation/business-messaging/whatsapp/templates/supported-languages) for all codes.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof WhatsappTemplatesApi

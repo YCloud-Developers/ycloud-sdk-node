@@ -27,7 +27,7 @@ export interface WhatsappMessageOrderAmount {
      */
     'offset': number;
     /**
-     * Positive integer representing the amount value multiplied by offset.  For example, ₹12.34 has value 1234.
+     * Positive integer representing the amount value multiplied by offset. For example, ₹12.34 has value 1234.
      * @type {number}
      * @memberof WhatsappMessageOrderAmount
      */

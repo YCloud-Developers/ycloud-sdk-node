@@ -14,6 +14,7 @@
 
 
 import { WhatsappMessageInteractiveActionButton } from './whatsapp-message-interactive-action-button';
+import { WhatsappMessageInteractiveActionCard } from './whatsapp-message-interactive-action-card';
 import { WhatsappMessageInteractiveActionParameters } from './whatsapp-message-interactive-action-parameters';
 import { WhatsappMessageInteractiveActionSection } from './whatsapp-message-interactive-action-section';
 
@@ -60,11 +61,17 @@ export interface WhatsappMessageInteractiveAction {
      */
     'name'?: WhatsappMessageInteractiveActionNameEnum;
     /**
-     * 
+     *
      * @type {WhatsappMessageInteractiveActionParameters}
      * @memberof WhatsappMessageInteractiveAction
      */
     'parameters'?: WhatsappMessageInteractiveActionParameters;
+    /**
+     * Required for Carousel Messages. Array of card objects. Minimum of 2, maximum of 10.
+     * @type {Array<WhatsappMessageInteractiveActionCard>}
+     * @memberof WhatsappMessageInteractiveAction
+     */
+    'cards'?: Array<WhatsappMessageInteractiveActionCard>;
 }
 
 export const WhatsappMessageInteractiveActionNameEnum = {

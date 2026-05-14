@@ -15,16 +15,22 @@
 
 
 /**
- * 
+ * Required when card action is url button. Only support `display_text` and `url`. Button display text Max 20 chars.
  * @export
- * @interface WhatsappMessageMediaOneOf1
+ * @interface WhatsappMessageInteractiveActionCardActionParameters
  */
-export interface WhatsappMessageMediaOneOf1 {
+export interface WhatsappMessageInteractiveActionCardActionParameters {
     /**
-     * Required when sending media directly from your server.  The protocol and URL of the media to be sent. Use only with HTTP/HTTPS URLs. Note: WhatsApp Cloud API caches media resources for 10 minutes. To ensure latest content, add random query strings to the URL.
+     * Text of the CTA URL button. Maximum length: 20 bytes.
      * @type {string}
-     * @memberof WhatsappMessageMediaOneOf1
+     * @memberof WhatsappMessageInteractiveActionCardActionParameters
      */
-    'link': string;
+    'display_text'?: string;
+    /**
+     * URL of the CTA URL button.
+     * @type {string}
+     * @memberof WhatsappMessageInteractiveActionCardActionParameters
+     */
+    'url'?: string;
 }
 

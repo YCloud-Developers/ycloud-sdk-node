@@ -15,7 +15,7 @@
 
 
 /**
- * 
+ *
  * @export
  * @interface Sms
  */
@@ -51,7 +51,7 @@ export interface Sms {
      */
     'regionCode'?: string;
     /**
-     * Number of message segments. See [SMS character encoding](https://help.ycloud.com/en/articles/3083427-sms-character-encoding) for more info.
+     * Number of message segments. See [SMS character encoding](https://helpdocs.ycloud.com/help-center/integrations/channels/global-sms/sms-basic-principles#sms-encoding) for more info.
      * @type {number}
      * @memberof Sms
      */

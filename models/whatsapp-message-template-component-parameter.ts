@@ -20,13 +20,13 @@ import { WhatsappMessageTemplateComponentParameterAction } from './whatsapp-mess
 import { WhatsappMessageTemplateComponentParameterLimitedTimeOffer } from './whatsapp-message-template-component-parameter-limited-time-offer';
 
 /**
- * 
+ *
  * @export
  * @interface WhatsappMessageTemplateComponentParameter
  */
 export interface WhatsappMessageTemplateComponentParameter {
     /**
-     * **Required.** Component parameter type. - `text`: Used when the template component type is `BODY`, or the `HEADER` component format is `TEXT`. - `image`: Used when the template `HEADER` component is `IMAGE`. - `video`: Used when the template `HEADER` component is `VIDEO`. - `document`: Used when the template `HEADER` component is `DOCUMENT`. - `payload`: Used when the template component button type is `QUICK_REPLY`. - `coupon_code`: Used when the template component button type is `COPY_CODE`. - `limited_time_offer`: Used when the template component type is `LIMITED_TIME_OFFER`. - `action`: Used when the template component button type is `CATALOG`, `MPM`, `FLOW`, or `ORDER_DETAILS`. - `order_status`: Used when the template subcategory is `ORDER_STATUS`. - `location`: Used when the template `HEADER` component is `LOCATION`.
+     * **Required.** Component parameter type. - `text`: Used when the template component type is `BODY`, or the `HEADER` component format is `TEXT`. - `image`: Used when the template `HEADER` component is `IMAGE`. - `gif`: Used when the template `HEADER` component is `GIF`. - `video`: Used when the template `HEADER` component is `VIDEO`. - `document`: Used when the template `HEADER` component is `DOCUMENT`. - `payload`: Used when the template component button type is `QUICK_REPLY`. - `coupon_code`: Used when the template component button type is `COPY_CODE`. - `limited_time_offer`: Used when the template component type is `LIMITED_TIME_OFFER`. - `action`: Used when the template component button type is `CATALOG`, `MPM`, `FLOW`, or `ORDER_DETAILS`. - `order_status`: Used when the template subcategory is `ORDER_STATUS`. - `location`: Used when the template `HEADER` component is `LOCATION`.
      * @type {string}
      * @memberof WhatsappMessageTemplateComponentParameter
      */
@@ -50,43 +50,49 @@ export interface WhatsappMessageTemplateComponentParameter {
      */
     'coupon_code'?: string;
     /**
-     * 
+     *
      * @type {WhatsappMessageMedia}
      * @memberof WhatsappMessageTemplateComponentParameter
      */
     'image'?: WhatsappMessageMedia;
     /**
-     * 
+     *
+     * @type {WhatsappMessageMedia}
+     * @memberof WhatsappMessageTemplateComponentParameter
+     */
+    'gif'?: WhatsappMessageMedia;
+    /**
+     *
      * @type {WhatsappMessageMedia}
      * @memberof WhatsappMessageTemplateComponentParameter
      */
     'video'?: WhatsappMessageMedia;
     /**
-     * 
+     *
      * @type {WhatsappMessageMedia}
      * @memberof WhatsappMessageTemplateComponentParameter
      */
     'document'?: WhatsappMessageMedia;
     /**
-     * 
+     *
      * @type {WhatsappMessageTemplateComponentParameterLimitedTimeOffer}
      * @memberof WhatsappMessageTemplateComponentParameter
      */
     'limited_time_offer'?: WhatsappMessageTemplateComponentParameterLimitedTimeOffer;
     /**
-     * 
+     *
      * @type {WhatsappMessageTemplateComponentParameterAction}
      * @memberof WhatsappMessageTemplateComponentParameter
      */
     'action'?: WhatsappMessageTemplateComponentParameterAction;
     /**
-     * 
+     *
      * @type {WhatsappMessageOrderStatus}
      * @memberof WhatsappMessageTemplateComponentParameter
      */
     'order_status'?: WhatsappMessageOrderStatus;
     /**
-     * 
+     *
      * @type {WhatsappMessageLocation}
      * @memberof WhatsappMessageTemplateComponentParameter
      */
@@ -96,6 +102,7 @@ export interface WhatsappMessageTemplateComponentParameter {
 export const WhatsappMessageTemplateComponentParameterTypeEnum = {
     Text: 'text',
     Image: 'image',
+    Gif: 'gif',
     Video: 'video',
     Document: 'document',
     Payload: 'payload',

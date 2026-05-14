@@ -15,7 +15,7 @@
 
 
 /**
- * 
+ *
  * @export
  * @interface ContactCustomAttribute
  */
@@ -27,7 +27,7 @@ export interface ContactCustomAttribute {
      */
     'name'?: string;
     /**
-     * Value of the attribute. Its data type depends on the format of the attribute you defined: For Text, the `value` is a string with a maximum length of 250.  For Array, the `value` is an array of strings with a maximum length of 250. For Number, the `value` is a signed decimal number. For Boolean, the `value` is either `true` or `false`. For Time, the `value` is a Unix timestamp in milliseconds. For Long Text, the `value` is a string with a maximum length of 5000.
+     * Value of the attribute. Its data type depends on the format of the attribute you defined: For Text, the `value` is a string with a maximum length of 250. For Array, the `value` is an array of strings with a maximum length of 250. For Number, the `value` is a signed decimal number. For Boolean, the `value` is either `true` or `false`. For Time, the `value` is a Unix timestamp in milliseconds. For Long Text, the `value` is a string with a maximum length of 5000.
      * @type {object}
      * @memberof ContactCustomAttribute
      */

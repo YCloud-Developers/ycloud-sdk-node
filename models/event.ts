@@ -29,6 +29,7 @@ import { WhatsappMessage } from './whatsapp-message';
 import { WhatsappPayment } from './whatsapp-payment';
 import { WhatsappPhoneNumber } from './whatsapp-phone-number';
 import { WhatsappTemplate } from './whatsapp-template';
+import { WhatsappUserPreference } from './whatsapp-user-preference';
 
 /**
  * Represents a webhook event payload. Every event contains certain common properties: `id`, `type`, `apiVersion`, `createTime`. Each event may also contain some properties unique to the event. For example, `sms` is returned when `type` is `sms.message.updated`.
@@ -43,7 +44,7 @@ export interface Event {
      */
     'id': string;
     /**
-     * 
+     *
      * @type {EventType}
      * @memberof Event
      */
@@ -61,94 +62,100 @@ export interface Event {
      */
     'createTime': string;
     /**
-     * 
+     *
      * @type {EmailDelivery}
      * @memberof Event
      */
     'emailDelivery'?: EmailDelivery;
     /**
-     * 
+     *
      * @type {Sms}
      * @memberof Event
      */
     'sms'?: Sms;
     /**
-     * 
+     *
      * @type {SmsInbound}
      * @memberof Event
      */
     'smsInbound'?: SmsInbound;
     /**
-     * 
+     *
      * @type {Voice}
      * @memberof Event
      */
     'voice'?: Voice;
     /**
-     * 
+     *
      * @type {WhatsappBusinessAccount}
      * @memberof Event
      */
     'whatsappBusinessAccount'?: WhatsappBusinessAccount;
     /**
-     * 
+     *
      * @type {WhatsappInboundMessage}
      * @memberof Event
      */
     'whatsappInboundMessage'?: WhatsappInboundMessage;
     /**
-     * 
+     *
      * @type {WhatsappMessage}
      * @memberof Event
      */
     'whatsappMessage'?: WhatsappMessage;
     /**
-     * 
+     *
      * @type {WhatsappPhoneNumber}
      * @memberof Event
      */
     'whatsappPhoneNumber'?: WhatsappPhoneNumber;
     /**
-     * 
+     *
      * @type {WhatsappPayment}
      * @memberof Event
      */
     'whatsappPayment'?: WhatsappPayment;
     /**
-     * 
+     *
      * @type {WhatsappTemplate}
      * @memberof Event
      */
     'whatsappTemplate'?: WhatsappTemplate;
     /**
-     * 
+     *
      * @type {ContactAttributesChanged}
      * @memberof Event
      */
     'contactAttributesChanged'?: ContactAttributesChanged;
     /**
-     * 
+     *
      * @type {ContactCreated}
      * @memberof Event
      */
     'contactCreated'?: ContactCreated;
     /**
-     * 
+     *
      * @type {ContactDeleted}
      * @memberof Event
      */
     'contactDeleted'?: ContactDeleted;
     /**
-     * 
+     *
      * @type {ContactUnsubscribeCreated}
      * @memberof Event
      */
     'contactUnsubscribeCreated'?: ContactUnsubscribeCreated;
     /**
-     * 
+     *
      * @type {ContactUnsubscribeDeleted}
      * @memberof Event
      */
     'contactUnsubscribeDeleted'?: ContactUnsubscribeDeleted;
+    /**
+     *
+     * @type {WhatsappUserPreference}
+     * @memberof Event
+     */
+    'whatsappUserPreference'?: WhatsappUserPreference;
 }
 

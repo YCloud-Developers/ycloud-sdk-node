@@ -19,13 +19,13 @@ import { WhatsappTemplateComponentExample } from './whatsapp-template-component-
 import { WhatsappTemplateComponentLimitedTimeOffer } from './whatsapp-template-component-limited-time-offer';
 
 /**
- * 
+ *
  * @export
  * @interface WhatsappTemplateComponent
  */
 export interface WhatsappTemplateComponent {
     /**
-     * **Required.** Template component type. - `BODY`: Body components are text-only components and are required by all templates. Templates are limited to one body component. - `HEADER`: Headers are optional components that appear at the top of template messages. Headers support text, media (images, videos, documents). Templates are limited to one header component. - `FOOTER`: Footers are optional text-only components that appear immediately after the body component. Templates are limited to one footer component. - `BUTTONS`: Buttons are optional interactive components that perform specific actions when tapped. - `LIMITED_TIME_OFFER`: Use for limited-time offer templates. The delivered message can display an offer expiration details section with a heading, an optional expiration timer, and the offer code itself. - `CAROUSEL`: Carousel templates allow you to send a single text message (1), accompanied by a set of up to 10 carousel cards (2) in a horizontally scrollable view.
+     * **Required.** Template component type. - `BODY`: Body components are text-only components and are required by all templates. Templates are limited to one body component. - `HEADER`: Headers are optional components that appear at the top of template messages. Headers support text, media (images, gif, videos, documents). Templates are limited to one header component. - `FOOTER`: Footers are optional text-only components that appear immediately after the body component. Templates are limited to one footer component. - `BUTTONS`: Buttons are optional interactive components that perform specific actions when tapped. - `LIMITED_TIME_OFFER`: Use for limited-time offer templates. The delivered message can display an offer expiration details section with a heading, an optional expiration timer, and the offer code itself. - `CAROUSEL`: Carousel templates allow you to send a single text message (1), accompanied by a set of up to 10 carousel cards (2) in a horizontally scrollable view. - `CALL_PERMISSION_REQUEST`: Sending a template message allows you to initiate a user conversation with a call permission request.
      * @type {string}
      * @memberof WhatsappTemplateComponent
      */
@@ -61,13 +61,13 @@ export interface WhatsappTemplateComponent {
      */
     'code_expiration_minutes'?: number;
     /**
-     * 
+     *
      * @type {WhatsappTemplateComponentLimitedTimeOffer}
      * @memberof WhatsappTemplateComponent
      */
     'limited_time_offer'?: WhatsappTemplateComponentLimitedTimeOffer;
     /**
-     * 
+     *
      * @type {WhatsappTemplateComponentExample}
      * @memberof WhatsappTemplateComponent
      */
@@ -86,13 +86,15 @@ export const WhatsappTemplateComponentTypeEnum = {
     Footer: 'FOOTER',
     Buttons: 'BUTTONS',
     LimitedTimeOffer: 'LIMITED_TIME_OFFER',
-    Carousel: 'CAROUSEL'
+    Carousel: 'CAROUSEL',
+    CallPermissionRequest: 'CALL_PERMISSION_REQUEST'
 } as const;
 
 export type WhatsappTemplateComponentTypeEnum = typeof WhatsappTemplateComponentTypeEnum[keyof typeof WhatsappTemplateComponentTypeEnum];
 export const WhatsappTemplateComponentFormatEnum = {
     Text: 'TEXT',
     Image: 'IMAGE',
+    Gif: 'GIF',
     Video: 'VIDEO',
     Document: 'DOCUMENT',
     Location: 'LOCATION'
