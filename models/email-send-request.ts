@@ -16,7 +16,7 @@
 import { EmailContentType } from './email-content-type';
 
 /**
- * 
+ *
  * @export
  * @interface EmailSendRequest
  */
@@ -40,13 +40,13 @@ export interface EmailSendRequest {
      */
     'subject': string;
     /**
-     * - The email body. Max size: 150 KB. - Variables in the form of `#var_1#` are supported, they should be used together with the `variables` parameter. Variable keys only support letters, digits, and the underline character (`_`). - You can use the [Test Templates](https://help.ycloud.com/en/articles/6006545) provided by YCloud for testing.
+     * - The email body. Max size: 150 KB. - Variables in the form of `#var_1#` are supported, they should be used together with the `variables` parameter. Variable keys only support letters, digits, and the underline character (`_`). - You can use the [Test Templates](https://helpdocs.ycloud.com/help-center/integrations/channels/email/email-template-samples) provided by YCloud for testing.
      * @type {string}
      * @memberof EmailSendRequest
      */
     'content': string;
     /**
-     * 
+     *
      * @type {EmailContentType}
      * @memberof EmailSendRequest
      */

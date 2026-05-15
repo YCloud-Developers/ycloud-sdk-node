@@ -46,19 +46,19 @@ export interface WhatsappTemplate {
      */
     'name': string;
     /**
-     * Language code of the template. See [Supported Languages](https://developers.facebook.com/docs/whatsapp/api/messages/message-templates#supported-languages) for all codes.
+     * Language code of the template. See [Supported Languages](https://developers.facebook.com/documentation/business-messaging/whatsapp/templates/supported-languages) for all codes.
      * @type {string}
      * @memberof WhatsappTemplate
      */
     'language': string;
     /**
-     * 
+     *
      * @type {WhatsappTemplateCategory}
      * @memberof WhatsappTemplate
      */
     'category'?: WhatsappTemplateCategory;
     /**
-     * 
+     *
      * @type {WhatsappTemplateSubCategory}
      * @memberof WhatsappTemplate
      */
@@ -82,13 +82,13 @@ export interface WhatsappTemplate {
      */
     'components'?: Array<WhatsappTemplateComponent>;
     /**
-     * 
+     *
      * @type {WhatsappTemplateStatus}
      * @memberof WhatsappTemplate
      */
     'status'?: WhatsappTemplateStatus;
     /**
-     * 
+     *
      * @type {WhatsappTemplateQualityRating}
      * @memberof WhatsappTemplate
      */
@@ -112,7 +112,7 @@ export interface WhatsappTemplate {
      */
     'updateTime'?: string;
     /**
-     * 
+     *
      * @type {WhatsappTemplateStatusUpdateEventEnum}
      * @memberof WhatsappTemplate
      */
@@ -124,7 +124,7 @@ export interface WhatsappTemplate {
      */
     'disableDate'?: string;
     /**
-     * 
+     *
      * @type {WhatsappApiError}
      * @memberof WhatsappTemplate
      */

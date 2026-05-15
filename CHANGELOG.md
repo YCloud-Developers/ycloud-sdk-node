@@ -1,4 +1,13 @@
 # Changelog
+## 1.15.9 (2026-05-14)
+- Support WhatsApp carousel interactive messages and related card/action models.
+- Add WhatsApp template app deep link button support.
+- Add WhatsApp user preference webhook event payload and event type.
+- Add WhatsApp template status filtering and archived-template status handling.
+- Update contact retrieve/update/delete docs to support contact ID or E.164 phone number.
+- Update WhatsApp media definitions for GIF media and mutually exclusive `id` / `link` alternatives.
+- Add recent WhatsApp event enum values for calling, flow status, payment, and user preferences.
+
 ## 1.15.3 (2025-04-03)
 - Support [Media Upload](https://docs.ycloud.com/reference/whatsapp_media-upload) endpoint.
 - Add `FLOW` to Type enum

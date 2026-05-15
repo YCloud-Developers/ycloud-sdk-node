@@ -13,18 +13,25 @@
  */
 
 
+import { WhatsappMessageInteractiveActionCardActionButtonQuickReply } from './whatsapp-message-interactive-action-card-action-button-quick-reply';
 
 /**
- * 
+ *
  * @export
- * @interface WhatsappMessageMediaOneOf
+ * @interface WhatsappMessageInteractiveActionCardActionButton
  */
-export interface WhatsappMessageMediaOneOf {
+export interface WhatsappMessageInteractiveActionCardActionButton {
     /**
-     * Required when using media that has been uploaded to WhatsApp servers.  Provide the media object ID obtained from WhatsApp media upload API (https://docs.ycloud.com/update/reference/whatsapp_media-upload#/).
+     * Must be \"quick_reply\".
      * @type {string}
-     * @memberof WhatsappMessageMediaOneOf
+     * @memberof WhatsappMessageInteractiveActionCardActionButton
      */
-    'id': string;
+    'type'?: string;
+    /**
+     *
+     * @type {WhatsappMessageInteractiveActionCardActionButtonQuickReply}
+     * @memberof WhatsappMessageInteractiveActionCardActionButton
+     */
+    'quick_reply'?: WhatsappMessageInteractiveActionCardActionButtonQuickReply;
 }
 

@@ -27,13 +27,13 @@ export interface AttributeChangeAction {
      */
     'action': AttributeChangeActionActionEnum;
     /**
-     * The ID of the item when the attribute is \'tags\'.  This field is only present for tag-related changes.
+     * The ID of the item when the attribute is \'tags\'. This field is only present for tag-related changes.
      * @type {string}
      * @memberof AttributeChangeAction
      */
     'id'?: string;
     /**
-     * The value of the item when the attribute is \'tags\'.  This field is only present for tag-related changes.
+     * The value of the item when the attribute is \'tags\'. This field is only present for tag-related changes.
      * @type {string}
      * @memberof AttributeChangeAction
      */

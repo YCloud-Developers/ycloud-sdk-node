@@ -36,19 +36,19 @@ export interface WhatsappTemplateCreateRequest {
      */
     'name': string;
     /**
-     * Language code of the template. See [Supported Languages](https://developers.facebook.com/docs/whatsapp/api/messages/message-templates#supported-languages) for all codes.
+     * Language code of the template. See [Supported Languages](https://developers.facebook.com/documentation/business-messaging/whatsapp/templates/supported-languages) for all codes.
      * @type {string}
      * @memberof WhatsappTemplateCreateRequest
      */
     'language': string;
     /**
-     * 
+     *
      * @type {WhatsappTemplateCategory}
      * @memberof WhatsappTemplateCreateRequest
      */
     'category': WhatsappTemplateCategory;
     /**
-     * 
+     *
      * @type {WhatsappTemplateSubCategory}
      * @memberof WhatsappTemplateCreateRequest
      */
@@ -60,7 +60,7 @@ export interface WhatsappTemplateCreateRequest {
      */
     'messageSendTtlSeconds'?: number;
     /**
-     * 
+     *
      * @type {Array<WhatsappTemplateComponent>}
      * @memberof WhatsappTemplateCreateRequest
      */

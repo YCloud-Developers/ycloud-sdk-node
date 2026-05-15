@@ -15,7 +15,7 @@
 
 
 /**
- * Used when an event happened on WhatsApp template status updates. - `PENDING`: Pending. - `APPROVED`: Approved. - `REJECTED`: Rejected. - `IN_APPEAL`: In appeal. See also [Template Appeals](https://developers.facebook.com/docs/whatsapp/message-templates/guidelines#appeals). - `PAUSED`: Paused. See also [Template Pausing](https://developers.facebook.com/docs/whatsapp/message-templates/guidelines#template-pausing). - `FLAGGED`: Flagged. The template is scheduled for disabling. - `DISABLED`: Disabled. See also [Template Pausing](https://developers.facebook.com/docs/whatsapp/message-templates/guidelines#template-pausing). - `REINSTATED`: Reinstated. - `PENDING_DELETION`: Pending deletion.
+ * Used when an event happened on WhatsApp template status updates. - `PENDING`: Pending. - `APPROVED`: Approved. - `REJECTED`: Rejected. - `IN_APPEAL`: In appeal. See also [Template Appeals](https://developers.facebook.com/docs/whatsapp/message-templates/guidelines#appeals). - `PAUSED`: Paused. See also [Template Pausing](https://developers.facebook.com/docs/whatsapp/message-templates/guidelines#template-pausing). - `FLAGGED`: Flagged. The template is scheduled for disabling. - `DISABLED`: Disabled. See also [Template Pausing](https://developers.facebook.com/docs/whatsapp/message-templates/guidelines#template-pausing). - `ARCHIVED`: Archived. The template status is updated to `ARCHIVED`. - `UNARCHIVED`: Unarchived. The template status is restored to the current status returned by Meta. If the status is `APPROVED`, this event still does not represent a new approval review. - `REINSTATED`: Reinstated. - `PENDING_DELETION`: Pending deletion.
  * @export
  * @enum {string}
  */
@@ -28,6 +28,8 @@ export const WhatsappTemplateStatusUpdateEventEnum = {
     Paused: 'PAUSED',
     Flagged: 'FLAGGED',
     Disabled: 'DISABLED',
+    Archived: 'ARCHIVED',
+    Unarchived: 'UNARCHIVED',
     Reinstated: 'REINSTATED',
     PendingDeletion: 'PENDING_DELETION'
 } as const;

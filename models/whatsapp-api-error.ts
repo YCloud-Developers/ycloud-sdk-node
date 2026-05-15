@@ -63,7 +63,7 @@ export interface WhatsappApiError {
      */
     'fbtrace_id'?: string;
     /**
-     * Additional data about the error. A string or map. - For template APIs, this field is a string describing the reason for the error.   - For message APIs, this field is a map with property `details` describing the reason for the error.
+     * Additional data about the error. A string or map. - For template APIs, this field is a string describing the reason for the error. - For message APIs, this field is a map with property `details` describing the reason for the error.
      * @type {object}
      * @memberof WhatsappApiError
      */

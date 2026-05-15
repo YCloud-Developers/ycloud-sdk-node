@@ -86,9 +86,29 @@ export const EventType = {
     */
     WhatsappTemplateQualityUpdated: 'whatsapp.template.quality_updated',
     /**
-    * Occurs when a WhatsApp template status is updated, and the status changes to &#x60;REJECTED&#x60;, &#x60;APPROVED&#x60;, &#x60;PAUSED&#x60;, &#x60;DISABLED&#x60;, or &#x60;IN_APPEAL&#x60;.
+    * Occurs when a WhatsApp template status is updated, and the status changes to &#x60;REJECTED&#x60;, &#x60;APPROVED&#x60;, &#x60;PAUSED&#x60;, &#x60;DISABLED&#x60;, &#x60;IN_APPEAL&#x60;, or &#x60;ARCHIVED&#x60;.
     */
     WhatsappTemplateReviewed: 'whatsapp.template.reviewed',
+    /**
+    * Occurs when a WhatsApp call is connected.
+    */
+    WhatsappCallConnect: 'whatsapp.call.connect',
+    /**
+    * Occurs when a WhatsApp call is terminated.
+    */
+    WhatsappCallTerminate: 'whatsapp.call.terminate',
+    /**
+    * Occurs when a WhatsApp call status is updated.
+    */
+    WhatsappCallStatusUpdated: 'whatsapp.call.status.updated',
+    /**
+    * Occurs when a WhatsApp flow status is updated.
+    */
+    WhatsappFlowStatusChange: 'whatsapp.flow.status_change',
+    /**
+    * Occurs when a WhatsApp payment transaction changes.
+    */
+    WhatsappPaymentUpdated: 'whatsapp.payment.updated',
     /**
     * Occurs when a contact&#39;s attributes are changed.
     */
@@ -101,8 +121,12 @@ export const EventType = {
     * Occurs when a contact is deleted.
     */
     ContactDeleted: 'contact.deleted',
+    /**
+    * Occurs when a WhatsApp user stops marketing messages or a WhatsApp user resumes marketing messages.
+    */
     ContactUnsubscribeCreated: 'contact.unsubscribe.created',
-    ContactUnsubscribeDeleted: 'contact.unsubscribe.deleted'
+    ContactUnsubscribeDeleted: 'contact.unsubscribe.deleted',
+    WhatsappUserPreferences: 'whatsapp.user.preferences'
 } as const;
 
 export type EventType = typeof EventType[keyof typeof EventType];

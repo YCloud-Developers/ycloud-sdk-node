@@ -15,7 +15,7 @@
 
 
 /**
- * 
+ *
  * @export
  * @interface SmsSendRequest
  */
@@ -33,7 +33,7 @@ export interface SmsSendRequest {
      */
     'text': string;
     /**
-     * [Sender ID](https://help.ycloud.com/en/articles/3080386) to be used.
+     * [Sender ID](https://helpdocs.ycloud.com/help-center/integrations/channels/global-sms/sms-features/sender-id) to be used.
      * @type {string}
      * @memberof SmsSendRequest
      */

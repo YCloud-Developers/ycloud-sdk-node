@@ -13,18 +13,19 @@
  */
 
 
+import { WhatsappTemplateComponentButtonAppDeepLink } from './whatsapp-template-component-button-app-deep-link';
 import { WhatsappTemplateComponentButtonOtpSupportedApp } from './whatsapp-template-component-button-otp-supported-app';
 import { WhatsappTemplateComponentButtonOtpType } from './whatsapp-template-component-button-otp-type';
 import { WhatsappTemplateComponentButtonType } from './whatsapp-template-component-button-type';
 
 /**
- * 
+ *
  * @export
  * @interface WhatsappTemplateComponentButton
  */
 export interface WhatsappTemplateComponentButton {
     /**
-     * 
+     *
      * @type {WhatsappTemplateComponentButtonType}
      * @memberof WhatsappTemplateComponentButton
      */
@@ -48,7 +49,7 @@ export interface WhatsappTemplateComponentButton {
      */
     'phone_number'?: string;
     /**
-     * 
+     *
      * @type {WhatsappTemplateComponentButtonOtpType}
      * @memberof WhatsappTemplateComponentButton
      */
@@ -121,5 +122,11 @@ export interface WhatsappTemplateComponentButton {
      * @memberof WhatsappTemplateComponentButton
      */
     'navigate_screen'?: string;
+    /**
+     *
+     * @type {WhatsappTemplateComponentButtonAppDeepLink}
+     * @memberof WhatsappTemplateComponentButton
+     */
+    'app_deep_link'?: WhatsappTemplateComponentButtonAppDeepLink;
 }
 

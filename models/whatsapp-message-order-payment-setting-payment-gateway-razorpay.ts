@@ -21,7 +21,7 @@
  */
 export interface WhatsappMessageOrderPaymentSettingPaymentGatewayRazorpay {
     /**
-     * Receipt number that corresponds to this order, set for your internal reference.  Maximum length of 40 characters supported with minimum length greater than 0 characters.
+     * Receipt number that corresponds to this order, set for your internal reference. Maximum length of 40 characters supported with minimum length greater than 0 characters.
      * @type {string}
      * @memberof WhatsappMessageOrderPaymentSettingPaymentGatewayRazorpay
      */
