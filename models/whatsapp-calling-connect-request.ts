@@ -15,7 +15,7 @@
 
 
 /**
- * 
+ * Provide exactly one of `to` or `recipient`. If both are provided, `to` takes precedence and `recipient` is ignored.
  * @export
  * @interface WhatsappCallingConnectRequest
  */
@@ -27,11 +27,17 @@ export interface WhatsappCallingConnectRequest {
      */
     'from': string;
     /**
-     * The callee\'s phone number in [E.164](https://en.wikipedia.org/wiki/E.164) format.
+     * The callee\'s phone number in [E.164](https://en.wikipedia.org/wiki/E.164) format. Required when `recipient` is not provided.
      * @type {string}
      * @memberof WhatsappCallingConnectRequest
      */
-    'to': string;
+    'to'?: string;
+    /**
+     * The callee\'s WhatsApp Business-scoped user ID (BSUID) or parent BSUID. Required when `to` is not provided.
+     * @type {string}
+     * @memberof WhatsappCallingConnectRequest
+     */
+    'recipient'?: string;
     /**
      * The SDP type, must be \"offer\" for connection requests.
      * @type {string}
