@@ -61,7 +61,7 @@ export interface WhatsappMessageInteractiveAction {
      */
     'name'?: WhatsappMessageInteractiveActionNameEnum;
     /**
-     *
+     * 
      * @type {WhatsappMessageInteractiveActionParameters}
      * @memberof WhatsappMessageInteractiveAction
      */

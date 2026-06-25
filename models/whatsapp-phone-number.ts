@@ -13,6 +13,7 @@
  */
 
 
+import { WhatsappBusinessUsernameStatus } from './whatsapp-business-username-status';
 import { WhatsappPhoneNumberCodeVerificationStatus } from './whatsapp-phone-number-code-verification-status';
 import { WhatsappPhoneNumberNameStatus } from './whatsapp-phone-number-name-status';
 import { WhatsappPhoneNumberQualityRating } from './whatsapp-phone-number-quality-rating';
@@ -50,6 +51,30 @@ export interface WhatsappPhoneNumber {
      * @memberof WhatsappPhoneNumber
      */
     'wabaId'?: string;
+    /**
+     * Active Business Username for this phone number. The value is a plain username without `@`.
+     * @type {string}
+     * @memberof WhatsappPhoneNumber
+     */
+    'businessUsername'?: string;
+    /**
+     * 
+     * @type {WhatsappBusinessUsernameStatus}
+     * @memberof WhatsappPhoneNumber
+     */
+    'businessUsernameStatus'?: WhatsappBusinessUsernameStatus;
+    /**
+     * Last requested Business Username that is still under review. This value can coexist with an active `businessUsername` while the new request is pending.
+     * @type {string}
+     * @memberof WhatsappPhoneNumber
+     */
+    'requestedBusinessUsername'?: string;
+    /**
+     * The time when the Business Username state was last updated.
+     * @type {string}
+     * @memberof WhatsappPhoneNumber
+     */
+    'businessUsernameUpdatedAt'?: string;
     /**
      * 
      * @type {WhatsappPhoneNumberQualityRating}
@@ -134,5 +159,19 @@ export interface WhatsappPhoneNumber {
      * @memberof WhatsappPhoneNumber
      */
     'qualityUpdateEvent'?: WhatsappPhoneNumberQualityUpdateEventEnum;
+    /**
+     * Account update event that triggered this phone number status change.
+     * @type {string}
+     * @memberof WhatsappPhoneNumber
+     */
+    'updateEvent'?: WhatsappPhoneNumberUpdateEventEnum;
 }
+
+export const WhatsappPhoneNumberUpdateEventEnum = {
+    Reconnected: 'ACCOUNT_RECONNECTED',
+    Offboarded: 'ACCOUNT_OFFBOARDED'
+} as const;
+
+export type WhatsappPhoneNumberUpdateEventEnum = typeof WhatsappPhoneNumberUpdateEventEnum[keyof typeof WhatsappPhoneNumberUpdateEventEnum];
+
 

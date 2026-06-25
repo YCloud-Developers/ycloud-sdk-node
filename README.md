@@ -92,19 +92,35 @@ Class | Method | HTTP request | Description
 *WhatsappFlowsApi* | **retrieve** | **GET** /whatsapp/flows/{flowId} | Retrieve a flow
 *WhatsappFlowsApi* | **updateMetadata** | **PATCH** /whatsapp/flows/{flowId}/metadata | Update flow metadata
 *WhatsappFlowsApi* | **updateStructure** | **PATCH** /whatsapp/flows/{flowId}/assets | Update flow structure
+*WhatsappGroupsApi* | **approveJoinRequests** | **POST** /whatsapp/{businessPhoneNumber}/groups/{groupId}/joinRequests/approve | Approve group join requests
+*WhatsappGroupsApi* | **create** | **POST** /whatsapp/{businessPhoneNumber}/groups | Create a group
+*WhatsappGroupsApi* | **delete** | **DELETE** /whatsapp/{businessPhoneNumber}/groups/{groupId} | Delete a group
+*WhatsappGroupsApi* | **list** | **GET** /whatsapp/{businessPhoneNumber}/groups | List groups
+*WhatsappGroupsApi* | **listJoinRequests** | **GET** /whatsapp/{businessPhoneNumber}/groups/{groupId}/joinRequests | List group join requests
+*WhatsappGroupsApi* | **rejectJoinRequests** | **POST** /whatsapp/{businessPhoneNumber}/groups/{groupId}/joinRequests/reject | Reject group join requests
+*WhatsappGroupsApi* | **removeParticipants** | **POST** /whatsapp/groups/{groupId}/participants/remove | Remove group participants
+*WhatsappGroupsApi* | **resetInviteLink** | **POST** /whatsapp/{businessPhoneNumber}/groups/{groupId}/inviteLink/reset | Reset a group invite link
+*WhatsappGroupsApi* | **retrieve** | **GET** /whatsapp/{businessPhoneNumber}/groups/{groupId} | Retrieve a group
+*WhatsappGroupsApi* | **retrieveInviteLink** | **GET** /whatsapp/{businessPhoneNumber}/groups/{groupId}/inviteLink | Retrieve a group invite link
+*WhatsappGroupsApi* | **sendInviteLinkMessage** | **POST** /whatsapp/{businessPhoneNumber}/groups/inviteLink/messages | Send a group invite link message
+*WhatsappGroupsApi* | **updateSettings** | **PATCH** /whatsapp/{businessPhoneNumber}/groups/{groupId}/settings | Update group settings
 *WhatsappInboundMessagesApi* | **markAsRead** | **POST** /whatsapp/inboundMessages/{id}/markAsRead | Mark message as read
 *WhatsappInboundMessagesApi* | **typingIndicator** | **POST** /whatsapp/inboundMessages/{id}/typingIndicator | Mark message as read and display a typing indicator
 *WhatsappMediaApi* | **upload** | **POST** /whatsapp/media/{phoneNumber}/upload | Upload media
 *WhatsappMessagesApi* | **retrieve** | **GET** /whatsapp/messages/{id} | Retrieve a message
 *WhatsappMessagesApi* | **send** | **POST** /whatsapp/messages | Enqueue a message
 *WhatsappMessagesApi* | **sendDirectly** | **POST** /whatsapp/messages/sendDirectly | Send a message directly
+*WhatsappPhoneNumbersApi* | **deleteBusinessUsername** | **DELETE** /whatsapp/phoneNumbers/{wabaId}/{phoneNumber}/businessUsername | Delete a phone number business username
 *WhatsappPhoneNumbersApi* | **list** | **GET** /whatsapp/phoneNumbers | List phone numbers
 *WhatsappPhoneNumbersApi* | **register** | **POST** /whatsapp/phoneNumbers/{wabaId}/{phoneNumber}/register | Register a phone number
 *WhatsappPhoneNumbersApi* | **retrieve** | **GET** /whatsapp/phoneNumbers/{wabaId}/{phoneNumber} | Retrieve a phone number
+*WhatsappPhoneNumbersApi* | **retrieveBusinessUsername** | **GET** /whatsapp/phoneNumbers/{wabaId}/{phoneNumber}/businessUsername | Retrieve a phone number business username
+*WhatsappPhoneNumbersApi* | **retrieveBusinessUsernameSuggestions** | **GET** /whatsapp/phoneNumbers/{wabaId}/{phoneNumber}/businessUsername/suggestions | Retrieve phone number business username suggestions
 *WhatsappPhoneNumbersApi* | **retrieveCommerceSettings** | **GET** /whatsapp/phoneNumbers/{wabaId}/{phoneNumber}/whatsappCommerceSettings | Retrieve commerce settings
 *WhatsappPhoneNumbersApi* | **retrieveProfile** | **GET** /whatsapp/phoneNumbers/{wabaId}/{phoneNumber}/profile | Retrieve a phone number profile
 *WhatsappPhoneNumbersApi* | **retrieveSettings** | **GET** /whatsapp/phoneNumbers/{wabaId}/{phoneNumber}/settings | Retrieve phone number settings
 *WhatsappPhoneNumbersApi* | **saveSettings** | **POST** /whatsapp/phoneNumbers/{wabaId}/{phoneNumber}/settings | Save phone number settings
+*WhatsappPhoneNumbersApi* | **updateBusinessUsername** | **PATCH** /whatsapp/phoneNumbers/{wabaId}/{phoneNumber}/businessUsername | Update a phone number business username
 *WhatsappPhoneNumbersApi* | **updateCommerceSettings** | **PATCH** /whatsapp/phoneNumbers/{wabaId}/{phoneNumber}/whatsappCommerceSettings | Update commerce settings
 *WhatsappPhoneNumbersApi* | **updateDisplayName** | **PATCH** /whatsapp/phoneNumbers/{wabaId}/{phoneNumber}/displayName | Update a phone number display name
 *WhatsappPhoneNumbersApi* | **updateProfile** | **PATCH** /whatsapp/phoneNumbers/{wabaId}/{phoneNumber}/profile | Update a phone number profile

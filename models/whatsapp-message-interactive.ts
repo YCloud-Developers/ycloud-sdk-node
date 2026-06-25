@@ -31,25 +31,25 @@ export interface WhatsappMessageInteractive {
      */
     'type'?: WhatsappMessageInteractiveTypeEnum;
     /**
-     *
+     * 
      * @type {WhatsappMessageInteractiveAction}
      * @memberof WhatsappMessageInteractive
      */
     'action'?: WhatsappMessageInteractiveAction;
     /**
-     *
+     * 
      * @type {WhatsappMessageInteractiveBody}
      * @memberof WhatsappMessageInteractive
      */
     'body'?: WhatsappMessageInteractiveBody;
     /**
-     *
+     * 
      * @type {WhatsappMessageInteractiveHeader}
      * @memberof WhatsappMessageInteractive
      */
     'header'?: WhatsappMessageInteractiveHeader;
     /**
-     *
+     * 
      * @type {WhatsappMessageInteractiveFooter}
      * @memberof WhatsappMessageInteractive
      */

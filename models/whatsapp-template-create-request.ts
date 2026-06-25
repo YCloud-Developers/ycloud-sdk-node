@@ -42,13 +42,13 @@ export interface WhatsappTemplateCreateRequest {
      */
     'language': string;
     /**
-     *
+     * 
      * @type {WhatsappTemplateCategory}
      * @memberof WhatsappTemplateCreateRequest
      */
     'category': WhatsappTemplateCategory;
     /**
-     *
+     * 
      * @type {WhatsappTemplateSubCategory}
      * @memberof WhatsappTemplateCreateRequest
      */
@@ -60,7 +60,7 @@ export interface WhatsappTemplateCreateRequest {
      */
     'messageSendTtlSeconds'?: number;
     /**
-     *
+     * 
      * @type {Array<WhatsappTemplateComponent>}
      * @memberof WhatsappTemplateCreateRequest
      */

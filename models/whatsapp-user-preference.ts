@@ -15,7 +15,7 @@
 
 
 /**
- *
+ * 
  * @export
  * @interface WhatsappUserPreference
  */
@@ -57,7 +57,7 @@ export interface WhatsappUserPreference {
      */
     'detail'?: string;
     /**
-     *
+     * 
      * @type {string}
      * @memberof WhatsappUserPreference
      */

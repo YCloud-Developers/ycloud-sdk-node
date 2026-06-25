@@ -19,7 +19,7 @@ import { WhatsappTemplateComponentExample } from './whatsapp-template-component-
 import { WhatsappTemplateComponentLimitedTimeOffer } from './whatsapp-template-component-limited-time-offer';
 
 /**
- *
+ * 
  * @export
  * @interface WhatsappTemplateComponent
  */
@@ -61,13 +61,13 @@ export interface WhatsappTemplateComponent {
      */
     'code_expiration_minutes'?: number;
     /**
-     *
+     * 
      * @type {WhatsappTemplateComponentLimitedTimeOffer}
      * @memberof WhatsappTemplateComponent
      */
     'limited_time_offer'?: WhatsappTemplateComponentLimitedTimeOffer;
     /**
-     *
+     * 
      * @type {WhatsappTemplateComponentExample}
      * @memberof WhatsappTemplateComponent
      */

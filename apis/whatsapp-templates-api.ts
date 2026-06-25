@@ -39,7 +39,7 @@ const WhatsappTemplatesApiAxiosParamCreator = function (configuration?: Configur
         /**
          * Creates a WhatsApp template.
          * @summary Create a template
-         * @param {WhatsappTemplateCreateRequest} whatsappTemplateCreateRequest
+         * @param {WhatsappTemplateCreateRequest} whatsappTemplateCreateRequest 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -65,7 +65,7 @@ const WhatsappTemplatesApiAxiosParamCreator = function (configuration?: Configur
             await setApiKeyToObject(localVarHeaderParameter, "X-API-Key", configuration)
 
 
-
+    
             localVarHeaderParameter['Content-Type'] = 'application/json';
 
             // setSearchParams(localVarUrlObj, localVarQueryParameter);
@@ -113,7 +113,7 @@ const WhatsappTemplatesApiAxiosParamCreator = function (configuration?: Configur
             await setApiKeyToObject(localVarHeaderParameter, "X-API-Key", configuration)
 
 
-
+    
             // setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
@@ -162,7 +162,7 @@ const WhatsappTemplatesApiAxiosParamCreator = function (configuration?: Configur
             await setApiKeyToObject(localVarHeaderParameter, "X-API-Key", configuration)
 
 
-
+    
             // setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
@@ -179,7 +179,7 @@ const WhatsappTemplatesApiAxiosParamCreator = function (configuration?: Configur
          * @param {string} wabaId WhatsApp Business Account ID.
          * @param {string} name Name of the template.
          * @param {string} language Language code of the template. See [Supported Languages](https://developers.facebook.com/documentation/business-messaging/whatsapp/templates/supported-languages) for all codes.
-         * @param {WhatsappTemplateEditRequest} [whatsappTemplateEditRequest]
+         * @param {WhatsappTemplateEditRequest} [whatsappTemplateEditRequest] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -212,7 +212,7 @@ const WhatsappTemplatesApiAxiosParamCreator = function (configuration?: Configur
             await setApiKeyToObject(localVarHeaderParameter, "X-API-Key", configuration)
 
 
-
+    
             localVarHeaderParameter['Content-Type'] = 'application/json';
 
             // setSearchParams(localVarUrlObj, localVarQueryParameter);
@@ -288,7 +288,7 @@ const WhatsappTemplatesApiAxiosParamCreator = function (configuration?: Configur
             }
 
 
-
+    
             // setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
@@ -337,7 +337,7 @@ const WhatsappTemplatesApiAxiosParamCreator = function (configuration?: Configur
             await setApiKeyToObject(localVarHeaderParameter, "X-API-Key", configuration)
 
 
-
+    
             // setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
@@ -361,7 +361,7 @@ const WhatsappTemplatesApiFp = function(configuration?: Configuration) {
         /**
          * Creates a WhatsApp template.
          * @summary Create a template
-         * @param {WhatsappTemplateCreateRequest} whatsappTemplateCreateRequest
+         * @param {WhatsappTemplateCreateRequest} whatsappTemplateCreateRequest 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -400,7 +400,7 @@ const WhatsappTemplatesApiFp = function(configuration?: Configuration) {
          * @param {string} wabaId WhatsApp Business Account ID.
          * @param {string} name Name of the template.
          * @param {string} language Language code of the template. See [Supported Languages](https://developers.facebook.com/documentation/business-messaging/whatsapp/templates/supported-languages) for all codes.
-         * @param {WhatsappTemplateEditRequest} [whatsappTemplateEditRequest]
+         * @param {WhatsappTemplateEditRequest} [whatsappTemplateEditRequest] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -573,7 +573,7 @@ export class WhatsappTemplatesApi extends BaseAPI {
     /**
      * Creates a WhatsApp template.
      * @summary Create a template
-     * @param {WhatsappTemplateCreateRequest} whatsappTemplateCreateRequest
+     * @param {WhatsappTemplateCreateRequest} whatsappTemplateCreateRequest 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof WhatsappTemplatesApi
@@ -615,7 +615,7 @@ export class WhatsappTemplatesApi extends BaseAPI {
      * @param {string} wabaId WhatsApp Business Account ID.
      * @param {string} name Name of the template.
      * @param {string} language Language code of the template. See [Supported Languages](https://developers.facebook.com/documentation/business-messaging/whatsapp/templates/supported-languages) for all codes.
-     * @param {WhatsappTemplateEditRequest} [whatsappTemplateEditRequest]
+     * @param {WhatsappTemplateEditRequest} [whatsappTemplateEditRequest] 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof WhatsappTemplatesApi

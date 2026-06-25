@@ -71,6 +71,12 @@ export interface WhatsappInboundMessage {
      */
     'to'?: string;
     /**
+     * WhatsApp group ID. Included when the inbound message was sent in a group.
+     * @type {string}
+     * @memberof WhatsappInboundMessage
+     */
+    'groupId'?: string;
+    /**
      * The time at which this message is sent, formatted in [RFC 3339](https://datatracker.ietf.org/doc/html/rfc3339). e.g., `2022-06-01T12:00:00.000Z`.
      * @type {string}
      * @memberof WhatsappInboundMessage

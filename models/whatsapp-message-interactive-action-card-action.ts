@@ -29,7 +29,7 @@ export interface WhatsappMessageInteractiveActionCardAction {
      */
     'name'?: string;
     /**
-     *
+     * 
      * @type {WhatsappMessageInteractiveActionCardActionParameters}
      * @memberof WhatsappMessageInteractiveActionCardAction
      */

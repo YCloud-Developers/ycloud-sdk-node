@@ -16,13 +16,13 @@
 import { VerificationChannel } from './verification-channel';
 
 /**
- *
+ * 
  * @export
  * @interface VerificationSendRequest
  */
 export interface VerificationSendRequest {
     /**
-     *
+     * 
      * @type {VerificationChannel}
      * @memberof VerificationSendRequest
      */
