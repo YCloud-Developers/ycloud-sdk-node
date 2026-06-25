@@ -28,6 +28,7 @@ import { WhatsappMessageType } from './whatsapp-message-type';
 import { WhatsappPricingCategory } from './whatsapp-pricing-category';
 import { WhatsappPricingModel } from './whatsapp-pricing-model';
 import { WhatsappPricingType } from './whatsapp-pricing-type';
+import { WhatsappProfile } from './whatsapp-profile';
 
 /**
  * WhatsApp outbound message object.
@@ -64,87 +65,123 @@ export interface WhatsappMessage {
      * @type {string}
      * @memberof WhatsappMessage
      */
-    'to': string;
+    'to'?: string;
     /**
-     * 
+     * The recipient value submitted in the request when a BSUID or parent BSUID was used.
+     * @type {string}
+     * @memberof WhatsappMessage
+     */
+    'recipient'?: string;
+    /**
+     * The recipient\'s WhatsApp Business-scoped user ID (BSUID).
+     * @type {string}
+     * @memberof WhatsappMessage
+     */
+    'recipientUserId'?: string;
+    /**
+     * Alias of `recipientUserId` kept for compatibility.
+     * @type {string}
+     * @memberof WhatsappMessage
+     */
+    'toUserId'?: string;
+    /**
+     * The recipient\'s parent WhatsApp Business-scoped user ID.
+     * @type {string}
+     * @memberof WhatsappMessage
+     */
+    'parentRecipientUserId'?: string;
+    /**
+     * Alias of `parentRecipientUserId` kept for compatibility.
+     * @type {string}
+     * @memberof WhatsappMessage
+     */
+    'toParentUserId'?: string;
+    /**
+     *
+     * @type {WhatsappProfile}
+     * @memberof WhatsappMessage
+     */
+    'customerProfile'?: WhatsappProfile;
+    /**
+     *
      * @type {WhatsappConversation}
      * @memberof WhatsappMessage
      */
     'conversation'?: WhatsappConversation;
     /**
-     * 
+     *
      * @type {WhatsappMessageType}
      * @memberof WhatsappMessage
      */
     'type'?: WhatsappMessageType;
     /**
-     * 
+     *
      * @type {WhatsappMessageTemplate}
      * @memberof WhatsappMessage
      */
     'template'?: WhatsappMessageTemplate;
     /**
-     * 
+     *
      * @type {WhatsappMessageText}
      * @memberof WhatsappMessage
      */
     'text'?: WhatsappMessageText;
     /**
-     * 
+     *
      * @type {WhatsappMessageMedia}
      * @memberof WhatsappMessage
      */
     'image'?: WhatsappMessageMedia;
     /**
-     * 
+     *
      * @type {WhatsappMessageMedia}
      * @memberof WhatsappMessage
      */
     'video'?: WhatsappMessageMedia;
     /**
-     * 
+     *
      * @type {WhatsappMessageMedia}
      * @memberof WhatsappMessage
      */
     'audio'?: WhatsappMessageMedia;
     /**
-     * 
+     *
      * @type {WhatsappMessageMedia}
      * @memberof WhatsappMessage
      */
     'document'?: WhatsappMessageMedia;
     /**
-     * 
+     *
      * @type {WhatsappMessageMedia}
      * @memberof WhatsappMessage
      */
     'sticker'?: WhatsappMessageMedia;
     /**
-     * 
+     *
      * @type {WhatsappMessageLocation}
      * @memberof WhatsappMessage
      */
     'location'?: WhatsappMessageLocation;
     /**
-     * 
+     *
      * @type {WhatsappMessageInteractive}
      * @memberof WhatsappMessage
      */
     'interactive'?: WhatsappMessageInteractive;
     /**
-     * 
+     *
      * @type {Array<WhatsappMessageContact>}
      * @memberof WhatsappMessage
      */
     'contacts'?: Array<WhatsappMessageContact>;
     /**
-     * 
+     *
      * @type {WhatsappMessageReaction}
      * @memberof WhatsappMessage
      */
     'reaction'?: WhatsappMessageReaction;
     /**
-     * 
+     *
      * @type {WhatsappMessageContext}
      * @memberof WhatsappMessage
      */
@@ -156,7 +193,7 @@ export interface WhatsappMessage {
      */
     'externalId'?: string;
     /**
-     * 
+     *
      * @type {WhatsappMessageStatus}
      * @memberof WhatsappMessage
      */
@@ -222,25 +259,25 @@ export interface WhatsappMessage {
      */
     'regionCode'?: string;
     /**
-     * 
+     *
      * @type {WhatsappPricingCategory}
      * @memberof WhatsappMessage
      */
     'pricingCategory'?: WhatsappPricingCategory;
     /**
-     * 
+     *
      * @type {WhatsappPricingModel}
      * @memberof WhatsappMessage
      */
     'pricingModel'?: WhatsappPricingModel;
     /**
-     * 
+     *
      * @type {WhatsappPricingType}
      * @memberof WhatsappMessage
      */
     'pricingType'?: WhatsappPricingType;
     /**
-     * 
+     *
      * @type {WhatsappApiError}
      * @memberof WhatsappMessage
      */

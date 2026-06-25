@@ -59,7 +59,19 @@ export interface WhatsappInboundMessage {
      */
     'from'?: string;
     /**
-     * 
+     * The customer\'s WhatsApp Business-scoped user ID (BSUID).
+     * @type {string}
+     * @memberof WhatsappInboundMessage
+     */
+    'fromUserId'?: string;
+    /**
+     * The customer\'s parent WhatsApp Business-scoped user ID.
+     * @type {string}
+     * @memberof WhatsappInboundMessage
+     */
+    'fromParentUserId'?: string;
+    /**
+     *
      * @type {WhatsappProfile}
      * @memberof WhatsappInboundMessage
      */
@@ -71,115 +83,109 @@ export interface WhatsappInboundMessage {
      */
     'to'?: string;
     /**
-     * WhatsApp group ID. Included when the inbound message was sent in a group.
-     * @type {string}
-     * @memberof WhatsappInboundMessage
-     */
-    'groupId'?: string;
-    /**
      * The time at which this message is sent, formatted in [RFC 3339](https://datatracker.ietf.org/doc/html/rfc3339). e.g., `2022-06-01T12:00:00.000Z`.
      * @type {string}
      * @memberof WhatsappInboundMessage
      */
     'sendTime'?: string;
     /**
-     * 
+     *
      * @type {WhatsappInboundMessageType}
      * @memberof WhatsappInboundMessage
      */
     'type'?: WhatsappInboundMessageType;
     /**
-     * 
+     *
      * @type {WhatsappInboundMessageText}
      * @memberof WhatsappInboundMessage
      */
     'text'?: WhatsappInboundMessageText;
     /**
-     * 
+     *
      * @type {WhatsappInboundMessageMedia}
      * @memberof WhatsappInboundMessage
      */
     'image'?: WhatsappInboundMessageMedia;
     /**
-     * 
+     *
      * @type {WhatsappInboundMessageMedia}
      * @memberof WhatsappInboundMessage
      */
     'video'?: WhatsappInboundMessageMedia;
     /**
-     * 
+     *
      * @type {WhatsappInboundMessageMedia}
      * @memberof WhatsappInboundMessage
      */
     'audio'?: WhatsappInboundMessageMedia;
     /**
-     * 
+     *
      * @type {WhatsappInboundMessageMedia}
      * @memberof WhatsappInboundMessage
      */
     'document'?: WhatsappInboundMessageMedia;
     /**
-     * 
+     *
      * @type {WhatsappInboundMessageMedia}
      * @memberof WhatsappInboundMessage
      */
     'sticker'?: WhatsappInboundMessageMedia;
     /**
-     * 
+     *
      * @type {WhatsappInboundMessageInteractive}
      * @memberof WhatsappInboundMessage
      */
     'interactive'?: WhatsappInboundMessageInteractive;
     /**
-     * 
+     *
      * @type {WhatsappInboundMessageLocation}
      * @memberof WhatsappInboundMessage
      */
     'location'?: WhatsappInboundMessageLocation;
     /**
-     * 
+     *
      * @type {WhatsappInboundMessageButton}
      * @memberof WhatsappInboundMessage
      */
     'button'?: WhatsappInboundMessageButton;
     /**
-     * 
+     *
      * @type {Array<WhatsappMessageContact>}
      * @memberof WhatsappInboundMessage
      */
     'contacts'?: Array<WhatsappMessageContact>;
     /**
-     * 
+     *
      * @type {WhatsappMessageReaction}
      * @memberof WhatsappInboundMessage
      */
     'reaction'?: WhatsappMessageReaction;
     /**
-     * 
+     *
      * @type {WhatsappInboundMessageOrder}
      * @memberof WhatsappInboundMessage
      */
     'order'?: WhatsappInboundMessageOrder;
     /**
-     * 
+     *
      * @type {WhatsappInboundMessageSystem}
      * @memberof WhatsappInboundMessage
      */
     'system'?: WhatsappInboundMessageSystem;
     /**
-     * 
+     *
      * @type {Array<WhatsappInboundMessageError>}
      * @memberof WhatsappInboundMessage
      */
     'errors'?: Array<WhatsappInboundMessageError>;
     /**
-     * 
+     *
      * @type {WhatsappInboundMessageContext}
      * @memberof WhatsappInboundMessage
      */
     'context'?: WhatsappInboundMessageContext;
     /**
-     * 
+     *
      * @type {WhatsappInboundMessageReferral}
      * @memberof WhatsappInboundMessage
      */

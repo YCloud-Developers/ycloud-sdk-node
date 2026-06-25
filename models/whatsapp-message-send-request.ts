@@ -22,9 +22,10 @@ import { WhatsappMessageReaction } from './whatsapp-message-reaction';
 import { WhatsappMessageTemplate } from './whatsapp-message-template';
 import { WhatsappMessageText } from './whatsapp-message-text';
 import { WhatsappMessageType } from './whatsapp-message-type';
+import { WhatsappProfile } from './whatsapp-profile';
 
 /**
- * 
+ * Provide exactly one of `to` or `recipient`. If both are provided, `to` takes precedence and `recipient` is ignored.
  * @export
  * @interface WhatsappMessageSendRequest
  */
@@ -36,67 +37,79 @@ export interface WhatsappMessageSendRequest {
      */
     'from': string;
     /**
-     * The recipient\'s phone number in [E.164](https://en.wikipedia.org/wiki/E.164) format.
+     * The recipient\'s phone number in [E.164](https://en.wikipedia.org/wiki/E.164) format. Required when `recipient` is not provided.
      * @type {string}
      * @memberof WhatsappMessageSendRequest
      */
-    'to': string;
+    'to'?: string;
     /**
-     * 
+     * The recipient\'s WhatsApp Business-scoped user ID (BSUID) or parent BSUID. Required when `to` is not provided.
+     * @type {string}
+     * @memberof WhatsappMessageSendRequest
+     */
+    'recipient'?: string;
+    /**
+     *
+     * @type {WhatsappProfile}
+     * @memberof WhatsappMessageSendRequest
+     */
+    'customerProfile'?: WhatsappProfile;
+    /**
+     *
      * @type {WhatsappMessageType}
      * @memberof WhatsappMessageSendRequest
      */
     'type': WhatsappMessageType;
     /**
-     * 
+     *
      * @type {WhatsappMessageTemplate}
      * @memberof WhatsappMessageSendRequest
      */
     'template'?: WhatsappMessageTemplate;
     /**
-     * 
+     *
      * @type {WhatsappMessageText}
      * @memberof WhatsappMessageSendRequest
      */
     'text'?: WhatsappMessageText;
     /**
-     * 
+     *
      * @type {WhatsappMessageMedia}
      * @memberof WhatsappMessageSendRequest
      */
     'image'?: WhatsappMessageMedia;
     /**
-     * 
+     *
      * @type {WhatsappMessageMedia}
      * @memberof WhatsappMessageSendRequest
      */
     'video'?: WhatsappMessageMedia;
     /**
-     * 
+     *
      * @type {WhatsappMessageMedia}
      * @memberof WhatsappMessageSendRequest
      */
     'audio'?: WhatsappMessageMedia;
     /**
-     * 
+     *
      * @type {WhatsappMessageMedia}
      * @memberof WhatsappMessageSendRequest
      */
     'document'?: WhatsappMessageMedia;
     /**
-     * 
+     *
      * @type {WhatsappMessageMedia}
      * @memberof WhatsappMessageSendRequest
      */
     'sticker'?: WhatsappMessageMedia;
     /**
-     * 
+     *
      * @type {WhatsappMessageLocation}
      * @memberof WhatsappMessageSendRequest
      */
     'location'?: WhatsappMessageLocation;
     /**
-     * 
+     *
      * @type {WhatsappMessageInteractive}
      * @memberof WhatsappMessageSendRequest
      */
@@ -108,13 +121,13 @@ export interface WhatsappMessageSendRequest {
      */
     'contacts'?: Array<WhatsappMessageContact>;
     /**
-     * 
+     *
      * @type {WhatsappMessageReaction}
      * @memberof WhatsappMessageSendRequest
      */
     'reaction'?: WhatsappMessageReaction;
     /**
-     * 
+     *
      * @type {WhatsappMessageContext}
      * @memberof WhatsappMessageSendRequest
      */

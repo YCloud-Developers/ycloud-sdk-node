@@ -26,5 +26,11 @@ export interface WhatsappProfile {
      * @memberof WhatsappProfile
      */
     'name'?: string;
+    /**
+     * WhatsApp username.
+     * @type {string}
+     * @memberof WhatsappProfile
+     */
+    'username'?: string;
 }
 

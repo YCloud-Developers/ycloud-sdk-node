@@ -16,17 +16,23 @@
 import { WhatsappMessageTemplateComponentParameter } from './whatsapp-message-template-component-parameter';
 
 /**
- * 
+ * Provide exactly one of `to` or `recipient`. If both are provided, `to` takes precedence and `recipient` is ignored.
  * @export
  * @interface WhatsappGroupInviteLinkMessageRequest
  */
 export interface WhatsappGroupInviteLinkMessageRequest {
     /**
-     * The recipient\'s phone number in [E.164](https://en.wikipedia.org/wiki/E.164) format.
+     * The recipient\'s phone number in [E.164](https://en.wikipedia.org/wiki/E.164) format. Required when `recipient` is not provided.
      * @type {string}
      * @memberof WhatsappGroupInviteLinkMessageRequest
      */
-    'to': string;
+    'to'?: string;
+    /**
+     * The recipient\'s WhatsApp Business-scoped user ID (BSUID) or parent BSUID. Required when `to` is not provided.
+     * @type {string}
+     * @memberof WhatsappGroupInviteLinkMessageRequest
+     */
+    'recipient'?: string;
     /**
      * The name of the approved WhatsApp template.
      * @type {string}
