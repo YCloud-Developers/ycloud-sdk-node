@@ -16,7 +16,7 @@
 import { WhatsappMessageMedia } from './whatsapp-message-media';
 
 /**
- *
+ * 
  * @export
  * @interface WhatsappMessageInteractiveActionCardHeader
  */
@@ -28,13 +28,13 @@ export interface WhatsappMessageInteractiveActionCardHeader {
      */
     'type'?: WhatsappMessageInteractiveActionCardHeaderTypeEnum;
     /**
-     *
+     * 
      * @type {WhatsappMessageMedia}
      * @memberof WhatsappMessageInteractiveActionCardHeader
      */
     'image'?: WhatsappMessageMedia;
     /**
-     *
+     * 
      * @type {WhatsappMessageMedia}
      * @memberof WhatsappMessageInteractiveActionCardHeader
      */

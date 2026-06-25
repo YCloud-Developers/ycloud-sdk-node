@@ -58,6 +58,22 @@ export const EventType = {
     */
     WhatsappMessageUpdated: 'whatsapp.message.updated',
     /**
+    * Occurs when a WhatsApp group is created or deleted, including successful and failed results.
+    */
+    WhatsappGroupLifecycleUpdate: 'whatsapp.group.lifecycle_update',
+    /**
+    * Occurs when WhatsApp group participants or join requests are updated.
+    */
+    WhatsappGroupParticipantsUpdate: 'whatsapp.group.participants_update',
+    /**
+    * Occurs when WhatsApp group settings are updated, including successful and failed results.
+    */
+    WhatsappGroupSettingsUpdate: 'whatsapp.group.settings_update',
+    /**
+    * Occurs when a WhatsApp group suspension status is updated.
+    */
+    WhatsappGroupStatusUpdate: 'whatsapp.group.status_update',
+    /**
     * Occurs when WhatsApp Business app sync history message.
     */
     WhatsappSmbHistory: 'whatsapp.smb.history',
@@ -77,6 +93,10 @@ export const EventType = {
     * Occurs when a WhatsApp business phone number&#39;s quality-related status is updated, and the status changes to &#x60;GREEN&#x60;, &#x60;YELLOW&#x60;, or &#x60;RED&#x60;.
     */
     WhatsappPhoneNumberQualityUpdated: 'whatsapp.phone_number.quality_updated',
+    /**
+    * Occurs when a WhatsApp business phone number&#39;s Business Username is updated.
+    */
+    WhatsappPhoneNumberBusinessUsernameUpdated: 'whatsapp.phone_number.business_username_updated',
     /**
     * Occurs when a WhatsApp template category is updated.
     */
@@ -122,10 +142,16 @@ export const EventType = {
     */
     ContactDeleted: 'contact.deleted',
     /**
-    * Occurs when a WhatsApp user stops marketing messages or a WhatsApp user resumes marketing messages.
+    * Occurs when a contact unsubscribes from messages.
     */
     ContactUnsubscribeCreated: 'contact.unsubscribe.created',
+    /**
+    * Occurs when a contact resumes subscription to messages.
+    */
     ContactUnsubscribeDeleted: 'contact.unsubscribe.deleted',
+    /**
+    * Occurs when a WhatsApp user stops marketing messages or a WhatsApp user resumes marketing messages.
+    */
     WhatsappUserPreferences: 'whatsapp.user.preferences'
 } as const;
 

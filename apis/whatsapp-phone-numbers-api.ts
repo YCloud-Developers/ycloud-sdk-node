@@ -23,6 +23,14 @@ import { BASE_PATH, USER_AGENT, COLLECTION_FORMATS, RequestArgs, BaseAPI, Requir
 // @ts-ignore
 import { ErrorResponse } from '../models';
 // @ts-ignore
+import { WhatsappBusinessUsername } from '../models';
+// @ts-ignore
+import { WhatsappBusinessUsernameDeleteResult } from '../models';
+// @ts-ignore
+import { WhatsappBusinessUsernameSuggestions } from '../models';
+// @ts-ignore
+import { WhatsappBusinessUsernameUpdateRequest } from '../models';
+// @ts-ignore
 import { WhatsappCommerceSettings } from '../models';
 // @ts-ignore
 import { WhatsappCommerceSettingsUpdateRequest } from '../models';
@@ -46,6 +54,51 @@ import { WhatsappPhoneNumberSettings } from '../models';
  */
 const WhatsappPhoneNumbersApiAxiosParamCreator = function (configuration?: Configuration) {
     return {
+        /**
+         * Deletes the active Business Username for a WhatsApp business phone number. This operation removes the currently active Business Username. It does not cancel or remove a pending Business Username request. If a pending request still exists after deletion, the returned `businessUsernameStatus` remains `pending_review`; otherwise it becomes `not_set`.
+         * @summary Delete a phone number business username
+         * @param {string} wabaId WhatsApp Business Account ID.
+         * @param {string} phoneNumber Phone number in [E.164](https://en.wikipedia.org/wiki/E.164) format.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        deleteBusinessUsername: async (wabaId: string, phoneNumber: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'wabaId' is not null or undefined
+            assertParamExists('deleteBusinessUsername', 'wabaId', wabaId)
+            // verify required parameter 'phoneNumber' is not null or undefined
+            assertParamExists('deleteBusinessUsername', 'phoneNumber', phoneNumber)
+            const localVarPath = `/whatsapp/phoneNumbers/{wabaId}/{phoneNumber}/businessUsername`
+                .replace(`{${"wabaId"}}`, encodeURIComponent(String(wabaId)))
+                .replace(`{${"phoneNumber"}}`, encodeURIComponent(String(phoneNumber)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            // const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'DELETE', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            if (USER_AGENT) {
+                localVarHeaderParameter['User-Agent'] = USER_AGENT;
+            }
+            const localVarQueryParameter = {} as any;
+
+            // authentication api_key required
+            await setApiKeyToObject(localVarHeaderParameter, "X-API-Key", configuration)
+
+
+    
+            // setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+            localVarRequestOptions.params = localVarQueryParameter;
+
+            return {
+                url: localVarPath,
+                options: localVarRequestOptions,
+            };
+        },
         /**
          * Returns a paginated list of WhatsApp business phone numbers you\'ve registered.
          * @summary List phone numbers
@@ -163,6 +216,96 @@ const WhatsappPhoneNumbersApiAxiosParamCreator = function (configuration?: Confi
             // verify required parameter 'phoneNumber' is not null or undefined
             assertParamExists('retrieve', 'phoneNumber', phoneNumber)
             const localVarPath = `/whatsapp/phoneNumbers/{wabaId}/{phoneNumber}`
+                .replace(`{${"wabaId"}}`, encodeURIComponent(String(wabaId)))
+                .replace(`{${"phoneNumber"}}`, encodeURIComponent(String(phoneNumber)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            // const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            if (USER_AGENT) {
+                localVarHeaderParameter['User-Agent'] = USER_AGENT;
+            }
+            const localVarQueryParameter = {} as any;
+
+            // authentication api_key required
+            await setApiKeyToObject(localVarHeaderParameter, "X-API-Key", configuration)
+
+
+    
+            // setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+            localVarRequestOptions.params = localVarQueryParameter;
+
+            return {
+                url: localVarPath,
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * Retrieves the Business Username state for a WhatsApp business phone number. The response reflects YCloud\'s latest known phone number state. If the phone number has no locally stored Business Username state, YCloud may sync the current username state from Meta before returning the response.
+         * @summary Retrieve a phone number business username
+         * @param {string} wabaId WhatsApp Business Account ID.
+         * @param {string} phoneNumber Phone number in [E.164](https://en.wikipedia.org/wiki/E.164) format.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        retrieveBusinessUsername: async (wabaId: string, phoneNumber: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'wabaId' is not null or undefined
+            assertParamExists('retrieveBusinessUsername', 'wabaId', wabaId)
+            // verify required parameter 'phoneNumber' is not null or undefined
+            assertParamExists('retrieveBusinessUsername', 'phoneNumber', phoneNumber)
+            const localVarPath = `/whatsapp/phoneNumbers/{wabaId}/{phoneNumber}/businessUsername`
+                .replace(`{${"wabaId"}}`, encodeURIComponent(String(wabaId)))
+                .replace(`{${"phoneNumber"}}`, encodeURIComponent(String(phoneNumber)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            // const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            if (USER_AGENT) {
+                localVarHeaderParameter['User-Agent'] = USER_AGENT;
+            }
+            const localVarQueryParameter = {} as any;
+
+            // authentication api_key required
+            await setApiKeyToObject(localVarHeaderParameter, "X-API-Key", configuration)
+
+
+    
+            // setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+            localVarRequestOptions.params = localVarQueryParameter;
+
+            return {
+                url: localVarPath,
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * Retrieves reserved Business Username suggestions for a WhatsApp business phone number. The response flattens Meta username suggestions into a string array. If no suggestions are available, `data` is an empty array.
+         * @summary Retrieve phone number business username suggestions
+         * @param {string} wabaId WhatsApp Business Account ID.
+         * @param {string} phoneNumber Phone number in [E.164](https://en.wikipedia.org/wiki/E.164) format.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        retrieveBusinessUsernameSuggestions: async (wabaId: string, phoneNumber: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'wabaId' is not null or undefined
+            assertParamExists('retrieveBusinessUsernameSuggestions', 'wabaId', wabaId)
+            // verify required parameter 'phoneNumber' is not null or undefined
+            assertParamExists('retrieveBusinessUsernameSuggestions', 'phoneNumber', phoneNumber)
+            const localVarPath = `/whatsapp/phoneNumbers/{wabaId}/{phoneNumber}/businessUsername/suggestions`
                 .replace(`{${"wabaId"}}`, encodeURIComponent(String(wabaId)))
                 .replace(`{${"phoneNumber"}}`, encodeURIComponent(String(phoneNumber)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
@@ -381,6 +524,57 @@ const WhatsappPhoneNumbersApiAxiosParamCreator = function (configuration?: Confi
             };
         },
         /**
+         * Requests a Business Username update for a WhatsApp business phone number. The requested username may require Meta review before it becomes active. If Meta accepts the request for review, the response status is usually `pending_review`; if Meta returns an error, YCloud returns the error and does not change the stored Business Username state.  The `username` value is a plain username without `@`. YCloud trims leading and trailing whitespace and normalizes the value to lowercase before validation and submission.
+         * @summary Update a phone number business username
+         * @param {string} wabaId WhatsApp Business Account ID.
+         * @param {string} phoneNumber Phone number in [E.164](https://en.wikipedia.org/wiki/E.164) format.
+         * @param {WhatsappBusinessUsernameUpdateRequest} whatsappBusinessUsernameUpdateRequest 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        updateBusinessUsername: async (wabaId: string, phoneNumber: string, whatsappBusinessUsernameUpdateRequest: WhatsappBusinessUsernameUpdateRequest, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'wabaId' is not null or undefined
+            assertParamExists('updateBusinessUsername', 'wabaId', wabaId)
+            // verify required parameter 'phoneNumber' is not null or undefined
+            assertParamExists('updateBusinessUsername', 'phoneNumber', phoneNumber)
+            // verify required parameter 'whatsappBusinessUsernameUpdateRequest' is not null or undefined
+            assertParamExists('updateBusinessUsername', 'whatsappBusinessUsernameUpdateRequest', whatsappBusinessUsernameUpdateRequest)
+            const localVarPath = `/whatsapp/phoneNumbers/{wabaId}/{phoneNumber}/businessUsername`
+                .replace(`{${"wabaId"}}`, encodeURIComponent(String(wabaId)))
+                .replace(`{${"phoneNumber"}}`, encodeURIComponent(String(phoneNumber)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            // const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'PATCH', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            if (USER_AGENT) {
+                localVarHeaderParameter['User-Agent'] = USER_AGENT;
+            }
+            const localVarQueryParameter = {} as any;
+
+            // authentication api_key required
+            await setApiKeyToObject(localVarHeaderParameter, "X-API-Key", configuration)
+
+
+    
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+
+            // setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+            localVarRequestOptions.params = localVarQueryParameter;
+            localVarRequestOptions.data = serializeDataIfNeeded(whatsappBusinessUsernameUpdateRequest, localVarRequestOptions, configuration)
+
+            return {
+                url: localVarPath,
+                options: localVarRequestOptions,
+            };
+        },
+        /**
          * Updates a WhatsApp business phone number\'s commerce settings. Use this endpoint to enable or disable the shopping cart or the product catalog for a specific business phone number.
          * @summary Update commerce settings
          * @param {string} wabaId WhatsApp Business Account ID.
@@ -544,6 +738,18 @@ const WhatsappPhoneNumbersApiFp = function(configuration?: Configuration) {
     const localVarAxiosParamCreator = WhatsappPhoneNumbersApiAxiosParamCreator(configuration)
     return {
         /**
+         * Deletes the active Business Username for a WhatsApp business phone number. This operation removes the currently active Business Username. It does not cancel or remove a pending Business Username request. If a pending request still exists after deletion, the returned `businessUsernameStatus` remains `pending_review`; otherwise it becomes `not_set`.
+         * @summary Delete a phone number business username
+         * @param {string} wabaId WhatsApp Business Account ID.
+         * @param {string} phoneNumber Phone number in [E.164](https://en.wikipedia.org/wiki/E.164) format.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async deleteBusinessUsername(wabaId: string, phoneNumber: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<WhatsappBusinessUsernameDeleteResult>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.deleteBusinessUsername(wabaId, phoneNumber, options);
+            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+        },
+        /**
          * Returns a paginated list of WhatsApp business phone numbers you\'ve registered.
          * @summary List phone numbers
          * @param {WhatsappPhoneNumbersApiListRequest} requestParameters Request parameters.
@@ -576,6 +782,30 @@ const WhatsappPhoneNumbersApiFp = function(configuration?: Configuration) {
          */
         async retrieve(wabaId: string, phoneNumber: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<WhatsappPhoneNumber>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.retrieve(wabaId, phoneNumber, options);
+            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+        },
+        /**
+         * Retrieves the Business Username state for a WhatsApp business phone number. The response reflects YCloud\'s latest known phone number state. If the phone number has no locally stored Business Username state, YCloud may sync the current username state from Meta before returning the response.
+         * @summary Retrieve a phone number business username
+         * @param {string} wabaId WhatsApp Business Account ID.
+         * @param {string} phoneNumber Phone number in [E.164](https://en.wikipedia.org/wiki/E.164) format.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async retrieveBusinessUsername(wabaId: string, phoneNumber: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<WhatsappBusinessUsername>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.retrieveBusinessUsername(wabaId, phoneNumber, options);
+            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+        },
+        /**
+         * Retrieves reserved Business Username suggestions for a WhatsApp business phone number. The response flattens Meta username suggestions into a string array. If no suggestions are available, `data` is an empty array.
+         * @summary Retrieve phone number business username suggestions
+         * @param {string} wabaId WhatsApp Business Account ID.
+         * @param {string} phoneNumber Phone number in [E.164](https://en.wikipedia.org/wiki/E.164) format.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async retrieveBusinessUsernameSuggestions(wabaId: string, phoneNumber: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<WhatsappBusinessUsernameSuggestions>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.retrieveBusinessUsernameSuggestions(wabaId, phoneNumber, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
         /**
@@ -628,6 +858,19 @@ const WhatsappPhoneNumbersApiFp = function(configuration?: Configuration) {
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
         /**
+         * Requests a Business Username update for a WhatsApp business phone number. The requested username may require Meta review before it becomes active. If Meta accepts the request for review, the response status is usually `pending_review`; if Meta returns an error, YCloud returns the error and does not change the stored Business Username state.  The `username` value is a plain username without `@`. YCloud trims leading and trailing whitespace and normalizes the value to lowercase before validation and submission.
+         * @summary Update a phone number business username
+         * @param {string} wabaId WhatsApp Business Account ID.
+         * @param {string} phoneNumber Phone number in [E.164](https://en.wikipedia.org/wiki/E.164) format.
+         * @param {WhatsappBusinessUsernameUpdateRequest} whatsappBusinessUsernameUpdateRequest 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async updateBusinessUsername(wabaId: string, phoneNumber: string, whatsappBusinessUsernameUpdateRequest: WhatsappBusinessUsernameUpdateRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<WhatsappBusinessUsername>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.updateBusinessUsername(wabaId, phoneNumber, whatsappBusinessUsernameUpdateRequest, options);
+            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+        },
+        /**
          * Updates a WhatsApp business phone number\'s commerce settings. Use this endpoint to enable or disable the shopping cart or the product catalog for a specific business phone number.
          * @summary Update commerce settings
          * @param {string} wabaId WhatsApp Business Account ID.
@@ -677,6 +920,15 @@ const WhatsappPhoneNumbersApiFactory = function (configuration?: Configuration, 
     const localVarFp = WhatsappPhoneNumbersApiFp(configuration)
     return {
         /**
+         * Deletes the active Business Username for a WhatsApp business phone number. This operation removes the currently active Business Username. It does not cancel or remove a pending Business Username request. If a pending request still exists after deletion, the returned `businessUsernameStatus` remains `pending_review`; otherwise it becomes `not_set`.
+         * @summary Delete a phone number business username
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        deleteBusinessUsername(wabaId: string, phoneNumber: string, options?: any): AxiosPromise<WhatsappBusinessUsernameDeleteResult> {
+            return localVarFp.deleteBusinessUsername(wabaId, phoneNumber, options).then((request) => request(axios, basePath));
+        },
+        /**
          * Returns a paginated list of WhatsApp business phone numbers you\'ve registered.
          * @summary List phone numbers
          * @param {WhatsappPhoneNumbersApiListRequest} requestParameters Request parameters.
@@ -707,6 +959,24 @@ const WhatsappPhoneNumbersApiFactory = function (configuration?: Configuration, 
          */
         retrieve(wabaId: string, phoneNumber: string, options?: any): AxiosPromise<WhatsappPhoneNumber> {
             return localVarFp.retrieve(wabaId, phoneNumber, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * Retrieves the Business Username state for a WhatsApp business phone number. The response reflects YCloud\'s latest known phone number state. If the phone number has no locally stored Business Username state, YCloud may sync the current username state from Meta before returning the response.
+         * @summary Retrieve a phone number business username
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        retrieveBusinessUsername(wabaId: string, phoneNumber: string, options?: any): AxiosPromise<WhatsappBusinessUsername> {
+            return localVarFp.retrieveBusinessUsername(wabaId, phoneNumber, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * Retrieves reserved Business Username suggestions for a WhatsApp business phone number. The response flattens Meta username suggestions into a string array. If no suggestions are available, `data` is an empty array.
+         * @summary Retrieve phone number business username suggestions
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        retrieveBusinessUsernameSuggestions(wabaId: string, phoneNumber: string, options?: any): AxiosPromise<WhatsappBusinessUsernameSuggestions> {
+            return localVarFp.retrieveBusinessUsernameSuggestions(wabaId, phoneNumber, options).then((request) => request(axios, basePath));
         },
         /**
          * Retrieves a WhatsApp business phone number\'s commerce settings.
@@ -743,6 +1013,15 @@ const WhatsappPhoneNumbersApiFactory = function (configuration?: Configuration, 
          */
         saveSettings(wabaId: string, phoneNumber: string, whatsappPhoneNumberSettings: WhatsappPhoneNumberSettings, options?: any): AxiosPromise<WhatsappPhoneNumberSettings> {
             return localVarFp.saveSettings(wabaId, phoneNumber, whatsappPhoneNumberSettings, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * Requests a Business Username update for a WhatsApp business phone number. The requested username may require Meta review before it becomes active. If Meta accepts the request for review, the response status is usually `pending_review`; if Meta returns an error, YCloud returns the error and does not change the stored Business Username state.  The `username` value is a plain username without `@`. YCloud trims leading and trailing whitespace and normalizes the value to lowercase before validation and submission.
+         * @summary Update a phone number business username
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        updateBusinessUsername(wabaId: string, phoneNumber: string, whatsappBusinessUsernameUpdateRequest: WhatsappBusinessUsernameUpdateRequest, options?: any): AxiosPromise<WhatsappBusinessUsername> {
+            return localVarFp.updateBusinessUsername(wabaId, phoneNumber, whatsappBusinessUsernameUpdateRequest, options).then((request) => request(axios, basePath));
         },
         /**
          * Updates a WhatsApp business phone number\'s commerce settings. Use this endpoint to enable or disable the shopping cart or the product catalog for a specific business phone number.
@@ -817,6 +1096,19 @@ export interface WhatsappPhoneNumbersApiListRequest {
  */
 export class WhatsappPhoneNumbersApi extends BaseAPI {
     /**
+     * Deletes the active Business Username for a WhatsApp business phone number. This operation removes the currently active Business Username. It does not cancel or remove a pending Business Username request. If a pending request still exists after deletion, the returned `businessUsernameStatus` remains `pending_review`; otherwise it becomes `not_set`.
+     * @summary Delete a phone number business username
+     * @param {string} wabaId WhatsApp Business Account ID.
+     * @param {string} phoneNumber Phone number in [E.164](https://en.wikipedia.org/wiki/E.164) format.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof WhatsappPhoneNumbersApi
+     */
+    public deleteBusinessUsername(wabaId: string, phoneNumber: string, options?: AxiosRequestConfig) {
+        return WhatsappPhoneNumbersApiFp(this.configuration).deleteBusinessUsername(wabaId, phoneNumber, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
      * Returns a paginated list of WhatsApp business phone numbers you\'ve registered.
      * @summary List phone numbers
      * @param {WhatsappPhoneNumbersApiListRequest} requestParameters Request parameters.
@@ -852,6 +1144,32 @@ export class WhatsappPhoneNumbersApi extends BaseAPI {
      */
     public retrieve(wabaId: string, phoneNumber: string, options?: AxiosRequestConfig) {
         return WhatsappPhoneNumbersApiFp(this.configuration).retrieve(wabaId, phoneNumber, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * Retrieves the Business Username state for a WhatsApp business phone number. The response reflects YCloud\'s latest known phone number state. If the phone number has no locally stored Business Username state, YCloud may sync the current username state from Meta before returning the response.
+     * @summary Retrieve a phone number business username
+     * @param {string} wabaId WhatsApp Business Account ID.
+     * @param {string} phoneNumber Phone number in [E.164](https://en.wikipedia.org/wiki/E.164) format.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof WhatsappPhoneNumbersApi
+     */
+    public retrieveBusinessUsername(wabaId: string, phoneNumber: string, options?: AxiosRequestConfig) {
+        return WhatsappPhoneNumbersApiFp(this.configuration).retrieveBusinessUsername(wabaId, phoneNumber, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * Retrieves reserved Business Username suggestions for a WhatsApp business phone number. The response flattens Meta username suggestions into a string array. If no suggestions are available, `data` is an empty array.
+     * @summary Retrieve phone number business username suggestions
+     * @param {string} wabaId WhatsApp Business Account ID.
+     * @param {string} phoneNumber Phone number in [E.164](https://en.wikipedia.org/wiki/E.164) format.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof WhatsappPhoneNumbersApi
+     */
+    public retrieveBusinessUsernameSuggestions(wabaId: string, phoneNumber: string, options?: AxiosRequestConfig) {
+        return WhatsappPhoneNumbersApiFp(this.configuration).retrieveBusinessUsernameSuggestions(wabaId, phoneNumber, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
@@ -905,6 +1223,20 @@ export class WhatsappPhoneNumbersApi extends BaseAPI {
      */
     public saveSettings(wabaId: string, phoneNumber: string, whatsappPhoneNumberSettings: WhatsappPhoneNumberSettings, options?: AxiosRequestConfig) {
         return WhatsappPhoneNumbersApiFp(this.configuration).saveSettings(wabaId, phoneNumber, whatsappPhoneNumberSettings, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * Requests a Business Username update for a WhatsApp business phone number. The requested username may require Meta review before it becomes active. If Meta accepts the request for review, the response status is usually `pending_review`; if Meta returns an error, YCloud returns the error and does not change the stored Business Username state.  The `username` value is a plain username without `@`. YCloud trims leading and trailing whitespace and normalizes the value to lowercase before validation and submission.
+     * @summary Update a phone number business username
+     * @param {string} wabaId WhatsApp Business Account ID.
+     * @param {string} phoneNumber Phone number in [E.164](https://en.wikipedia.org/wiki/E.164) format.
+     * @param {WhatsappBusinessUsernameUpdateRequest} whatsappBusinessUsernameUpdateRequest 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof WhatsappPhoneNumbersApi
+     */
+    public updateBusinessUsername(wabaId: string, phoneNumber: string, whatsappBusinessUsernameUpdateRequest: WhatsappBusinessUsernameUpdateRequest, options?: AxiosRequestConfig) {
+        return WhatsappPhoneNumbersApiFp(this.configuration).updateBusinessUsername(wabaId, phoneNumber, whatsappBusinessUsernameUpdateRequest, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**

@@ -62,7 +62,7 @@ const WhatsappMessagesApiAxiosParamCreator = function (configuration?: Configura
             await setApiKeyToObject(localVarHeaderParameter, "X-API-Key", configuration)
 
 
-
+    
             // setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
@@ -76,7 +76,7 @@ const WhatsappMessagesApiAxiosParamCreator = function (configuration?: Configura
         /**
          * Enqueues an outbound WhatsApp message for sending.  Queued messages will be submitted to the WhatsApp Business API asynchronously.  For WhatsApp `template` messages, the referenced template must be in `APPROVED` status. `ARCHIVED` templates cannot be sent.
          * @summary Enqueue a message
-         * @param {WhatsappMessageSendRequest} whatsappMessageSendRequest
+         * @param {WhatsappMessageSendRequest} whatsappMessageSendRequest 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -102,7 +102,7 @@ const WhatsappMessagesApiAxiosParamCreator = function (configuration?: Configura
             await setApiKeyToObject(localVarHeaderParameter, "X-API-Key", configuration)
 
 
-
+    
             localVarHeaderParameter['Content-Type'] = 'application/json';
 
             // setSearchParams(localVarUrlObj, localVarQueryParameter);
@@ -119,7 +119,7 @@ const WhatsappMessagesApiAxiosParamCreator = function (configuration?: Configura
         /**
          * Sends an outbound WhatsApp message directly.  The message is submitted to the WhatsApp Business API synchronously. Typically used for sending OTP and instant messages.  The response body field `error.whatsappApiError` is included if we tried to request the WhatsApp Business API and got an error response.
          * @summary Send a message directly
-         * @param {WhatsappMessageSendRequest} whatsappMessageSendRequest
+         * @param {WhatsappMessageSendRequest} whatsappMessageSendRequest 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -145,7 +145,7 @@ const WhatsappMessagesApiAxiosParamCreator = function (configuration?: Configura
             await setApiKeyToObject(localVarHeaderParameter, "X-API-Key", configuration)
 
 
-
+    
             localVarHeaderParameter['Content-Type'] = 'application/json';
 
             // setSearchParams(localVarUrlObj, localVarQueryParameter);
@@ -183,7 +183,7 @@ const WhatsappMessagesApiFp = function(configuration?: Configuration) {
         /**
          * Enqueues an outbound WhatsApp message for sending.  Queued messages will be submitted to the WhatsApp Business API asynchronously.  For WhatsApp `template` messages, the referenced template must be in `APPROVED` status. `ARCHIVED` templates cannot be sent.
          * @summary Enqueue a message
-         * @param {WhatsappMessageSendRequest} whatsappMessageSendRequest
+         * @param {WhatsappMessageSendRequest} whatsappMessageSendRequest 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -194,7 +194,7 @@ const WhatsappMessagesApiFp = function(configuration?: Configuration) {
         /**
          * Sends an outbound WhatsApp message directly.  The message is submitted to the WhatsApp Business API synchronously. Typically used for sending OTP and instant messages.  The response body field `error.whatsappApiError` is included if we tried to request the WhatsApp Business API and got an error response.
          * @summary Send a message directly
-         * @param {WhatsappMessageSendRequest} whatsappMessageSendRequest
+         * @param {WhatsappMessageSendRequest} whatsappMessageSendRequest 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -264,7 +264,7 @@ export class WhatsappMessagesApi extends BaseAPI {
     /**
      * Enqueues an outbound WhatsApp message for sending.  Queued messages will be submitted to the WhatsApp Business API asynchronously.  For WhatsApp `template` messages, the referenced template must be in `APPROVED` status. `ARCHIVED` templates cannot be sent.
      * @summary Enqueue a message
-     * @param {WhatsappMessageSendRequest} whatsappMessageSendRequest
+     * @param {WhatsappMessageSendRequest} whatsappMessageSendRequest 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof WhatsappMessagesApi
@@ -276,7 +276,7 @@ export class WhatsappMessagesApi extends BaseAPI {
     /**
      * Sends an outbound WhatsApp message directly.  The message is submitted to the WhatsApp Business API synchronously. Typically used for sending OTP and instant messages.  The response body field `error.whatsappApiError` is included if we tried to request the WhatsApp Business API and got an error response.
      * @summary Send a message directly
-     * @param {WhatsappMessageSendRequest} whatsappMessageSendRequest
+     * @param {WhatsappMessageSendRequest} whatsappMessageSendRequest 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof WhatsappMessagesApi

@@ -24,6 +24,7 @@ import { Sms } from './sms';
 import { SmsInbound } from './sms-inbound';
 import { Voice } from './voice';
 import { WhatsappBusinessAccount } from './whatsapp-business-account';
+import { WhatsappGroupWebhook } from './whatsapp-group-webhook';
 import { WhatsappInboundMessage } from './whatsapp-inbound-message';
 import { WhatsappMessage } from './whatsapp-message';
 import { WhatsappPayment } from './whatsapp-payment';
@@ -44,7 +45,7 @@ export interface Event {
      */
     'id': string;
     /**
-     *
+     * 
      * @type {EventType}
      * @memberof Event
      */
@@ -62,97 +63,103 @@ export interface Event {
      */
     'createTime': string;
     /**
-     *
+     * 
      * @type {EmailDelivery}
      * @memberof Event
      */
     'emailDelivery'?: EmailDelivery;
     /**
-     *
+     * 
      * @type {Sms}
      * @memberof Event
      */
     'sms'?: Sms;
     /**
-     *
+     * 
      * @type {SmsInbound}
      * @memberof Event
      */
     'smsInbound'?: SmsInbound;
     /**
-     *
+     * 
      * @type {Voice}
      * @memberof Event
      */
     'voice'?: Voice;
     /**
-     *
+     * 
      * @type {WhatsappBusinessAccount}
      * @memberof Event
      */
     'whatsappBusinessAccount'?: WhatsappBusinessAccount;
     /**
-     *
+     * 
      * @type {WhatsappInboundMessage}
      * @memberof Event
      */
     'whatsappInboundMessage'?: WhatsappInboundMessage;
     /**
-     *
+     * 
      * @type {WhatsappMessage}
      * @memberof Event
      */
     'whatsappMessage'?: WhatsappMessage;
     /**
-     *
+     * 
+     * @type {WhatsappGroupWebhook}
+     * @memberof Event
+     */
+    'whatsappGroup'?: WhatsappGroupWebhook;
+    /**
+     * 
      * @type {WhatsappPhoneNumber}
      * @memberof Event
      */
     'whatsappPhoneNumber'?: WhatsappPhoneNumber;
     /**
-     *
+     * 
      * @type {WhatsappPayment}
      * @memberof Event
      */
     'whatsappPayment'?: WhatsappPayment;
     /**
-     *
+     * 
      * @type {WhatsappTemplate}
      * @memberof Event
      */
     'whatsappTemplate'?: WhatsappTemplate;
     /**
-     *
+     * 
      * @type {ContactAttributesChanged}
      * @memberof Event
      */
     'contactAttributesChanged'?: ContactAttributesChanged;
     /**
-     *
+     * 
      * @type {ContactCreated}
      * @memberof Event
      */
     'contactCreated'?: ContactCreated;
     /**
-     *
+     * 
      * @type {ContactDeleted}
      * @memberof Event
      */
     'contactDeleted'?: ContactDeleted;
     /**
-     *
+     * 
      * @type {ContactUnsubscribeCreated}
      * @memberof Event
      */
     'contactUnsubscribeCreated'?: ContactUnsubscribeCreated;
     /**
-     *
+     * 
      * @type {ContactUnsubscribeDeleted}
      * @memberof Event
      */
     'contactUnsubscribeDeleted'?: ContactUnsubscribeDeleted;
     /**
-     *
+     * 
      * @type {WhatsappUserPreference}
      * @memberof Event
      */

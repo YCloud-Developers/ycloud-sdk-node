@@ -15,7 +15,7 @@
 
 
 /**
- *
+ * 
  * @export
  * @interface ContactCustomAttribute
  */

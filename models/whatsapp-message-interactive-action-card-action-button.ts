@@ -16,7 +16,7 @@
 import { WhatsappMessageInteractiveActionCardActionButtonQuickReply } from './whatsapp-message-interactive-action-card-action-button-quick-reply';
 
 /**
- *
+ * 
  * @export
  * @interface WhatsappMessageInteractiveActionCardActionButton
  */
@@ -28,7 +28,7 @@ export interface WhatsappMessageInteractiveActionCardActionButton {
      */
     'type'?: string;
     /**
-     *
+     * 
      * @type {WhatsappMessageInteractiveActionCardActionButtonQuickReply}
      * @memberof WhatsappMessageInteractiveActionCardActionButton
      */

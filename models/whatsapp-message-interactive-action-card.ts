@@ -36,19 +36,19 @@ export interface WhatsappMessageInteractiveActionCard {
      */
     'type'?: string;
     /**
-     *
+     * 
      * @type {WhatsappMessageInteractiveActionCardHeader}
      * @memberof WhatsappMessageInteractiveActionCard
      */
     'header'?: WhatsappMessageInteractiveActionCardHeader;
     /**
-     *
+     * 
      * @type {WhatsappMessageInteractiveActionCardBody}
      * @memberof WhatsappMessageInteractiveActionCard
      */
     'body'?: WhatsappMessageInteractiveActionCardBody;
     /**
-     *
+     * 
      * @type {WhatsappMessageInteractiveActionCardAction}
      * @memberof WhatsappMessageInteractiveActionCard
      */

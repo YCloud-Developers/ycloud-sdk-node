@@ -171,5 +171,23 @@ export interface WhatsappBusinessAccount {
      * @memberof WhatsappBusinessAccount
      */
     'whatsappBusinessManagerMessagingLimit'?: string;
+    /**
+     * Raw reason from the WhatsApp Business Account deletion event. Known values include: - `ACCOUNT_DISCONNECTED`: The account was disconnected due to enforcement or because the WhatsApp account was explicitly deleted. - `BUSINESS_DOWNGRADE`: The phone number was registered with the consumer WhatsApp app. - `CHANGE_NUMBER`: The WhatsApp phone number was changed. - `COMPANION_INACTIVITY`: A companion device was inactive for approximately 30 days. - `PRIMARY_INACTIVITY`: A primary device was inactive for approximately 30 days. - `USER_RE_REGISTERED`: WhatsApp was re-registered on a new device.  Unknown values are returned as received.
+     * @type {string}
+     * @memberof WhatsappBusinessAccount
+     */
+    'removedReason'?: string;
+    /**
+     * Raw initiator from the WhatsApp Business Account deletion event. Known values include: - `USER`: The removal was initiated by the WhatsApp user. - `SYSTEM`: The removal was initiated by the Meta system.  Unknown values are returned as received.
+     * @type {string}
+     * @memberof WhatsappBusinessAccount
+     */
+    'removedInitiatedBy'?: string;
+    /**
+     * The time when the WhatsApp Business Account deletion event was received, formatted in [RFC 3339](https://datatracker.ietf.org/doc/html/rfc3339). e.g., `2026-05-19T12:00:00.000Z`.
+     * @type {string}
+     * @memberof WhatsappBusinessAccount
+     */
+    'removedTime'?: string;
 }
 

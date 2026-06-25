@@ -19,13 +19,13 @@ import { WhatsappTemplateComponentButtonOtpType } from './whatsapp-template-comp
 import { WhatsappTemplateComponentButtonType } from './whatsapp-template-component-button-type';
 
 /**
- *
+ * 
  * @export
  * @interface WhatsappTemplateComponentButton
  */
 export interface WhatsappTemplateComponentButton {
     /**
-     *
+     * 
      * @type {WhatsappTemplateComponentButtonType}
      * @memberof WhatsappTemplateComponentButton
      */
@@ -49,7 +49,7 @@ export interface WhatsappTemplateComponentButton {
      */
     'phone_number'?: string;
     /**
-     *
+     * 
      * @type {WhatsappTemplateComponentButtonOtpType}
      * @memberof WhatsappTemplateComponentButton
      */
@@ -123,7 +123,7 @@ export interface WhatsappTemplateComponentButton {
      */
     'navigate_screen'?: string;
     /**
-     *
+     * 
      * @type {WhatsappTemplateComponentButtonAppDeepLink}
      * @memberof WhatsappTemplateComponentButton
      */

@@ -16,7 +16,7 @@
 import { EmailContentType } from './email-content-type';
 
 /**
- *
+ * 
  * @export
  * @interface EmailSendRequest
  */
@@ -46,7 +46,7 @@ export interface EmailSendRequest {
      */
     'content': string;
     /**
-     *
+     * 
      * @type {EmailContentType}
      * @memberof EmailSendRequest
      */
