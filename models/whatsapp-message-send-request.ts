@@ -139,16 +139,40 @@ export interface WhatsappMessageSendRequest {
      */
     'externalId'?: string;
     /**
-     * **Optional.** If set to `true`, the message will not be sent to users who have unsubscribed from your account. Defaults to `false`.  Only use for `POST /v2/whatsapp/messages`. If the user has unsubscribed, we will push webhook notifications with `whatsappMessage.errorCode` set to `RECIPIENT_UNSUBSCRIBED`.  Not applicable to `POST /v2/whatsapp/message/sendDirectly`.
+     * **Optional.** Indicates the category of the message to be sent with Direct Send. Supported values are `utility` and `authentication`.  Use `utility` for business-initiated utility messages. Messages sent with `utility` are charged at utility rates.  Use `authentication` for business-initiated authentication messages. Messages sent with `authentication` are charged at authentication rates. Authentication Direct Send only supports `text` messages.
+     * @type {string}
+     * @memberof WhatsappMessageSendRequest
+     */
+    'category'?: WhatsappMessageSendRequestCategoryEnum;
+    /**
+     * **Optional.** Message time-to-live in seconds for Direct Send `utility` or `authentication` messages.  The supported range is 30 seconds to 43200 seconds (12 hours). If omitted, the default Direct Send TTL is used.
+     * @type {number}
+     * @memberof WhatsappMessageSendRequest
+     */
+    'ttlSeconds'?: number;
+    /**
+     * **Optional.** Whether to send the message through Direct Send. Defaults to `false`.  Set this to `true` to send the message through Direct Send when the sender WABA is enabled for Direct Send.  For template messages, the template must be convertible to a Direct Send message type. Supported Direct Send message types for template conversion are:  - Text messages - Interactive Call-to-Action URL button messages - Interactive reply button messages
+     * @type {boolean}
+     * @memberof WhatsappMessageSendRequest
+     */
+    'useDirectSend'?: boolean;
+    /**
+     * **Optional.** If set to `true`, the message will not be sent to users who have unsubscribed from your account. Defaults to `false`.  Only use for `POST /v2/whatsapp/messages`. If the user has unsubscribed, we will push webhook notifications with `whatsappMessage.errorCode` set to `RECIPIENT_UNSUBSCRIBED`.  Not applicable to `POST /v2/whatsapp/messages/sendDirectly`.
      * @type {boolean}
      * @memberof WhatsappMessageSendRequest
      */
     'filterUnsubscribed'?: boolean;
     /**
-     * **Optional.** If set to `true`, the message will not be sent to users in your block list. Defaults to `false`.  Only use for `POST /v2/whatsapp/messages`. If the user is in your block list, we will push webhook notifications with `whatsappMessage.errorCode` set to `RECIPIENT_IN_BLOCK_LIST`.  Not applicable to `POST /v2/whatsapp/message/sendDirectly`.
+     * **Optional.** If set to `true`, the message will not be sent to users in your block list. Defaults to `false`.  Only use for `POST /v2/whatsapp/messages`. If the user is in your block list, we will push webhook notifications with `whatsappMessage.errorCode` set to `RECIPIENT_IN_BLOCK_LIST`.  Not applicable to `POST /v2/whatsapp/messages/sendDirectly`.
      * @type {boolean}
      * @memberof WhatsappMessageSendRequest
      */
     'filterBlocked'?: boolean;
 }
 
+export const WhatsappMessageSendRequestCategoryEnum = {
+    Utility: 'utility',
+    Authentication: 'authentication'
+} as const;
+
+export type WhatsappMessageSendRequestCategoryEnum = typeof WhatsappMessageSendRequestCategoryEnum[keyof typeof WhatsappMessageSendRequestCategoryEnum];

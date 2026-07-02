@@ -27,6 +27,8 @@ import { ContactAttribute } from '../models';
 // @ts-ignore
 import { ContactCreateRequest } from '../models';
 // @ts-ignore
+import { ContactNote } from '../models';
+// @ts-ignore
 import { ContactPage } from '../models';
 // @ts-ignore
 import { ContactUpdateRequest } from '../models';
@@ -64,7 +66,7 @@ const ContactsApiAxiosParamCreator = function (configuration?: Configuration) {
             await setApiKeyToObject(localVarHeaderParameter, "X-API-Key", configuration)
 
 
-    
+
             // setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
@@ -78,7 +80,7 @@ const ContactsApiAxiosParamCreator = function (configuration?: Configuration) {
         /**
          * Creates a contact.
          * @summary Create a contact
-         * @param {ContactCreateRequest} contactCreateRequest 
+         * @param {ContactCreateRequest} contactCreateRequest
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -104,7 +106,7 @@ const ContactsApiAxiosParamCreator = function (configuration?: Configuration) {
             await setApiKeyToObject(localVarHeaderParameter, "X-API-Key", configuration)
 
 
-    
+
             localVarHeaderParameter['Content-Type'] = 'application/json';
 
             // setSearchParams(localVarUrlObj, localVarQueryParameter);
@@ -148,7 +150,7 @@ const ContactsApiAxiosParamCreator = function (configuration?: Configuration) {
             await setApiKeyToObject(localVarHeaderParameter, "X-API-Key", configuration)
 
 
-    
+
             // setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
@@ -221,7 +223,48 @@ const ContactsApiAxiosParamCreator = function (configuration?: Configuration) {
             }
 
 
-    
+
+            // setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+            localVarRequestOptions.params = localVarQueryParameter;
+
+            return {
+                url: localVarPath,
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * Returns all notes for a contact, ordered by creation time descending. The `{id}` path parameter supports contact ID and phone number. A phone number can be provided in E.164 format, such as `+16315551111`. If a numeric contact ID is not found, the same value is retried as a phone number with a leading `+`, so `861...` can match a stored `+861...` phone number. Contact retrieve, list, and search responses do not include notes; use this endpoint to read contact notes.
+         * @summary List contact notes
+         * @param {string} id ID of the contact. Also support phone number([E.164](https://en.wikipedia.org/wiki/E.164) format, start with character \&#39;+\&#39;), example: +16315551111
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        notesList: async (id: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'id' is not null or undefined
+            assertParamExists('notesList', 'id', id)
+            const localVarPath = `/contact/contacts/{id}/notes`
+                .replace(`{${"id"}}`, encodeURIComponent(String(id)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            // const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            if (USER_AGENT) {
+                localVarHeaderParameter['User-Agent'] = USER_AGENT;
+            }
+            const localVarQueryParameter = {} as any;
+
+            // authentication api_key required
+            await setApiKeyToObject(localVarHeaderParameter, "X-API-Key", configuration)
+
+
+
             // setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
@@ -262,7 +305,7 @@ const ContactsApiAxiosParamCreator = function (configuration?: Configuration) {
             await setApiKeyToObject(localVarHeaderParameter, "X-API-Key", configuration)
 
 
-    
+
             // setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
@@ -277,7 +320,7 @@ const ContactsApiAxiosParamCreator = function (configuration?: Configuration) {
          * Updates a contact.
          * @summary Update a contact
          * @param {string} id ID of the contact. Also support phone number([E.164](https://en.wikipedia.org/wiki/E.164) format, start with character \&#39;+\&#39;), example: +16315551111
-         * @param {ContactUpdateRequest} [contactUpdateRequest] 
+         * @param {ContactUpdateRequest} [contactUpdateRequest]
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -304,7 +347,7 @@ const ContactsApiAxiosParamCreator = function (configuration?: Configuration) {
             await setApiKeyToObject(localVarHeaderParameter, "X-API-Key", configuration)
 
 
-    
+
             localVarHeaderParameter['Content-Type'] = 'application/json';
 
             // setSearchParams(localVarUrlObj, localVarQueryParameter);
@@ -341,7 +384,7 @@ const ContactsApiFp = function(configuration?: Configuration) {
         /**
          * Creates a contact.
          * @summary Create a contact
-         * @param {ContactCreateRequest} contactCreateRequest 
+         * @param {ContactCreateRequest} contactCreateRequest
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -372,6 +415,17 @@ const ContactsApiFp = function(configuration?: Configuration) {
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
         /**
+         * Returns all notes for a contact, ordered by creation time descending. The `{id}` path parameter supports contact ID and phone number. A phone number can be provided in E.164 format, such as `+16315551111`. If a numeric contact ID is not found, the same value is retried as a phone number with a leading `+`, so `861...` can match a stored `+861...` phone number. Contact retrieve, list, and search responses do not include notes; use this endpoint to read contact notes.
+         * @summary List contact notes
+         * @param {string} id ID of the contact. Also support phone number([E.164](https://en.wikipedia.org/wiki/E.164) format, start with character \&#39;+\&#39;), example: +16315551111
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async notesList(id: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<ContactNote>>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.notesList(id, options);
+            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+        },
+        /**
          * Retrieves a contact.
          * @summary Retrieve a contact
          * @param {string} id ID of the contact. Also support phone number([E.164](https://en.wikipedia.org/wiki/E.164) format, start with character \&#39;+\&#39;), example: +16315551111
@@ -386,7 +440,7 @@ const ContactsApiFp = function(configuration?: Configuration) {
          * Updates a contact.
          * @summary Update a contact
          * @param {string} id ID of the contact. Also support phone number([E.164](https://en.wikipedia.org/wiki/E.164) format, start with character \&#39;+\&#39;), example: +16315551111
-         * @param {ContactUpdateRequest} [contactUpdateRequest] 
+         * @param {ContactUpdateRequest} [contactUpdateRequest]
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -447,6 +501,15 @@ const ContactsApiFactory = function (configuration?: Configuration, basePath?: s
          */
         list(requestParameters: ContactsApiListRequest = {}, options?: any): AxiosPromise<ContactPage> {
             return localVarFp.list(requestParameters, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * Returns all notes for a contact, ordered by creation time descending. The `{id}` path parameter supports contact ID and phone number. A phone number can be provided in E.164 format, such as `+16315551111`. If a numeric contact ID is not found, the same value is retried as a phone number with a leading `+`, so `861...` can match a stored `+861...` phone number. Contact retrieve, list, and search responses do not include notes; use this endpoint to read contact notes.
+         * @summary List contact notes
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        notesList(id: string, options?: any): AxiosPromise<Array<ContactNote>> {
+            return localVarFp.notesList(id, options).then((request) => request(axios, basePath));
         },
         /**
          * Retrieves a contact.
@@ -546,7 +609,7 @@ export class ContactsApi extends BaseAPI {
     /**
      * Creates a contact.
      * @summary Create a contact
-     * @param {ContactCreateRequest} contactCreateRequest 
+     * @param {ContactCreateRequest} contactCreateRequest
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof ContactsApi
@@ -580,6 +643,18 @@ export class ContactsApi extends BaseAPI {
     }
 
     /**
+     * Returns all notes for a contact, ordered by creation time descending. The `{id}` path parameter supports contact ID and phone number. A phone number can be provided in E.164 format, such as `+16315551111`. If a numeric contact ID is not found, the same value is retried as a phone number with a leading `+`, so `861...` can match a stored `+861...` phone number. Contact retrieve, list, and search responses do not include notes; use this endpoint to read contact notes.
+     * @summary List contact notes
+     * @param {string} id ID of the contact. Also support phone number([E.164](https://en.wikipedia.org/wiki/E.164) format, start with character \&#39;+\&#39;), example: +16315551111
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof ContactsApi
+     */
+    public notesList(id: string, options?: AxiosRequestConfig) {
+        return ContactsApiFp(this.configuration).notesList(id, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
      * Retrieves a contact.
      * @summary Retrieve a contact
      * @param {string} id ID of the contact. Also support phone number([E.164](https://en.wikipedia.org/wiki/E.164) format, start with character \&#39;+\&#39;), example: +16315551111
@@ -595,7 +670,7 @@ export class ContactsApi extends BaseAPI {
      * Updates a contact.
      * @summary Update a contact
      * @param {string} id ID of the contact. Also support phone number([E.164](https://en.wikipedia.org/wiki/E.164) format, start with character \&#39;+\&#39;), example: +16315551111
-     * @param {ContactUpdateRequest} [contactUpdateRequest] 
+     * @param {ContactUpdateRequest} [contactUpdateRequest]
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof ContactsApi

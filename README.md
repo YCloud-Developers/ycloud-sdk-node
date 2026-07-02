@@ -49,6 +49,7 @@ Class | Method | HTTP request | Description
 *ContactsApi* | **create** | **POST** /contact/contacts | Create a contact
 *ContactsApi* | **delete** | **DELETE** /contact/contacts/{id} | Delete a contact
 *ContactsApi* | **list** | **GET** /contact/contacts | List contacts
+*ContactsApi* | **notesList** | **GET** /contact/contacts/{id}/notes | List contact notes
 *ContactsApi* | **retrieve** | **GET** /contact/contacts/{id} | Retrieve a contact
 *ContactsApi* | **update** | **PATCH** /contact/contacts/{id} | Update a contact
 *CustomEventsApi* | **createDefinition** | **POST** /event/definitions | Create an event definition

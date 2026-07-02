@@ -8,6 +8,7 @@ export * from './contact-create-request';
 export * from './contact-created';
 export * from './contact-custom-attribute';
 export * from './contact-deleted';
+export * from './contact-note';
 export * from './contact-page';
 export * from './contact-source-type';
 export * from './contact-unsubscribe-created';

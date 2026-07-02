@@ -190,5 +190,10 @@ export interface WhatsappInboundMessage {
      * @memberof WhatsappInboundMessage
      */
     'referral'?: WhatsappInboundMessageReferral;
+    /**
+     * WhatsApp group ID. This field is included when the inbound message is sent in a WhatsApp group.
+     * @type {string}
+     * @memberof WhatsappInboundMessage
+     */
+    'groupId'?: string;
 }
-
