@@ -39,6 +39,12 @@ export interface WhatsappApiError {
      */
     'type'?: string;
     /**
+     * Whether the error is transient.
+     * @type {boolean}
+     * @memberof WhatsappApiError
+     */
+    'is_transient'?: boolean;
+    /**
      * Additional code about the error.
      * @type {string}
      * @memberof WhatsappApiError
@@ -69,4 +75,3 @@ export interface WhatsappApiError {
      */
     'error_data'?: object;
 }
-

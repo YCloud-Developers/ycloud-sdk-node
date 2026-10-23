@@ -49,7 +49,10 @@ Class | Method | HTTP request | Description
 *ContactsApi* | **create** | **POST** /contact/contacts | Create a contact
 *ContactsApi* | **delete** | **DELETE** /contact/contacts/{id} | Delete a contact
 *ContactsApi* | **list** | **GET** /contact/contacts | List contacts
-*ContactsApi* | **notesList** | **GET** /contact/contacts/{id}/notes | List contact notes
+*ContactsApi* | **noteCreate** | **POST** /contact/contacts/{contactIdentifier}/notes | Create a contact note
+*ContactsApi* | **noteDelete** | **DELETE** /contact/notes/{noteId} | Delete a contact note
+*ContactsApi* | **noteUpdate** | **PATCH** /contact/notes/{noteId} | Update a contact note
+*ContactsApi* | **notesList** | **GET** /contact/contacts/{contactIdentifier}/notes | List contact notes
 *ContactsApi* | **retrieve** | **GET** /contact/contacts/{id} | Retrieve a contact
 *ContactsApi* | **update** | **PATCH** /contact/contacts/{id} | Update a contact
 *CustomEventsApi* | **createDefinition** | **POST** /event/definitions | Create an event definition
@@ -60,6 +63,27 @@ Class | Method | HTTP request | Description
 *CustomEventsApi* | **sendEvent** | **POST** /event/events | Send an event
 *CustomEventsApi* | **updateDefinition** | **PATCH** /event/definitions/{name} | Update an event definition
 *EmailsApi* | **send** | **POST** /emails | Send an email
+*MetaBusinessAgentApi* | **budgetReplace** | **PUT** /metaBusinessAgents/{entityId}/budgets | Replace Meta Business Agent budgets
+*MetaBusinessAgentApi* | **budgetRetrieve** | **GET** /metaBusinessAgents/{entityId}/budgets | Retrieve Meta Business Agent budgets
+*MetaBusinessAgentApi* | **businessAgentCreateConnector** | **POST** /metaBusinessAgents/{entityId}/connectors | Create Connector
+*MetaBusinessAgentApi* | **businessAgentCreateConnectorTool** | **POST** /metaBusinessAgents/{entityId}/connectors/{connectorId}/tools | Create Connector Tool
+*MetaBusinessAgentApi* | **businessAgentDeleteConnector** | **DELETE** /metaBusinessAgents/{entityId}/connectors/{connectorId} | Delete Connector
+*MetaBusinessAgentApi* | **businessAgentDeleteConnectorTool** | **DELETE** /metaBusinessAgents/{entityId}/connectors/{connectorId}/tools/{toolId} | Delete Connector Tool
+*MetaBusinessAgentApi* | **businessAgentGetConnector** | **GET** /metaBusinessAgents/{entityId}/connectors/{connectorId} | Get Connector
+*MetaBusinessAgentApi* | **businessAgentGetConnectorTool** | **GET** /metaBusinessAgents/{entityId}/connectors/{connectorId}/tools/{toolId} | Get Connector Tool
+*MetaBusinessAgentApi* | **businessAgentListConnectorLogs** | **GET** /metaBusinessAgents/{entityId}/connectors/{connectorId}/logs | List Connector Logs
+*MetaBusinessAgentApi* | **businessAgentListConnectorTools** | **GET** /metaBusinessAgents/{entityId}/connectors/{connectorId}/tools | List Connector Tools
+*MetaBusinessAgentApi* | **businessAgentListConnectors** | **GET** /metaBusinessAgents/{entityId}/connectors | List Connectors
+*MetaBusinessAgentApi* | **businessAgentRefreshConnectorMcpTools** | **POST** /metaBusinessAgents/{entityId}/connectors/{connectorId}/refreshMCPTools | Refresh MCP Connector Tools
+*MetaBusinessAgentApi* | **businessAgentRunConnectorTool** | **POST** /metaBusinessAgents/{entityId}/connectors/{connectorId}/tools/{toolId}/runs | Run Connector Tool
+*MetaBusinessAgentApi* | **businessAgentUpdateConnector** | **PATCH** /metaBusinessAgents/{entityId}/connectors/{connectorId} | Update Connector
+*MetaBusinessAgentApi* | **businessAgentUpdateConnectorTool** | **PATCH** /metaBusinessAgents/{entityId}/connectors/{connectorId}/tools/{toolId} | Update Connector Tool
+*MetaBusinessAgentApi* | **businessAgentUpsertConnectorApiKey** | **PUT** /metaBusinessAgents/{entityId}/connectors/{connectorId}/credentials/apiKey | Upsert Connector Api Key
+*MetaBusinessAgentApi* | **businessAgentUpsertConnectorCertificate** | **PUT** /metaBusinessAgents/{entityId}/connectors/{connectorId}/credentials/certificate | Upsert Connector Certificate
+*MetaBusinessAgentApi* | **businessAgentUpsertConnectorOAuth** | **PUT** /metaBusinessAgents/{entityId}/connectors/{connectorId}/credentials/oauth | Upsert Connector O Auth
+*MetaBusinessAgentApi* | **conversationTurnsRetrieve** | **GET** /metaBusinessAgents/{entityId}/conversationTurns | Retrieve Meta Business Agent conversation turns
+*MetaBusinessAgentApi* | **settingsReplace** | **PUT** /metaBusinessAgents/{entityId}/settings | Replace Meta Business Agent settings
+*MetaBusinessAgentApi* | **settingsRetrieve** | **GET** /metaBusinessAgents/{entityId}/settings | Retrieve Meta Business Agent settings
 *SmsApi* | **list** | **GET** /sms | List SMS records
 *SmsApi* | **send** | **POST** /sms | Send an SMS
 *UnsubscribersApi* | **create** | **POST** /unsubscribers | Create an unsubscriber
@@ -79,8 +103,11 @@ Class | Method | HTTP request | Description
 *WebhookEndpointsApi* | **update** | **PATCH** /webhookEndpoints/{id} | Update a webhook endpoint
 *WhatsappBusinessAccountsApi* | **list** | **GET** /whatsapp/businessAccounts | List WABAs
 *WhatsappBusinessAccountsApi* | **retrieve** | **GET** /whatsapp/businessAccounts/{id} | Retrieve a WABA
+*WhatsappBusinessAccountsApi* | **retrieveAutomaticCreativeOptimizations** | **GET** /whatsapp/businessAccounts/{wabaId}/automatic-creative-optimizations | Retrieve WABA automatic creative optimizations
+*WhatsappBusinessAccountsApi* | **updateAutomaticCreativeOptimizations** | **PATCH** /whatsapp/businessAccounts/{wabaId}/automatic-creative-optimizations | Update WABA automatic creative optimizations
 *WhatsappCallingApi* | **accept** | **POST** /whatsapp/calls/accept | Accept a call
 *WhatsappCallingApi* | **connect** | **POST** /whatsapp/calls/connect | Connect a call
+*WhatsappCallingApi* | **downloadMedia** | **GET** /whatsapp/calls/media/{mediaAssetId} | Download call media
 *WhatsappCallingApi* | **preAccept** | **POST** /whatsapp/calls/preAccept | Pre-accept a call
 *WhatsappCallingApi* | **reject** | **POST** /whatsapp/calls/reject | Reject a call
 *WhatsappCallingApi* | **terminate** | **POST** /whatsapp/calls/terminate | Terminate a call
@@ -106,12 +133,13 @@ Class | Method | HTTP request | Description
 *WhatsappGroupsApi* | **sendInviteLinkMessage** | **POST** /whatsapp/{businessPhoneNumber}/groups/inviteLink/messages | Send a group invite link message
 *WhatsappGroupsApi* | **updateSettings** | **PATCH** /whatsapp/{businessPhoneNumber}/groups/{groupId}/settings | Update group settings
 *WhatsappInboundMessagesApi* | **markAsRead** | **POST** /whatsapp/inboundMessages/{id}/markAsRead | Mark message as read
-*WhatsappInboundMessagesApi* | **typingIndicator** | **POST** /whatsapp/inboundMessages/{id}/typingIndicator | Mark message as read and display a typing indicator
+*WhatsappInboundMessagesApi* | **typing** | **POST** /whatsapp/inboundMessages/{id}/typing | Mark message as read and display a typing indicator with a JSON response
 *WhatsappMediaApi* | **upload** | **POST** /whatsapp/media/{phoneNumber}/upload | Upload media
 *WhatsappMessagesApi* | **retrieve** | **GET** /whatsapp/messages/{id} | Retrieve a message
 *WhatsappMessagesApi* | **send** | **POST** /whatsapp/messages | Enqueue a message
 *WhatsappMessagesApi* | **sendDirectly** | **POST** /whatsapp/messages/sendDirectly | Send a message directly
 *WhatsappPhoneNumbersApi* | **deleteBusinessUsername** | **DELETE** /whatsapp/phoneNumbers/{wabaId}/{phoneNumber}/businessUsername | Delete a phone number business username
+*WhatsappPhoneNumbersApi* | **deleteContactBookEntry** | **DELETE** /whatsapp/phoneNumbers/{wabaId}/{phoneNumber}/contactBook/{bsuid} | Delete a Meta contact book entry
 *WhatsappPhoneNumbersApi* | **list** | **GET** /whatsapp/phoneNumbers | List phone numbers
 *WhatsappPhoneNumbersApi* | **register** | **POST** /whatsapp/phoneNumbers/{wabaId}/{phoneNumber}/register | Register a phone number
 *WhatsappPhoneNumbersApi* | **retrieve** | **GET** /whatsapp/phoneNumbers/{wabaId}/{phoneNumber} | Retrieve a phone number
@@ -125,6 +153,7 @@ Class | Method | HTTP request | Description
 *WhatsappPhoneNumbersApi* | **updateCommerceSettings** | **PATCH** /whatsapp/phoneNumbers/{wabaId}/{phoneNumber}/whatsappCommerceSettings | Update commerce settings
 *WhatsappPhoneNumbersApi* | **updateDisplayName** | **PATCH** /whatsapp/phoneNumbers/{wabaId}/{phoneNumber}/displayName | Update a phone number display name
 *WhatsappPhoneNumbersApi* | **updateProfile** | **PATCH** /whatsapp/phoneNumbers/{wabaId}/{phoneNumber}/profile | Update a phone number profile
+*WhatsappTemplatesApi* | **analytics** | **POST** /whatsapp/templates/analytics | Retrieve WhatsApp template analytics
 *WhatsappTemplatesApi* | **create** | **POST** /whatsapp/templates | Create a template
 *WhatsappTemplatesApi* | **deleteByName** | **DELETE** /whatsapp/templates/{wabaId}/{name} | Delete templates by name
 *WhatsappTemplatesApi* | **deleteByNameAndLanguage** | **DELETE** /whatsapp/templates/{wabaId}/{name}/{language} | Delete a template

@@ -58,7 +58,7 @@ export interface WhatsappPhoneNumber {
      */
     'businessUsername'?: string;
     /**
-     * 
+     *
      * @type {WhatsappBusinessUsernameStatus}
      * @memberof WhatsappPhoneNumber
      */
@@ -76,7 +76,7 @@ export interface WhatsappPhoneNumber {
      */
     'businessUsernameUpdatedAt'?: string;
     /**
-     * 
+     *
      * @type {WhatsappPhoneNumberQualityRating}
      * @memberof WhatsappPhoneNumber
      */
@@ -100,13 +100,19 @@ export interface WhatsappPhoneNumber {
      */
     'verifiedName'?: string;
     /**
+     * Optional remark name assigned to this phone number in YCloud. It is populated by the phone-number list, retrieve, and profile GET APIs, and omitted when no remark name is set.
+     * @type {string}
+     * @memberof WhatsappPhoneNumber
+     */
+    'ycloudName'?: string;
+    /**
      * The modified name
      * @type {string}
      * @memberof WhatsappPhoneNumber
      */
     'newName'?: string;
     /**
-     * 
+     *
      * @type {WhatsappPhoneNumberCodeVerificationStatus}
      * @memberof WhatsappPhoneNumber
      */
@@ -118,25 +124,25 @@ export interface WhatsappPhoneNumber {
      */
     'isOfficialBusinessAccount'?: boolean;
     /**
-     * 
+     *
      * @type {WhatsappPhoneNumberStatus}
      * @memberof WhatsappPhoneNumber
      */
     'status'?: WhatsappPhoneNumberStatus;
     /**
-     * 
+     *
      * @type {WhatsappPhoneNumberNameStatus}
      * @memberof WhatsappPhoneNumber
      */
     'nameStatus'?: WhatsappPhoneNumberNameStatus;
     /**
-     * 
+     *
      * @type {WhatsappPhoneNumberNameStatus}
      * @memberof WhatsappPhoneNumber
      */
     'newNameStatus'?: WhatsappPhoneNumberNameStatus;
     /**
-     * 
+     *
      * @type {WhatsappReviewDecision}
      * @memberof WhatsappPhoneNumber
      */
@@ -154,7 +160,7 @@ export interface WhatsappPhoneNumber {
      */
     'rejectionReason'?: string;
     /**
-     * 
+     *
      * @type {WhatsappPhoneNumberQualityUpdateEventEnum}
      * @memberof WhatsappPhoneNumber
      */
@@ -165,6 +171,12 @@ export interface WhatsappPhoneNumber {
      * @memberof WhatsappPhoneNumber
      */
     'updateEvent'?: WhatsappPhoneNumberUpdateEventEnum;
+    /**
+     * Current Meta throughput level of the WhatsApp phone number. - `STANDARD`: Default Cloud API throughput level, currently up to 80 messages per second. - `HIGH`: Upgraded Cloud API throughput level, currently up to 1,000 messages per second, subject to Meta\'s current Cloud API throughput rules. - `NOT_APPLICABLE`: Throughput level is not applicable to this phone number.
+     * @type {string}
+     * @memberof WhatsappPhoneNumber
+     */
+    'throughputLevel'?: WhatsappPhoneNumberThroughputLevelEnum;
 }
 
 export const WhatsappPhoneNumberUpdateEventEnum = {
@@ -173,5 +185,10 @@ export const WhatsappPhoneNumberUpdateEventEnum = {
 } as const;
 
 export type WhatsappPhoneNumberUpdateEventEnum = typeof WhatsappPhoneNumberUpdateEventEnum[keyof typeof WhatsappPhoneNumberUpdateEventEnum];
+export const WhatsappPhoneNumberThroughputLevelEnum = {
+    Standard: 'STANDARD',
+    High: 'HIGH',
+    NotApplicable: 'NOT_APPLICABLE'
+} as const;
 
-
+export type WhatsappPhoneNumberThroughputLevelEnum = typeof WhatsappPhoneNumberThroughputLevelEnum[keyof typeof WhatsappPhoneNumberThroughputLevelEnum];

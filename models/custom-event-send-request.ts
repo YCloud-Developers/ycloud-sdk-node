@@ -15,7 +15,7 @@
 
 
 /**
- * Contains the properties of the custom event data to be sent.
+ * Contains the properties of the custom event data to be sent. For events defined with `objectType` as `CONTACT`, provide one of `objectId`, `contactPhoneNumber`, or `contactUsername` to identify the contact. Only one identifier is used per event. If multiple identifiers are provided, a numeric `objectId` takes precedence, followed by a non-blank `contactPhoneNumber`, then `contactUsername`. Contact identifier requirements and precedence are validated by the server.
  * @export
  * @interface CustomEventSendRequest
  */
@@ -33,17 +33,23 @@ export interface CustomEventSendRequest {
      */
     'occurTime'?: string;
     /**
-     * ID of the object that the event is associated with. For events defined with `objectType` as `CONTACT`, the `objectId` should be a `contact` ID. Alternatively, you can use the `contactPhoneNumber` field to specify the contact.
+     * ID of the object that the event is associated with. For events defined with `objectType` as `CONTACT`, provide the numeric ID of an existing contact in your account. A numeric `objectId` takes precedence over `contactPhoneNumber` and `contactUsername`. If that contact is not found, the request fails without trying another identifier.
      * @type {string}
      * @memberof CustomEventSendRequest
      */
     'objectId'?: string;
     /**
-     * The phone number of the contact for events defined with `objectType` as `CONTACT`.
+     * The contact\'s phone number in E.164 format for events defined with `objectType` as `CONTACT`. Used when no numeric `objectId` is provided. Looks up a contact in your account by phone number and creates one if no match exists. Takes precedence over `contactUsername`.
      * @type {string}
      * @memberof CustomEventSendRequest
      */
     'contactPhoneNumber'?: string;
+    /**
+     * The Meta username of an existing contact in your account for events defined with `objectType` as `CONTACT`. Provide the username saved on the contact, without the leading `@`. Used when neither a numeric `objectId` nor a non-blank `contactPhoneNumber` is provided. If no matching contact exists, the request fails. A username does not automatically create a contact.
+     * @type {string}
+     * @memberof CustomEventSendRequest
+     */
+    'contactUsername'?: string;
     /**
      * The properties of the custom event.
      * @type {{ [key: string]: object; }}
@@ -51,4 +57,3 @@ export interface CustomEventSendRequest {
      */
     'properties'?: { [key: string]: object; };
 }
-

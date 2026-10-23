@@ -295,4 +295,3 @@ export interface WhatsappMessage {
      */
     'verificationId'?: string;
 }
-

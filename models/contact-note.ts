@@ -21,7 +21,7 @@
  */
 export interface ContactNote {
     /**
-     * Unique ID for the contact note.
+     * Unique 24-character ObjectId for the contact note. IDs remain unchanged after storage migration.
      * @type {string}
      * @memberof ContactNote
      */

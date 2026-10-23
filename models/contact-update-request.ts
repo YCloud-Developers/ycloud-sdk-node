@@ -14,6 +14,7 @@
 
 
 import { ContactCustomAttribute } from './contact-custom-attribute';
+import { ContactNoteMutationInput } from './contact-note-mutation-input';
 
 /**
  * Contains the properties of the contact to be updated.
@@ -22,9 +23,16 @@ import { ContactCustomAttribute } from './contact-custom-attribute';
  */
 export interface ContactUpdateRequest {
     /**
-     * Contact\'s nickname. Maximum length: 250 characters.
+     * Contact\'s remark name. Maximum length: 250 characters.
      * @type {string}
      * @memberof ContactUpdateRequest
+     */
+    'remarkName'?: string;
+    /**
+     * Deprecated compatibility alias for `remarkName`. When `remarkName` is absent, this value is saved as the contact\'s remark name. It does not update the read-only WhatsApp nickname. Maximum length: 250 characters.
+     * @type {string}
+     * @memberof ContactUpdateRequest
+     * @deprecated
      */
     'nickname'?: string;
     /**
@@ -63,5 +71,10 @@ export interface ContactUpdateRequest {
      * @memberof ContactUpdateRequest
      */
     'ownerEmail'?: string;
+    /**
+     * Optional incremental note mutations. An empty array changes nothing. Items without `id` create notes; items with `id` update owned notes. Notes not listed remain unchanged. Delete notes with the dedicated endpoint.
+     * @type {Array<ContactNoteMutationInput>}
+     * @memberof ContactUpdateRequest
+     */
+    'notes'?: Array<ContactNoteMutationInput>;
 }
-

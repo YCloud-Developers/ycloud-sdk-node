@@ -16,7 +16,7 @@
 import { WhatsappBusinessUsernameStatus } from './whatsapp-business-username-status';
 
 /**
- * Business Username deletion result. Deleting the active username does not cancel a pending Business Username request. If a pending request still exists, the returned `businessUsernameStatus` is `pending_review`; otherwise it is `not_set`.
+ * Business Username deletion result. Deleting the active username does not cancel a reserved Business Username request. If a reserved request still exists, the returned `businessUsernameStatus` is `reserved`; otherwise it is `not_set`.
  * @export
  * @interface WhatsappBusinessUsernameDeleteResult
  */
@@ -46,7 +46,7 @@ export interface WhatsappBusinessUsernameDeleteResult {
      */
     'phoneNumber'?: string;
     /**
-     * 
+     *
      * @type {WhatsappBusinessUsernameStatus}
      * @memberof WhatsappBusinessUsernameDeleteResult
      */
@@ -58,4 +58,3 @@ export interface WhatsappBusinessUsernameDeleteResult {
      */
     'businessUsernameUpdatedAt'?: string;
 }
-

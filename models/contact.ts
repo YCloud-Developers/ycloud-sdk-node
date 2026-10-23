@@ -29,11 +29,23 @@ export interface Contact {
      */
     'id': string;
     /**
-     * Contact\'s nickname.
+     * The business-managed remark name for the contact.
+     * @type {string}
+     * @memberof Contact
+     */
+    'remarkName'?: string;
+    /**
+     * The read-only nickname obtained from WhatsApp.
      * @type {string}
      * @memberof Contact
      */
     'nickname'?: string;
+    /**
+     * The read-only Meta username associated with the contact, without the leading `@`.
+     * @type {string}
+     * @memberof Contact
+     */
+    'metaUsername'?: string;
     /**
      * Two-letter country abbreviation. See [ISO 3166-1 alpha-2 country code](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2).
      * @type {string}
@@ -95,7 +107,7 @@ export interface Contact {
      */
     'ownerEmail'?: string;
     /**
-     * 
+     *
      * @type {ContactSourceType}
      * @memberof Contact
      */
@@ -113,4 +125,3 @@ export interface Contact {
      */
     'sourceUrl'?: string;
 }
-

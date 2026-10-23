@@ -13,9 +13,11 @@
  */
 
 
+import { CallingMediaUpdated } from './calling-media-updated';
 import { ContactAttributesChanged } from './contact-attributes-changed';
 import { ContactCreated } from './contact-created';
 import { ContactDeleted } from './contact-deleted';
+import { ContactNoteWebhookPayload } from './contact-note-webhook-payload';
 import { ContactUnsubscribeCreated } from './contact-unsubscribe-created';
 import { ContactUnsubscribeDeleted } from './contact-unsubscribe-deleted';
 import { EmailDelivery } from './email-delivery';
@@ -45,7 +47,7 @@ export interface Event {
      */
     'id': string;
     /**
-     * 
+     *
      * @type {EventType}
      * @memberof Event
      */
@@ -63,106 +65,135 @@ export interface Event {
      */
     'createTime': string;
     /**
-     * 
+     * Included when `type` is `whatsapp.smb.history` and the event was generated from a Meta history chunk. Identifies the chunk\'s synchronization phase.
+     * @type {number}
+     * @memberof Event
+     */
+    'phase'?: number;
+    /**
+     * Included when `type` is `whatsapp.smb.history` and the event was generated from a Meta history chunk. Reports the chunk\'s synchronization progress.
+     * @type {number}
+     * @memberof Event
+     */
+    'progress'?: number;
+    /**
+     *
      * @type {EmailDelivery}
      * @memberof Event
      */
     'emailDelivery'?: EmailDelivery;
     /**
-     * 
+     *
      * @type {Sms}
      * @memberof Event
      */
     'sms'?: Sms;
     /**
-     * 
+     *
      * @type {SmsInbound}
      * @memberof Event
      */
     'smsInbound'?: SmsInbound;
     /**
-     * 
+     *
      * @type {Voice}
      * @memberof Event
      */
     'voice'?: Voice;
     /**
-     * 
+     *
      * @type {WhatsappBusinessAccount}
      * @memberof Event
      */
     'whatsappBusinessAccount'?: WhatsappBusinessAccount;
     /**
-     * 
+     *
      * @type {WhatsappInboundMessage}
      * @memberof Event
      */
     'whatsappInboundMessage'?: WhatsappInboundMessage;
     /**
-     * 
+     *
      * @type {WhatsappMessage}
      * @memberof Event
      */
     'whatsappMessage'?: WhatsappMessage;
     /**
-     * 
+     *
      * @type {WhatsappGroupWebhook}
      * @memberof Event
      */
     'whatsappGroup'?: WhatsappGroupWebhook;
     /**
-     * 
+     *
      * @type {WhatsappPhoneNumber}
      * @memberof Event
      */
     'whatsappPhoneNumber'?: WhatsappPhoneNumber;
     /**
-     * 
+     *
      * @type {WhatsappPayment}
      * @memberof Event
      */
     'whatsappPayment'?: WhatsappPayment;
     /**
-     * 
+     *
      * @type {WhatsappTemplate}
      * @memberof Event
      */
     'whatsappTemplate'?: WhatsappTemplate;
     /**
-     * 
+     *
      * @type {ContactAttributesChanged}
      * @memberof Event
      */
     'contactAttributesChanged'?: ContactAttributesChanged;
     /**
-     * 
+     *
      * @type {ContactCreated}
      * @memberof Event
      */
     'contactCreated'?: ContactCreated;
     /**
-     * 
+     *
      * @type {ContactDeleted}
      * @memberof Event
      */
     'contactDeleted'?: ContactDeleted;
     /**
-     * 
+     *
+     * @type {ContactNoteWebhookPayload}
+     * @memberof Event
+     */
+    'contactNote'?: ContactNoteWebhookPayload;
+    /**
+     *
      * @type {ContactUnsubscribeCreated}
      * @memberof Event
      */
     'contactUnsubscribeCreated'?: ContactUnsubscribeCreated;
     /**
-     * 
+     *
      * @type {ContactUnsubscribeDeleted}
      * @memberof Event
      */
     'contactUnsubscribeDeleted'?: ContactUnsubscribeDeleted;
     /**
-     * 
+     *
      * @type {WhatsappUserPreference}
      * @memberof Event
      */
     'whatsappUserPreference'?: WhatsappUserPreference;
+    /**
+     *
+     * @type {CallingMediaUpdated}
+     * @memberof Event
+     */
+    'callingRecording'?: CallingMediaUpdated;
+    /**
+     *
+     * @type {CallingMediaUpdated}
+     * @memberof Event
+     */
+    'callingTranscription'?: CallingMediaUpdated;
 }
-

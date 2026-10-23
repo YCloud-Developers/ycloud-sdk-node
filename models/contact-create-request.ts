@@ -14,6 +14,7 @@
 
 
 import { ContactCustomAttribute } from './contact-custom-attribute';
+import { ContactNoteCreateInput } from './contact-note-create-input';
 
 /**
  * Contains the properties of the contact to be created.
@@ -22,9 +23,16 @@ import { ContactCustomAttribute } from './contact-custom-attribute';
  */
 export interface ContactCreateRequest {
     /**
-     * Contact\'s nickname. Maximum length: 250 characters.
+     * Contact\'s remark name. Maximum length: 250 characters.
      * @type {string}
      * @memberof ContactCreateRequest
+     */
+    'remarkName'?: string;
+    /**
+     * Deprecated compatibility alias for `remarkName`. When `remarkName` is absent, this value is saved as the contact\'s remark name. It does not update the read-only WhatsApp nickname. Maximum length: 250 characters.
+     * @type {string}
+     * @memberof ContactCreateRequest
+     * @deprecated
      */
     'nickname'?: string;
     /**
@@ -63,5 +71,10 @@ export interface ContactCreateRequest {
      * @memberof ContactCreateRequest
      */
     'ownerEmail'?: string;
+    /**
+     * Optional notes created atomically with the contact. The response remains the Contact schema; use the List Contact Notes endpoint to retrieve generated note IDs.
+     * @type {Array<ContactNoteCreateInput>}
+     * @memberof ContactCreateRequest
+     */
+    'notes'?: Array<ContactNoteCreateInput>;
 }
-

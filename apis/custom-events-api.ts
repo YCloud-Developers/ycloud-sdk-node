@@ -45,7 +45,7 @@ const CustomEventsApiAxiosParamCreator = function (configuration?: Configuration
         /**
          * Creates a custom event definition.
          * @summary Create an event definition
-         * @param {CustomEventDefinitionCreateRequest} customEventDefinitionCreateRequest 
+         * @param {CustomEventDefinitionCreateRequest} customEventDefinitionCreateRequest
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -71,7 +71,7 @@ const CustomEventsApiAxiosParamCreator = function (configuration?: Configuration
             await setApiKeyToObject(localVarHeaderParameter, "X-API-Key", configuration)
 
 
-    
+
             localVarHeaderParameter['Content-Type'] = 'application/json';
 
             // setSearchParams(localVarUrlObj, localVarQueryParameter);
@@ -89,7 +89,7 @@ const CustomEventsApiAxiosParamCreator = function (configuration?: Configuration
          * Defines a new property for the event definition.
          * @summary Create an event property definition
          * @param {string} name Name of the custom event.
-         * @param {CustomEventDefinitionPropertyCreateRequest} customEventDefinitionPropertyCreateRequest 
+         * @param {CustomEventDefinitionPropertyCreateRequest} customEventDefinitionPropertyCreateRequest
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -118,7 +118,7 @@ const CustomEventsApiAxiosParamCreator = function (configuration?: Configuration
             await setApiKeyToObject(localVarHeaderParameter, "X-API-Key", configuration)
 
 
-    
+
             localVarHeaderParameter['Content-Type'] = 'application/json';
 
             // setSearchParams(localVarUrlObj, localVarQueryParameter);
@@ -166,7 +166,7 @@ const CustomEventsApiAxiosParamCreator = function (configuration?: Configuration
             await setApiKeyToObject(localVarHeaderParameter, "X-API-Key", configuration)
 
 
-    
+
             // setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
@@ -182,7 +182,7 @@ const CustomEventsApiAxiosParamCreator = function (configuration?: Configuration
          * @summary Update an event property definition
          * @param {string} name Name of the custom event.
          * @param {string} propertyName Name of the custom event property.
-         * @param {CustomEventDefinitionPropertyUpdateRequest} customEventDefinitionPropertyUpdateRequest 
+         * @param {CustomEventDefinitionPropertyUpdateRequest} customEventDefinitionPropertyUpdateRequest
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -214,7 +214,7 @@ const CustomEventsApiAxiosParamCreator = function (configuration?: Configuration
             await setApiKeyToObject(localVarHeaderParameter, "X-API-Key", configuration)
 
 
-    
+
             localVarHeaderParameter['Content-Type'] = 'application/json';
 
             // setSearchParams(localVarUrlObj, localVarQueryParameter);
@@ -258,7 +258,7 @@ const CustomEventsApiAxiosParamCreator = function (configuration?: Configuration
             await setApiKeyToObject(localVarHeaderParameter, "X-API-Key", configuration)
 
 
-    
+
             // setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
@@ -270,9 +270,9 @@ const CustomEventsApiAxiosParamCreator = function (configuration?: Configuration
             };
         },
         /**
-         * Sends an event.
+         * Sends an occurrence of a previously defined custom event. For contact events, identify the contact using one of a contact ID, phone number, or Meta username.
          * @summary Send an event
-         * @param {CustomEventSendRequest} customEventSendRequest 
+         * @param {CustomEventSendRequest} customEventSendRequest
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -298,7 +298,7 @@ const CustomEventsApiAxiosParamCreator = function (configuration?: Configuration
             await setApiKeyToObject(localVarHeaderParameter, "X-API-Key", configuration)
 
 
-    
+
             localVarHeaderParameter['Content-Type'] = 'application/json';
 
             // setSearchParams(localVarUrlObj, localVarQueryParameter);
@@ -316,7 +316,7 @@ const CustomEventsApiAxiosParamCreator = function (configuration?: Configuration
          * Updates an event definition\'s label and description.
          * @summary Update an event definition
          * @param {string} name Name of the custom event.
-         * @param {CustomEventDefinitionUpdateRequest} customEventDefinitionUpdateRequest 
+         * @param {CustomEventDefinitionUpdateRequest} customEventDefinitionUpdateRequest
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -345,7 +345,7 @@ const CustomEventsApiAxiosParamCreator = function (configuration?: Configuration
             await setApiKeyToObject(localVarHeaderParameter, "X-API-Key", configuration)
 
 
-    
+
             localVarHeaderParameter['Content-Type'] = 'application/json';
 
             // setSearchParams(localVarUrlObj, localVarQueryParameter);
@@ -372,7 +372,7 @@ const CustomEventsApiFp = function(configuration?: Configuration) {
         /**
          * Creates a custom event definition.
          * @summary Create an event definition
-         * @param {CustomEventDefinitionCreateRequest} customEventDefinitionCreateRequest 
+         * @param {CustomEventDefinitionCreateRequest} customEventDefinitionCreateRequest
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -384,7 +384,7 @@ const CustomEventsApiFp = function(configuration?: Configuration) {
          * Defines a new property for the event definition.
          * @summary Create an event property definition
          * @param {string} name Name of the custom event.
-         * @param {CustomEventDefinitionPropertyCreateRequest} customEventDefinitionPropertyCreateRequest 
+         * @param {CustomEventDefinitionPropertyCreateRequest} customEventDefinitionPropertyCreateRequest
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -409,7 +409,7 @@ const CustomEventsApiFp = function(configuration?: Configuration) {
          * @summary Update an event property definition
          * @param {string} name Name of the custom event.
          * @param {string} propertyName Name of the custom event property.
-         * @param {CustomEventDefinitionPropertyUpdateRequest} customEventDefinitionPropertyUpdateRequest 
+         * @param {CustomEventDefinitionPropertyUpdateRequest} customEventDefinitionPropertyUpdateRequest
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -429,9 +429,9 @@ const CustomEventsApiFp = function(configuration?: Configuration) {
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
         /**
-         * Sends an event.
+         * Sends an occurrence of a previously defined custom event. For contact events, identify the contact using one of a contact ID, phone number, or Meta username.
          * @summary Send an event
-         * @param {CustomEventSendRequest} customEventSendRequest 
+         * @param {CustomEventSendRequest} customEventSendRequest
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -443,7 +443,7 @@ const CustomEventsApiFp = function(configuration?: Configuration) {
          * Updates an event definition\'s label and description.
          * @summary Update an event definition
          * @param {string} name Name of the custom event.
-         * @param {CustomEventDefinitionUpdateRequest} customEventDefinitionUpdateRequest 
+         * @param {CustomEventDefinitionUpdateRequest} customEventDefinitionUpdateRequest
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -507,7 +507,7 @@ const CustomEventsApiFactory = function (configuration?: Configuration, basePath
             return localVarFp.retrieveDefinition(name, options).then((request) => request(axios, basePath));
         },
         /**
-         * Sends an event.
+         * Sends an occurrence of a previously defined custom event. For contact events, identify the contact using one of a contact ID, phone number, or Meta username.
          * @summary Send an event
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -537,7 +537,7 @@ export class CustomEventsApi extends BaseAPI {
     /**
      * Creates a custom event definition.
      * @summary Create an event definition
-     * @param {CustomEventDefinitionCreateRequest} customEventDefinitionCreateRequest 
+     * @param {CustomEventDefinitionCreateRequest} customEventDefinitionCreateRequest
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof CustomEventsApi
@@ -550,7 +550,7 @@ export class CustomEventsApi extends BaseAPI {
      * Defines a new property for the event definition.
      * @summary Create an event property definition
      * @param {string} name Name of the custom event.
-     * @param {CustomEventDefinitionPropertyCreateRequest} customEventDefinitionPropertyCreateRequest 
+     * @param {CustomEventDefinitionPropertyCreateRequest} customEventDefinitionPropertyCreateRequest
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof CustomEventsApi
@@ -577,7 +577,7 @@ export class CustomEventsApi extends BaseAPI {
      * @summary Update an event property definition
      * @param {string} name Name of the custom event.
      * @param {string} propertyName Name of the custom event property.
-     * @param {CustomEventDefinitionPropertyUpdateRequest} customEventDefinitionPropertyUpdateRequest 
+     * @param {CustomEventDefinitionPropertyUpdateRequest} customEventDefinitionPropertyUpdateRequest
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof CustomEventsApi
@@ -599,9 +599,9 @@ export class CustomEventsApi extends BaseAPI {
     }
 
     /**
-     * Sends an event.
+     * Sends an occurrence of a previously defined custom event. For contact events, identify the contact using one of a contact ID, phone number, or Meta username.
      * @summary Send an event
-     * @param {CustomEventSendRequest} customEventSendRequest 
+     * @param {CustomEventSendRequest} customEventSendRequest
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof CustomEventsApi
@@ -614,7 +614,7 @@ export class CustomEventsApi extends BaseAPI {
      * Updates an event definition\'s label and description.
      * @summary Update an event definition
      * @param {string} name Name of the custom event.
-     * @param {CustomEventDefinitionUpdateRequest} customEventDefinitionUpdateRequest 
+     * @param {CustomEventDefinitionUpdateRequest} customEventDefinitionUpdateRequest
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof CustomEventsApi

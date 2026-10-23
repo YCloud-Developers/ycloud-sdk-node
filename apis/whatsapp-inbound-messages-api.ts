@@ -22,6 +22,8 @@ import { DUMMY_BASE_URL, assertParamExists, setApiKeyToObject, setBasicAuthToObj
 import { BASE_PATH, USER_AGENT, COLLECTION_FORMATS, RequestArgs, BaseAPI, RequiredError } from '../base';
 // @ts-ignore
 import { ErrorResponse } from '../models';
+// @ts-ignore
+import { WhatsappInboundMessageTypingResponse } from '../models';
 /**
  * WhatsappInboundMessagesApi - axios parameter creator
  * @export
@@ -58,7 +60,7 @@ const WhatsappInboundMessagesApiAxiosParamCreator = function (configuration?: Co
             await setApiKeyToObject(localVarHeaderParameter, "X-API-Key", configuration)
 
 
-    
+
             // setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
@@ -70,16 +72,16 @@ const WhatsappInboundMessagesApiAxiosParamCreator = function (configuration?: Co
             };
         },
         /**
-         * When you receive an inbound message from webhooks, you can use this endpoint to mark the message as read and display a typing indicator so the WhatsApp user knows you are preparing a response. Messages marked as read display two blue check marks alongside their timestamp.The typing indicator will be dismissed once you respond, or after 25 seconds, whichever comes first. To prevent a poor user experience, only display a typing indicator if you are going to respond.  Marking a message as read will also mark earlier messages in the conversation as read.
-         * @summary Mark message as read and display a typing indicator
+         * Marks an inbound message as read and displays a typing indicator so the WhatsApp user knows you are preparing a response. Messages marked as read display two blue check marks alongside their timestamp. The typing indicator is dismissed once you respond, or after 25 seconds, whichever comes first.  Marking a message as read also marks earlier messages in the conversation as read. Repeating this request sends another typing-indicator request and refreshes the indicator; this endpoint does not provide an idempotency key.  A successful request returns `WhatsappInboundMessageTypingResponse`. Errors reuse the standard `ErrorResponse`.
+         * @summary Mark message as read and display a typing indicator with a JSON response
          * @param {string} id ID of the message.  A wamid (i.e., the original message ID on WhatsApp\&#39;s platform) is also acceptable.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        typingIndicator: async (id: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+        typing: async (id: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'id' is not null or undefined
-            assertParamExists('typingIndicator', 'id', id)
-            const localVarPath = `/whatsapp/inboundMessages/{id}/typingIndicator`
+            assertParamExists('typing', 'id', id)
+            const localVarPath = `/whatsapp/inboundMessages/{id}/typing`
                 .replace(`{${"id"}}`, encodeURIComponent(String(id)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             // const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -99,7 +101,7 @@ const WhatsappInboundMessagesApiAxiosParamCreator = function (configuration?: Co
             await setApiKeyToObject(localVarHeaderParameter, "X-API-Key", configuration)
 
 
-    
+
             // setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
@@ -132,14 +134,14 @@ const WhatsappInboundMessagesApiFp = function(configuration?: Configuration) {
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
         /**
-         * When you receive an inbound message from webhooks, you can use this endpoint to mark the message as read and display a typing indicator so the WhatsApp user knows you are preparing a response. Messages marked as read display two blue check marks alongside their timestamp.The typing indicator will be dismissed once you respond, or after 25 seconds, whichever comes first. To prevent a poor user experience, only display a typing indicator if you are going to respond.  Marking a message as read will also mark earlier messages in the conversation as read.
-         * @summary Mark message as read and display a typing indicator
+         * Marks an inbound message as read and displays a typing indicator so the WhatsApp user knows you are preparing a response. Messages marked as read display two blue check marks alongside their timestamp. The typing indicator is dismissed once you respond, or after 25 seconds, whichever comes first.  Marking a message as read also marks earlier messages in the conversation as read. Repeating this request sends another typing-indicator request and refreshes the indicator; this endpoint does not provide an idempotency key.  A successful request returns `WhatsappInboundMessageTypingResponse`. Errors reuse the standard `ErrorResponse`.
+         * @summary Mark message as read and display a typing indicator with a JSON response
          * @param {string} id ID of the message.  A wamid (i.e., the original message ID on WhatsApp\&#39;s platform) is also acceptable.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async typingIndicator(id: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.typingIndicator(id, options);
+        async typing(id: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<WhatsappInboundMessageTypingResponse>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.typing(id, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
     }
@@ -162,13 +164,13 @@ const WhatsappInboundMessagesApiFactory = function (configuration?: Configuratio
             return localVarFp.markAsRead(id, options).then((request) => request(axios, basePath));
         },
         /**
-         * When you receive an inbound message from webhooks, you can use this endpoint to mark the message as read and display a typing indicator so the WhatsApp user knows you are preparing a response. Messages marked as read display two blue check marks alongside their timestamp.The typing indicator will be dismissed once you respond, or after 25 seconds, whichever comes first. To prevent a poor user experience, only display a typing indicator if you are going to respond.  Marking a message as read will also mark earlier messages in the conversation as read.
-         * @summary Mark message as read and display a typing indicator
+         * Marks an inbound message as read and displays a typing indicator so the WhatsApp user knows you are preparing a response. Messages marked as read display two blue check marks alongside their timestamp. The typing indicator is dismissed once you respond, or after 25 seconds, whichever comes first.  Marking a message as read also marks earlier messages in the conversation as read. Repeating this request sends another typing-indicator request and refreshes the indicator; this endpoint does not provide an idempotency key.  A successful request returns `WhatsappInboundMessageTypingResponse`. Errors reuse the standard `ErrorResponse`.
+         * @summary Mark message as read and display a typing indicator with a JSON response
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        typingIndicator(id: string, options?: any): AxiosPromise<void> {
-            return localVarFp.typingIndicator(id, options).then((request) => request(axios, basePath));
+        typing(id: string, options?: any): AxiosPromise<WhatsappInboundMessageTypingResponse> {
+            return localVarFp.typing(id, options).then((request) => request(axios, basePath));
         },
     };
 };
@@ -193,14 +195,14 @@ export class WhatsappInboundMessagesApi extends BaseAPI {
     }
 
     /**
-     * When you receive an inbound message from webhooks, you can use this endpoint to mark the message as read and display a typing indicator so the WhatsApp user knows you are preparing a response. Messages marked as read display two blue check marks alongside their timestamp.The typing indicator will be dismissed once you respond, or after 25 seconds, whichever comes first. To prevent a poor user experience, only display a typing indicator if you are going to respond.  Marking a message as read will also mark earlier messages in the conversation as read.
-     * @summary Mark message as read and display a typing indicator
+     * Marks an inbound message as read and displays a typing indicator so the WhatsApp user knows you are preparing a response. Messages marked as read display two blue check marks alongside their timestamp. The typing indicator is dismissed once you respond, or after 25 seconds, whichever comes first.  Marking a message as read also marks earlier messages in the conversation as read. Repeating this request sends another typing-indicator request and refreshes the indicator; this endpoint does not provide an idempotency key.  A successful request returns `WhatsappInboundMessageTypingResponse`. Errors reuse the standard `ErrorResponse`.
+     * @summary Mark message as read and display a typing indicator with a JSON response
      * @param {string} id ID of the message.  A wamid (i.e., the original message ID on WhatsApp\&#39;s platform) is also acceptable.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof WhatsappInboundMessagesApi
      */
-    public typingIndicator(id: string, options?: AxiosRequestConfig) {
-        return WhatsappInboundMessagesApiFp(this.configuration).typingIndicator(id, options).then((request) => request(this.axios, this.basePath));
+    public typing(id: string, options?: AxiosRequestConfig) {
+        return WhatsappInboundMessagesApiFp(this.configuration).typing(id, options).then((request) => request(this.axios, this.basePath));
     }
 }

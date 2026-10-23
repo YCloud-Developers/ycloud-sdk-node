@@ -39,7 +39,7 @@ const WhatsappCallingApiAxiosParamCreator = function (configuration?: Configurat
         /**
          * Accepts an inbound WhatsApp call.  Once the WebRTC connection is made, this endpoint is used to accept the call. Media will begin flowing immediately since the connection was established prior to call connect.
          * @summary Accept a call
-         * @param {WhatsappCallingPreAcceptRequest} whatsappCallingPreAcceptRequest 
+         * @param {WhatsappCallingPreAcceptRequest} whatsappCallingPreAcceptRequest
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -65,7 +65,7 @@ const WhatsappCallingApiAxiosParamCreator = function (configuration?: Configurat
             await setApiKeyToObject(localVarHeaderParameter, "X-API-Key", configuration)
 
 
-    
+
             localVarHeaderParameter['Content-Type'] = 'application/json';
 
             // setSearchParams(localVarUrlObj, localVarQueryParameter);
@@ -82,7 +82,7 @@ const WhatsappCallingApiAxiosParamCreator = function (configuration?: Configurat
         /**
          * Initiates a WhatsApp call connection.  Establishes the initial connection for a WhatsApp call by providing SDP offer information. This endpoint is used for business-initiated calling scenarios.
          * @summary Connect a call
-         * @param {WhatsappCallingConnectRequest} whatsappCallingConnectRequest 
+         * @param {WhatsappCallingConnectRequest} whatsappCallingConnectRequest
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -108,7 +108,7 @@ const WhatsappCallingApiAxiosParamCreator = function (configuration?: Configurat
             await setApiKeyToObject(localVarHeaderParameter, "X-API-Key", configuration)
 
 
-    
+
             localVarHeaderParameter['Content-Type'] = 'application/json';
 
             // setSearchParams(localVarUrlObj, localVarQueryParameter);
@@ -123,9 +123,50 @@ const WhatsappCallingApiAxiosParamCreator = function (configuration?: Configurat
             };
         },
         /**
+         * Downloads an available recording or transcription generated for an API-sourced WhatsApp call.  Media can be downloaded only by the owning tenant for 30 days from its creation time. Requests without a Range header or with a blank Range header return the complete file as a download attachment with HTTP 200. A non-empty Range header is rejected with HTTP 400 because byte-range downloads are not supported.
+         * @summary Download call media
+         * @param {string} mediaAssetId YCloud call media asset ID received in a recording or transcription webhook.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        downloadMedia: async (mediaAssetId: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'mediaAssetId' is not null or undefined
+            assertParamExists('downloadMedia', 'mediaAssetId', mediaAssetId)
+            const localVarPath = `/whatsapp/calls/media/{mediaAssetId}`
+                .replace(`{${"mediaAssetId"}}`, encodeURIComponent(String(mediaAssetId)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            // const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            if (USER_AGENT) {
+                localVarHeaderParameter['User-Agent'] = USER_AGENT;
+            }
+            const localVarQueryParameter = {} as any;
+
+            // authentication api_key required
+            await setApiKeyToObject(localVarHeaderParameter, "X-API-Key", configuration)
+
+
+
+            // setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+            localVarRequestOptions.params = localVarQueryParameter;
+
+            return {
+                url: localVarPath,
+                options: localVarRequestOptions,
+            };
+        },
+        /**
          * Pre-accepts an inbound WhatsApp call.  Pre-accepting calls allows the calling media connection to be established before attempting to send call media through the connection. This facilitates faster connection times and avoids audio clipping issues.
          * @summary Pre-accept a call
-         * @param {WhatsappCallingPreAcceptRequest} whatsappCallingPreAcceptRequest 
+         * @param {WhatsappCallingPreAcceptRequest} whatsappCallingPreAcceptRequest
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -151,7 +192,7 @@ const WhatsappCallingApiAxiosParamCreator = function (configuration?: Configurat
             await setApiKeyToObject(localVarHeaderParameter, "X-API-Key", configuration)
 
 
-    
+
             localVarHeaderParameter['Content-Type'] = 'application/json';
 
             // setSearchParams(localVarUrlObj, localVarQueryParameter);
@@ -168,7 +209,7 @@ const WhatsappCallingApiAxiosParamCreator = function (configuration?: Configurat
         /**
          * Rejects an inbound WhatsApp call.  This endpoint is used to reject an incoming call from a WhatsApp user. The call will be terminated on the WhatsApp user side with appropriate notification.
          * @summary Reject a call
-         * @param {WhatsappCallingTerminateRequest} whatsappCallingTerminateRequest 
+         * @param {WhatsappCallingTerminateRequest} whatsappCallingTerminateRequest
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -194,7 +235,7 @@ const WhatsappCallingApiAxiosParamCreator = function (configuration?: Configurat
             await setApiKeyToObject(localVarHeaderParameter, "X-API-Key", configuration)
 
 
-    
+
             localVarHeaderParameter['Content-Type'] = 'application/json';
 
             // setSearchParams(localVarUrlObj, localVarQueryParameter);
@@ -211,7 +252,7 @@ const WhatsappCallingApiAxiosParamCreator = function (configuration?: Configurat
         /**
          * Terminates an active WhatsApp call.  Both the business or the WhatsApp user can terminate the call at any time. This endpoint is used by the business to end the call.
          * @summary Terminate a call
-         * @param {WhatsappCallingTerminateRequest} whatsappCallingTerminateRequest 
+         * @param {WhatsappCallingTerminateRequest} whatsappCallingTerminateRequest
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -237,7 +278,7 @@ const WhatsappCallingApiAxiosParamCreator = function (configuration?: Configurat
             await setApiKeyToObject(localVarHeaderParameter, "X-API-Key", configuration)
 
 
-    
+
             localVarHeaderParameter['Content-Type'] = 'application/json';
 
             // setSearchParams(localVarUrlObj, localVarQueryParameter);
@@ -264,7 +305,7 @@ const WhatsappCallingApiFp = function(configuration?: Configuration) {
         /**
          * Accepts an inbound WhatsApp call.  Once the WebRTC connection is made, this endpoint is used to accept the call. Media will begin flowing immediately since the connection was established prior to call connect.
          * @summary Accept a call
-         * @param {WhatsappCallingPreAcceptRequest} whatsappCallingPreAcceptRequest 
+         * @param {WhatsappCallingPreAcceptRequest} whatsappCallingPreAcceptRequest
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -275,7 +316,7 @@ const WhatsappCallingApiFp = function(configuration?: Configuration) {
         /**
          * Initiates a WhatsApp call connection.  Establishes the initial connection for a WhatsApp call by providing SDP offer information. This endpoint is used for business-initiated calling scenarios.
          * @summary Connect a call
-         * @param {WhatsappCallingConnectRequest} whatsappCallingConnectRequest 
+         * @param {WhatsappCallingConnectRequest} whatsappCallingConnectRequest
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -284,9 +325,20 @@ const WhatsappCallingApiFp = function(configuration?: Configuration) {
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
         /**
+         * Downloads an available recording or transcription generated for an API-sourced WhatsApp call.  Media can be downloaded only by the owning tenant for 30 days from its creation time. Requests without a Range header or with a blank Range header return the complete file as a download attachment with HTTP 200. A non-empty Range header is rejected with HTTP 400 because byte-range downloads are not supported.
+         * @summary Download call media
+         * @param {string} mediaAssetId YCloud call media asset ID received in a recording or transcription webhook.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async downloadMedia(mediaAssetId: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<any>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.downloadMedia(mediaAssetId, options);
+            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+        },
+        /**
          * Pre-accepts an inbound WhatsApp call.  Pre-accepting calls allows the calling media connection to be established before attempting to send call media through the connection. This facilitates faster connection times and avoids audio clipping issues.
          * @summary Pre-accept a call
-         * @param {WhatsappCallingPreAcceptRequest} whatsappCallingPreAcceptRequest 
+         * @param {WhatsappCallingPreAcceptRequest} whatsappCallingPreAcceptRequest
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -297,7 +349,7 @@ const WhatsappCallingApiFp = function(configuration?: Configuration) {
         /**
          * Rejects an inbound WhatsApp call.  This endpoint is used to reject an incoming call from a WhatsApp user. The call will be terminated on the WhatsApp user side with appropriate notification.
          * @summary Reject a call
-         * @param {WhatsappCallingTerminateRequest} whatsappCallingTerminateRequest 
+         * @param {WhatsappCallingTerminateRequest} whatsappCallingTerminateRequest
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -308,7 +360,7 @@ const WhatsappCallingApiFp = function(configuration?: Configuration) {
         /**
          * Terminates an active WhatsApp call.  Both the business or the WhatsApp user can terminate the call at any time. This endpoint is used by the business to end the call.
          * @summary Terminate a call
-         * @param {WhatsappCallingTerminateRequest} whatsappCallingTerminateRequest 
+         * @param {WhatsappCallingTerminateRequest} whatsappCallingTerminateRequest
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -343,6 +395,15 @@ const WhatsappCallingApiFactory = function (configuration?: Configuration, baseP
          */
         connect(whatsappCallingConnectRequest: WhatsappCallingConnectRequest, options?: any): AxiosPromise<WhatsappCallingResponse> {
             return localVarFp.connect(whatsappCallingConnectRequest, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * Downloads an available recording or transcription generated for an API-sourced WhatsApp call.  Media can be downloaded only by the owning tenant for 30 days from its creation time. Requests without a Range header or with a blank Range header return the complete file as a download attachment with HTTP 200. A non-empty Range header is rejected with HTTP 400 because byte-range downloads are not supported.
+         * @summary Download call media
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        downloadMedia(mediaAssetId: string, options?: any): AxiosPromise<any> {
+            return localVarFp.downloadMedia(mediaAssetId, options).then((request) => request(axios, basePath));
         },
         /**
          * Pre-accepts an inbound WhatsApp call.  Pre-accepting calls allows the calling media connection to be established before attempting to send call media through the connection. This facilitates faster connection times and avoids audio clipping issues.
@@ -384,7 +445,7 @@ export class WhatsappCallingApi extends BaseAPI {
     /**
      * Accepts an inbound WhatsApp call.  Once the WebRTC connection is made, this endpoint is used to accept the call. Media will begin flowing immediately since the connection was established prior to call connect.
      * @summary Accept a call
-     * @param {WhatsappCallingPreAcceptRequest} whatsappCallingPreAcceptRequest 
+     * @param {WhatsappCallingPreAcceptRequest} whatsappCallingPreAcceptRequest
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof WhatsappCallingApi
@@ -396,7 +457,7 @@ export class WhatsappCallingApi extends BaseAPI {
     /**
      * Initiates a WhatsApp call connection.  Establishes the initial connection for a WhatsApp call by providing SDP offer information. This endpoint is used for business-initiated calling scenarios.
      * @summary Connect a call
-     * @param {WhatsappCallingConnectRequest} whatsappCallingConnectRequest 
+     * @param {WhatsappCallingConnectRequest} whatsappCallingConnectRequest
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof WhatsappCallingApi
@@ -406,9 +467,21 @@ export class WhatsappCallingApi extends BaseAPI {
     }
 
     /**
+     * Downloads an available recording or transcription generated for an API-sourced WhatsApp call.  Media can be downloaded only by the owning tenant for 30 days from its creation time. Requests without a Range header or with a blank Range header return the complete file as a download attachment with HTTP 200. A non-empty Range header is rejected with HTTP 400 because byte-range downloads are not supported.
+     * @summary Download call media
+     * @param {string} mediaAssetId YCloud call media asset ID received in a recording or transcription webhook.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof WhatsappCallingApi
+     */
+    public downloadMedia(mediaAssetId: string, options?: AxiosRequestConfig) {
+        return WhatsappCallingApiFp(this.configuration).downloadMedia(mediaAssetId, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
      * Pre-accepts an inbound WhatsApp call.  Pre-accepting calls allows the calling media connection to be established before attempting to send call media through the connection. This facilitates faster connection times and avoids audio clipping issues.
      * @summary Pre-accept a call
-     * @param {WhatsappCallingPreAcceptRequest} whatsappCallingPreAcceptRequest 
+     * @param {WhatsappCallingPreAcceptRequest} whatsappCallingPreAcceptRequest
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof WhatsappCallingApi
@@ -420,7 +493,7 @@ export class WhatsappCallingApi extends BaseAPI {
     /**
      * Rejects an inbound WhatsApp call.  This endpoint is used to reject an incoming call from a WhatsApp user. The call will be terminated on the WhatsApp user side with appropriate notification.
      * @summary Reject a call
-     * @param {WhatsappCallingTerminateRequest} whatsappCallingTerminateRequest 
+     * @param {WhatsappCallingTerminateRequest} whatsappCallingTerminateRequest
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof WhatsappCallingApi
@@ -432,7 +505,7 @@ export class WhatsappCallingApi extends BaseAPI {
     /**
      * Terminates an active WhatsApp call.  Both the business or the WhatsApp user can terminate the call at any time. This endpoint is used by the business to end the call.
      * @summary Terminate a call
-     * @param {WhatsappCallingTerminateRequest} whatsappCallingTerminateRequest 
+     * @param {WhatsappCallingTerminateRequest} whatsappCallingTerminateRequest
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof WhatsappCallingApi

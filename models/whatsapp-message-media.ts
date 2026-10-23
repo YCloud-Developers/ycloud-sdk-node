@@ -21,7 +21,7 @@
  */
 export interface WhatsappMessageMedia {
     /**
-     * **Use this when media is uploaded to WhatsApp servers.**  Provide the media object ID obtained from WhatsApp media upload API (https://docs.ycloud.com/update/reference/whatsapp_media-upload#/).  Note: Either `id` or `link` must be provided. If both are provided, `id` takes precedence.
+     * **Use this when media is uploaded to WhatsApp servers.**  Provide the media object ID obtained from WhatsApp media upload API (https://docs.ycloud.com/reference/whatsapp_media-upload#/).  Note: Either `id` or `link` must be provided. If both are provided, `id` takes precedence.
      * @type {string}
      * @memberof WhatsappMessageMedia
      */
@@ -45,4 +45,3 @@ export interface WhatsappMessageMedia {
      */
     'filename'?: string;
 }
-

@@ -27,6 +27,12 @@ export interface ContactCreated {
      */
     'id': string;
     /**
+     * The business-managed remark name for the contact.
+     * @type {string}
+     * @memberof ContactCreated
+     */
+    'remarkName'?: string;
+    /**
      * Contact\'s nickname.
      * @type {string}
      * @memberof ContactCreated
@@ -129,4 +135,3 @@ export interface ContactCreated {
      */
     'customAttributes'?: { [key: string]: object; };
 }
-

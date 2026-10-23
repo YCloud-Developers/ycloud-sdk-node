@@ -23,6 +23,12 @@ import { BASE_PATH, USER_AGENT, COLLECTION_FORMATS, RequestArgs, BaseAPI, Requir
 // @ts-ignore
 import { ErrorResponse } from '../models';
 // @ts-ignore
+import { WhatsappAutomaticCreativeOptimizationRetrieveResponse } from '../models';
+// @ts-ignore
+import { WhatsappAutomaticCreativeOptimizationUpdateRequest } from '../models';
+// @ts-ignore
+import { WhatsappAutomaticCreativeOptimizationUpdateResponse } from '../models';
+// @ts-ignore
 import { WhatsappBusinessAccount } from '../models';
 // @ts-ignore
 import { WhatsappBusinessAccountPage } from '../models';
@@ -79,7 +85,7 @@ const WhatsappBusinessAccountsApiAxiosParamCreator = function (configuration?: C
             }
 
 
-    
+
             // setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
@@ -120,11 +126,99 @@ const WhatsappBusinessAccountsApiAxiosParamCreator = function (configuration?: C
             await setApiKeyToObject(localVarHeaderParameter, "X-API-Key", configuration)
 
 
-    
+
             // setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
             localVarRequestOptions.params = localVarQueryParameter;
+
+            return {
+                url: localVarPath,
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * Retrieves current automatic creative optimization feature enrollment for a WhatsApp Business Account from Meta.  This endpoint does not persist feature enrollment locally. If Meta returns `degrees_of_freedom_spec.data[0].creative_features_spec[0]` as an object, its string fields are returned as `creativeOptimizationFeatures` without feature-key filtering, status-value validation, or case normalization. If Meta returns success without a valid `creative_features_spec[0]` object, `creativeOptimizationFeatures` is returned as an empty object.
+         * @summary Retrieve WABA automatic creative optimizations
+         * @param {string} wabaId WhatsApp Business Account ID.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        retrieveAutomaticCreativeOptimizations: async (wabaId: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'wabaId' is not null or undefined
+            assertParamExists('retrieveAutomaticCreativeOptimizations', 'wabaId', wabaId)
+            const localVarPath = `/whatsapp/businessAccounts/{wabaId}/automatic-creative-optimizations`
+                .replace(`{${"wabaId"}}`, encodeURIComponent(String(wabaId)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            // const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            if (USER_AGENT) {
+                localVarHeaderParameter['User-Agent'] = USER_AGENT;
+            }
+            const localVarQueryParameter = {} as any;
+
+            // authentication api_key required
+            await setApiKeyToObject(localVarHeaderParameter, "X-API-Key", configuration)
+
+
+
+            // setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+            localVarRequestOptions.params = localVarQueryParameter;
+
+            return {
+                url: localVarPath,
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * Partially updates automatic creative optimization feature enrollment for a WhatsApp Business Account.  Only submitted feature keys are updated. This endpoint does not persist feature enrollment locally and does not check whether the WABA has completed Meta MM Lite / ACO onboarding before forwarding the request to Meta.
+         * @summary Update WABA automatic creative optimizations
+         * @param {string} wabaId WhatsApp Business Account ID.
+         * @param {WhatsappAutomaticCreativeOptimizationUpdateRequest} whatsappAutomaticCreativeOptimizationUpdateRequest
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        updateAutomaticCreativeOptimizations: async (wabaId: string, whatsappAutomaticCreativeOptimizationUpdateRequest: WhatsappAutomaticCreativeOptimizationUpdateRequest, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'wabaId' is not null or undefined
+            assertParamExists('updateAutomaticCreativeOptimizations', 'wabaId', wabaId)
+            // verify required parameter 'whatsappAutomaticCreativeOptimizationUpdateRequest' is not null or undefined
+            assertParamExists('updateAutomaticCreativeOptimizations', 'whatsappAutomaticCreativeOptimizationUpdateRequest', whatsappAutomaticCreativeOptimizationUpdateRequest)
+            const localVarPath = `/whatsapp/businessAccounts/{wabaId}/automatic-creative-optimizations`
+                .replace(`{${"wabaId"}}`, encodeURIComponent(String(wabaId)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            // const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'PATCH', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            if (USER_AGENT) {
+                localVarHeaderParameter['User-Agent'] = USER_AGENT;
+            }
+            const localVarQueryParameter = {} as any;
+
+            // authentication api_key required
+            await setApiKeyToObject(localVarHeaderParameter, "X-API-Key", configuration)
+
+
+
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+
+            // setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+            localVarRequestOptions.params = localVarQueryParameter;
+            localVarRequestOptions.data = serializeDataIfNeeded(whatsappAutomaticCreativeOptimizationUpdateRequest, localVarRequestOptions, configuration)
 
             return {
                 url: localVarPath,
@@ -163,6 +257,29 @@ const WhatsappBusinessAccountsApiFp = function(configuration?: Configuration) {
             const localVarAxiosArgs = await localVarAxiosParamCreator.retrieve(id, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
+        /**
+         * Retrieves current automatic creative optimization feature enrollment for a WhatsApp Business Account from Meta.  This endpoint does not persist feature enrollment locally. If Meta returns `degrees_of_freedom_spec.data[0].creative_features_spec[0]` as an object, its string fields are returned as `creativeOptimizationFeatures` without feature-key filtering, status-value validation, or case normalization. If Meta returns success without a valid `creative_features_spec[0]` object, `creativeOptimizationFeatures` is returned as an empty object.
+         * @summary Retrieve WABA automatic creative optimizations
+         * @param {string} wabaId WhatsApp Business Account ID.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async retrieveAutomaticCreativeOptimizations(wabaId: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<WhatsappAutomaticCreativeOptimizationRetrieveResponse>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.retrieveAutomaticCreativeOptimizations(wabaId, options);
+            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+        },
+        /**
+         * Partially updates automatic creative optimization feature enrollment for a WhatsApp Business Account.  Only submitted feature keys are updated. This endpoint does not persist feature enrollment locally and does not check whether the WABA has completed Meta MM Lite / ACO onboarding before forwarding the request to Meta.
+         * @summary Update WABA automatic creative optimizations
+         * @param {string} wabaId WhatsApp Business Account ID.
+         * @param {WhatsappAutomaticCreativeOptimizationUpdateRequest} whatsappAutomaticCreativeOptimizationUpdateRequest
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async updateAutomaticCreativeOptimizations(wabaId: string, whatsappAutomaticCreativeOptimizationUpdateRequest: WhatsappAutomaticCreativeOptimizationUpdateRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<WhatsappAutomaticCreativeOptimizationUpdateResponse>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.updateAutomaticCreativeOptimizations(wabaId, whatsappAutomaticCreativeOptimizationUpdateRequest, options);
+            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+        },
     }
 };
 
@@ -195,6 +312,24 @@ const WhatsappBusinessAccountsApiFactory = function (configuration?: Configurati
          */
         retrieve(id: string, options?: any): AxiosPromise<WhatsappBusinessAccount> {
             return localVarFp.retrieve(id, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * Retrieves current automatic creative optimization feature enrollment for a WhatsApp Business Account from Meta.  This endpoint does not persist feature enrollment locally. If Meta returns `degrees_of_freedom_spec.data[0].creative_features_spec[0]` as an object, its string fields are returned as `creativeOptimizationFeatures` without feature-key filtering, status-value validation, or case normalization. If Meta returns success without a valid `creative_features_spec[0]` object, `creativeOptimizationFeatures` is returned as an empty object.
+         * @summary Retrieve WABA automatic creative optimizations
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        retrieveAutomaticCreativeOptimizations(wabaId: string, options?: any): AxiosPromise<WhatsappAutomaticCreativeOptimizationRetrieveResponse> {
+            return localVarFp.retrieveAutomaticCreativeOptimizations(wabaId, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * Partially updates automatic creative optimization feature enrollment for a WhatsApp Business Account.  Only submitted feature keys are updated. This endpoint does not persist feature enrollment locally and does not check whether the WABA has completed Meta MM Lite / ACO onboarding before forwarding the request to Meta.
+         * @summary Update WABA automatic creative optimizations
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        updateAutomaticCreativeOptimizations(wabaId: string, whatsappAutomaticCreativeOptimizationUpdateRequest: WhatsappAutomaticCreativeOptimizationUpdateRequest, options?: any): AxiosPromise<WhatsappAutomaticCreativeOptimizationUpdateResponse> {
+            return localVarFp.updateAutomaticCreativeOptimizations(wabaId, whatsappAutomaticCreativeOptimizationUpdateRequest, options).then((request) => request(axios, basePath));
         },
     };
 };
@@ -263,5 +398,30 @@ export class WhatsappBusinessAccountsApi extends BaseAPI {
      */
     public retrieve(id: string, options?: AxiosRequestConfig) {
         return WhatsappBusinessAccountsApiFp(this.configuration).retrieve(id, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * Retrieves current automatic creative optimization feature enrollment for a WhatsApp Business Account from Meta.  This endpoint does not persist feature enrollment locally. If Meta returns `degrees_of_freedom_spec.data[0].creative_features_spec[0]` as an object, its string fields are returned as `creativeOptimizationFeatures` without feature-key filtering, status-value validation, or case normalization. If Meta returns success without a valid `creative_features_spec[0]` object, `creativeOptimizationFeatures` is returned as an empty object.
+     * @summary Retrieve WABA automatic creative optimizations
+     * @param {string} wabaId WhatsApp Business Account ID.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof WhatsappBusinessAccountsApi
+     */
+    public retrieveAutomaticCreativeOptimizations(wabaId: string, options?: AxiosRequestConfig) {
+        return WhatsappBusinessAccountsApiFp(this.configuration).retrieveAutomaticCreativeOptimizations(wabaId, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * Partially updates automatic creative optimization feature enrollment for a WhatsApp Business Account.  Only submitted feature keys are updated. This endpoint does not persist feature enrollment locally and does not check whether the WABA has completed Meta MM Lite / ACO onboarding before forwarding the request to Meta.
+     * @summary Update WABA automatic creative optimizations
+     * @param {string} wabaId WhatsApp Business Account ID.
+     * @param {WhatsappAutomaticCreativeOptimizationUpdateRequest} whatsappAutomaticCreativeOptimizationUpdateRequest
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof WhatsappBusinessAccountsApi
+     */
+    public updateAutomaticCreativeOptimizations(wabaId: string, whatsappAutomaticCreativeOptimizationUpdateRequest: WhatsappAutomaticCreativeOptimizationUpdateRequest, options?: AxiosRequestConfig) {
+        return WhatsappBusinessAccountsApiFp(this.configuration).updateAutomaticCreativeOptimizations(wabaId, whatsappAutomaticCreativeOptimizationUpdateRequest, options).then((request) => request(this.axios, this.basePath));
     }
 }

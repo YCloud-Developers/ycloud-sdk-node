@@ -27,6 +27,12 @@ export interface ContactDeleted {
      */
     'id': string;
     /**
+     * The business-managed remark name from the deleted contact snapshot.
+     * @type {string}
+     * @memberof ContactDeleted
+     */
+    'remarkName'?: string;
+    /**
      * Contact\'s nickname.
      * @type {string}
      * @memberof ContactDeleted
@@ -45,4 +51,3 @@ export interface ContactDeleted {
      */
     'updateTime'?: string;
 }
-
