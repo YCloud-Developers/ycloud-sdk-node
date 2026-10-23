@@ -14,10 +14,11 @@
 
 
 import { Contact } from './contact';
+import { ContactPageCursor } from './contact-page-cursor';
 import { Page } from './page';
 
 /**
- * Represents a given page of contacts.
+ * Represents a given page of contacts. In cursor mode, `offset` is `0`, items are ordered by contact ID in ascending order, and `cursor` is returned only when another page exists. When `includeTotal=true`, `total` is the complete filtered count and is not reduced by the cursor position.
  * @export
  * @interface ContactPage
  */
@@ -28,6 +29,12 @@ export interface ContactPage {
      * @memberof ContactPage
      */
     'items'?: Array<Contact>;
+    /**
+     *
+     * @type {ContactPageCursor}
+     * @memberof ContactPage
+     */
+    'cursor'?: ContactPageCursor;
     /**
      * The position of the item this page starts from, zero-based. e.g., the 11th item is at offset 10.
      * @type {number}
@@ -53,4 +60,3 @@ export interface ContactPage {
      */
     'total'?: number;
 }
-

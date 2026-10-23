@@ -16,7 +16,7 @@
 import { ContactAttributeChange } from './contact-attribute-change';
 
 /**
- * Represents a contact attributes changed event. Contains information about which contact attributes were modified and their old/new values.
+ * Represents a contact attributes changed event. Contains information about which contact attributes were modified and their old/new values. This event is emitted only when at least one persisted contact field actually changes; note-only and contact no-op updates do not emit it.
  * @export
  * @interface ContactAttributesChanged
  */
@@ -27,6 +27,12 @@ export interface ContactAttributesChanged {
      * @memberof ContactAttributesChanged
      */
     'id': string;
+    /**
+     * The contact\'s phone number in E.164 format.
+     * @type {string}
+     * @memberof ContactAttributesChanged
+     */
+    'phoneNumber'?: string;
     /**
      * The time at which the contact attributes were updated, formatted in [RFC 3339](https://datatracker.ietf.org/doc/html/rfc3339). e.g., `2022-06-01T12:00:00.000Z`.
      * @type {string}
@@ -40,4 +46,3 @@ export interface ContactAttributesChanged {
      */
     'changedAttributes': { [key: string]: ContactAttributeChange; };
 }
-

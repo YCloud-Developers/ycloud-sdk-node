@@ -52,13 +52,13 @@ export interface WhatsappTemplate {
      */
     'language': string;
     /**
-     * 
+     *
      * @type {WhatsappTemplateCategory}
      * @memberof WhatsappTemplate
      */
     'category'?: WhatsappTemplateCategory;
     /**
-     * 
+     *
      * @type {WhatsappTemplateSubCategory}
      * @memberof WhatsappTemplate
      */
@@ -82,13 +82,19 @@ export interface WhatsappTemplate {
      */
     'components'?: Array<WhatsappTemplateComponent>;
     /**
-     * 
+     * Whether Meta CTA URL click tracking is disabled. Historical `null` values are returned as `true`.
+     * @type {boolean}
+     * @memberof WhatsappTemplate
+     */
+    'ctaUrlLinkTrackingOptedOut'?: boolean;
+    /**
+     *
      * @type {WhatsappTemplateStatus}
      * @memberof WhatsappTemplate
      */
     'status'?: WhatsappTemplateStatus;
     /**
-     * 
+     *
      * @type {WhatsappTemplateQualityRating}
      * @memberof WhatsappTemplate
      */
@@ -112,7 +118,7 @@ export interface WhatsappTemplate {
      */
     'updateTime'?: string;
     /**
-     * 
+     *
      * @type {WhatsappTemplateStatusUpdateEventEnum}
      * @memberof WhatsappTemplate
      */
@@ -124,10 +130,9 @@ export interface WhatsappTemplate {
      */
     'disableDate'?: string;
     /**
-     * 
+     *
      * @type {WhatsappApiError}
      * @memberof WhatsappTemplate
      */
     'whatsappApiError'?: WhatsappApiError;
 }
-

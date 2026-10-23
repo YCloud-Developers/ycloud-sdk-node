@@ -29,6 +29,8 @@ import { ContactCreateRequest } from '../models';
 // @ts-ignore
 import { ContactNote } from '../models';
 // @ts-ignore
+import { ContactNoteWriteRequest } from '../models';
+// @ts-ignore
 import { ContactPage } from '../models';
 // @ts-ignore
 import { ContactUpdateRequest } from '../models';
@@ -123,7 +125,7 @@ const ContactsApiAxiosParamCreator = function (configuration?: Configuration) {
         /**
          * Deletes a contact.
          * @summary Delete a contact
-         * @param {string} id ID of the contact. Also support phone number([E.164](https://en.wikipedia.org/wiki/E.164) format, start with character \&#39;+\&#39;), example: +16315551111
+         * @param {string} id Identifier of the contact. Supports a contact ID, a phone number in [E.164](https://en.wikipedia.org/wiki/E.164) format starting with &#x60;+&#x60; (for example, &#x60;+16315551111&#x60;), or a Meta username without the leading &#x60;@&#x60;. A Meta username must contain 3 to 35 letters, digits, periods, or underscores. If a numeric value can be interpreted as both a Meta username and a contact ID, it is resolved as a Meta username first. If no contact has that Meta username, the value is resolved as a contact ID.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -162,7 +164,7 @@ const ContactsApiAxiosParamCreator = function (configuration?: Configuration) {
             };
         },
         /**
-         * Returns a paginated list of contacts.
+         * Returns a paginated list of contacts.  Omit `pageAfter` to use the existing page-based pagination. To use forward cursor pagination, set `pageAfter=0` for the first page, then pass the exact `cursor.after` value returned by the previous response. Cursor results are ordered by contact ID in ascending order.  Do not combine `pageAfter` with `page`, `pageBefore`, `offset`, or `sort`. Keep all filters unchanged while following a cursor. Concurrent contact inserts, deletions, or filter-field updates use weak consistency; restart a full traversal with `pageAfter=0` when a fresh snapshot is required.
          * @summary List contacts
          * @param {ContactsApiListRequest} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
@@ -172,6 +174,7 @@ const ContactsApiAxiosParamCreator = function (configuration?: Configuration) {
             let page = requestParameters['page'];
             let limit = requestParameters['limit'];
             let includeTotal = requestParameters['includeTotal'];
+            let pageAfter = requestParameters['pageAfter'];
             let filterTags = requestParameters['filterTags'];
             let filterCountryCode = requestParameters['filterCountryCode'];
             let filterPhoneNumber = requestParameters['filterPhoneNumber'];
@@ -206,6 +209,10 @@ const ContactsApiAxiosParamCreator = function (configuration?: Configuration) {
                 localVarQueryParameter['includeTotal'] = includeTotal;
             }
 
+            if (pageAfter !== undefined) {
+                localVarQueryParameter['pageAfter'] = pageAfter;
+            }
+
             if (filterTags !== undefined) {
                 localVarQueryParameter['filter.tags'] = filterTags;
             }
@@ -235,17 +242,152 @@ const ContactsApiAxiosParamCreator = function (configuration?: Configuration) {
             };
         },
         /**
-         * Returns all notes for a contact, ordered by creation time descending. The `{id}` path parameter supports contact ID and phone number. A phone number can be provided in E.164 format, such as `+16315551111`. If a numeric contact ID is not found, the same value is retried as a phone number with a leading `+`, so `861...` can match a stored `+861...` phone number. Contact retrieve, list, and search responses do not include notes; use this endpoint to read contact notes.
-         * @summary List contact notes
-         * @param {string} id ID of the contact. Also support phone number([E.164](https://en.wikipedia.org/wiki/E.164) format, start with character \&#39;+\&#39;), example: +16315551111
+         * Creates one note for the contact and returns the created note. Leading and trailing whitespace is removed before storage. This operation does not use a client idempotency key; repeating the request creates another note with a different ID.
+         * @summary Create a contact note
+         * @param {string} contactIdentifier Identifier of the contact that owns the note. Supports a contact ID, a username without the leading &#x60;@&#x60;, or a phone number in [E.164](https://en.wikipedia.org/wiki/E.164) format starting with &#x60;+&#x60;. Usernames contain 3 to 35 letters, digits, periods, or underscores. A numeric value is resolved as a username first and then as a contact ID when no matching username exists.
+         * @param {ContactNoteWriteRequest} contactNoteWriteRequest
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        notesList: async (id: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
-            // verify required parameter 'id' is not null or undefined
-            assertParamExists('notesList', 'id', id)
-            const localVarPath = `/contact/contacts/{id}/notes`
-                .replace(`{${"id"}}`, encodeURIComponent(String(id)));
+        noteCreate: async (contactIdentifier: string, contactNoteWriteRequest: ContactNoteWriteRequest, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'contactIdentifier' is not null or undefined
+            assertParamExists('noteCreate', 'contactIdentifier', contactIdentifier)
+            // verify required parameter 'contactNoteWriteRequest' is not null or undefined
+            assertParamExists('noteCreate', 'contactNoteWriteRequest', contactNoteWriteRequest)
+            const localVarPath = `/contact/contacts/{contactIdentifier}/notes`
+                .replace(`{${"contactIdentifier"}}`, encodeURIComponent(String(contactIdentifier)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            // const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            if (USER_AGENT) {
+                localVarHeaderParameter['User-Agent'] = USER_AGENT;
+            }
+            const localVarQueryParameter = {} as any;
+
+            // authentication api_key required
+            await setApiKeyToObject(localVarHeaderParameter, "X-API-Key", configuration)
+
+
+
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+
+            // setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+            localVarRequestOptions.params = localVarQueryParameter;
+            localVarRequestOptions.data = serializeDataIfNeeded(contactNoteWriteRequest, localVarRequestOptions, configuration)
+
+            return {
+                url: localVarPath,
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * Deletes one note in the current tenant by note ID and returns its snapshot before deletion. Deleting the same note again returns `404`; the operation does not use a client idempotency key.
+         * @summary Delete a contact note
+         * @param {string} noteId The 24-character ObjectId of the contact note.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        noteDelete: async (noteId: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'noteId' is not null or undefined
+            assertParamExists('noteDelete', 'noteId', noteId)
+            const localVarPath = `/contact/notes/{noteId}`
+                .replace(`{${"noteId"}}`, encodeURIComponent(String(noteId)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            // const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'DELETE', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            if (USER_AGENT) {
+                localVarHeaderParameter['User-Agent'] = USER_AGENT;
+            }
+            const localVarQueryParameter = {} as any;
+
+            // authentication api_key required
+            await setApiKeyToObject(localVarHeaderParameter, "X-API-Key", configuration)
+
+
+
+            // setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+            localVarRequestOptions.params = localVarQueryParameter;
+
+            return {
+                url: localVarPath,
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * Updates one note in the current tenant by note ID and returns the updated note. Repeating the same request leaves the stored content unchanged, but an accepted update may still produce another `contact.note.updated` event.
+         * @summary Update a contact note
+         * @param {string} noteId The 24-character ObjectId of the contact note.
+         * @param {ContactNoteWriteRequest} contactNoteWriteRequest
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        noteUpdate: async (noteId: string, contactNoteWriteRequest: ContactNoteWriteRequest, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'noteId' is not null or undefined
+            assertParamExists('noteUpdate', 'noteId', noteId)
+            // verify required parameter 'contactNoteWriteRequest' is not null or undefined
+            assertParamExists('noteUpdate', 'contactNoteWriteRequest', contactNoteWriteRequest)
+            const localVarPath = `/contact/notes/{noteId}`
+                .replace(`{${"noteId"}}`, encodeURIComponent(String(noteId)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            // const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'PATCH', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            if (USER_AGENT) {
+                localVarHeaderParameter['User-Agent'] = USER_AGENT;
+            }
+            const localVarQueryParameter = {} as any;
+
+            // authentication api_key required
+            await setApiKeyToObject(localVarHeaderParameter, "X-API-Key", configuration)
+
+
+
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+
+            // setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+            localVarRequestOptions.params = localVarQueryParameter;
+            localVarRequestOptions.data = serializeDataIfNeeded(contactNoteWriteRequest, localVarRequestOptions, configuration)
+
+            return {
+                url: localVarPath,
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * Returns all notes for a contact, ordered by creation time descending. The `{contactIdentifier}` path parameter supports a contact ID, a phone number in E.164 format starting with `+`, or a Meta username without the leading `@`. Ambiguous numeric values are resolved as Meta usernames first and fall back to contact IDs only when no matching Meta username exists. Contact retrieve, list, and search responses do not include notes; use this endpoint to read contact notes.
+         * @summary List contact notes
+         * @param {string} contactIdentifier Identifier of the contact that owns the note. Supports a contact ID, a username without the leading &#x60;@&#x60;, or a phone number in [E.164](https://en.wikipedia.org/wiki/E.164) format starting with &#x60;+&#x60;. Usernames contain 3 to 35 letters, digits, periods, or underscores. A numeric value is resolved as a username first and then as a contact ID when no matching username exists.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        notesList: async (contactIdentifier: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'contactIdentifier' is not null or undefined
+            assertParamExists('notesList', 'contactIdentifier', contactIdentifier)
+            const localVarPath = `/contact/contacts/{contactIdentifier}/notes`
+                .replace(`{${"contactIdentifier"}}`, encodeURIComponent(String(contactIdentifier)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             // const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
             let baseOptions;
@@ -278,7 +420,7 @@ const ContactsApiAxiosParamCreator = function (configuration?: Configuration) {
         /**
          * Retrieves a contact.
          * @summary Retrieve a contact
-         * @param {string} id ID of the contact. Also support phone number([E.164](https://en.wikipedia.org/wiki/E.164) format, start with character \&#39;+\&#39;), example: +16315551111
+         * @param {string} id Identifier of the contact. Supports a contact ID, a phone number in [E.164](https://en.wikipedia.org/wiki/E.164) format starting with &#x60;+&#x60; (for example, &#x60;+16315551111&#x60;), or a Meta username without the leading &#x60;@&#x60;. A Meta username must contain 3 to 35 letters, digits, periods, or underscores. If a numeric value can be interpreted as both a Meta username and a contact ID, it is resolved as a Meta username first. If no contact has that Meta username, the value is resolved as a contact ID.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -317,9 +459,9 @@ const ContactsApiAxiosParamCreator = function (configuration?: Configuration) {
             };
         },
         /**
-         * Updates a contact.
+         * Updates a contact. If every supplied persisted contact field already has the requested value, the contact is not updated and no `contact.attributes_changed` event is emitted. Note mutations in the same request are still applied.
          * @summary Update a contact
-         * @param {string} id ID of the contact. Also support phone number([E.164](https://en.wikipedia.org/wiki/E.164) format, start with character \&#39;+\&#39;), example: +16315551111
+         * @param {string} id Identifier of the contact. Supports a contact ID, a phone number in [E.164](https://en.wikipedia.org/wiki/E.164) format starting with &#x60;+&#x60; (for example, &#x60;+16315551111&#x60;), or a Meta username without the leading &#x60;@&#x60;. A Meta username must contain 3 to 35 letters, digits, periods, or underscores. If a numeric value can be interpreted as both a Meta username and a contact ID, it is resolved as a Meta username first. If no contact has that Meta username, the value is resolved as a contact ID.
          * @param {ContactUpdateRequest} [contactUpdateRequest]
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -395,7 +537,7 @@ const ContactsApiFp = function(configuration?: Configuration) {
         /**
          * Deletes a contact.
          * @summary Delete a contact
-         * @param {string} id ID of the contact. Also support phone number([E.164](https://en.wikipedia.org/wiki/E.164) format, start with character \&#39;+\&#39;), example: +16315551111
+         * @param {string} id Identifier of the contact. Supports a contact ID, a phone number in [E.164](https://en.wikipedia.org/wiki/E.164) format starting with &#x60;+&#x60; (for example, &#x60;+16315551111&#x60;), or a Meta username without the leading &#x60;@&#x60;. A Meta username must contain 3 to 35 letters, digits, periods, or underscores. If a numeric value can be interpreted as both a Meta username and a contact ID, it is resolved as a Meta username first. If no contact has that Meta username, the value is resolved as a contact ID.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -404,7 +546,7 @@ const ContactsApiFp = function(configuration?: Configuration) {
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
         /**
-         * Returns a paginated list of contacts.
+         * Returns a paginated list of contacts.  Omit `pageAfter` to use the existing page-based pagination. To use forward cursor pagination, set `pageAfter=0` for the first page, then pass the exact `cursor.after` value returned by the previous response. Cursor results are ordered by contact ID in ascending order.  Do not combine `pageAfter` with `page`, `pageBefore`, `offset`, or `sort`. Keep all filters unchanged while following a cursor. Concurrent contact inserts, deletions, or filter-field updates use weak consistency; restart a full traversal with `pageAfter=0` when a fresh snapshot is required.
          * @summary List contacts
          * @param {ContactsApiListRequest} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
@@ -415,20 +557,55 @@ const ContactsApiFp = function(configuration?: Configuration) {
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
         /**
-         * Returns all notes for a contact, ordered by creation time descending. The `{id}` path parameter supports contact ID and phone number. A phone number can be provided in E.164 format, such as `+16315551111`. If a numeric contact ID is not found, the same value is retried as a phone number with a leading `+`, so `861...` can match a stored `+861...` phone number. Contact retrieve, list, and search responses do not include notes; use this endpoint to read contact notes.
-         * @summary List contact notes
-         * @param {string} id ID of the contact. Also support phone number([E.164](https://en.wikipedia.org/wiki/E.164) format, start with character \&#39;+\&#39;), example: +16315551111
+         * Creates one note for the contact and returns the created note. Leading and trailing whitespace is removed before storage. This operation does not use a client idempotency key; repeating the request creates another note with a different ID.
+         * @summary Create a contact note
+         * @param {string} contactIdentifier Identifier of the contact that owns the note. Supports a contact ID, a username without the leading &#x60;@&#x60;, or a phone number in [E.164](https://en.wikipedia.org/wiki/E.164) format starting with &#x60;+&#x60;. Usernames contain 3 to 35 letters, digits, periods, or underscores. A numeric value is resolved as a username first and then as a contact ID when no matching username exists.
+         * @param {ContactNoteWriteRequest} contactNoteWriteRequest
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async notesList(id: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<ContactNote>>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.notesList(id, options);
+        async noteCreate(contactIdentifier: string, contactNoteWriteRequest: ContactNoteWriteRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ContactNote>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.noteCreate(contactIdentifier, contactNoteWriteRequest, options);
+            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+        },
+        /**
+         * Deletes one note in the current tenant by note ID and returns its snapshot before deletion. Deleting the same note again returns `404`; the operation does not use a client idempotency key.
+         * @summary Delete a contact note
+         * @param {string} noteId The 24-character ObjectId of the contact note.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async noteDelete(noteId: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ContactNote>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.noteDelete(noteId, options);
+            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+        },
+        /**
+         * Updates one note in the current tenant by note ID and returns the updated note. Repeating the same request leaves the stored content unchanged, but an accepted update may still produce another `contact.note.updated` event.
+         * @summary Update a contact note
+         * @param {string} noteId The 24-character ObjectId of the contact note.
+         * @param {ContactNoteWriteRequest} contactNoteWriteRequest
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async noteUpdate(noteId: string, contactNoteWriteRequest: ContactNoteWriteRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ContactNote>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.noteUpdate(noteId, contactNoteWriteRequest, options);
+            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+        },
+        /**
+         * Returns all notes for a contact, ordered by creation time descending. The `{contactIdentifier}` path parameter supports a contact ID, a phone number in E.164 format starting with `+`, or a Meta username without the leading `@`. Ambiguous numeric values are resolved as Meta usernames first and fall back to contact IDs only when no matching Meta username exists. Contact retrieve, list, and search responses do not include notes; use this endpoint to read contact notes.
+         * @summary List contact notes
+         * @param {string} contactIdentifier Identifier of the contact that owns the note. Supports a contact ID, a username without the leading &#x60;@&#x60;, or a phone number in [E.164](https://en.wikipedia.org/wiki/E.164) format starting with &#x60;+&#x60;. Usernames contain 3 to 35 letters, digits, periods, or underscores. A numeric value is resolved as a username first and then as a contact ID when no matching username exists.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async notesList(contactIdentifier: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<ContactNote>>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.notesList(contactIdentifier, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
         /**
          * Retrieves a contact.
          * @summary Retrieve a contact
-         * @param {string} id ID of the contact. Also support phone number([E.164](https://en.wikipedia.org/wiki/E.164) format, start with character \&#39;+\&#39;), example: +16315551111
+         * @param {string} id Identifier of the contact. Supports a contact ID, a phone number in [E.164](https://en.wikipedia.org/wiki/E.164) format starting with &#x60;+&#x60; (for example, &#x60;+16315551111&#x60;), or a Meta username without the leading &#x60;@&#x60;. A Meta username must contain 3 to 35 letters, digits, periods, or underscores. If a numeric value can be interpreted as both a Meta username and a contact ID, it is resolved as a Meta username first. If no contact has that Meta username, the value is resolved as a contact ID.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -437,9 +614,9 @@ const ContactsApiFp = function(configuration?: Configuration) {
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
         /**
-         * Updates a contact.
+         * Updates a contact. If every supplied persisted contact field already has the requested value, the contact is not updated and no `contact.attributes_changed` event is emitted. Note mutations in the same request are still applied.
          * @summary Update a contact
-         * @param {string} id ID of the contact. Also support phone number([E.164](https://en.wikipedia.org/wiki/E.164) format, start with character \&#39;+\&#39;), example: +16315551111
+         * @param {string} id Identifier of the contact. Supports a contact ID, a phone number in [E.164](https://en.wikipedia.org/wiki/E.164) format starting with &#x60;+&#x60; (for example, &#x60;+16315551111&#x60;), or a Meta username without the leading &#x60;@&#x60;. A Meta username must contain 3 to 35 letters, digits, periods, or underscores. If a numeric value can be interpreted as both a Meta username and a contact ID, it is resolved as a Meta username first. If no contact has that Meta username, the value is resolved as a contact ID.
          * @param {ContactUpdateRequest} [contactUpdateRequest]
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -486,12 +663,13 @@ const ContactsApiFactory = function (configuration?: Configuration, basePath?: s
             return localVarFp.delete(id, options).then((request) => request(axios, basePath));
         },
         /**
-         * Returns a paginated list of contacts.
+         * Returns a paginated list of contacts.  Omit `pageAfter` to use the existing page-based pagination. To use forward cursor pagination, set `pageAfter=0` for the first page, then pass the exact `cursor.after` value returned by the previous response. Cursor results are ordered by contact ID in ascending order.  Do not combine `pageAfter` with `page`, `pageBefore`, `offset`, or `sort`. Keep all filters unchanged while following a cursor. Concurrent contact inserts, deletions, or filter-field updates use weak consistency; restart a full traversal with `pageAfter=0` when a fresh snapshot is required.
          * @summary List contacts
          * @param {ContactsApiListRequest} requestParameters Request parameters.
          * @param {number} [page] Page number of the results to be returned, 1-based.
          * @param {number} [limit] A limit on the number of results to be returned, or number of results per page, between 1 and 100, defaults to 10.
          * @param {boolean} [includeTotal] Return results inside an object that contains the total result count or not.
+         * @param {string} [pageAfter] Contact ID cursor for forward pagination. Use &#x60;0&#x60; to start a new cursor traversal. For each subsequent page, pass the exact &#x60;cursor.after&#x60; value from the previous response. The value must be a non-negative decimal integer in the signed 64-bit range (&#x60;0&#x60; through &#x60;9223372036854775807&#x60;). It cannot be combined with &#x60;page&#x60;, &#x60;pageBefore&#x60;, &#x60;offset&#x60;, or &#x60;sort&#x60;.
          * @param {string} [filterTags] Comma-separated list of tag names. If any tag does not exist, the request fails with a parameter error.
          * @param {string} [filterCountryCode] Two-letter country abbreviation. See [ISO 3166-1 alpha-2 country code](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2).
          * @param {string} [filterPhoneNumber] Phone number in [E.164](https://en.wikipedia.org/wiki/E.164) format.
@@ -503,13 +681,40 @@ const ContactsApiFactory = function (configuration?: Configuration, basePath?: s
             return localVarFp.list(requestParameters, options).then((request) => request(axios, basePath));
         },
         /**
-         * Returns all notes for a contact, ordered by creation time descending. The `{id}` path parameter supports contact ID and phone number. A phone number can be provided in E.164 format, such as `+16315551111`. If a numeric contact ID is not found, the same value is retried as a phone number with a leading `+`, so `861...` can match a stored `+861...` phone number. Contact retrieve, list, and search responses do not include notes; use this endpoint to read contact notes.
+         * Creates one note for the contact and returns the created note. Leading and trailing whitespace is removed before storage. This operation does not use a client idempotency key; repeating the request creates another note with a different ID.
+         * @summary Create a contact note
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        noteCreate(contactIdentifier: string, contactNoteWriteRequest: ContactNoteWriteRequest, options?: any): AxiosPromise<ContactNote> {
+            return localVarFp.noteCreate(contactIdentifier, contactNoteWriteRequest, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * Deletes one note in the current tenant by note ID and returns its snapshot before deletion. Deleting the same note again returns `404`; the operation does not use a client idempotency key.
+         * @summary Delete a contact note
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        noteDelete(noteId: string, options?: any): AxiosPromise<ContactNote> {
+            return localVarFp.noteDelete(noteId, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * Updates one note in the current tenant by note ID and returns the updated note. Repeating the same request leaves the stored content unchanged, but an accepted update may still produce another `contact.note.updated` event.
+         * @summary Update a contact note
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        noteUpdate(noteId: string, contactNoteWriteRequest: ContactNoteWriteRequest, options?: any): AxiosPromise<ContactNote> {
+            return localVarFp.noteUpdate(noteId, contactNoteWriteRequest, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * Returns all notes for a contact, ordered by creation time descending. The `{contactIdentifier}` path parameter supports a contact ID, a phone number in E.164 format starting with `+`, or a Meta username without the leading `@`. Ambiguous numeric values are resolved as Meta usernames first and fall back to contact IDs only when no matching Meta username exists. Contact retrieve, list, and search responses do not include notes; use this endpoint to read contact notes.
          * @summary List contact notes
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        notesList(id: string, options?: any): AxiosPromise<Array<ContactNote>> {
-            return localVarFp.notesList(id, options).then((request) => request(axios, basePath));
+        notesList(contactIdentifier: string, options?: any): AxiosPromise<Array<ContactNote>> {
+            return localVarFp.notesList(contactIdentifier, options).then((request) => request(axios, basePath));
         },
         /**
          * Retrieves a contact.
@@ -521,7 +726,7 @@ const ContactsApiFactory = function (configuration?: Configuration, basePath?: s
             return localVarFp.retrieve(id, options).then((request) => request(axios, basePath));
         },
         /**
-         * Updates a contact.
+         * Updates a contact. If every supplied persisted contact field already has the requested value, the contact is not updated and no `contact.attributes_changed` event is emitted. Note mutations in the same request are still applied.
          * @summary Update a contact
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -558,6 +763,13 @@ export interface ContactsApiListRequest {
      * @memberof ContactsApiList
      */
     readonly includeTotal?: boolean
+
+    /**
+     * Contact ID cursor for forward pagination. Use &#x60;0&#x60; to start a new cursor traversal. For each subsequent page, pass the exact &#x60;cursor.after&#x60; value from the previous response. The value must be a non-negative decimal integer in the signed 64-bit range (&#x60;0&#x60; through &#x60;9223372036854775807&#x60;). It cannot be combined with &#x60;page&#x60;, &#x60;pageBefore&#x60;, &#x60;offset&#x60;, or &#x60;sort&#x60;.
+     * @type {string}
+     * @memberof ContactsApiList
+     */
+    readonly pageAfter?: string
 
     /**
      * Comma-separated list of tag names. If any tag does not exist, the request fails with a parameter error.
@@ -621,7 +833,7 @@ export class ContactsApi extends BaseAPI {
     /**
      * Deletes a contact.
      * @summary Delete a contact
-     * @param {string} id ID of the contact. Also support phone number([E.164](https://en.wikipedia.org/wiki/E.164) format, start with character \&#39;+\&#39;), example: +16315551111
+     * @param {string} id Identifier of the contact. Supports a contact ID, a phone number in [E.164](https://en.wikipedia.org/wiki/E.164) format starting with &#x60;+&#x60; (for example, &#x60;+16315551111&#x60;), or a Meta username without the leading &#x60;@&#x60;. A Meta username must contain 3 to 35 letters, digits, periods, or underscores. If a numeric value can be interpreted as both a Meta username and a contact ID, it is resolved as a Meta username first. If no contact has that Meta username, the value is resolved as a contact ID.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof ContactsApi
@@ -631,7 +843,7 @@ export class ContactsApi extends BaseAPI {
     }
 
     /**
-     * Returns a paginated list of contacts.
+     * Returns a paginated list of contacts.  Omit `pageAfter` to use the existing page-based pagination. To use forward cursor pagination, set `pageAfter=0` for the first page, then pass the exact `cursor.after` value returned by the previous response. Cursor results are ordered by contact ID in ascending order.  Do not combine `pageAfter` with `page`, `pageBefore`, `offset`, or `sort`. Keep all filters unchanged while following a cursor. Concurrent contact inserts, deletions, or filter-field updates use weak consistency; restart a full traversal with `pageAfter=0` when a fresh snapshot is required.
      * @summary List contacts
      * @param {ContactsApiListRequest} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -643,21 +855,59 @@ export class ContactsApi extends BaseAPI {
     }
 
     /**
-     * Returns all notes for a contact, ordered by creation time descending. The `{id}` path parameter supports contact ID and phone number. A phone number can be provided in E.164 format, such as `+16315551111`. If a numeric contact ID is not found, the same value is retried as a phone number with a leading `+`, so `861...` can match a stored `+861...` phone number. Contact retrieve, list, and search responses do not include notes; use this endpoint to read contact notes.
-     * @summary List contact notes
-     * @param {string} id ID of the contact. Also support phone number([E.164](https://en.wikipedia.org/wiki/E.164) format, start with character \&#39;+\&#39;), example: +16315551111
+     * Creates one note for the contact and returns the created note. Leading and trailing whitespace is removed before storage. This operation does not use a client idempotency key; repeating the request creates another note with a different ID.
+     * @summary Create a contact note
+     * @param {string} contactIdentifier Identifier of the contact that owns the note. Supports a contact ID, a username without the leading &#x60;@&#x60;, or a phone number in [E.164](https://en.wikipedia.org/wiki/E.164) format starting with &#x60;+&#x60;. Usernames contain 3 to 35 letters, digits, periods, or underscores. A numeric value is resolved as a username first and then as a contact ID when no matching username exists.
+     * @param {ContactNoteWriteRequest} contactNoteWriteRequest
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof ContactsApi
      */
-    public notesList(id: string, options?: AxiosRequestConfig) {
-        return ContactsApiFp(this.configuration).notesList(id, options).then((request) => request(this.axios, this.basePath));
+    public noteCreate(contactIdentifier: string, contactNoteWriteRequest: ContactNoteWriteRequest, options?: AxiosRequestConfig) {
+        return ContactsApiFp(this.configuration).noteCreate(contactIdentifier, contactNoteWriteRequest, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * Deletes one note in the current tenant by note ID and returns its snapshot before deletion. Deleting the same note again returns `404`; the operation does not use a client idempotency key.
+     * @summary Delete a contact note
+     * @param {string} noteId The 24-character ObjectId of the contact note.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof ContactsApi
+     */
+    public noteDelete(noteId: string, options?: AxiosRequestConfig) {
+        return ContactsApiFp(this.configuration).noteDelete(noteId, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * Updates one note in the current tenant by note ID and returns the updated note. Repeating the same request leaves the stored content unchanged, but an accepted update may still produce another `contact.note.updated` event.
+     * @summary Update a contact note
+     * @param {string} noteId The 24-character ObjectId of the contact note.
+     * @param {ContactNoteWriteRequest} contactNoteWriteRequest
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof ContactsApi
+     */
+    public noteUpdate(noteId: string, contactNoteWriteRequest: ContactNoteWriteRequest, options?: AxiosRequestConfig) {
+        return ContactsApiFp(this.configuration).noteUpdate(noteId, contactNoteWriteRequest, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * Returns all notes for a contact, ordered by creation time descending. The `{contactIdentifier}` path parameter supports a contact ID, a phone number in E.164 format starting with `+`, or a Meta username without the leading `@`. Ambiguous numeric values are resolved as Meta usernames first and fall back to contact IDs only when no matching Meta username exists. Contact retrieve, list, and search responses do not include notes; use this endpoint to read contact notes.
+     * @summary List contact notes
+     * @param {string} contactIdentifier Identifier of the contact that owns the note. Supports a contact ID, a username without the leading &#x60;@&#x60;, or a phone number in [E.164](https://en.wikipedia.org/wiki/E.164) format starting with &#x60;+&#x60;. Usernames contain 3 to 35 letters, digits, periods, or underscores. A numeric value is resolved as a username first and then as a contact ID when no matching username exists.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof ContactsApi
+     */
+    public notesList(contactIdentifier: string, options?: AxiosRequestConfig) {
+        return ContactsApiFp(this.configuration).notesList(contactIdentifier, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
      * Retrieves a contact.
      * @summary Retrieve a contact
-     * @param {string} id ID of the contact. Also support phone number([E.164](https://en.wikipedia.org/wiki/E.164) format, start with character \&#39;+\&#39;), example: +16315551111
+     * @param {string} id Identifier of the contact. Supports a contact ID, a phone number in [E.164](https://en.wikipedia.org/wiki/E.164) format starting with &#x60;+&#x60; (for example, &#x60;+16315551111&#x60;), or a Meta username without the leading &#x60;@&#x60;. A Meta username must contain 3 to 35 letters, digits, periods, or underscores. If a numeric value can be interpreted as both a Meta username and a contact ID, it is resolved as a Meta username first. If no contact has that Meta username, the value is resolved as a contact ID.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof ContactsApi
@@ -667,9 +917,9 @@ export class ContactsApi extends BaseAPI {
     }
 
     /**
-     * Updates a contact.
+     * Updates a contact. If every supplied persisted contact field already has the requested value, the contact is not updated and no `contact.attributes_changed` event is emitted. Note mutations in the same request are still applied.
      * @summary Update a contact
-     * @param {string} id ID of the contact. Also support phone number([E.164](https://en.wikipedia.org/wiki/E.164) format, start with character \&#39;+\&#39;), example: +16315551111
+     * @param {string} id Identifier of the contact. Supports a contact ID, a phone number in [E.164](https://en.wikipedia.org/wiki/E.164) format starting with &#x60;+&#x60; (for example, &#x60;+16315551111&#x60;), or a Meta username without the leading &#x60;@&#x60;. A Meta username must contain 3 to 35 letters, digits, periods, or underscores. If a numeric value can be interpreted as both a Meta username and a contact ID, it is resolved as a Meta username first. If no contact has that Meta username, the value is resolved as a contact ID.
      * @param {ContactUpdateRequest} [contactUpdateRequest]
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}

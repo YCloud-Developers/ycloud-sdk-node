@@ -15,7 +15,7 @@
 
 
 /**
- * Business Username state for a WhatsApp business phone number. - `not_set`: No active or pending Business Username exists. - `active`: A Business Username is active. - `pending_review`: A requested Business Username is under Meta review. If an active username exists while a new request is pending, `businessUsernameStatus` is `pending_review`, `businessUsername` contains the still-active username, and `requestedBusinessUsername` contains the pending request.
+ * Business Username state for a WhatsApp business phone number. - `not_set`: No active or pending Business Username exists. - `active`: A Business Username is active. - `reserved`: A requested Business Username is reserved by Meta and may still be under review. - `pending_review`: Legacy compatibility value for an under-review request. New writes use `reserved`. If an active username exists while a new request is reserved or under review, `businessUsernameStatus` is `reserved`, `businessUsername` contains the still-active username, and `requestedBusinessUsername` contains the requested username.
  * @export
  * @enum {string}
  */
@@ -23,10 +23,8 @@
 export const WhatsappBusinessUsernameStatus = {
     NotSet: 'not_set',
     Active: 'active',
-    PendingReview: 'pending_review'
+    PendingReview: 'pending_review',
+    Reserved: 'reserved'
 } as const;
 
 export type WhatsappBusinessUsernameStatus = typeof WhatsappBusinessUsernameStatus[keyof typeof WhatsappBusinessUsernameStatus];
-
-
-

@@ -15,7 +15,7 @@
 
 
 /**
- * Indicates the update event type of the WABA when a notification is sent to you to report a [policy violation](https://developers.facebook.com/docs/whatsapp/overview/policy-enforcement), a WABA has been banned and more. - `DISABLED_UPDATE`: WhatsApp Business Account Banned. - `ACCOUNT_RESTRICTION`: WhatsApp Business Account Restricted Due To Policy Violations. - `ACCOUNT_VIOLATION`: WhatsApp Business Account Violates Policy. - `PARTNER_REMOVED`: WhatsApp Business Account was removed from the partner connection. - `PARTNER_APP_UNINSTALLED`: WhatsApp Business Account partner app was uninstalled. - `AUTH_INTL_PRICE_ELIGIBILITY_UPDATE`: WhatsApp Business Account is eligible for the [authentication-international rate](https://developers.facebook.com/docs/whatsapp/pricing/authentication-international-rates). - `BUSINESS_PRIMARY_LOCATION_COUNTRY_UPDATE`: Business\'s [primary business location](https://developers.facebook.com/docs/whatsapp/pricing/authentication-international-rates#primary-business-location) is set.
+ * Indicates the update event type of the WABA when a notification is sent to you to report a [policy violation](https://developers.facebook.com/docs/whatsapp/overview/policy-enforcement), a WABA has been banned and more. - `DISABLED_UPDATE`: WhatsApp Business Account Banned. - `ACCOUNT_RESTRICTION`: WhatsApp Business Account Restricted Due To Policy Violations. - `ACCOUNT_VIOLATION`: WhatsApp Business Account Violates Policy. - `PARTNER_REMOVED`: WhatsApp Business Account was removed from the partner connection. - `PARTNER_APP_UNINSTALLED`: WhatsApp Business Account partner app was uninstalled. - `AUTH_INTL_PRICE_ELIGIBILITY_UPDATE`: WhatsApp Business Account is eligible for the [authentication-international rate](https://developers.facebook.com/docs/whatsapp/pricing/authentication-international-rates). - `BUSINESS_PRIMARY_LOCATION_COUNTRY_UPDATE`: Business\'s [primary business location](https://developers.facebook.com/docs/whatsapp/pricing/authentication-international-rates#primary-business-location) is set. - `BUSINESS_CAPABILITY_UPDATE`: Meta reported a change to the Business Portfolio or WABA phone-number registration limit.
  * @export
  * @enum {string}
  */
@@ -27,10 +27,8 @@ export const WhatsappBusinessAccountUpdateEventEnum = {
     PartnerRemoved: 'PARTNER_REMOVED',
     PartnerAppUninstalled: 'PARTNER_APP_UNINSTALLED',
     AuthIntlPriceEligibilityUpdate: 'AUTH_INTL_PRICE_ELIGIBILITY_UPDATE',
-    BusinessPrimaryLocationCountryUpdate: 'BUSINESS_PRIMARY_LOCATION_COUNTRY_UPDATE'
+    BusinessPrimaryLocationCountryUpdate: 'BUSINESS_PRIMARY_LOCATION_COUNTRY_UPDATE',
+    BusinessCapabilityUpdate: 'BUSINESS_CAPABILITY_UPDATE'
 } as const;
 
 export type WhatsappBusinessAccountUpdateEventEnum = typeof WhatsappBusinessAccountUpdateEventEnum[keyof typeof WhatsappBusinessAccountUpdateEventEnum];
-
-
-

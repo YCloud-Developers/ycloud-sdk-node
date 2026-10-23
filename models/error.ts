@@ -13,10 +13,11 @@
  */
 
 
+import { MetaBusinessAgentApiError } from './meta-business-agent-api-error';
 import { WhatsappApiError } from './whatsapp-api-error';
 
 /**
- * 
+ *
  * @export
  * @interface Error
  */
@@ -58,10 +59,15 @@ export interface Error {
      */
     'requestId'?: string;
     /**
-     * 
+     *
      * @type {WhatsappApiError}
      * @memberof Error
      */
     'whatsappApiError'?: WhatsappApiError;
+    /**
+     *
+     * @type {MetaBusinessAgentApiError}
+     * @memberof Error
+     */
+    'metaBusinessAgentApiError'?: MetaBusinessAgentApiError;
 }
-

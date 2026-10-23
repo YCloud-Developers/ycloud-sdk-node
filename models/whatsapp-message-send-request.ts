@@ -157,6 +157,12 @@ export interface WhatsappMessageSendRequest {
      */
     'useDirectSend'?: boolean;
     /**
+     * **Optional.** Business-defined template name for a Utility Direct Send message submitted through synchronous `POST /v2/whatsapp/messages/sendDirectly` or asynchronous `POST /v2/whatsapp/messages`.  The value is case-sensitive and may contain only lowercase letters, digits, and underscores. It does not enable Direct Send by itself. When Direct Send is not selected, this field is ignored.  The name must not already be used by a non-Direct-Send template in the sender WABA. A conflict is rejected before the synchronous provider call or asynchronous acceptance, so an asynchronous conflict does not return a message ID. This field is not supported for Authentication Direct Send.
+     * @type {string}
+     * @memberof WhatsappMessageSendRequest
+     */
+    'templateName'?: string;
+    /**
      * **Optional.** If set to `true`, the message will not be sent to users who have unsubscribed from your account. Defaults to `false`.  Only use for `POST /v2/whatsapp/messages`. If the user has unsubscribed, we will push webhook notifications with `whatsappMessage.errorCode` set to `RECIPIENT_UNSUBSCRIBED`.  Not applicable to `POST /v2/whatsapp/messages/sendDirectly`.
      * @type {boolean}
      * @memberof WhatsappMessageSendRequest

@@ -25,6 +25,10 @@ import { ErrorResponse } from '../models';
 // @ts-ignore
 import { WhatsappTemplate } from '../models';
 // @ts-ignore
+import { WhatsappTemplateAnalytics } from '../models';
+// @ts-ignore
+import { WhatsappTemplateAnalyticsRequest } from '../models';
+// @ts-ignore
 import { WhatsappTemplateCreateRequest } from '../models';
 // @ts-ignore
 import { WhatsappTemplateEditRequest } from '../models';
@@ -37,9 +41,52 @@ import { WhatsappTemplatePage } from '../models';
 const WhatsappTemplatesApiAxiosParamCreator = function (configuration?: Configuration) {
     return {
         /**
+         * Returns daily YCloud message metrics and, when available, Meta Template Insights for one WhatsApp template. Authenticate with `X-API-Key`. `analyticsStatus` describes Meta Template Insights only; it does not describe YCloud metrics. Dates are interpreted in the WABA timezone, both boundaries are inclusive, and the range must contain between 1 and 90 calendar days.  The selected template must currently exist under the requested WABA. REST resolves and validates the template before querying any statistics. A missing template returns `404`, a template that belongs to another WABA returns `403`, and a template lookup failure returns `500`; none of these errors returns partial statistics.
+         * @summary Retrieve WhatsApp template analytics
+         * @param {WhatsappTemplateAnalyticsRequest} whatsappTemplateAnalyticsRequest
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        analytics: async (whatsappTemplateAnalyticsRequest: WhatsappTemplateAnalyticsRequest, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'whatsappTemplateAnalyticsRequest' is not null or undefined
+            assertParamExists('analytics', 'whatsappTemplateAnalyticsRequest', whatsappTemplateAnalyticsRequest)
+            const localVarPath = `/whatsapp/templates/analytics`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            // const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            if (USER_AGENT) {
+                localVarHeaderParameter['User-Agent'] = USER_AGENT;
+            }
+            const localVarQueryParameter = {} as any;
+
+            // authentication api_key required
+            await setApiKeyToObject(localVarHeaderParameter, "X-API-Key", configuration)
+
+
+
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+
+            // setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+            localVarRequestOptions.params = localVarQueryParameter;
+            localVarRequestOptions.data = serializeDataIfNeeded(whatsappTemplateAnalyticsRequest, localVarRequestOptions, configuration)
+
+            return {
+                url: localVarPath,
+                options: localVarRequestOptions,
+            };
+        },
+        /**
          * Creates a WhatsApp template.
          * @summary Create a template
-         * @param {WhatsappTemplateCreateRequest} whatsappTemplateCreateRequest 
+         * @param {WhatsappTemplateCreateRequest} whatsappTemplateCreateRequest
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -65,7 +112,7 @@ const WhatsappTemplatesApiAxiosParamCreator = function (configuration?: Configur
             await setApiKeyToObject(localVarHeaderParameter, "X-API-Key", configuration)
 
 
-    
+
             localVarHeaderParameter['Content-Type'] = 'application/json';
 
             // setSearchParams(localVarUrlObj, localVarQueryParameter);
@@ -113,7 +160,7 @@ const WhatsappTemplatesApiAxiosParamCreator = function (configuration?: Configur
             await setApiKeyToObject(localVarHeaderParameter, "X-API-Key", configuration)
 
 
-    
+
             // setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
@@ -162,7 +209,7 @@ const WhatsappTemplatesApiAxiosParamCreator = function (configuration?: Configur
             await setApiKeyToObject(localVarHeaderParameter, "X-API-Key", configuration)
 
 
-    
+
             // setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
@@ -179,7 +226,7 @@ const WhatsappTemplatesApiAxiosParamCreator = function (configuration?: Configur
          * @param {string} wabaId WhatsApp Business Account ID.
          * @param {string} name Name of the template.
          * @param {string} language Language code of the template. See [Supported Languages](https://developers.facebook.com/documentation/business-messaging/whatsapp/templates/supported-languages) for all codes.
-         * @param {WhatsappTemplateEditRequest} [whatsappTemplateEditRequest] 
+         * @param {WhatsappTemplateEditRequest} [whatsappTemplateEditRequest]
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -212,7 +259,7 @@ const WhatsappTemplatesApiAxiosParamCreator = function (configuration?: Configur
             await setApiKeyToObject(localVarHeaderParameter, "X-API-Key", configuration)
 
 
-    
+
             localVarHeaderParameter['Content-Type'] = 'application/json';
 
             // setSearchParams(localVarUrlObj, localVarQueryParameter);
@@ -288,7 +335,7 @@ const WhatsappTemplatesApiAxiosParamCreator = function (configuration?: Configur
             }
 
 
-    
+
             // setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
@@ -337,7 +384,7 @@ const WhatsappTemplatesApiAxiosParamCreator = function (configuration?: Configur
             await setApiKeyToObject(localVarHeaderParameter, "X-API-Key", configuration)
 
 
-    
+
             // setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
@@ -359,9 +406,20 @@ const WhatsappTemplatesApiFp = function(configuration?: Configuration) {
     const localVarAxiosParamCreator = WhatsappTemplatesApiAxiosParamCreator(configuration)
     return {
         /**
+         * Returns daily YCloud message metrics and, when available, Meta Template Insights for one WhatsApp template. Authenticate with `X-API-Key`. `analyticsStatus` describes Meta Template Insights only; it does not describe YCloud metrics. Dates are interpreted in the WABA timezone, both boundaries are inclusive, and the range must contain between 1 and 90 calendar days.  The selected template must currently exist under the requested WABA. REST resolves and validates the template before querying any statistics. A missing template returns `404`, a template that belongs to another WABA returns `403`, and a template lookup failure returns `500`; none of these errors returns partial statistics.
+         * @summary Retrieve WhatsApp template analytics
+         * @param {WhatsappTemplateAnalyticsRequest} whatsappTemplateAnalyticsRequest
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async analytics(whatsappTemplateAnalyticsRequest: WhatsappTemplateAnalyticsRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<WhatsappTemplateAnalytics>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.analytics(whatsappTemplateAnalyticsRequest, options);
+            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+        },
+        /**
          * Creates a WhatsApp template.
          * @summary Create a template
-         * @param {WhatsappTemplateCreateRequest} whatsappTemplateCreateRequest 
+         * @param {WhatsappTemplateCreateRequest} whatsappTemplateCreateRequest
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -400,7 +458,7 @@ const WhatsappTemplatesApiFp = function(configuration?: Configuration) {
          * @param {string} wabaId WhatsApp Business Account ID.
          * @param {string} name Name of the template.
          * @param {string} language Language code of the template. See [Supported Languages](https://developers.facebook.com/documentation/business-messaging/whatsapp/templates/supported-languages) for all codes.
-         * @param {WhatsappTemplateEditRequest} [whatsappTemplateEditRequest] 
+         * @param {WhatsappTemplateEditRequest} [whatsappTemplateEditRequest]
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -442,6 +500,15 @@ const WhatsappTemplatesApiFp = function(configuration?: Configuration) {
 const WhatsappTemplatesApiFactory = function (configuration?: Configuration, basePath?: string, axios?: AxiosInstance) {
     const localVarFp = WhatsappTemplatesApiFp(configuration)
     return {
+        /**
+         * Returns daily YCloud message metrics and, when available, Meta Template Insights for one WhatsApp template. Authenticate with `X-API-Key`. `analyticsStatus` describes Meta Template Insights only; it does not describe YCloud metrics. Dates are interpreted in the WABA timezone, both boundaries are inclusive, and the range must contain between 1 and 90 calendar days.  The selected template must currently exist under the requested WABA. REST resolves and validates the template before querying any statistics. A missing template returns `404`, a template that belongs to another WABA returns `403`, and a template lookup failure returns `500`; none of these errors returns partial statistics.
+         * @summary Retrieve WhatsApp template analytics
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        analytics(whatsappTemplateAnalyticsRequest: WhatsappTemplateAnalyticsRequest, options?: any): AxiosPromise<WhatsappTemplateAnalytics> {
+            return localVarFp.analytics(whatsappTemplateAnalyticsRequest, options).then((request) => request(axios, basePath));
+        },
         /**
          * Creates a WhatsApp template.
          * @summary Create a template
@@ -571,9 +638,21 @@ export interface WhatsappTemplatesApiListRequest {
  */
 export class WhatsappTemplatesApi extends BaseAPI {
     /**
+     * Returns daily YCloud message metrics and, when available, Meta Template Insights for one WhatsApp template. Authenticate with `X-API-Key`. `analyticsStatus` describes Meta Template Insights only; it does not describe YCloud metrics. Dates are interpreted in the WABA timezone, both boundaries are inclusive, and the range must contain between 1 and 90 calendar days.  The selected template must currently exist under the requested WABA. REST resolves and validates the template before querying any statistics. A missing template returns `404`, a template that belongs to another WABA returns `403`, and a template lookup failure returns `500`; none of these errors returns partial statistics.
+     * @summary Retrieve WhatsApp template analytics
+     * @param {WhatsappTemplateAnalyticsRequest} whatsappTemplateAnalyticsRequest
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof WhatsappTemplatesApi
+     */
+    public analytics(whatsappTemplateAnalyticsRequest: WhatsappTemplateAnalyticsRequest, options?: AxiosRequestConfig) {
+        return WhatsappTemplatesApiFp(this.configuration).analytics(whatsappTemplateAnalyticsRequest, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
      * Creates a WhatsApp template.
      * @summary Create a template
-     * @param {WhatsappTemplateCreateRequest} whatsappTemplateCreateRequest 
+     * @param {WhatsappTemplateCreateRequest} whatsappTemplateCreateRequest
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof WhatsappTemplatesApi
@@ -615,7 +694,7 @@ export class WhatsappTemplatesApi extends BaseAPI {
      * @param {string} wabaId WhatsApp Business Account ID.
      * @param {string} name Name of the template.
      * @param {string} language Language code of the template. See [Supported Languages](https://developers.facebook.com/documentation/business-messaging/whatsapp/templates/supported-languages) for all codes.
-     * @param {WhatsappTemplateEditRequest} [whatsappTemplateEditRequest] 
+     * @param {WhatsappTemplateEditRequest} [whatsappTemplateEditRequest]
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof WhatsappTemplatesApi

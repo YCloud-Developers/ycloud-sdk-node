@@ -80,7 +80,7 @@ export const EventType = {
     /**
     * Occurs when WhatsApp Business app send message.
     */
-    WhatsappSmbMessageCreated: 'whatsapp.smb.message.created',
+    WhatsappSmbMessageEchoes: 'whatsapp.smb.message.echoes',
     /**
     * Occurs when a WhatsApp business phone number is deleted.
     */
@@ -122,6 +122,14 @@ export const EventType = {
     */
     WhatsappCallStatusUpdated: 'whatsapp.call.status.updated',
     /**
+    * Occurs when an API-sourced WhatsApp call recording becomes available or permanently fails.
+    */
+    WhatsappCallRecordingUpdated: 'whatsapp.call.recording.updated',
+    /**
+    * Occurs when an API-sourced WhatsApp call transcription becomes available or permanently fails.
+    */
+    WhatsappCallTranscriptionUpdated: 'whatsapp.call.transcription.updated',
+    /**
     * Occurs when a WhatsApp flow status is updated.
     */
     WhatsappFlowStatusChange: 'whatsapp.flow.status_change',
@@ -142,6 +150,18 @@ export const EventType = {
     */
     ContactDeleted: 'contact.deleted',
     /**
+    * Occurs when a contact note is created.
+    */
+    ContactNoteCreated: 'contact.note.created',
+    /**
+    * Occurs when a contact note is updated.
+    */
+    ContactNoteUpdated: 'contact.note.updated',
+    /**
+    * Occurs when a contact note is independently deleted. Contact deletion does not emit this event for cascaded notes.
+    */
+    ContactNoteDeleted: 'contact.note.deleted',
+    /**
     * Occurs when a contact unsubscribes from messages.
     */
     ContactUnsubscribeCreated: 'contact.unsubscribe.created',
@@ -156,6 +176,3 @@ export const EventType = {
 } as const;
 
 export type EventType = typeof EventType[keyof typeof EventType];
-
-
-

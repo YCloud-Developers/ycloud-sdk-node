@@ -29,13 +29,19 @@ export interface WhatsappPhoneNumberProfile {
      */
     'about'?: string;
     /**
+     * Optional remark name assigned to this phone number in YCloud. It is populated by the profile GET API and omitted when no remark name is set.
+     * @type {string}
+     * @memberof WhatsappPhoneNumberProfile
+     */
+    'ycloudName'?: string;
+    /**
      * The verified name
      * @type {string}
      * @memberof WhatsappPhoneNumberProfile
      */
     'verifiedName'?: string;
     /**
-     * 
+     *
      * @type {WhatsappPhoneNumberNameStatus}
      * @memberof WhatsappPhoneNumberProfile
      */
@@ -47,7 +53,7 @@ export interface WhatsappPhoneNumberProfile {
      */
     'newName'?: string;
     /**
-     * 
+     *
      * @type {WhatsappPhoneNumberNameStatus}
      * @memberof WhatsappPhoneNumberProfile
      */
@@ -77,7 +83,7 @@ export interface WhatsappPhoneNumberProfile {
      */
     'profilePictureUrl'?: string;
     /**
-     * 
+     *
      * @type {WhatsappPhoneNumberProfileVertical}
      * @memberof WhatsappPhoneNumberProfile
      */
@@ -89,4 +95,3 @@ export interface WhatsappPhoneNumberProfile {
      */
     'websites'?: Array<string>;
 }
-

@@ -18,6 +18,7 @@ export * from './apis/balance-api';
 export * from './apis/contacts-api';
 export * from './apis/custom-events-api';
 export * from './apis/emails-api';
+export * from './apis/meta-business-agent-api';
 export * from './apis/sms-api';
 export * from './apis/unsubscribers-api';
 export * from './apis/verify-api';
@@ -32,4 +33,3 @@ export * from './apis/whatsapp-media-api';
 export * from './apis/whatsapp-messages-api';
 export * from './apis/whatsapp-phone-numbers-api';
 export * from './apis/whatsapp-templates-api';
-

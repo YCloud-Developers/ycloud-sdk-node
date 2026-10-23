@@ -13,6 +13,7 @@
  */
 
 
+import { CallingCaptureSettings } from './calling-capture-settings';
 import { WhatsappPhoneNumberSettingsCalling } from './whatsapp-phone-number-settings-calling';
 
 /**
@@ -22,10 +23,15 @@ import { WhatsappPhoneNumberSettingsCalling } from './whatsapp-phone-number-sett
  */
 export interface WhatsappPhoneNumberSettings {
     /**
-     * 
+     *
      * @type {WhatsappPhoneNumberSettingsCalling}
      * @memberof WhatsappPhoneNumberSettings
      */
     'calling'?: WhatsappPhoneNumberSettingsCalling;
+    /**
+     *
+     * @type {CallingCaptureSettings}
+     * @memberof WhatsappPhoneNumberSettings
+     */
+    'capture'?: CallingCaptureSettings;
 }
-

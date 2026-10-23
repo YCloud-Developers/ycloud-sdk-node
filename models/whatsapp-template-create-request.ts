@@ -42,13 +42,13 @@ export interface WhatsappTemplateCreateRequest {
      */
     'language': string;
     /**
-     * 
+     *
      * @type {WhatsappTemplateCategory}
      * @memberof WhatsappTemplateCreateRequest
      */
     'category': WhatsappTemplateCategory;
     /**
-     * 
+     *
      * @type {WhatsappTemplateSubCategory}
      * @memberof WhatsappTemplateCreateRequest
      */
@@ -60,16 +60,15 @@ export interface WhatsappTemplateCreateRequest {
      */
     'messageSendTtlSeconds'?: number;
     /**
-     * 
+     *
      * @type {Array<WhatsappTemplateComponent>}
      * @memberof WhatsappTemplateCreateRequest
      */
     'components': Array<WhatsappTemplateComponent>;
     /**
-     * **Optional.** Indicates if template button click tracking is disabled. Set to `true` to disable button click tracking on the template, or `false` to enable. You can disable button click tracking on an individual template by setting this field to `true`. Once disabled, button engagement/clicks will not be displayed in the WhatsApp Manager when viewing the template\'s insights. If not provided, this value defaults to `false`, which means button click tracking is enabled by default.
+     * **Optional.** Indicates if template button click tracking is disabled. Set to `true` to disable button click tracking on the template, or `false` to enable. You can disable button click tracking on an individual template by setting this field to `true`. Once disabled, button engagement/clicks will not be displayed in the WhatsApp Manager when viewing the template\'s insights. If not provided or set to `null`, this value defaults to `true`, which means button click tracking is disabled by default.
      * @type {boolean}
      * @memberof WhatsappTemplateCreateRequest
      */
     'ctaUrlLinkTrackingOptedOut'?: boolean;
 }
-

@@ -15,7 +15,7 @@
 
 
 /**
- * Provide exactly one of `to` or `recipient`. If both are provided, `to` takes precedence and `recipient` is ignored.
+ * Provide at least one of `to` or `recipient`. If both are provided, `to` takes precedence and `recipient` is ignored.
  * @export
  * @interface WhatsappCallingConnectRequest
  */
@@ -57,5 +57,3 @@ export const WhatsappCallingConnectRequestSdpTypeEnum = {
 } as const;
 
 export type WhatsappCallingConnectRequestSdpTypeEnum = typeof WhatsappCallingConnectRequestSdpTypeEnum[keyof typeof WhatsappCallingConnectRequestSdpTypeEnum];
-
-

@@ -52,7 +52,7 @@ export interface WhatsappBusinessAccount {
      */
     'messageTemplateNamespace'?: string;
     /**
-     * 
+     *
      * @type {WhatsappBusinessAccountReviewStatus}
      * @memberof WhatsappBusinessAccount
      */
@@ -76,7 +76,7 @@ export interface WhatsappBusinessAccount {
      */
     'businessStatus'?: string;
     /**
-     * 
+     *
      * @type {MetaBusinessAccountVerificationStatus}
      * @memberof WhatsappBusinessAccount
      */
@@ -118,19 +118,19 @@ export interface WhatsappBusinessAccount {
      */
     'timezoneId'?: string;
     /**
-     * 
+     *
      * @type {WhatsappReviewDecision}
      * @memberof WhatsappBusinessAccount
      */
     'decision'?: WhatsappReviewDecision;
     /**
-     * 
+     *
      * @type {WhatsappBusinessAccountUpdateEventEnum}
      * @memberof WhatsappBusinessAccount
      */
     'updateEvent'?: WhatsappBusinessAccountUpdateEventEnum;
     /**
-     * 
+     *
      * @type {WhatsappBusinessAccountBanState}
      * @memberof WhatsappBusinessAccount
      */
@@ -153,6 +153,18 @@ export interface WhatsappBusinessAccount {
      * @memberof WhatsappBusinessAccount
      */
     'restrictions'?: Array<WhatsappBusinessAccountRestrictionInfo>;
+    /**
+     * Included in a `whatsapp.business_account.updated` webhook with `updateEvent=BUSINESS_CAPABILITY_UPDATE` when Meta reports the Business Portfolio phone-number registration limit.
+     * @type {number}
+     * @memberof WhatsappBusinessAccount
+     */
+    'maxPhoneNumbersPerBusiness'?: number;
+    /**
+     * Included in a `whatsapp.business_account.updated` webhook with `updateEvent=BUSINESS_CAPABILITY_UPDATE` when Meta reports the WABA phone-number registration limit.
+     * @type {number}
+     * @memberof WhatsappBusinessAccount
+     */
+    'maxPhoneNumbersPerWaba'?: number;
     /**
      * Starting June 1, 2024, we are updating our authentication rate card and introducing a new authentication-international rate. This rate will apply in the the following countries: - June 1, 2024 – Indonesia (country calling code +62, country code `ID`) - July 1, 2024 – India (country calling code +91, country code `IN`)  See also [Authentication-International Rates](https://developers.facebook.com/docs/whatsapp/pricing/authentication-international-rates).
      * @type {Array<WhatsappAuthIntlRateEligibilityCountry>}
@@ -190,4 +202,3 @@ export interface WhatsappBusinessAccount {
      */
     'removedTime'?: string;
 }
-

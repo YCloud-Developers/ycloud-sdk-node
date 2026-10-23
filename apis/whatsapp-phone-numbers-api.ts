@@ -35,6 +35,8 @@ import { WhatsappCommerceSettings } from '../models';
 // @ts-ignore
 import { WhatsappCommerceSettingsUpdateRequest } from '../models';
 // @ts-ignore
+import { WhatsappContactBookEntryDeleteResult } from '../models';
+// @ts-ignore
 import { WhatsappPhoneNameUpdateRequest } from '../models';
 // @ts-ignore
 import { WhatsappPhoneNameUpdateResponse } from '../models';
@@ -55,7 +57,7 @@ import { WhatsappPhoneNumberSettings } from '../models';
 const WhatsappPhoneNumbersApiAxiosParamCreator = function (configuration?: Configuration) {
     return {
         /**
-         * Deletes the active Business Username for a WhatsApp business phone number. This operation removes the currently active Business Username. It does not cancel or remove a pending Business Username request. If a pending request still exists after deletion, the returned `businessUsernameStatus` remains `pending_review`; otherwise it becomes `not_set`.
+         * Deletes the active Business Username for a WhatsApp business phone number. This operation removes the currently active Business Username. It does not cancel or remove a reserved Business Username request. If a reserved request still exists after deletion, the returned `businessUsernameStatus` remains `reserved`; otherwise it becomes `not_set`.
          * @summary Delete a phone number business username
          * @param {string} wabaId WhatsApp Business Account ID.
          * @param {string} phoneNumber Phone number in [E.164](https://en.wikipedia.org/wiki/E.164) format.
@@ -88,7 +90,56 @@ const WhatsappPhoneNumbersApiAxiosParamCreator = function (configuration?: Confi
             await setApiKeyToObject(localVarHeaderParameter, "X-API-Key", configuration)
 
 
-    
+
+            // setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+            localVarRequestOptions.params = localVarQueryParameter;
+
+            return {
+                url: localVarPath,
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * Deletes the Meta contact book entry that associates a WhatsApp business phone number with a customer\'s WhatsApp Business-scoped user ID (BSUID).  Only standard BSUIDs such as `US.11815799212886844830` are supported. Parent BSUIDs such as `US.ENT.11815799212886844830` are not supported. The BSUID must be scoped to the same Meta business portfolio as the phone number. The specified WABA must belong to the authenticated YCloud account and be available, and the phone number must be bound to that WABA in YCloud. Use the YCloud account API key in the `X-API-Key` header. Developer App API keys are not supported and return HTTP 403.  An HTTP 200 response always has `success=true`. `deleted=true` means Meta reports that it deleted a matching contact book entry. `deleted=false` means Meta processed the request but found no matching entry to delete. This operation does not delete or modify YCloud Contact, message, or BSUID business records, and it does not bypass Meta\'s 30-day caching behavior. A later WhatsApp interaction between the same business phone number and customer may cause Meta to create the entry again.
+         * @summary Delete a Meta contact book entry
+         * @param {string} wabaId WhatsApp Business Account ID.
+         * @param {string} phoneNumber Phone number in [E.164](https://en.wikipedia.org/wiki/E.164) format, bound to the specified WABA in YCloud. When constructing the path manually, URL-encode the leading &#x60;+&#x60; as &#x60;%2B&#x60;.
+         * @param {string} bsuid Standard WhatsApp Business-scoped user ID (BSUID) from the same Meta business portfolio as the phone number. Parent BSUIDs containing &#x60;.ENT.&#x60; are not supported.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        deleteContactBookEntry: async (wabaId: string, phoneNumber: string, bsuid: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'wabaId' is not null or undefined
+            assertParamExists('deleteContactBookEntry', 'wabaId', wabaId)
+            // verify required parameter 'phoneNumber' is not null or undefined
+            assertParamExists('deleteContactBookEntry', 'phoneNumber', phoneNumber)
+            // verify required parameter 'bsuid' is not null or undefined
+            assertParamExists('deleteContactBookEntry', 'bsuid', bsuid)
+            const localVarPath = `/whatsapp/phoneNumbers/{wabaId}/{phoneNumber}/contactBook/{bsuid}`
+                .replace(`{${"wabaId"}}`, encodeURIComponent(String(wabaId)))
+                .replace(`{${"phoneNumber"}}`, encodeURIComponent(String(phoneNumber)))
+                .replace(`{${"bsuid"}}`, encodeURIComponent(String(bsuid)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            // const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'DELETE', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            if (USER_AGENT) {
+                localVarHeaderParameter['User-Agent'] = USER_AGENT;
+            }
+            const localVarQueryParameter = {} as any;
+
+            // authentication api_key required
+            await setApiKeyToObject(localVarHeaderParameter, "X-API-Key", configuration)
+
+
+
             // setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
@@ -146,7 +197,7 @@ const WhatsappPhoneNumbersApiAxiosParamCreator = function (configuration?: Confi
             }
 
 
-    
+
             // setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
@@ -191,7 +242,7 @@ const WhatsappPhoneNumbersApiAxiosParamCreator = function (configuration?: Confi
             await setApiKeyToObject(localVarHeaderParameter, "X-API-Key", configuration)
 
 
-    
+
             // setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
@@ -236,7 +287,7 @@ const WhatsappPhoneNumbersApiAxiosParamCreator = function (configuration?: Confi
             await setApiKeyToObject(localVarHeaderParameter, "X-API-Key", configuration)
 
 
-    
+
             // setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
@@ -281,7 +332,7 @@ const WhatsappPhoneNumbersApiAxiosParamCreator = function (configuration?: Confi
             await setApiKeyToObject(localVarHeaderParameter, "X-API-Key", configuration)
 
 
-    
+
             // setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
@@ -326,7 +377,7 @@ const WhatsappPhoneNumbersApiAxiosParamCreator = function (configuration?: Confi
             await setApiKeyToObject(localVarHeaderParameter, "X-API-Key", configuration)
 
 
-    
+
             // setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
@@ -371,7 +422,7 @@ const WhatsappPhoneNumbersApiAxiosParamCreator = function (configuration?: Confi
             await setApiKeyToObject(localVarHeaderParameter, "X-API-Key", configuration)
 
 
-    
+
             // setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
@@ -416,7 +467,7 @@ const WhatsappPhoneNumbersApiAxiosParamCreator = function (configuration?: Confi
             await setApiKeyToObject(localVarHeaderParameter, "X-API-Key", configuration)
 
 
-    
+
             // setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
@@ -432,10 +483,11 @@ const WhatsappPhoneNumbersApiAxiosParamCreator = function (configuration?: Confi
          * @summary Retrieve phone number settings
          * @param {string} wabaId WhatsApp Business Account ID.
          * @param {string} phoneNumber Phone number in [E.164](https://en.wikipedia.org/wiki/E.164) format.
+         * @param {'capture' | 'calling'} [type] Set to &#x60;capture&#x60; to retrieve only Calling recording and transcription capture settings. Omit it or set it to &#x60;calling&#x60; to retrieve the existing Calling settings response.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        retrieveSettings: async (wabaId: string, phoneNumber: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+        retrieveSettings: async (wabaId: string, phoneNumber: string, type?: 'capture' | 'calling', options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'wabaId' is not null or undefined
             assertParamExists('retrieveSettings', 'wabaId', wabaId)
             // verify required parameter 'phoneNumber' is not null or undefined
@@ -460,8 +512,12 @@ const WhatsappPhoneNumbersApiAxiosParamCreator = function (configuration?: Confi
             // authentication api_key required
             await setApiKeyToObject(localVarHeaderParameter, "X-API-Key", configuration)
 
+            if (type !== undefined) {
+                localVarQueryParameter['type'] = type;
+            }
 
-    
+
+
             // setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
@@ -473,7 +529,7 @@ const WhatsappPhoneNumbersApiAxiosParamCreator = function (configuration?: Confi
             };
         },
         /**
-         * Saves phone number specific settings.
+         * Saves phone number specific settings. Send `calling`, `capture`, or both. When both are supplied, the service independently attempts both saves after shared authorization and phone-number validation. A failure in either branch does not prevent the other branch from being attempted. If either branch fails, the existing error response is returned and the other setting may already have been saved.
          * @summary Save phone number settings
          * @param {string} wabaId WhatsApp Business Account ID.
          * @param {string} phoneNumber Phone number in [E.164](https://en.wikipedia.org/wiki/E.164) format.
@@ -509,7 +565,7 @@ const WhatsappPhoneNumbersApiAxiosParamCreator = function (configuration?: Confi
             await setApiKeyToObject(localVarHeaderParameter, "X-API-Key", configuration)
 
 
-    
+
             localVarHeaderParameter['Content-Type'] = 'application/json';
 
             // setSearchParams(localVarUrlObj, localVarQueryParameter);
@@ -524,11 +580,11 @@ const WhatsappPhoneNumbersApiAxiosParamCreator = function (configuration?: Confi
             };
         },
         /**
-         * Requests a Business Username update for a WhatsApp business phone number. The requested username may require Meta review before it becomes active. If Meta accepts the request for review, the response status is usually `pending_review`; if Meta returns an error, YCloud returns the error and does not change the stored Business Username state.  The `username` value is a plain username without `@`. YCloud trims leading and trailing whitespace and normalizes the value to lowercase before validation and submission.
+         * Requests a Business Username update for a WhatsApp business phone number. The requested username may require Meta review before it becomes active. If Meta accepts or reserves the request for review, the response status is usually `reserved`; `pending_review` is kept only as a legacy compatibility value. If Meta returns an error, YCloud returns the error and does not change the stored Business Username state.  The `username` value is a plain username without `@`. YCloud trims leading and trailing whitespace and normalizes the value to lowercase before validation and submission.
          * @summary Update a phone number business username
          * @param {string} wabaId WhatsApp Business Account ID.
          * @param {string} phoneNumber Phone number in [E.164](https://en.wikipedia.org/wiki/E.164) format.
-         * @param {WhatsappBusinessUsernameUpdateRequest} whatsappBusinessUsernameUpdateRequest 
+         * @param {WhatsappBusinessUsernameUpdateRequest} whatsappBusinessUsernameUpdateRequest
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -560,7 +616,7 @@ const WhatsappPhoneNumbersApiAxiosParamCreator = function (configuration?: Confi
             await setApiKeyToObject(localVarHeaderParameter, "X-API-Key", configuration)
 
 
-    
+
             localVarHeaderParameter['Content-Type'] = 'application/json';
 
             // setSearchParams(localVarUrlObj, localVarQueryParameter);
@@ -579,7 +635,7 @@ const WhatsappPhoneNumbersApiAxiosParamCreator = function (configuration?: Confi
          * @summary Update commerce settings
          * @param {string} wabaId WhatsApp Business Account ID.
          * @param {string} phoneNumber Phone number in [E.164](https://en.wikipedia.org/wiki/E.164) format.
-         * @param {WhatsappCommerceSettingsUpdateRequest} whatsappCommerceSettingsUpdateRequest 
+         * @param {WhatsappCommerceSettingsUpdateRequest} whatsappCommerceSettingsUpdateRequest
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -611,7 +667,7 @@ const WhatsappPhoneNumbersApiAxiosParamCreator = function (configuration?: Confi
             await setApiKeyToObject(localVarHeaderParameter, "X-API-Key", configuration)
 
 
-    
+
             localVarHeaderParameter['Content-Type'] = 'application/json';
 
             // setSearchParams(localVarUrlObj, localVarQueryParameter);
@@ -630,7 +686,7 @@ const WhatsappPhoneNumbersApiAxiosParamCreator = function (configuration?: Confi
          * @summary Update a phone number display name
          * @param {string} wabaId WhatsApp Business Account ID.
          * @param {string} phoneNumber Phone number in [E.164](https://en.wikipedia.org/wiki/E.164) format.
-         * @param {WhatsappPhoneNameUpdateRequest} whatsappPhoneNameUpdateRequest 
+         * @param {WhatsappPhoneNameUpdateRequest} whatsappPhoneNameUpdateRequest
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -662,7 +718,7 @@ const WhatsappPhoneNumbersApiAxiosParamCreator = function (configuration?: Confi
             await setApiKeyToObject(localVarHeaderParameter, "X-API-Key", configuration)
 
 
-    
+
             localVarHeaderParameter['Content-Type'] = 'application/json';
 
             // setSearchParams(localVarUrlObj, localVarQueryParameter);
@@ -681,7 +737,7 @@ const WhatsappPhoneNumbersApiAxiosParamCreator = function (configuration?: Confi
          * @summary Update a phone number profile
          * @param {string} wabaId WhatsApp Business Account ID.
          * @param {string} phoneNumber Phone number in [E.164](https://en.wikipedia.org/wiki/E.164) format.
-         * @param {WhatsappPhoneNumberProfileUpdateRequest} whatsappPhoneNumberProfileUpdateRequest 
+         * @param {WhatsappPhoneNumberProfileUpdateRequest} whatsappPhoneNumberProfileUpdateRequest
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -713,7 +769,7 @@ const WhatsappPhoneNumbersApiAxiosParamCreator = function (configuration?: Confi
             await setApiKeyToObject(localVarHeaderParameter, "X-API-Key", configuration)
 
 
-    
+
             localVarHeaderParameter['Content-Type'] = 'application/json';
 
             // setSearchParams(localVarUrlObj, localVarQueryParameter);
@@ -738,7 +794,7 @@ const WhatsappPhoneNumbersApiFp = function(configuration?: Configuration) {
     const localVarAxiosParamCreator = WhatsappPhoneNumbersApiAxiosParamCreator(configuration)
     return {
         /**
-         * Deletes the active Business Username for a WhatsApp business phone number. This operation removes the currently active Business Username. It does not cancel or remove a pending Business Username request. If a pending request still exists after deletion, the returned `businessUsernameStatus` remains `pending_review`; otherwise it becomes `not_set`.
+         * Deletes the active Business Username for a WhatsApp business phone number. This operation removes the currently active Business Username. It does not cancel or remove a reserved Business Username request. If a reserved request still exists after deletion, the returned `businessUsernameStatus` remains `reserved`; otherwise it becomes `not_set`.
          * @summary Delete a phone number business username
          * @param {string} wabaId WhatsApp Business Account ID.
          * @param {string} phoneNumber Phone number in [E.164](https://en.wikipedia.org/wiki/E.164) format.
@@ -747,6 +803,19 @@ const WhatsappPhoneNumbersApiFp = function(configuration?: Configuration) {
          */
         async deleteBusinessUsername(wabaId: string, phoneNumber: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<WhatsappBusinessUsernameDeleteResult>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.deleteBusinessUsername(wabaId, phoneNumber, options);
+            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+        },
+        /**
+         * Deletes the Meta contact book entry that associates a WhatsApp business phone number with a customer\'s WhatsApp Business-scoped user ID (BSUID).  Only standard BSUIDs such as `US.11815799212886844830` are supported. Parent BSUIDs such as `US.ENT.11815799212886844830` are not supported. The BSUID must be scoped to the same Meta business portfolio as the phone number. The specified WABA must belong to the authenticated YCloud account and be available, and the phone number must be bound to that WABA in YCloud. Use the YCloud account API key in the `X-API-Key` header. Developer App API keys are not supported and return HTTP 403.  An HTTP 200 response always has `success=true`. `deleted=true` means Meta reports that it deleted a matching contact book entry. `deleted=false` means Meta processed the request but found no matching entry to delete. This operation does not delete or modify YCloud Contact, message, or BSUID business records, and it does not bypass Meta\'s 30-day caching behavior. A later WhatsApp interaction between the same business phone number and customer may cause Meta to create the entry again.
+         * @summary Delete a Meta contact book entry
+         * @param {string} wabaId WhatsApp Business Account ID.
+         * @param {string} phoneNumber Phone number in [E.164](https://en.wikipedia.org/wiki/E.164) format, bound to the specified WABA in YCloud. When constructing the path manually, URL-encode the leading &#x60;+&#x60; as &#x60;%2B&#x60;.
+         * @param {string} bsuid Standard WhatsApp Business-scoped user ID (BSUID) from the same Meta business portfolio as the phone number. Parent BSUIDs containing &#x60;.ENT.&#x60; are not supported.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async deleteContactBookEntry(wabaId: string, phoneNumber: string, bsuid: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<WhatsappContactBookEntryDeleteResult>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.deleteContactBookEntry(wabaId, phoneNumber, bsuid, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
         /**
@@ -837,15 +906,16 @@ const WhatsappPhoneNumbersApiFp = function(configuration?: Configuration) {
          * @summary Retrieve phone number settings
          * @param {string} wabaId WhatsApp Business Account ID.
          * @param {string} phoneNumber Phone number in [E.164](https://en.wikipedia.org/wiki/E.164) format.
+         * @param {'capture' | 'calling'} [type] Set to &#x60;capture&#x60; to retrieve only Calling recording and transcription capture settings. Omit it or set it to &#x60;calling&#x60; to retrieve the existing Calling settings response.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async retrieveSettings(wabaId: string, phoneNumber: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<WhatsappPhoneNumberSettings>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.retrieveSettings(wabaId, phoneNumber, options);
+        async retrieveSettings(wabaId: string, phoneNumber: string, type?: 'capture' | 'calling', options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<WhatsappPhoneNumberSettings>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.retrieveSettings(wabaId, phoneNumber, type, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
         /**
-         * Saves phone number specific settings.
+         * Saves phone number specific settings. Send `calling`, `capture`, or both. When both are supplied, the service independently attempts both saves after shared authorization and phone-number validation. A failure in either branch does not prevent the other branch from being attempted. If either branch fails, the existing error response is returned and the other setting may already have been saved.
          * @summary Save phone number settings
          * @param {string} wabaId WhatsApp Business Account ID.
          * @param {string} phoneNumber Phone number in [E.164](https://en.wikipedia.org/wiki/E.164) format.
@@ -858,11 +928,11 @@ const WhatsappPhoneNumbersApiFp = function(configuration?: Configuration) {
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
         /**
-         * Requests a Business Username update for a WhatsApp business phone number. The requested username may require Meta review before it becomes active. If Meta accepts the request for review, the response status is usually `pending_review`; if Meta returns an error, YCloud returns the error and does not change the stored Business Username state.  The `username` value is a plain username without `@`. YCloud trims leading and trailing whitespace and normalizes the value to lowercase before validation and submission.
+         * Requests a Business Username update for a WhatsApp business phone number. The requested username may require Meta review before it becomes active. If Meta accepts or reserves the request for review, the response status is usually `reserved`; `pending_review` is kept only as a legacy compatibility value. If Meta returns an error, YCloud returns the error and does not change the stored Business Username state.  The `username` value is a plain username without `@`. YCloud trims leading and trailing whitespace and normalizes the value to lowercase before validation and submission.
          * @summary Update a phone number business username
          * @param {string} wabaId WhatsApp Business Account ID.
          * @param {string} phoneNumber Phone number in [E.164](https://en.wikipedia.org/wiki/E.164) format.
-         * @param {WhatsappBusinessUsernameUpdateRequest} whatsappBusinessUsernameUpdateRequest 
+         * @param {WhatsappBusinessUsernameUpdateRequest} whatsappBusinessUsernameUpdateRequest
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -875,7 +945,7 @@ const WhatsappPhoneNumbersApiFp = function(configuration?: Configuration) {
          * @summary Update commerce settings
          * @param {string} wabaId WhatsApp Business Account ID.
          * @param {string} phoneNumber Phone number in [E.164](https://en.wikipedia.org/wiki/E.164) format.
-         * @param {WhatsappCommerceSettingsUpdateRequest} whatsappCommerceSettingsUpdateRequest 
+         * @param {WhatsappCommerceSettingsUpdateRequest} whatsappCommerceSettingsUpdateRequest
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -888,7 +958,7 @@ const WhatsappPhoneNumbersApiFp = function(configuration?: Configuration) {
          * @summary Update a phone number display name
          * @param {string} wabaId WhatsApp Business Account ID.
          * @param {string} phoneNumber Phone number in [E.164](https://en.wikipedia.org/wiki/E.164) format.
-         * @param {WhatsappPhoneNameUpdateRequest} whatsappPhoneNameUpdateRequest 
+         * @param {WhatsappPhoneNameUpdateRequest} whatsappPhoneNameUpdateRequest
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -901,7 +971,7 @@ const WhatsappPhoneNumbersApiFp = function(configuration?: Configuration) {
          * @summary Update a phone number profile
          * @param {string} wabaId WhatsApp Business Account ID.
          * @param {string} phoneNumber Phone number in [E.164](https://en.wikipedia.org/wiki/E.164) format.
-         * @param {WhatsappPhoneNumberProfileUpdateRequest} whatsappPhoneNumberProfileUpdateRequest 
+         * @param {WhatsappPhoneNumberProfileUpdateRequest} whatsappPhoneNumberProfileUpdateRequest
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -920,13 +990,22 @@ const WhatsappPhoneNumbersApiFactory = function (configuration?: Configuration, 
     const localVarFp = WhatsappPhoneNumbersApiFp(configuration)
     return {
         /**
-         * Deletes the active Business Username for a WhatsApp business phone number. This operation removes the currently active Business Username. It does not cancel or remove a pending Business Username request. If a pending request still exists after deletion, the returned `businessUsernameStatus` remains `pending_review`; otherwise it becomes `not_set`.
+         * Deletes the active Business Username for a WhatsApp business phone number. This operation removes the currently active Business Username. It does not cancel or remove a reserved Business Username request. If a reserved request still exists after deletion, the returned `businessUsernameStatus` remains `reserved`; otherwise it becomes `not_set`.
          * @summary Delete a phone number business username
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
         deleteBusinessUsername(wabaId: string, phoneNumber: string, options?: any): AxiosPromise<WhatsappBusinessUsernameDeleteResult> {
             return localVarFp.deleteBusinessUsername(wabaId, phoneNumber, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * Deletes the Meta contact book entry that associates a WhatsApp business phone number with a customer\'s WhatsApp Business-scoped user ID (BSUID).  Only standard BSUIDs such as `US.11815799212886844830` are supported. Parent BSUIDs such as `US.ENT.11815799212886844830` are not supported. The BSUID must be scoped to the same Meta business portfolio as the phone number. The specified WABA must belong to the authenticated YCloud account and be available, and the phone number must be bound to that WABA in YCloud. Use the YCloud account API key in the `X-API-Key` header. Developer App API keys are not supported and return HTTP 403.  An HTTP 200 response always has `success=true`. `deleted=true` means Meta reports that it deleted a matching contact book entry. `deleted=false` means Meta processed the request but found no matching entry to delete. This operation does not delete or modify YCloud Contact, message, or BSUID business records, and it does not bypass Meta\'s 30-day caching behavior. A later WhatsApp interaction between the same business phone number and customer may cause Meta to create the entry again.
+         * @summary Delete a Meta contact book entry
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        deleteContactBookEntry(wabaId: string, phoneNumber: string, bsuid: string, options?: any): AxiosPromise<WhatsappContactBookEntryDeleteResult> {
+            return localVarFp.deleteContactBookEntry(wabaId, phoneNumber, bsuid, options).then((request) => request(axios, basePath));
         },
         /**
          * Returns a paginated list of WhatsApp business phone numbers you\'ve registered.
@@ -1002,11 +1081,11 @@ const WhatsappPhoneNumbersApiFactory = function (configuration?: Configuration, 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        retrieveSettings(wabaId: string, phoneNumber: string, options?: any): AxiosPromise<WhatsappPhoneNumberSettings> {
-            return localVarFp.retrieveSettings(wabaId, phoneNumber, options).then((request) => request(axios, basePath));
+        retrieveSettings(wabaId: string, phoneNumber: string, type?: 'capture' | 'calling', options?: any): AxiosPromise<WhatsappPhoneNumberSettings> {
+            return localVarFp.retrieveSettings(wabaId, phoneNumber, type, options).then((request) => request(axios, basePath));
         },
         /**
-         * Saves phone number specific settings.
+         * Saves phone number specific settings. Send `calling`, `capture`, or both. When both are supplied, the service independently attempts both saves after shared authorization and phone-number validation. A failure in either branch does not prevent the other branch from being attempted. If either branch fails, the existing error response is returned and the other setting may already have been saved.
          * @summary Save phone number settings
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -1015,7 +1094,7 @@ const WhatsappPhoneNumbersApiFactory = function (configuration?: Configuration, 
             return localVarFp.saveSettings(wabaId, phoneNumber, whatsappPhoneNumberSettings, options).then((request) => request(axios, basePath));
         },
         /**
-         * Requests a Business Username update for a WhatsApp business phone number. The requested username may require Meta review before it becomes active. If Meta accepts the request for review, the response status is usually `pending_review`; if Meta returns an error, YCloud returns the error and does not change the stored Business Username state.  The `username` value is a plain username without `@`. YCloud trims leading and trailing whitespace and normalizes the value to lowercase before validation and submission.
+         * Requests a Business Username update for a WhatsApp business phone number. The requested username may require Meta review before it becomes active. If Meta accepts or reserves the request for review, the response status is usually `reserved`; `pending_review` is kept only as a legacy compatibility value. If Meta returns an error, YCloud returns the error and does not change the stored Business Username state.  The `username` value is a plain username without `@`. YCloud trims leading and trailing whitespace and normalizes the value to lowercase before validation and submission.
          * @summary Update a phone number business username
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -1096,7 +1175,7 @@ export interface WhatsappPhoneNumbersApiListRequest {
  */
 export class WhatsappPhoneNumbersApi extends BaseAPI {
     /**
-     * Deletes the active Business Username for a WhatsApp business phone number. This operation removes the currently active Business Username. It does not cancel or remove a pending Business Username request. If a pending request still exists after deletion, the returned `businessUsernameStatus` remains `pending_review`; otherwise it becomes `not_set`.
+     * Deletes the active Business Username for a WhatsApp business phone number. This operation removes the currently active Business Username. It does not cancel or remove a reserved Business Username request. If a reserved request still exists after deletion, the returned `businessUsernameStatus` remains `reserved`; otherwise it becomes `not_set`.
      * @summary Delete a phone number business username
      * @param {string} wabaId WhatsApp Business Account ID.
      * @param {string} phoneNumber Phone number in [E.164](https://en.wikipedia.org/wiki/E.164) format.
@@ -1106,6 +1185,20 @@ export class WhatsappPhoneNumbersApi extends BaseAPI {
      */
     public deleteBusinessUsername(wabaId: string, phoneNumber: string, options?: AxiosRequestConfig) {
         return WhatsappPhoneNumbersApiFp(this.configuration).deleteBusinessUsername(wabaId, phoneNumber, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * Deletes the Meta contact book entry that associates a WhatsApp business phone number with a customer\'s WhatsApp Business-scoped user ID (BSUID).  Only standard BSUIDs such as `US.11815799212886844830` are supported. Parent BSUIDs such as `US.ENT.11815799212886844830` are not supported. The BSUID must be scoped to the same Meta business portfolio as the phone number. The specified WABA must belong to the authenticated YCloud account and be available, and the phone number must be bound to that WABA in YCloud. Use the YCloud account API key in the `X-API-Key` header. Developer App API keys are not supported and return HTTP 403.  An HTTP 200 response always has `success=true`. `deleted=true` means Meta reports that it deleted a matching contact book entry. `deleted=false` means Meta processed the request but found no matching entry to delete. This operation does not delete or modify YCloud Contact, message, or BSUID business records, and it does not bypass Meta\'s 30-day caching behavior. A later WhatsApp interaction between the same business phone number and customer may cause Meta to create the entry again.
+     * @summary Delete a Meta contact book entry
+     * @param {string} wabaId WhatsApp Business Account ID.
+     * @param {string} phoneNumber Phone number in [E.164](https://en.wikipedia.org/wiki/E.164) format, bound to the specified WABA in YCloud. When constructing the path manually, URL-encode the leading &#x60;+&#x60; as &#x60;%2B&#x60;.
+     * @param {string} bsuid Standard WhatsApp Business-scoped user ID (BSUID) from the same Meta business portfolio as the phone number. Parent BSUIDs containing &#x60;.ENT.&#x60; are not supported.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof WhatsappPhoneNumbersApi
+     */
+    public deleteContactBookEntry(wabaId: string, phoneNumber: string, bsuid: string, options?: AxiosRequestConfig) {
+        return WhatsappPhoneNumbersApiFp(this.configuration).deleteContactBookEntry(wabaId, phoneNumber, bsuid, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
@@ -1203,16 +1296,17 @@ export class WhatsappPhoneNumbersApi extends BaseAPI {
      * @summary Retrieve phone number settings
      * @param {string} wabaId WhatsApp Business Account ID.
      * @param {string} phoneNumber Phone number in [E.164](https://en.wikipedia.org/wiki/E.164) format.
+     * @param {'capture' | 'calling'} [type] Set to &#x60;capture&#x60; to retrieve only Calling recording and transcription capture settings. Omit it or set it to &#x60;calling&#x60; to retrieve the existing Calling settings response.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof WhatsappPhoneNumbersApi
      */
-    public retrieveSettings(wabaId: string, phoneNumber: string, options?: AxiosRequestConfig) {
-        return WhatsappPhoneNumbersApiFp(this.configuration).retrieveSettings(wabaId, phoneNumber, options).then((request) => request(this.axios, this.basePath));
+    public retrieveSettings(wabaId: string, phoneNumber: string, type?: 'capture' | 'calling', options?: AxiosRequestConfig) {
+        return WhatsappPhoneNumbersApiFp(this.configuration).retrieveSettings(wabaId, phoneNumber, type, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
-     * Saves phone number specific settings.
+     * Saves phone number specific settings. Send `calling`, `capture`, or both. When both are supplied, the service independently attempts both saves after shared authorization and phone-number validation. A failure in either branch does not prevent the other branch from being attempted. If either branch fails, the existing error response is returned and the other setting may already have been saved.
      * @summary Save phone number settings
      * @param {string} wabaId WhatsApp Business Account ID.
      * @param {string} phoneNumber Phone number in [E.164](https://en.wikipedia.org/wiki/E.164) format.
@@ -1226,11 +1320,11 @@ export class WhatsappPhoneNumbersApi extends BaseAPI {
     }
 
     /**
-     * Requests a Business Username update for a WhatsApp business phone number. The requested username may require Meta review before it becomes active. If Meta accepts the request for review, the response status is usually `pending_review`; if Meta returns an error, YCloud returns the error and does not change the stored Business Username state.  The `username` value is a plain username without `@`. YCloud trims leading and trailing whitespace and normalizes the value to lowercase before validation and submission.
+     * Requests a Business Username update for a WhatsApp business phone number. The requested username may require Meta review before it becomes active. If Meta accepts or reserves the request for review, the response status is usually `reserved`; `pending_review` is kept only as a legacy compatibility value. If Meta returns an error, YCloud returns the error and does not change the stored Business Username state.  The `username` value is a plain username without `@`. YCloud trims leading and trailing whitespace and normalizes the value to lowercase before validation and submission.
      * @summary Update a phone number business username
      * @param {string} wabaId WhatsApp Business Account ID.
      * @param {string} phoneNumber Phone number in [E.164](https://en.wikipedia.org/wiki/E.164) format.
-     * @param {WhatsappBusinessUsernameUpdateRequest} whatsappBusinessUsernameUpdateRequest 
+     * @param {WhatsappBusinessUsernameUpdateRequest} whatsappBusinessUsernameUpdateRequest
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof WhatsappPhoneNumbersApi
@@ -1244,7 +1338,7 @@ export class WhatsappPhoneNumbersApi extends BaseAPI {
      * @summary Update commerce settings
      * @param {string} wabaId WhatsApp Business Account ID.
      * @param {string} phoneNumber Phone number in [E.164](https://en.wikipedia.org/wiki/E.164) format.
-     * @param {WhatsappCommerceSettingsUpdateRequest} whatsappCommerceSettingsUpdateRequest 
+     * @param {WhatsappCommerceSettingsUpdateRequest} whatsappCommerceSettingsUpdateRequest
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof WhatsappPhoneNumbersApi
@@ -1258,7 +1352,7 @@ export class WhatsappPhoneNumbersApi extends BaseAPI {
      * @summary Update a phone number display name
      * @param {string} wabaId WhatsApp Business Account ID.
      * @param {string} phoneNumber Phone number in [E.164](https://en.wikipedia.org/wiki/E.164) format.
-     * @param {WhatsappPhoneNameUpdateRequest} whatsappPhoneNameUpdateRequest 
+     * @param {WhatsappPhoneNameUpdateRequest} whatsappPhoneNameUpdateRequest
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof WhatsappPhoneNumbersApi
@@ -1272,7 +1366,7 @@ export class WhatsappPhoneNumbersApi extends BaseAPI {
      * @summary Update a phone number profile
      * @param {string} wabaId WhatsApp Business Account ID.
      * @param {string} phoneNumber Phone number in [E.164](https://en.wikipedia.org/wiki/E.164) format.
-     * @param {WhatsappPhoneNumberProfileUpdateRequest} whatsappPhoneNumberProfileUpdateRequest 
+     * @param {WhatsappPhoneNumberProfileUpdateRequest} whatsappPhoneNumberProfileUpdateRequest
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof WhatsappPhoneNumbersApi
