@@ -58,6 +58,12 @@ export interface WhatsappPhoneNumber {
      */
     'businessUsername'?: string;
     /**
+     * Optional context of this username notification. revoked is included only when the username from a successful current Meta query matches this revoked notification. Omitted for an obsolete revocation or a notification without context; it does not expose historical page warnings.
+     * @type {string}
+     * @memberof WhatsappPhoneNumber
+     */
+    'businessUsernameContext'?: string;
+    /**
      *
      * @type {WhatsappBusinessUsernameStatus}
      * @memberof WhatsappPhoneNumber

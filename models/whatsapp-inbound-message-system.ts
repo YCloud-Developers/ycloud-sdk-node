@@ -21,6 +21,36 @@
  */
 export interface WhatsappInboundMessageSystem {
     /**
+     * Phone number supplied by Meta, without the leading `+`. It can be unchanged or omitted for a BSUID change.
+     * @type {string}
+     * @memberof WhatsappInboundMessageSystem
+     */
+    'wa_id'?: string;
+    /**
+     * New business-scoped user ID supplied by Meta.
+     * @type {string}
+     * @memberof WhatsappInboundMessageSystem
+     */
+    'user_id'?: string;
+    /**
+     * New Parent BSUID, only when enabled and supplied by Meta.
+     * @type {string}
+     * @memberof WhatsappInboundMessageSystem
+     */
+    'parent_user_id'?: string;
+    /**
+     * Previous business-scoped user ID supplied by Meta.
+     * @type {string}
+     * @memberof WhatsappInboundMessageSystem
+     */
+    'previous_user_id'?: string;
+    /**
+     * Previous Parent BSUID, only when enabled and supplied by Meta.
+     * @type {string}
+     * @memberof WhatsappInboundMessageSystem
+     */
+    'previous_parent_user_id'?: string;
+    /**
      * Describes the system message event. Supported use cases are: - Phone number update: for when a user changes from an old number to a new number. - Identity update: for when a user identity has changed.
      * @type {string}
      * @memberof WhatsappInboundMessageSystem
@@ -33,7 +63,7 @@ export interface WhatsappInboundMessageSystem {
      */
     'new_wa_id'?: string;
     /**
-     * Supported types are: - `user_changed_number`: for a user changed number notification. - `user_identity_changed`: for user identity changed notification.
+     * Supported types are: - `user_changed_user_id`: notification that a user changed their BSUID. - `user_changed_number`: for a user changed number notification. - `user_identity_changed`: for user identity changed notification.
      * @type {string}
      * @memberof WhatsappInboundMessageSystem
      */
@@ -45,4 +75,3 @@ export interface WhatsappInboundMessageSystem {
      */
     'user'?: string;
 }
-

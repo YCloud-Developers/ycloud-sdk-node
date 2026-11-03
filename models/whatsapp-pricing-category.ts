@@ -15,7 +15,7 @@
 
 
 /**
- * WhatsApp pricing category. - `referral_conversion`: Indicates a [free entry point conversation](https://developers.facebook.com/docs/whatsapp/pricing#free-entry-point-conversations). - `authentication`: Indicates the conversation was billed at authentication rate. - `authentication_international`: Indicates the conversation was conversation was billed at the [authentication-international rate](https://developers.facebook.com/docs/whatsapp/pricing/authentication-international-rates). - `marketing`: Indicates the conversation was billed at authentication rate. - `marketing_lite`: Indicates the conversation was billed at marketing-lite rate. - `utility`: Indicates the conversation was billed at utility rate. - `service`: Indicates the conversation was billed at service rate.  See also [Conversation-Based Pricing](https://developers.facebook.com/docs/whatsapp/pricing).
+ * WhatsApp pricing category. - `referral_conversion`: Indicates a [free entry point conversation](https://developers.facebook.com/docs/whatsapp/pricing#free-entry-point-conversations). - `authentication`: Indicates the conversation was billed at authentication rate. - `authentication_international`: Indicates the conversation was conversation was billed at the [authentication-international rate](https://developers.facebook.com/docs/whatsapp/pricing/authentication-international-rates). - `marketing`: Indicates the conversation was billed at authentication rate. - `marketing_lite`: Indicates the conversation was billed at marketing-lite rate. - `utility`: Indicates the conversation was billed at utility rate. - `service`: Indicates the conversation was billed at service rate.  See also [Conversation-Based Pricing](https://developers.facebook.com/docs/whatsapp/pricing). - `marketing_lite_bidding`: A marketing message billed through Marketing Lite bidding (Max Price).
  * @export
  * @enum {string}
  */
@@ -27,10 +27,8 @@ export const WhatsappPricingCategory = {
     Marketing: 'marketing',
     MarketingLite: 'marketing_lite',
     Utility: 'utility',
-    Service: 'service'
+    Service: 'service',
+    MarketingLiteBidding: 'marketing_lite_bidding'
 } as const;
 
 export type WhatsappPricingCategory = typeof WhatsappPricingCategory[keyof typeof WhatsappPricingCategory];
-
-
-
