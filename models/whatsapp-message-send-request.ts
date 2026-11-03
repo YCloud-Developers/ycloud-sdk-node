@@ -13,6 +13,7 @@
  */
 
 
+import { WhatsappMessageBidSpec } from './whatsapp-message-bid-spec';
 import { WhatsappMessageContact } from './whatsapp-message-contact';
 import { WhatsappMessageContext } from './whatsapp-message-context';
 import { WhatsappMessageInteractive } from './whatsapp-message-interactive';
@@ -174,6 +175,12 @@ export interface WhatsappMessageSendRequest {
      * @memberof WhatsappMessageSendRequest
      */
     'filterBlocked'?: boolean;
+    /**
+     *
+     * @type {WhatsappMessageBidSpec}
+     * @memberof WhatsappMessageSendRequest
+     */
+    'bidSpec'?: WhatsappMessageBidSpec;
 }
 
 export const WhatsappMessageSendRequestCategoryEnum = {

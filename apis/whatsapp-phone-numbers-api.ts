@@ -37,6 +37,8 @@ import { WhatsappCommerceSettingsUpdateRequest } from '../models';
 // @ts-ignore
 import { WhatsappContactBookEntryDeleteResult } from '../models';
 // @ts-ignore
+import { WhatsappContactBookEntryResult } from '../models';
+// @ts-ignore
 import { WhatsappPhoneNameUpdateRequest } from '../models';
 // @ts-ignore
 import { WhatsappPhoneNameUpdateResponse } from '../models';
@@ -129,6 +131,55 @@ const WhatsappPhoneNumbersApiAxiosParamCreator = function (configuration?: Confi
             }
 
             const localVarRequestOptions = { method: 'DELETE', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            if (USER_AGENT) {
+                localVarHeaderParameter['User-Agent'] = USER_AGENT;
+            }
+            const localVarQueryParameter = {} as any;
+
+            // authentication api_key required
+            await setApiKeyToObject(localVarHeaderParameter, "X-API-Key", configuration)
+
+
+
+            // setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+            localVarRequestOptions.params = localVarQueryParameter;
+
+            return {
+                url: localVarPath,
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * Checks whether Meta has a phone number entry for this standard BSUID in this business phone number contact book, without returning the phone number. Uses the same account API key, available WABA ownership and bound phone checks as DELETE. Parent BSUIDs are unsupported; Developer App API keys return 403. Successful responses contain required boolean present; provider failures are not converted to false.
+         * @summary Check a Meta contact book entry
+         * @param {string} wabaId WhatsApp Business Account ID.
+         * @param {string} phoneNumber Phone number in [E.164](https://en.wikipedia.org/wiki/E.164) format, bound to the specified WABA in YCloud. When constructing the path manually, URL-encode the leading &#x60;+&#x60; as &#x60;%2B&#x60;.
+         * @param {string} bsuid Standard WhatsApp Business-scoped user ID (BSUID) from the same Meta business portfolio as the phone number. Parent BSUIDs containing &#x60;.ENT.&#x60; are not supported.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getContactBookEntry: async (wabaId: string, phoneNumber: string, bsuid: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'wabaId' is not null or undefined
+            assertParamExists('getContactBookEntry', 'wabaId', wabaId)
+            // verify required parameter 'phoneNumber' is not null or undefined
+            assertParamExists('getContactBookEntry', 'phoneNumber', phoneNumber)
+            // verify required parameter 'bsuid' is not null or undefined
+            assertParamExists('getContactBookEntry', 'bsuid', bsuid)
+            const localVarPath = `/whatsapp/phoneNumbers/{wabaId}/{phoneNumber}/contactBook/{bsuid}`
+                .replace(`{${"wabaId"}}`, encodeURIComponent(String(wabaId)))
+                .replace(`{${"phoneNumber"}}`, encodeURIComponent(String(phoneNumber)))
+                .replace(`{${"bsuid"}}`, encodeURIComponent(String(bsuid)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            // const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
             const localVarHeaderParameter = {} as any;
             if (USER_AGENT) {
                 localVarHeaderParameter['User-Agent'] = USER_AGENT;
@@ -819,6 +870,19 @@ const WhatsappPhoneNumbersApiFp = function(configuration?: Configuration) {
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
         /**
+         * Checks whether Meta has a phone number entry for this standard BSUID in this business phone number contact book, without returning the phone number. Uses the same account API key, available WABA ownership and bound phone checks as DELETE. Parent BSUIDs are unsupported; Developer App API keys return 403. Successful responses contain required boolean present; provider failures are not converted to false.
+         * @summary Check a Meta contact book entry
+         * @param {string} wabaId WhatsApp Business Account ID.
+         * @param {string} phoneNumber Phone number in [E.164](https://en.wikipedia.org/wiki/E.164) format, bound to the specified WABA in YCloud. When constructing the path manually, URL-encode the leading &#x60;+&#x60; as &#x60;%2B&#x60;.
+         * @param {string} bsuid Standard WhatsApp Business-scoped user ID (BSUID) from the same Meta business portfolio as the phone number. Parent BSUIDs containing &#x60;.ENT.&#x60; are not supported.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async getContactBookEntry(wabaId: string, phoneNumber: string, bsuid: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<WhatsappContactBookEntryResult>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.getContactBookEntry(wabaId, phoneNumber, bsuid, options);
+            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+        },
+        /**
          * Returns a paginated list of WhatsApp business phone numbers you\'ve registered.
          * @summary List phone numbers
          * @param {WhatsappPhoneNumbersApiListRequest} requestParameters Request parameters.
@@ -1006,6 +1070,15 @@ const WhatsappPhoneNumbersApiFactory = function (configuration?: Configuration, 
          */
         deleteContactBookEntry(wabaId: string, phoneNumber: string, bsuid: string, options?: any): AxiosPromise<WhatsappContactBookEntryDeleteResult> {
             return localVarFp.deleteContactBookEntry(wabaId, phoneNumber, bsuid, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * Checks whether Meta has a phone number entry for this standard BSUID in this business phone number contact book, without returning the phone number. Uses the same account API key, available WABA ownership and bound phone checks as DELETE. Parent BSUIDs are unsupported; Developer App API keys return 403. Successful responses contain required boolean present; provider failures are not converted to false.
+         * @summary Check a Meta contact book entry
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getContactBookEntry(wabaId: string, phoneNumber: string, bsuid: string, options?: any): AxiosPromise<WhatsappContactBookEntryResult> {
+            return localVarFp.getContactBookEntry(wabaId, phoneNumber, bsuid, options).then((request) => request(axios, basePath));
         },
         /**
          * Returns a paginated list of WhatsApp business phone numbers you\'ve registered.
@@ -1199,6 +1272,20 @@ export class WhatsappPhoneNumbersApi extends BaseAPI {
      */
     public deleteContactBookEntry(wabaId: string, phoneNumber: string, bsuid: string, options?: AxiosRequestConfig) {
         return WhatsappPhoneNumbersApiFp(this.configuration).deleteContactBookEntry(wabaId, phoneNumber, bsuid, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * Checks whether Meta has a phone number entry for this standard BSUID in this business phone number contact book, without returning the phone number. Uses the same account API key, available WABA ownership and bound phone checks as DELETE. Parent BSUIDs are unsupported; Developer App API keys return 403. Successful responses contain required boolean present; provider failures are not converted to false.
+     * @summary Check a Meta contact book entry
+     * @param {string} wabaId WhatsApp Business Account ID.
+     * @param {string} phoneNumber Phone number in [E.164](https://en.wikipedia.org/wiki/E.164) format, bound to the specified WABA in YCloud. When constructing the path manually, URL-encode the leading &#x60;+&#x60; as &#x60;%2B&#x60;.
+     * @param {string} bsuid Standard WhatsApp Business-scoped user ID (BSUID) from the same Meta business portfolio as the phone number. Parent BSUIDs containing &#x60;.ENT.&#x60; are not supported.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof WhatsappPhoneNumbersApi
+     */
+    public getContactBookEntry(wabaId: string, phoneNumber: string, bsuid: string, options?: AxiosRequestConfig) {
+        return WhatsappPhoneNumbersApiFp(this.configuration).getContactBookEntry(wabaId, phoneNumber, bsuid, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**

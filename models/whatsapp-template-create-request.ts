@@ -13,6 +13,7 @@
  */
 
 
+import { WhatsappTemplateBidSpec } from './whatsapp-template-bid-spec';
 import { WhatsappTemplateCategory } from './whatsapp-template-category';
 import { WhatsappTemplateComponent } from './whatsapp-template-component';
 import { WhatsappTemplateSubCategory } from './whatsapp-template-sub-category';
@@ -71,4 +72,10 @@ export interface WhatsappTemplateCreateRequest {
      * @memberof WhatsappTemplateCreateRequest
      */
     'ctaUrlLinkTrackingOptedOut'?: boolean;
+    /**
+     *
+     * @type {WhatsappTemplateBidSpec}
+     * @memberof WhatsappTemplateCreateRequest
+     */
+    'bidSpec'?: WhatsappTemplateBidSpec;
 }

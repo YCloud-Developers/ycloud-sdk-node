@@ -14,6 +14,7 @@
 
 
 import { WhatsappApiError } from './whatsapp-api-error';
+import { WhatsappTemplateBidSpecResponse } from './whatsapp-template-bid-spec-response';
 import { WhatsappTemplateCategory } from './whatsapp-template-category';
 import { WhatsappTemplateComponent } from './whatsapp-template-component';
 import { WhatsappTemplateQualityRating } from './whatsapp-template-quality-rating';
@@ -135,4 +136,10 @@ export interface WhatsappTemplate {
      * @memberof WhatsappTemplate
      */
     'whatsappApiError'?: WhatsappApiError;
+    /**
+     *
+     * @type {WhatsappTemplateBidSpecResponse}
+     * @memberof WhatsappTemplate
+     */
+    'bidSpec'?: WhatsappTemplateBidSpecResponse;
 }

@@ -21,6 +21,12 @@ import { DUMMY_BASE_URL, assertParamExists, setApiKeyToObject, setBasicAuthToObj
 // @ts-ignore
 import { BASE_PATH, USER_AGENT, COLLECTION_FORMATS, RequestArgs, BaseAPI, RequiredError } from '../base';
 // @ts-ignore
+import { AgentAllowlistEntryDTO } from '../models';
+// @ts-ignore
+import { AgentEventResultDTO } from '../models';
+// @ts-ignore
+import { AgentEventStatusDTO } from '../models';
+// @ts-ignore
 import { ConnectorDTO } from '../models';
 // @ts-ignore
 import { ConnectorLogStatsDTO } from '../models';
@@ -31,31 +37,49 @@ import { ConnectorToolRunResultDTO } from '../models';
 // @ts-ignore
 import { ErrorResponse } from '../models';
 // @ts-ignore
+import { FaqDTO } from '../models';
+// @ts-ignore
 import { MetaBusinessAgentBudgetReplaceRequest } from '../models';
 // @ts-ignore
 import { MetaBusinessAgentBudgetResponse } from '../models';
 // @ts-ignore
 import { MetaBusinessAgentConversationTurnPage } from '../models';
 // @ts-ignore
+import { MetaBusinessAgentErrorResponse } from '../models';
+// @ts-ignore
 import { MetaBusinessAgentSettings } from '../models';
 // @ts-ignore
 import { MetaBusinessAgentSettingsReplaceRequest } from '../models';
+// @ts-ignore
+import { PublicCreateAllowlistEntryRequest } from '../models';
 // @ts-ignore
 import { PublicCreateConnectorRequest } from '../models';
 // @ts-ignore
 import { PublicCreateConnectorToolRequest } from '../models';
 // @ts-ignore
+import { PublicCreateFaqRequest } from '../models';
+// @ts-ignore
+import { PublicCreateWebsiteRequest } from '../models';
+// @ts-ignore
 import { PublicRunConnectorToolRequest } from '../models';
+// @ts-ignore
+import { PublicSubmitAgentEventRequest } from '../models';
 // @ts-ignore
 import { PublicUpdateConnectorRequest } from '../models';
 // @ts-ignore
 import { PublicUpdateConnectorToolRequest } from '../models';
+// @ts-ignore
+import { PublicUpdateFaqRequest } from '../models';
+// @ts-ignore
+import { PublicUpdateWebsiteRequest } from '../models';
 // @ts-ignore
 import { PublicUpsertConnectorApiKeyRequest } from '../models';
 // @ts-ignore
 import { PublicUpsertConnectorCertificateRequest } from '../models';
 // @ts-ignore
 import { PublicUpsertConnectorOAuthRequest } from '../models';
+// @ts-ignore
+import { WebsiteDTO } from '../models';
 /**
  * MetaBusinessAgentApi - axios parameter creator
  * @export
@@ -144,6 +168,53 @@ const MetaBusinessAgentApiAxiosParamCreator = function (configuration?: Configur
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
             localVarRequestOptions.params = localVarQueryParameter;
+
+            return {
+                url: localVarPath,
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * Adds exactly one explicitly supplied WhatsApp identity: consumer_phone_number or consumer_bsuid. This public API does not look up a BSUID from a phone number. Phone and BSUID entries have distinct IDs and each counts toward the shared limit of 20.
+         * @summary Create Allowlist Entry
+         * @param {string} entityId WhatsApp Business Phone Number ID that owns the Meta Business Agent.
+         * @param {PublicCreateAllowlistEntryRequest} publicCreateAllowlistEntryRequest
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        businessAgentCreateAllowlistEntry: async (entityId: string, publicCreateAllowlistEntryRequest: PublicCreateAllowlistEntryRequest, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'entityId' is not null or undefined
+            assertParamExists('businessAgentCreateAllowlistEntry', 'entityId', entityId)
+            // verify required parameter 'publicCreateAllowlistEntryRequest' is not null or undefined
+            assertParamExists('businessAgentCreateAllowlistEntry', 'publicCreateAllowlistEntryRequest', publicCreateAllowlistEntryRequest)
+            const localVarPath = `/metaBusinessAgents/{entityId}/allowListEntries`
+                .replace(`{${"entityId"}}`, encodeURIComponent(String(entityId)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            // const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            if (USER_AGENT) {
+                localVarHeaderParameter['User-Agent'] = USER_AGENT;
+            }
+            const localVarQueryParameter = {} as any;
+
+            // authentication api_key required
+            await setApiKeyToObject(localVarHeaderParameter, "X-API-Key", configuration)
+
+
+
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+
+            // setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+            localVarRequestOptions.params = localVarQueryParameter;
+            localVarRequestOptions.data = serializeDataIfNeeded(publicCreateAllowlistEntryRequest, localVarRequestOptions, configuration)
 
             return {
                 url: localVarPath,
@@ -249,6 +320,145 @@ const MetaBusinessAgentApiAxiosParamCreator = function (configuration?: Configur
             };
         },
         /**
+         * Creates a question-and-answer entry in the agent knowledge base and returns the created FAQ.
+         * @summary Create Faq
+         * @param {string} entityId Endpoint-specific Meta Business Agent entity ID. Budget and Conversation Turns operations use the tenant-owned WhatsApp Business Phone Number ID.
+         * @param {PublicCreateFaqRequest} publicCreateFaqRequest
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        businessAgentCreateFaq: async (entityId: string, publicCreateFaqRequest: PublicCreateFaqRequest, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'entityId' is not null or undefined
+            assertParamExists('businessAgentCreateFaq', 'entityId', entityId)
+            // verify required parameter 'publicCreateFaqRequest' is not null or undefined
+            assertParamExists('businessAgentCreateFaq', 'publicCreateFaqRequest', publicCreateFaqRequest)
+            const localVarPath = `/metaBusinessAgents/{entityId}/faqs`
+                .replace(`{${"entityId"}}`, encodeURIComponent(String(entityId)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            // const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            if (USER_AGENT) {
+                localVarHeaderParameter['User-Agent'] = USER_AGENT;
+            }
+            const localVarQueryParameter = {} as any;
+
+            // authentication api_key required
+            await setApiKeyToObject(localVarHeaderParameter, "X-API-Key", configuration)
+
+
+
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+
+            // setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+            localVarRequestOptions.params = localVarQueryParameter;
+            localVarRequestOptions.data = serializeDataIfNeeded(publicCreateFaqRequest, localVarRequestOptions, configuration)
+
+            return {
+                url: localVarPath,
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * Adds a website URL for Meta to crawl and ingest into the agent knowledge base and returns the created crawl entry.
+         * @summary Create Website
+         * @param {string} entityId Endpoint-specific Meta Business Agent entity ID. Budget and Conversation Turns operations use the tenant-owned WhatsApp Business Phone Number ID.
+         * @param {PublicCreateWebsiteRequest} publicCreateWebsiteRequest
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        businessAgentCreateWebsite: async (entityId: string, publicCreateWebsiteRequest: PublicCreateWebsiteRequest, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'entityId' is not null or undefined
+            assertParamExists('businessAgentCreateWebsite', 'entityId', entityId)
+            // verify required parameter 'publicCreateWebsiteRequest' is not null or undefined
+            assertParamExists('businessAgentCreateWebsite', 'publicCreateWebsiteRequest', publicCreateWebsiteRequest)
+            const localVarPath = `/metaBusinessAgents/{entityId}/websites`
+                .replace(`{${"entityId"}}`, encodeURIComponent(String(entityId)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            // const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            if (USER_AGENT) {
+                localVarHeaderParameter['User-Agent'] = USER_AGENT;
+            }
+            const localVarQueryParameter = {} as any;
+
+            // authentication api_key required
+            await setApiKeyToObject(localVarHeaderParameter, "X-API-Key", configuration)
+
+
+
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+
+            // setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+            localVarRequestOptions.params = localVarQueryParameter;
+            localVarRequestOptions.data = serializeDataIfNeeded(publicCreateWebsiteRequest, localVarRequestOptions, configuration)
+
+            return {
+                url: localVarPath,
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * Deletes only the entry identified by entryId. Other phone or BSUID entries remain unchanged.
+         * @summary Delete Allowlist Entry
+         * @param {string} entityId WhatsApp Business Phone Number ID that owns the Meta Business Agent.
+         * @param {string} entryId Allowlist entry ID.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        businessAgentDeleteAllowlistEntry: async (entityId: string, entryId: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'entityId' is not null or undefined
+            assertParamExists('businessAgentDeleteAllowlistEntry', 'entityId', entityId)
+            // verify required parameter 'entryId' is not null or undefined
+            assertParamExists('businessAgentDeleteAllowlistEntry', 'entryId', entryId)
+            const localVarPath = `/metaBusinessAgents/{entityId}/allowListEntries/{entryId}`
+                .replace(`{${"entityId"}}`, encodeURIComponent(String(entityId)))
+                .replace(`{${"entryId"}}`, encodeURIComponent(String(entryId)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            // const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'DELETE', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            if (USER_AGENT) {
+                localVarHeaderParameter['User-Agent'] = USER_AGENT;
+            }
+            const localVarQueryParameter = {} as any;
+
+            // authentication api_key required
+            await setApiKeyToObject(localVarHeaderParameter, "X-API-Key", configuration)
+
+
+
+            // setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+            localVarRequestOptions.params = localVarQueryParameter;
+
+            return {
+                url: localVarPath,
+                options: localVarRequestOptions,
+            };
+        },
+        /**
          * Deletes the external API connector identified by `connectorId` from the agent configuration.
          * @summary Delete Connector
          * @param {string} entityId WhatsApp Business Phone Number ID that owns the Meta Business Agent.
@@ -343,6 +553,141 @@ const MetaBusinessAgentApiAxiosParamCreator = function (configuration?: Configur
             };
         },
         /**
+         * Deletes the FAQ identified by `faqId`. Returns HTTP `204` when deletion succeeds or Meta explicitly reports that the FAQ does not exist. Other `404` errors remain errors.
+         * @summary Delete Faq
+         * @param {string} entityId Endpoint-specific Meta Business Agent entity ID. Budget and Conversation Turns operations use the tenant-owned WhatsApp Business Phone Number ID.
+         * @param {string} faqId FAQ resource ID.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        businessAgentDeleteFaq: async (entityId: string, faqId: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'entityId' is not null or undefined
+            assertParamExists('businessAgentDeleteFaq', 'entityId', entityId)
+            // verify required parameter 'faqId' is not null or undefined
+            assertParamExists('businessAgentDeleteFaq', 'faqId', faqId)
+            const localVarPath = `/metaBusinessAgents/{entityId}/faqs/{faqId}`
+                .replace(`{${"entityId"}}`, encodeURIComponent(String(entityId)))
+                .replace(`{${"faqId"}}`, encodeURIComponent(String(faqId)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            // const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'DELETE', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            if (USER_AGENT) {
+                localVarHeaderParameter['User-Agent'] = USER_AGENT;
+            }
+            const localVarQueryParameter = {} as any;
+
+            // authentication api_key required
+            await setApiKeyToObject(localVarHeaderParameter, "X-API-Key", configuration)
+
+
+
+            // setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+            localVarRequestOptions.params = localVarQueryParameter;
+
+            return {
+                url: localVarPath,
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * Removes the website crawl entry identified by `websiteId` from the agent knowledge base.
+         * @summary Delete Website
+         * @param {string} entityId Endpoint-specific Meta Business Agent entity ID. Budget and Conversation Turns operations use the tenant-owned WhatsApp Business Phone Number ID.
+         * @param {string} websiteId Website resource ID.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        businessAgentDeleteWebsite: async (entityId: string, websiteId: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'entityId' is not null or undefined
+            assertParamExists('businessAgentDeleteWebsite', 'entityId', entityId)
+            // verify required parameter 'websiteId' is not null or undefined
+            assertParamExists('businessAgentDeleteWebsite', 'websiteId', websiteId)
+            const localVarPath = `/metaBusinessAgents/{entityId}/websites/{websiteId}`
+                .replace(`{${"entityId"}}`, encodeURIComponent(String(entityId)))
+                .replace(`{${"websiteId"}}`, encodeURIComponent(String(websiteId)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            // const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'DELETE', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            if (USER_AGENT) {
+                localVarHeaderParameter['User-Agent'] = USER_AGENT;
+            }
+            const localVarQueryParameter = {} as any;
+
+            // authentication api_key required
+            await setApiKeyToObject(localVarHeaderParameter, "X-API-Key", configuration)
+
+
+
+            // setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+            localVarRequestOptions.params = localVarQueryParameter;
+
+            return {
+                url: localVarPath,
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * Retrieves the current processing status, timestamps, and any error or skip reason for the event identified by `agentEventId`.
+         * @summary Get Agent Event Status
+         * @param {string} entityId WhatsApp Business Phone Number ID that owns the Meta Business Agent.
+         * @param {string} agentEventId Agent event ID returned when the event was submitted.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        businessAgentGetAgentEventStatus: async (entityId: string, agentEventId: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'entityId' is not null or undefined
+            assertParamExists('businessAgentGetAgentEventStatus', 'entityId', entityId)
+            // verify required parameter 'agentEventId' is not null or undefined
+            assertParamExists('businessAgentGetAgentEventStatus', 'agentEventId', agentEventId)
+            const localVarPath = `/metaBusinessAgents/{entityId}/events/{agentEventId}`
+                .replace(`{${"entityId"}}`, encodeURIComponent(String(entityId)))
+                .replace(`{${"agentEventId"}}`, encodeURIComponent(String(agentEventId)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            // const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            if (USER_AGENT) {
+                localVarHeaderParameter['User-Agent'] = USER_AGENT;
+            }
+            const localVarQueryParameter = {} as any;
+
+            // authentication api_key required
+            await setApiKeyToObject(localVarHeaderParameter, "X-API-Key", configuration)
+
+
+
+            // setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+            localVarRequestOptions.params = localVarQueryParameter;
+
+            return {
+                url: localVarPath,
+                options: localVarRequestOptions,
+            };
+        },
+        /**
          * Retrieves the external API connector identified by `connectorId`.
          * @summary Get Connector
          * @param {string} entityId WhatsApp Business Phone Number ID that owns the Meta Business Agent.
@@ -407,6 +752,137 @@ const MetaBusinessAgentApiAxiosParamCreator = function (configuration?: Configur
                 .replace(`{${"entityId"}}`, encodeURIComponent(String(entityId)))
                 .replace(`{${"connectorId"}}`, encodeURIComponent(String(connectorId)))
                 .replace(`{${"toolId"}}`, encodeURIComponent(String(toolId)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            // const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            if (USER_AGENT) {
+                localVarHeaderParameter['User-Agent'] = USER_AGENT;
+            }
+            const localVarQueryParameter = {} as any;
+
+            // authentication api_key required
+            await setApiKeyToObject(localVarHeaderParameter, "X-API-Key", configuration)
+
+
+
+            // setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+            localVarRequestOptions.params = localVarQueryParameter;
+
+            return {
+                url: localVarPath,
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * Retrieves the FAQ knowledge entry identified by `faqId`.
+         * @summary Get Faq
+         * @param {string} entityId Endpoint-specific Meta Business Agent entity ID. Budget and Conversation Turns operations use the tenant-owned WhatsApp Business Phone Number ID.
+         * @param {string} faqId FAQ resource ID.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        businessAgentGetFaq: async (entityId: string, faqId: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'entityId' is not null or undefined
+            assertParamExists('businessAgentGetFaq', 'entityId', entityId)
+            // verify required parameter 'faqId' is not null or undefined
+            assertParamExists('businessAgentGetFaq', 'faqId', faqId)
+            const localVarPath = `/metaBusinessAgents/{entityId}/faqs/{faqId}`
+                .replace(`{${"entityId"}}`, encodeURIComponent(String(entityId)))
+                .replace(`{${"faqId"}}`, encodeURIComponent(String(faqId)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            // const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            if (USER_AGENT) {
+                localVarHeaderParameter['User-Agent'] = USER_AGENT;
+            }
+            const localVarQueryParameter = {} as any;
+
+            // authentication api_key required
+            await setApiKeyToObject(localVarHeaderParameter, "X-API-Key", configuration)
+
+
+
+            // setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+            localVarRequestOptions.params = localVarQueryParameter;
+
+            return {
+                url: localVarPath,
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * Retrieves the website knowledge entry identified by `websiteId`, including its URL and crawl status information.
+         * @summary Get Website
+         * @param {string} entityId Endpoint-specific Meta Business Agent entity ID. Budget and Conversation Turns operations use the tenant-owned WhatsApp Business Phone Number ID.
+         * @param {string} websiteId Website resource ID.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        businessAgentGetWebsite: async (entityId: string, websiteId: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'entityId' is not null or undefined
+            assertParamExists('businessAgentGetWebsite', 'entityId', entityId)
+            // verify required parameter 'websiteId' is not null or undefined
+            assertParamExists('businessAgentGetWebsite', 'websiteId', websiteId)
+            const localVarPath = `/metaBusinessAgents/{entityId}/websites/{websiteId}`
+                .replace(`{${"entityId"}}`, encodeURIComponent(String(entityId)))
+                .replace(`{${"websiteId"}}`, encodeURIComponent(String(websiteId)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            // const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            if (USER_AGENT) {
+                localVarHeaderParameter['User-Agent'] = USER_AGENT;
+            }
+            const localVarQueryParameter = {} as any;
+
+            // authentication api_key required
+            await setApiKeyToObject(localVarHeaderParameter, "X-API-Key", configuration)
+
+
+
+            // setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+            localVarRequestOptions.params = localVarQueryParameter;
+
+            return {
+                url: localVarPath,
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * Lists allowlist entries that may receive agent replies when `ai_audience` is set to `ALLOWLISTED_ONLY`. Identity fields may be absent.
+         * @summary List Allowlist
+         * @param {string} entityId WhatsApp Business Phone Number ID that owns the Meta Business Agent.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        businessAgentListAllowlist: async (entityId: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'entityId' is not null or undefined
+            assertParamExists('businessAgentListAllowlist', 'entityId', entityId)
+            const localVarPath = `/metaBusinessAgents/{entityId}/allowListEntries`
+                .replace(`{${"entityId"}}`, encodeURIComponent(String(entityId)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             // const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
             let baseOptions;
@@ -603,6 +1079,88 @@ const MetaBusinessAgentApiAxiosParamCreator = function (configuration?: Configur
             };
         },
         /**
+         * Lists all FAQ question-and-answer entries currently available to the agent as knowledge.
+         * @summary List Faqs
+         * @param {string} entityId Endpoint-specific Meta Business Agent entity ID. Budget and Conversation Turns operations use the tenant-owned WhatsApp Business Phone Number ID.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        businessAgentListFaqs: async (entityId: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'entityId' is not null or undefined
+            assertParamExists('businessAgentListFaqs', 'entityId', entityId)
+            const localVarPath = `/metaBusinessAgents/{entityId}/faqs`
+                .replace(`{${"entityId"}}`, encodeURIComponent(String(entityId)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            // const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            if (USER_AGENT) {
+                localVarHeaderParameter['User-Agent'] = USER_AGENT;
+            }
+            const localVarQueryParameter = {} as any;
+
+            // authentication api_key required
+            await setApiKeyToObject(localVarHeaderParameter, "X-API-Key", configuration)
+
+
+
+            // setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+            localVarRequestOptions.params = localVarQueryParameter;
+
+            return {
+                url: localVarPath,
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * Lists the website URLs configured for Meta to crawl and ingest into the agent knowledge base, including each crawl entry\'s current state.
+         * @summary List Websites
+         * @param {string} entityId Endpoint-specific Meta Business Agent entity ID. Budget and Conversation Turns operations use the tenant-owned WhatsApp Business Phone Number ID.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        businessAgentListWebsites: async (entityId: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'entityId' is not null or undefined
+            assertParamExists('businessAgentListWebsites', 'entityId', entityId)
+            const localVarPath = `/metaBusinessAgents/{entityId}/websites`
+                .replace(`{${"entityId"}}`, encodeURIComponent(String(entityId)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            // const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            if (USER_AGENT) {
+                localVarHeaderParameter['User-Agent'] = USER_AGENT;
+            }
+            const localVarQueryParameter = {} as any;
+
+            // authentication api_key required
+            await setApiKeyToObject(localVarHeaderParameter, "X-API-Key", configuration)
+
+
+
+            // setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+            localVarRequestOptions.params = localVarQueryParameter;
+
+            return {
+                url: localVarPath,
+                options: localVarRequestOptions,
+            };
+        },
+        /**
          * Triggers Meta to rediscover the MCP tools exposed by this connector. The request has no body. A successful HTTP 200 returns the current Connector; inspect mcp_tool_sync.status because remote discovery or provisioning failure can still return HTTP 200 with status ERROR. This operation has no idempotency key. Do not retry it automatically; after a timeout, query the Connector because the refresh outcome is uncertain.
          * @summary Refresh MCP Connector Tools
          * @param {string} entityId WhatsApp Business Phone Number ID that owns the Meta Business Agent.
@@ -696,6 +1254,53 @@ const MetaBusinessAgentApiAxiosParamCreator = function (configuration?: Configur
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
             localVarRequestOptions.params = localVarQueryParameter;
             localVarRequestOptions.data = serializeDataIfNeeded(publicRunConnectorToolRequest, localVarRequestOptions, configuration)
+
+            return {
+                url: localVarPath,
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * Submits a business event for a consumer and enqueues it for asynchronous agent processing. The immediate response contains `status` and `agent_event_id` for later polling.
+         * @summary Submit Agent Event
+         * @param {string} entityId WhatsApp Business Phone Number ID that owns the Meta Business Agent.
+         * @param {PublicSubmitAgentEventRequest} publicSubmitAgentEventRequest
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        businessAgentSubmitAgentEvent: async (entityId: string, publicSubmitAgentEventRequest: PublicSubmitAgentEventRequest, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'entityId' is not null or undefined
+            assertParamExists('businessAgentSubmitAgentEvent', 'entityId', entityId)
+            // verify required parameter 'publicSubmitAgentEventRequest' is not null or undefined
+            assertParamExists('businessAgentSubmitAgentEvent', 'publicSubmitAgentEventRequest', publicSubmitAgentEventRequest)
+            const localVarPath = `/metaBusinessAgents/{entityId}/events`
+                .replace(`{${"entityId"}}`, encodeURIComponent(String(entityId)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            // const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            if (USER_AGENT) {
+                localVarHeaderParameter['User-Agent'] = USER_AGENT;
+            }
+            const localVarQueryParameter = {} as any;
+
+            // authentication api_key required
+            await setApiKeyToObject(localVarHeaderParameter, "X-API-Key", configuration)
+
+
+
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+
+            // setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+            localVarRequestOptions.params = localVarQueryParameter;
+            localVarRequestOptions.data = serializeDataIfNeeded(publicSubmitAgentEventRequest, localVarRequestOptions, configuration)
 
             return {
                 url: localVarPath,
@@ -802,6 +1407,108 @@ const MetaBusinessAgentApiAxiosParamCreator = function (configuration?: Configur
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
             localVarRequestOptions.params = localVarQueryParameter;
             localVarRequestOptions.data = serializeDataIfNeeded(publicUpdateConnectorToolRequest, localVarRequestOptions, configuration)
+
+            return {
+                url: localVarPath,
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * Send both `question` and `answer` to update the FAQ. You can also include `metadata`. The response may contain a new `id`. Use the returned ID for subsequent reads, updates, and deletes. If the ID changes, `created_at` resets to the update time. A timeout or HTTP `502` response does not necessarily mean that the update failed. Do not automatically retry the update or create a replacement FAQ.
+         * @summary Update Faq
+         * @param {string} entityId Endpoint-specific Meta Business Agent entity ID. Budget and Conversation Turns operations use the tenant-owned WhatsApp Business Phone Number ID.
+         * @param {string} faqId FAQ resource ID.
+         * @param {PublicUpdateFaqRequest} publicUpdateFaqRequest
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        businessAgentUpdateFaq: async (entityId: string, faqId: string, publicUpdateFaqRequest: PublicUpdateFaqRequest, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'entityId' is not null or undefined
+            assertParamExists('businessAgentUpdateFaq', 'entityId', entityId)
+            // verify required parameter 'faqId' is not null or undefined
+            assertParamExists('businessAgentUpdateFaq', 'faqId', faqId)
+            // verify required parameter 'publicUpdateFaqRequest' is not null or undefined
+            assertParamExists('businessAgentUpdateFaq', 'publicUpdateFaqRequest', publicUpdateFaqRequest)
+            const localVarPath = `/metaBusinessAgents/{entityId}/faqs/{faqId}`
+                .replace(`{${"entityId"}}`, encodeURIComponent(String(entityId)))
+                .replace(`{${"faqId"}}`, encodeURIComponent(String(faqId)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            // const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'PATCH', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            if (USER_AGENT) {
+                localVarHeaderParameter['User-Agent'] = USER_AGENT;
+            }
+            const localVarQueryParameter = {} as any;
+
+            // authentication api_key required
+            await setApiKeyToObject(localVarHeaderParameter, "X-API-Key", configuration)
+
+
+
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+
+            // setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+            localVarRequestOptions.params = localVarQueryParameter;
+            localVarRequestOptions.data = serializeDataIfNeeded(publicUpdateFaqRequest, localVarRequestOptions, configuration)
+
+            return {
+                url: localVarPath,
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * Updates the URL and optional crawl scope of the website identified by `websiteId`. The response may contain a new `id`. Use the returned ID for subsequent reads, updates, and deletes. Do not automatically retry an update whose outcome is uncertain.
+         * @summary Update Website
+         * @param {string} entityId Endpoint-specific Meta Business Agent entity ID. Budget and Conversation Turns operations use the tenant-owned WhatsApp Business Phone Number ID.
+         * @param {string} websiteId Website resource ID.
+         * @param {PublicUpdateWebsiteRequest} publicUpdateWebsiteRequest
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        businessAgentUpdateWebsite: async (entityId: string, websiteId: string, publicUpdateWebsiteRequest: PublicUpdateWebsiteRequest, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'entityId' is not null or undefined
+            assertParamExists('businessAgentUpdateWebsite', 'entityId', entityId)
+            // verify required parameter 'websiteId' is not null or undefined
+            assertParamExists('businessAgentUpdateWebsite', 'websiteId', websiteId)
+            // verify required parameter 'publicUpdateWebsiteRequest' is not null or undefined
+            assertParamExists('businessAgentUpdateWebsite', 'publicUpdateWebsiteRequest', publicUpdateWebsiteRequest)
+            const localVarPath = `/metaBusinessAgents/{entityId}/websites/{websiteId}`
+                .replace(`{${"entityId"}}`, encodeURIComponent(String(entityId)))
+                .replace(`{${"websiteId"}}`, encodeURIComponent(String(websiteId)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            // const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'PATCH', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            if (USER_AGENT) {
+                localVarHeaderParameter['User-Agent'] = USER_AGENT;
+            }
+            const localVarQueryParameter = {} as any;
+
+            // authentication api_key required
+            await setApiKeyToObject(localVarHeaderParameter, "X-API-Key", configuration)
+
+
+
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+
+            // setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+            localVarRequestOptions.params = localVarQueryParameter;
+            localVarRequestOptions.data = serializeDataIfNeeded(publicUpdateWebsiteRequest, localVarRequestOptions, configuration)
 
             return {
                 url: localVarPath,
@@ -1163,6 +1870,18 @@ const MetaBusinessAgentApiFp = function(configuration?: Configuration) {
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
         /**
+         * Adds exactly one explicitly supplied WhatsApp identity: consumer_phone_number or consumer_bsuid. This public API does not look up a BSUID from a phone number. Phone and BSUID entries have distinct IDs and each counts toward the shared limit of 20.
+         * @summary Create Allowlist Entry
+         * @param {string} entityId WhatsApp Business Phone Number ID that owns the Meta Business Agent.
+         * @param {PublicCreateAllowlistEntryRequest} publicCreateAllowlistEntryRequest
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async businessAgentCreateAllowlistEntry(entityId: string, publicCreateAllowlistEntryRequest: PublicCreateAllowlistEntryRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<AgentAllowlistEntryDTO>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.businessAgentCreateAllowlistEntry(entityId, publicCreateAllowlistEntryRequest, options);
+            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+        },
+        /**
          * Creates an external API connector with its name, description, base URL, authentication type, and optional user-auth or certificate configuration. For MCP, base_url is the remote MCP server address and authentication uses the existing auth fields. Creating a connector does not guarantee discovered tools are immediately ready; inspect mcp_tool_sync when returned.
          * @summary Create Connector
          * @param {string} entityId WhatsApp Business Phone Number ID that owns the Meta Business Agent.
@@ -1185,6 +1904,42 @@ const MetaBusinessAgentApiFp = function(configuration?: Configuration) {
          */
         async businessAgentCreateConnectorTool(entityId: string, connectorId: string, publicCreateConnectorToolRequest: PublicCreateConnectorToolRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ConnectorToolDTO>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.businessAgentCreateConnectorTool(entityId, connectorId, publicCreateConnectorToolRequest, options);
+            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+        },
+        /**
+         * Creates a question-and-answer entry in the agent knowledge base and returns the created FAQ.
+         * @summary Create Faq
+         * @param {string} entityId Endpoint-specific Meta Business Agent entity ID. Budget and Conversation Turns operations use the tenant-owned WhatsApp Business Phone Number ID.
+         * @param {PublicCreateFaqRequest} publicCreateFaqRequest
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async businessAgentCreateFaq(entityId: string, publicCreateFaqRequest: PublicCreateFaqRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<FaqDTO>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.businessAgentCreateFaq(entityId, publicCreateFaqRequest, options);
+            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+        },
+        /**
+         * Adds a website URL for Meta to crawl and ingest into the agent knowledge base and returns the created crawl entry.
+         * @summary Create Website
+         * @param {string} entityId Endpoint-specific Meta Business Agent entity ID. Budget and Conversation Turns operations use the tenant-owned WhatsApp Business Phone Number ID.
+         * @param {PublicCreateWebsiteRequest} publicCreateWebsiteRequest
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async businessAgentCreateWebsite(entityId: string, publicCreateWebsiteRequest: PublicCreateWebsiteRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<WebsiteDTO>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.businessAgentCreateWebsite(entityId, publicCreateWebsiteRequest, options);
+            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+        },
+        /**
+         * Deletes only the entry identified by entryId. Other phone or BSUID entries remain unchanged.
+         * @summary Delete Allowlist Entry
+         * @param {string} entityId WhatsApp Business Phone Number ID that owns the Meta Business Agent.
+         * @param {string} entryId Allowlist entry ID.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async businessAgentDeleteAllowlistEntry(entityId: string, entryId: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.businessAgentDeleteAllowlistEntry(entityId, entryId, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
         /**
@@ -1213,6 +1968,42 @@ const MetaBusinessAgentApiFp = function(configuration?: Configuration) {
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
         /**
+         * Deletes the FAQ identified by `faqId`. Returns HTTP `204` when deletion succeeds or Meta explicitly reports that the FAQ does not exist. Other `404` errors remain errors.
+         * @summary Delete Faq
+         * @param {string} entityId Endpoint-specific Meta Business Agent entity ID. Budget and Conversation Turns operations use the tenant-owned WhatsApp Business Phone Number ID.
+         * @param {string} faqId FAQ resource ID.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async businessAgentDeleteFaq(entityId: string, faqId: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.businessAgentDeleteFaq(entityId, faqId, options);
+            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+        },
+        /**
+         * Removes the website crawl entry identified by `websiteId` from the agent knowledge base.
+         * @summary Delete Website
+         * @param {string} entityId Endpoint-specific Meta Business Agent entity ID. Budget and Conversation Turns operations use the tenant-owned WhatsApp Business Phone Number ID.
+         * @param {string} websiteId Website resource ID.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async businessAgentDeleteWebsite(entityId: string, websiteId: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.businessAgentDeleteWebsite(entityId, websiteId, options);
+            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+        },
+        /**
+         * Retrieves the current processing status, timestamps, and any error or skip reason for the event identified by `agentEventId`.
+         * @summary Get Agent Event Status
+         * @param {string} entityId WhatsApp Business Phone Number ID that owns the Meta Business Agent.
+         * @param {string} agentEventId Agent event ID returned when the event was submitted.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async businessAgentGetAgentEventStatus(entityId: string, agentEventId: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<AgentEventStatusDTO>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.businessAgentGetAgentEventStatus(entityId, agentEventId, options);
+            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+        },
+        /**
          * Retrieves the external API connector identified by `connectorId`.
          * @summary Get Connector
          * @param {string} entityId WhatsApp Business Phone Number ID that owns the Meta Business Agent.
@@ -1235,6 +2026,41 @@ const MetaBusinessAgentApiFp = function(configuration?: Configuration) {
          */
         async businessAgentGetConnectorTool(entityId: string, connectorId: string, toolId: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ConnectorToolDTO>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.businessAgentGetConnectorTool(entityId, connectorId, toolId, options);
+            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+        },
+        /**
+         * Retrieves the FAQ knowledge entry identified by `faqId`.
+         * @summary Get Faq
+         * @param {string} entityId Endpoint-specific Meta Business Agent entity ID. Budget and Conversation Turns operations use the tenant-owned WhatsApp Business Phone Number ID.
+         * @param {string} faqId FAQ resource ID.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async businessAgentGetFaq(entityId: string, faqId: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<FaqDTO>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.businessAgentGetFaq(entityId, faqId, options);
+            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+        },
+        /**
+         * Retrieves the website knowledge entry identified by `websiteId`, including its URL and crawl status information.
+         * @summary Get Website
+         * @param {string} entityId Endpoint-specific Meta Business Agent entity ID. Budget and Conversation Turns operations use the tenant-owned WhatsApp Business Phone Number ID.
+         * @param {string} websiteId Website resource ID.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async businessAgentGetWebsite(entityId: string, websiteId: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<WebsiteDTO>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.businessAgentGetWebsite(entityId, websiteId, options);
+            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+        },
+        /**
+         * Lists allowlist entries that may receive agent replies when `ai_audience` is set to `ALLOWLISTED_ONLY`. Identity fields may be absent.
+         * @summary List Allowlist
+         * @param {string} entityId WhatsApp Business Phone Number ID that owns the Meta Business Agent.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async businessAgentListAllowlist(entityId: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<AgentAllowlistEntryDTO>>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.businessAgentListAllowlist(entityId, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
         /**
@@ -1280,6 +2106,28 @@ const MetaBusinessAgentApiFp = function(configuration?: Configuration) {
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
         /**
+         * Lists all FAQ question-and-answer entries currently available to the agent as knowledge.
+         * @summary List Faqs
+         * @param {string} entityId Endpoint-specific Meta Business Agent entity ID. Budget and Conversation Turns operations use the tenant-owned WhatsApp Business Phone Number ID.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async businessAgentListFaqs(entityId: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<FaqDTO>>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.businessAgentListFaqs(entityId, options);
+            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+        },
+        /**
+         * Lists the website URLs configured for Meta to crawl and ingest into the agent knowledge base, including each crawl entry\'s current state.
+         * @summary List Websites
+         * @param {string} entityId Endpoint-specific Meta Business Agent entity ID. Budget and Conversation Turns operations use the tenant-owned WhatsApp Business Phone Number ID.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async businessAgentListWebsites(entityId: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<WebsiteDTO>>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.businessAgentListWebsites(entityId, options);
+            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+        },
+        /**
          * Triggers Meta to rediscover the MCP tools exposed by this connector. The request has no body. A successful HTTP 200 returns the current Connector; inspect mcp_tool_sync.status because remote discovery or provisioning failure can still return HTTP 200 with status ERROR. This operation has no idempotency key. Do not retry it automatically; after a timeout, query the Connector because the refresh outcome is uncertain.
          * @summary Refresh MCP Connector Tools
          * @param {string} entityId WhatsApp Business Phone Number ID that owns the Meta Business Agent.
@@ -1303,6 +2151,18 @@ const MetaBusinessAgentApiFp = function(configuration?: Configuration) {
          */
         async businessAgentRunConnectorTool(entityId: string, connectorId: string, toolId: string, publicRunConnectorToolRequest: PublicRunConnectorToolRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ConnectorToolRunResultDTO>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.businessAgentRunConnectorTool(entityId, connectorId, toolId, publicRunConnectorToolRequest, options);
+            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+        },
+        /**
+         * Submits a business event for a consumer and enqueues it for asynchronous agent processing. The immediate response contains `status` and `agent_event_id` for later polling.
+         * @summary Submit Agent Event
+         * @param {string} entityId WhatsApp Business Phone Number ID that owns the Meta Business Agent.
+         * @param {PublicSubmitAgentEventRequest} publicSubmitAgentEventRequest
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async businessAgentSubmitAgentEvent(entityId: string, publicSubmitAgentEventRequest: PublicSubmitAgentEventRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<AgentEventResultDTO>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.businessAgentSubmitAgentEvent(entityId, publicSubmitAgentEventRequest, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
         /**
@@ -1330,6 +2190,32 @@ const MetaBusinessAgentApiFp = function(configuration?: Configuration) {
          */
         async businessAgentUpdateConnectorTool(entityId: string, connectorId: string, toolId: string, publicUpdateConnectorToolRequest: PublicUpdateConnectorToolRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ConnectorToolDTO>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.businessAgentUpdateConnectorTool(entityId, connectorId, toolId, publicUpdateConnectorToolRequest, options);
+            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+        },
+        /**
+         * Send both `question` and `answer` to update the FAQ. You can also include `metadata`. The response may contain a new `id`. Use the returned ID for subsequent reads, updates, and deletes. If the ID changes, `created_at` resets to the update time. A timeout or HTTP `502` response does not necessarily mean that the update failed. Do not automatically retry the update or create a replacement FAQ.
+         * @summary Update Faq
+         * @param {string} entityId Endpoint-specific Meta Business Agent entity ID. Budget and Conversation Turns operations use the tenant-owned WhatsApp Business Phone Number ID.
+         * @param {string} faqId FAQ resource ID.
+         * @param {PublicUpdateFaqRequest} publicUpdateFaqRequest
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async businessAgentUpdateFaq(entityId: string, faqId: string, publicUpdateFaqRequest: PublicUpdateFaqRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<FaqDTO>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.businessAgentUpdateFaq(entityId, faqId, publicUpdateFaqRequest, options);
+            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+        },
+        /**
+         * Updates the URL and optional crawl scope of the website identified by `websiteId`. The response may contain a new `id`. Use the returned ID for subsequent reads, updates, and deletes. Do not automatically retry an update whose outcome is uncertain.
+         * @summary Update Website
+         * @param {string} entityId Endpoint-specific Meta Business Agent entity ID. Budget and Conversation Turns operations use the tenant-owned WhatsApp Business Phone Number ID.
+         * @param {string} websiteId Website resource ID.
+         * @param {PublicUpdateWebsiteRequest} publicUpdateWebsiteRequest
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async businessAgentUpdateWebsite(entityId: string, websiteId: string, publicUpdateWebsiteRequest: PublicUpdateWebsiteRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<WebsiteDTO>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.businessAgentUpdateWebsite(entityId, websiteId, publicUpdateWebsiteRequest, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
         /**
@@ -1434,6 +2320,15 @@ const MetaBusinessAgentApiFactory = function (configuration?: Configuration, bas
             return localVarFp.budgetRetrieve(entityId, options).then((request) => request(axios, basePath));
         },
         /**
+         * Adds exactly one explicitly supplied WhatsApp identity: consumer_phone_number or consumer_bsuid. This public API does not look up a BSUID from a phone number. Phone and BSUID entries have distinct IDs and each counts toward the shared limit of 20.
+         * @summary Create Allowlist Entry
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        businessAgentCreateAllowlistEntry(entityId: string, publicCreateAllowlistEntryRequest: PublicCreateAllowlistEntryRequest, options?: any): AxiosPromise<AgentAllowlistEntryDTO> {
+            return localVarFp.businessAgentCreateAllowlistEntry(entityId, publicCreateAllowlistEntryRequest, options).then((request) => request(axios, basePath));
+        },
+        /**
          * Creates an external API connector with its name, description, base URL, authentication type, and optional user-auth or certificate configuration. For MCP, base_url is the remote MCP server address and authentication uses the existing auth fields. Creating a connector does not guarantee discovered tools are immediately ready; inspect mcp_tool_sync when returned.
          * @summary Create Connector
          * @param {*} [options] Override http request option.
@@ -1450,6 +2345,33 @@ const MetaBusinessAgentApiFactory = function (configuration?: Configuration, bas
          */
         businessAgentCreateConnectorTool(entityId: string, connectorId: string, publicCreateConnectorToolRequest: PublicCreateConnectorToolRequest, options?: any): AxiosPromise<ConnectorToolDTO> {
             return localVarFp.businessAgentCreateConnectorTool(entityId, connectorId, publicCreateConnectorToolRequest, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * Creates a question-and-answer entry in the agent knowledge base and returns the created FAQ.
+         * @summary Create Faq
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        businessAgentCreateFaq(entityId: string, publicCreateFaqRequest: PublicCreateFaqRequest, options?: any): AxiosPromise<FaqDTO> {
+            return localVarFp.businessAgentCreateFaq(entityId, publicCreateFaqRequest, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * Adds a website URL for Meta to crawl and ingest into the agent knowledge base and returns the created crawl entry.
+         * @summary Create Website
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        businessAgentCreateWebsite(entityId: string, publicCreateWebsiteRequest: PublicCreateWebsiteRequest, options?: any): AxiosPromise<WebsiteDTO> {
+            return localVarFp.businessAgentCreateWebsite(entityId, publicCreateWebsiteRequest, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * Deletes only the entry identified by entryId. Other phone or BSUID entries remain unchanged.
+         * @summary Delete Allowlist Entry
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        businessAgentDeleteAllowlistEntry(entityId: string, entryId: string, options?: any): AxiosPromise<void> {
+            return localVarFp.businessAgentDeleteAllowlistEntry(entityId, entryId, options).then((request) => request(axios, basePath));
         },
         /**
          * Deletes the external API connector identified by `connectorId` from the agent configuration.
@@ -1470,6 +2392,33 @@ const MetaBusinessAgentApiFactory = function (configuration?: Configuration, bas
             return localVarFp.businessAgentDeleteConnectorTool(entityId, connectorId, toolId, options).then((request) => request(axios, basePath));
         },
         /**
+         * Deletes the FAQ identified by `faqId`. Returns HTTP `204` when deletion succeeds or Meta explicitly reports that the FAQ does not exist. Other `404` errors remain errors.
+         * @summary Delete Faq
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        businessAgentDeleteFaq(entityId: string, faqId: string, options?: any): AxiosPromise<void> {
+            return localVarFp.businessAgentDeleteFaq(entityId, faqId, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * Removes the website crawl entry identified by `websiteId` from the agent knowledge base.
+         * @summary Delete Website
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        businessAgentDeleteWebsite(entityId: string, websiteId: string, options?: any): AxiosPromise<void> {
+            return localVarFp.businessAgentDeleteWebsite(entityId, websiteId, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * Retrieves the current processing status, timestamps, and any error or skip reason for the event identified by `agentEventId`.
+         * @summary Get Agent Event Status
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        businessAgentGetAgentEventStatus(entityId: string, agentEventId: string, options?: any): AxiosPromise<AgentEventStatusDTO> {
+            return localVarFp.businessAgentGetAgentEventStatus(entityId, agentEventId, options).then((request) => request(axios, basePath));
+        },
+        /**
          * Retrieves the external API connector identified by `connectorId`.
          * @summary Get Connector
          * @param {*} [options] Override http request option.
@@ -1486,6 +2435,33 @@ const MetaBusinessAgentApiFactory = function (configuration?: Configuration, bas
          */
         businessAgentGetConnectorTool(entityId: string, connectorId: string, toolId: string, options?: any): AxiosPromise<ConnectorToolDTO> {
             return localVarFp.businessAgentGetConnectorTool(entityId, connectorId, toolId, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * Retrieves the FAQ knowledge entry identified by `faqId`.
+         * @summary Get Faq
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        businessAgentGetFaq(entityId: string, faqId: string, options?: any): AxiosPromise<FaqDTO> {
+            return localVarFp.businessAgentGetFaq(entityId, faqId, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * Retrieves the website knowledge entry identified by `websiteId`, including its URL and crawl status information.
+         * @summary Get Website
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        businessAgentGetWebsite(entityId: string, websiteId: string, options?: any): AxiosPromise<WebsiteDTO> {
+            return localVarFp.businessAgentGetWebsite(entityId, websiteId, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * Lists allowlist entries that may receive agent replies when `ai_audience` is set to `ALLOWLISTED_ONLY`. Identity fields may be absent.
+         * @summary List Allowlist
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        businessAgentListAllowlist(entityId: string, options?: any): AxiosPromise<Array<AgentAllowlistEntryDTO>> {
+            return localVarFp.businessAgentListAllowlist(entityId, options).then((request) => request(axios, basePath));
         },
         /**
          * Retrieves third-party connector error logs for the requested time and tool filters. It can return individual entries, aggregated failure patterns, and optional success-rate or latency statistics; Meta limits the query window and retention to seven days.
@@ -1515,6 +2491,24 @@ const MetaBusinessAgentApiFactory = function (configuration?: Configuration, bas
             return localVarFp.businessAgentListConnectors(entityId, options).then((request) => request(axios, basePath));
         },
         /**
+         * Lists all FAQ question-and-answer entries currently available to the agent as knowledge.
+         * @summary List Faqs
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        businessAgentListFaqs(entityId: string, options?: any): AxiosPromise<Array<FaqDTO>> {
+            return localVarFp.businessAgentListFaqs(entityId, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * Lists the website URLs configured for Meta to crawl and ingest into the agent knowledge base, including each crawl entry\'s current state.
+         * @summary List Websites
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        businessAgentListWebsites(entityId: string, options?: any): AxiosPromise<Array<WebsiteDTO>> {
+            return localVarFp.businessAgentListWebsites(entityId, options).then((request) => request(axios, basePath));
+        },
+        /**
          * Triggers Meta to rediscover the MCP tools exposed by this connector. The request has no body. A successful HTTP 200 returns the current Connector; inspect mcp_tool_sync.status because remote discovery or provisioning failure can still return HTTP 200 with status ERROR. This operation has no idempotency key. Do not retry it automatically; after a timeout, query the Connector because the refresh outcome is uncertain.
          * @summary Refresh MCP Connector Tools
          * @param {*} [options] Override http request option.
@@ -1533,6 +2527,15 @@ const MetaBusinessAgentApiFactory = function (configuration?: Configuration, bas
             return localVarFp.businessAgentRunConnectorTool(entityId, connectorId, toolId, publicRunConnectorToolRequest, options).then((request) => request(axios, basePath));
         },
         /**
+         * Submits a business event for a consumer and enqueues it for asynchronous agent processing. The immediate response contains `status` and `agent_event_id` for later polling.
+         * @summary Submit Agent Event
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        businessAgentSubmitAgentEvent(entityId: string, publicSubmitAgentEventRequest: PublicSubmitAgentEventRequest, options?: any): AxiosPromise<AgentEventResultDTO> {
+            return localVarFp.businessAgentSubmitAgentEvent(entityId, publicSubmitAgentEventRequest, options).then((request) => request(axios, basePath));
+        },
+        /**
          * Updates the connector definition identified by `connectorId`, including its descriptive, endpoint, authentication, and certificate requirement fields. connector_protocol cannot be changed after creation.
          * @summary Update Connector
          * @param {*} [options] Override http request option.
@@ -1549,6 +2552,24 @@ const MetaBusinessAgentApiFactory = function (configuration?: Configuration, bas
          */
         businessAgentUpdateConnectorTool(entityId: string, connectorId: string, toolId: string, publicUpdateConnectorToolRequest: PublicUpdateConnectorToolRequest, options?: any): AxiosPromise<ConnectorToolDTO> {
             return localVarFp.businessAgentUpdateConnectorTool(entityId, connectorId, toolId, publicUpdateConnectorToolRequest, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * Send both `question` and `answer` to update the FAQ. You can also include `metadata`. The response may contain a new `id`. Use the returned ID for subsequent reads, updates, and deletes. If the ID changes, `created_at` resets to the update time. A timeout or HTTP `502` response does not necessarily mean that the update failed. Do not automatically retry the update or create a replacement FAQ.
+         * @summary Update Faq
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        businessAgentUpdateFaq(entityId: string, faqId: string, publicUpdateFaqRequest: PublicUpdateFaqRequest, options?: any): AxiosPromise<FaqDTO> {
+            return localVarFp.businessAgentUpdateFaq(entityId, faqId, publicUpdateFaqRequest, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * Updates the URL and optional crawl scope of the website identified by `websiteId`. The response may contain a new `id`. Use the returned ID for subsequent reads, updates, and deletes. Do not automatically retry an update whose outcome is uncertain.
+         * @summary Update Website
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        businessAgentUpdateWebsite(entityId: string, websiteId: string, publicUpdateWebsiteRequest: PublicUpdateWebsiteRequest, options?: any): AxiosPromise<WebsiteDTO> {
+            return localVarFp.businessAgentUpdateWebsite(entityId, websiteId, publicUpdateWebsiteRequest, options).then((request) => request(axios, basePath));
         },
         /**
          * Sets or rotates the API key credentials for `connectorId`. Existing API key credentials are replaced, and the updated connector is returned.
@@ -1728,6 +2749,19 @@ export class MetaBusinessAgentApi extends BaseAPI {
     }
 
     /**
+     * Adds exactly one explicitly supplied WhatsApp identity: consumer_phone_number or consumer_bsuid. This public API does not look up a BSUID from a phone number. Phone and BSUID entries have distinct IDs and each counts toward the shared limit of 20.
+     * @summary Create Allowlist Entry
+     * @param {string} entityId WhatsApp Business Phone Number ID that owns the Meta Business Agent.
+     * @param {PublicCreateAllowlistEntryRequest} publicCreateAllowlistEntryRequest
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof MetaBusinessAgentApi
+     */
+    public businessAgentCreateAllowlistEntry(entityId: string, publicCreateAllowlistEntryRequest: PublicCreateAllowlistEntryRequest, options?: AxiosRequestConfig) {
+        return MetaBusinessAgentApiFp(this.configuration).businessAgentCreateAllowlistEntry(entityId, publicCreateAllowlistEntryRequest, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
      * Creates an external API connector with its name, description, base URL, authentication type, and optional user-auth or certificate configuration. For MCP, base_url is the remote MCP server address and authentication uses the existing auth fields. Creating a connector does not guarantee discovered tools are immediately ready; inspect mcp_tool_sync when returned.
      * @summary Create Connector
      * @param {string} entityId WhatsApp Business Phone Number ID that owns the Meta Business Agent.
@@ -1752,6 +2786,45 @@ export class MetaBusinessAgentApi extends BaseAPI {
      */
     public businessAgentCreateConnectorTool(entityId: string, connectorId: string, publicCreateConnectorToolRequest: PublicCreateConnectorToolRequest, options?: AxiosRequestConfig) {
         return MetaBusinessAgentApiFp(this.configuration).businessAgentCreateConnectorTool(entityId, connectorId, publicCreateConnectorToolRequest, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * Creates a question-and-answer entry in the agent knowledge base and returns the created FAQ.
+     * @summary Create Faq
+     * @param {string} entityId Endpoint-specific Meta Business Agent entity ID. Budget and Conversation Turns operations use the tenant-owned WhatsApp Business Phone Number ID.
+     * @param {PublicCreateFaqRequest} publicCreateFaqRequest
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof MetaBusinessAgentApi
+     */
+    public businessAgentCreateFaq(entityId: string, publicCreateFaqRequest: PublicCreateFaqRequest, options?: AxiosRequestConfig) {
+        return MetaBusinessAgentApiFp(this.configuration).businessAgentCreateFaq(entityId, publicCreateFaqRequest, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * Adds a website URL for Meta to crawl and ingest into the agent knowledge base and returns the created crawl entry.
+     * @summary Create Website
+     * @param {string} entityId Endpoint-specific Meta Business Agent entity ID. Budget and Conversation Turns operations use the tenant-owned WhatsApp Business Phone Number ID.
+     * @param {PublicCreateWebsiteRequest} publicCreateWebsiteRequest
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof MetaBusinessAgentApi
+     */
+    public businessAgentCreateWebsite(entityId: string, publicCreateWebsiteRequest: PublicCreateWebsiteRequest, options?: AxiosRequestConfig) {
+        return MetaBusinessAgentApiFp(this.configuration).businessAgentCreateWebsite(entityId, publicCreateWebsiteRequest, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * Deletes only the entry identified by entryId. Other phone or BSUID entries remain unchanged.
+     * @summary Delete Allowlist Entry
+     * @param {string} entityId WhatsApp Business Phone Number ID that owns the Meta Business Agent.
+     * @param {string} entryId Allowlist entry ID.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof MetaBusinessAgentApi
+     */
+    public businessAgentDeleteAllowlistEntry(entityId: string, entryId: string, options?: AxiosRequestConfig) {
+        return MetaBusinessAgentApiFp(this.configuration).businessAgentDeleteAllowlistEntry(entityId, entryId, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
@@ -1782,6 +2855,45 @@ export class MetaBusinessAgentApi extends BaseAPI {
     }
 
     /**
+     * Deletes the FAQ identified by `faqId`. Returns HTTP `204` when deletion succeeds or Meta explicitly reports that the FAQ does not exist. Other `404` errors remain errors.
+     * @summary Delete Faq
+     * @param {string} entityId Endpoint-specific Meta Business Agent entity ID. Budget and Conversation Turns operations use the tenant-owned WhatsApp Business Phone Number ID.
+     * @param {string} faqId FAQ resource ID.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof MetaBusinessAgentApi
+     */
+    public businessAgentDeleteFaq(entityId: string, faqId: string, options?: AxiosRequestConfig) {
+        return MetaBusinessAgentApiFp(this.configuration).businessAgentDeleteFaq(entityId, faqId, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * Removes the website crawl entry identified by `websiteId` from the agent knowledge base.
+     * @summary Delete Website
+     * @param {string} entityId Endpoint-specific Meta Business Agent entity ID. Budget and Conversation Turns operations use the tenant-owned WhatsApp Business Phone Number ID.
+     * @param {string} websiteId Website resource ID.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof MetaBusinessAgentApi
+     */
+    public businessAgentDeleteWebsite(entityId: string, websiteId: string, options?: AxiosRequestConfig) {
+        return MetaBusinessAgentApiFp(this.configuration).businessAgentDeleteWebsite(entityId, websiteId, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * Retrieves the current processing status, timestamps, and any error or skip reason for the event identified by `agentEventId`.
+     * @summary Get Agent Event Status
+     * @param {string} entityId WhatsApp Business Phone Number ID that owns the Meta Business Agent.
+     * @param {string} agentEventId Agent event ID returned when the event was submitted.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof MetaBusinessAgentApi
+     */
+    public businessAgentGetAgentEventStatus(entityId: string, agentEventId: string, options?: AxiosRequestConfig) {
+        return MetaBusinessAgentApiFp(this.configuration).businessAgentGetAgentEventStatus(entityId, agentEventId, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
      * Retrieves the external API connector identified by `connectorId`.
      * @summary Get Connector
      * @param {string} entityId WhatsApp Business Phone Number ID that owns the Meta Business Agent.
@@ -1806,6 +2918,44 @@ export class MetaBusinessAgentApi extends BaseAPI {
      */
     public businessAgentGetConnectorTool(entityId: string, connectorId: string, toolId: string, options?: AxiosRequestConfig) {
         return MetaBusinessAgentApiFp(this.configuration).businessAgentGetConnectorTool(entityId, connectorId, toolId, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * Retrieves the FAQ knowledge entry identified by `faqId`.
+     * @summary Get Faq
+     * @param {string} entityId Endpoint-specific Meta Business Agent entity ID. Budget and Conversation Turns operations use the tenant-owned WhatsApp Business Phone Number ID.
+     * @param {string} faqId FAQ resource ID.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof MetaBusinessAgentApi
+     */
+    public businessAgentGetFaq(entityId: string, faqId: string, options?: AxiosRequestConfig) {
+        return MetaBusinessAgentApiFp(this.configuration).businessAgentGetFaq(entityId, faqId, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * Retrieves the website knowledge entry identified by `websiteId`, including its URL and crawl status information.
+     * @summary Get Website
+     * @param {string} entityId Endpoint-specific Meta Business Agent entity ID. Budget and Conversation Turns operations use the tenant-owned WhatsApp Business Phone Number ID.
+     * @param {string} websiteId Website resource ID.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof MetaBusinessAgentApi
+     */
+    public businessAgentGetWebsite(entityId: string, websiteId: string, options?: AxiosRequestConfig) {
+        return MetaBusinessAgentApiFp(this.configuration).businessAgentGetWebsite(entityId, websiteId, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * Lists allowlist entries that may receive agent replies when `ai_audience` is set to `ALLOWLISTED_ONLY`. Identity fields may be absent.
+     * @summary List Allowlist
+     * @param {string} entityId WhatsApp Business Phone Number ID that owns the Meta Business Agent.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof MetaBusinessAgentApi
+     */
+    public businessAgentListAllowlist(entityId: string, options?: AxiosRequestConfig) {
+        return MetaBusinessAgentApiFp(this.configuration).businessAgentListAllowlist(entityId, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
@@ -1854,6 +3004,30 @@ export class MetaBusinessAgentApi extends BaseAPI {
     }
 
     /**
+     * Lists all FAQ question-and-answer entries currently available to the agent as knowledge.
+     * @summary List Faqs
+     * @param {string} entityId Endpoint-specific Meta Business Agent entity ID. Budget and Conversation Turns operations use the tenant-owned WhatsApp Business Phone Number ID.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof MetaBusinessAgentApi
+     */
+    public businessAgentListFaqs(entityId: string, options?: AxiosRequestConfig) {
+        return MetaBusinessAgentApiFp(this.configuration).businessAgentListFaqs(entityId, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * Lists the website URLs configured for Meta to crawl and ingest into the agent knowledge base, including each crawl entry\'s current state.
+     * @summary List Websites
+     * @param {string} entityId Endpoint-specific Meta Business Agent entity ID. Budget and Conversation Turns operations use the tenant-owned WhatsApp Business Phone Number ID.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof MetaBusinessAgentApi
+     */
+    public businessAgentListWebsites(entityId: string, options?: AxiosRequestConfig) {
+        return MetaBusinessAgentApiFp(this.configuration).businessAgentListWebsites(entityId, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
      * Triggers Meta to rediscover the MCP tools exposed by this connector. The request has no body. A successful HTTP 200 returns the current Connector; inspect mcp_tool_sync.status because remote discovery or provisioning failure can still return HTTP 200 with status ERROR. This operation has no idempotency key. Do not retry it automatically; after a timeout, query the Connector because the refresh outcome is uncertain.
      * @summary Refresh MCP Connector Tools
      * @param {string} entityId WhatsApp Business Phone Number ID that owns the Meta Business Agent.
@@ -1879,6 +3053,19 @@ export class MetaBusinessAgentApi extends BaseAPI {
      */
     public businessAgentRunConnectorTool(entityId: string, connectorId: string, toolId: string, publicRunConnectorToolRequest: PublicRunConnectorToolRequest, options?: AxiosRequestConfig) {
         return MetaBusinessAgentApiFp(this.configuration).businessAgentRunConnectorTool(entityId, connectorId, toolId, publicRunConnectorToolRequest, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * Submits a business event for a consumer and enqueues it for asynchronous agent processing. The immediate response contains `status` and `agent_event_id` for later polling.
+     * @summary Submit Agent Event
+     * @param {string} entityId WhatsApp Business Phone Number ID that owns the Meta Business Agent.
+     * @param {PublicSubmitAgentEventRequest} publicSubmitAgentEventRequest
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof MetaBusinessAgentApi
+     */
+    public businessAgentSubmitAgentEvent(entityId: string, publicSubmitAgentEventRequest: PublicSubmitAgentEventRequest, options?: AxiosRequestConfig) {
+        return MetaBusinessAgentApiFp(this.configuration).businessAgentSubmitAgentEvent(entityId, publicSubmitAgentEventRequest, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
@@ -1908,6 +3095,34 @@ export class MetaBusinessAgentApi extends BaseAPI {
      */
     public businessAgentUpdateConnectorTool(entityId: string, connectorId: string, toolId: string, publicUpdateConnectorToolRequest: PublicUpdateConnectorToolRequest, options?: AxiosRequestConfig) {
         return MetaBusinessAgentApiFp(this.configuration).businessAgentUpdateConnectorTool(entityId, connectorId, toolId, publicUpdateConnectorToolRequest, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * Send both `question` and `answer` to update the FAQ. You can also include `metadata`. The response may contain a new `id`. Use the returned ID for subsequent reads, updates, and deletes. If the ID changes, `created_at` resets to the update time. A timeout or HTTP `502` response does not necessarily mean that the update failed. Do not automatically retry the update or create a replacement FAQ.
+     * @summary Update Faq
+     * @param {string} entityId Endpoint-specific Meta Business Agent entity ID. Budget and Conversation Turns operations use the tenant-owned WhatsApp Business Phone Number ID.
+     * @param {string} faqId FAQ resource ID.
+     * @param {PublicUpdateFaqRequest} publicUpdateFaqRequest
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof MetaBusinessAgentApi
+     */
+    public businessAgentUpdateFaq(entityId: string, faqId: string, publicUpdateFaqRequest: PublicUpdateFaqRequest, options?: AxiosRequestConfig) {
+        return MetaBusinessAgentApiFp(this.configuration).businessAgentUpdateFaq(entityId, faqId, publicUpdateFaqRequest, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * Updates the URL and optional crawl scope of the website identified by `websiteId`. The response may contain a new `id`. Use the returned ID for subsequent reads, updates, and deletes. Do not automatically retry an update whose outcome is uncertain.
+     * @summary Update Website
+     * @param {string} entityId Endpoint-specific Meta Business Agent entity ID. Budget and Conversation Turns operations use the tenant-owned WhatsApp Business Phone Number ID.
+     * @param {string} websiteId Website resource ID.
+     * @param {PublicUpdateWebsiteRequest} publicUpdateWebsiteRequest
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof MetaBusinessAgentApi
+     */
+    public businessAgentUpdateWebsite(entityId: string, websiteId: string, publicUpdateWebsiteRequest: PublicUpdateWebsiteRequest, options?: AxiosRequestConfig) {
+        return MetaBusinessAgentApiFp(this.configuration).businessAgentUpdateWebsite(entityId, websiteId, publicUpdateWebsiteRequest, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**

@@ -65,19 +65,34 @@ Class | Method | HTTP request | Description
 *EmailsApi* | **send** | **POST** /emails | Send an email
 *MetaBusinessAgentApi* | **budgetReplace** | **PUT** /metaBusinessAgents/{entityId}/budgets | Replace Meta Business Agent budgets
 *MetaBusinessAgentApi* | **budgetRetrieve** | **GET** /metaBusinessAgents/{entityId}/budgets | Retrieve Meta Business Agent budgets
+*MetaBusinessAgentApi* | **businessAgentCreateAllowlistEntry** | **POST** /metaBusinessAgents/{entityId}/allowListEntries | Create Allowlist Entry
 *MetaBusinessAgentApi* | **businessAgentCreateConnector** | **POST** /metaBusinessAgents/{entityId}/connectors | Create Connector
 *MetaBusinessAgentApi* | **businessAgentCreateConnectorTool** | **POST** /metaBusinessAgents/{entityId}/connectors/{connectorId}/tools | Create Connector Tool
+*MetaBusinessAgentApi* | **businessAgentCreateFaq** | **POST** /metaBusinessAgents/{entityId}/faqs | Create Faq
+*MetaBusinessAgentApi* | **businessAgentCreateWebsite** | **POST** /metaBusinessAgents/{entityId}/websites | Create Website
+*MetaBusinessAgentApi* | **businessAgentDeleteAllowlistEntry** | **DELETE** /metaBusinessAgents/{entityId}/allowListEntries/{entryId} | Delete Allowlist Entry
 *MetaBusinessAgentApi* | **businessAgentDeleteConnector** | **DELETE** /metaBusinessAgents/{entityId}/connectors/{connectorId} | Delete Connector
 *MetaBusinessAgentApi* | **businessAgentDeleteConnectorTool** | **DELETE** /metaBusinessAgents/{entityId}/connectors/{connectorId}/tools/{toolId} | Delete Connector Tool
+*MetaBusinessAgentApi* | **businessAgentDeleteFaq** | **DELETE** /metaBusinessAgents/{entityId}/faqs/{faqId} | Delete Faq
+*MetaBusinessAgentApi* | **businessAgentDeleteWebsite** | **DELETE** /metaBusinessAgents/{entityId}/websites/{websiteId} | Delete Website
+*MetaBusinessAgentApi* | **businessAgentGetAgentEventStatus** | **GET** /metaBusinessAgents/{entityId}/events/{agentEventId} | Get Agent Event Status
 *MetaBusinessAgentApi* | **businessAgentGetConnector** | **GET** /metaBusinessAgents/{entityId}/connectors/{connectorId} | Get Connector
 *MetaBusinessAgentApi* | **businessAgentGetConnectorTool** | **GET** /metaBusinessAgents/{entityId}/connectors/{connectorId}/tools/{toolId} | Get Connector Tool
+*MetaBusinessAgentApi* | **businessAgentGetFaq** | **GET** /metaBusinessAgents/{entityId}/faqs/{faqId} | Get Faq
+*MetaBusinessAgentApi* | **businessAgentGetWebsite** | **GET** /metaBusinessAgents/{entityId}/websites/{websiteId} | Get Website
+*MetaBusinessAgentApi* | **businessAgentListAllowlist** | **GET** /metaBusinessAgents/{entityId}/allowListEntries | List Allowlist
 *MetaBusinessAgentApi* | **businessAgentListConnectorLogs** | **GET** /metaBusinessAgents/{entityId}/connectors/{connectorId}/logs | List Connector Logs
 *MetaBusinessAgentApi* | **businessAgentListConnectorTools** | **GET** /metaBusinessAgents/{entityId}/connectors/{connectorId}/tools | List Connector Tools
 *MetaBusinessAgentApi* | **businessAgentListConnectors** | **GET** /metaBusinessAgents/{entityId}/connectors | List Connectors
+*MetaBusinessAgentApi* | **businessAgentListFaqs** | **GET** /metaBusinessAgents/{entityId}/faqs | List Faqs
+*MetaBusinessAgentApi* | **businessAgentListWebsites** | **GET** /metaBusinessAgents/{entityId}/websites | List Websites
 *MetaBusinessAgentApi* | **businessAgentRefreshConnectorMcpTools** | **POST** /metaBusinessAgents/{entityId}/connectors/{connectorId}/refreshMCPTools | Refresh MCP Connector Tools
 *MetaBusinessAgentApi* | **businessAgentRunConnectorTool** | **POST** /metaBusinessAgents/{entityId}/connectors/{connectorId}/tools/{toolId}/runs | Run Connector Tool
+*MetaBusinessAgentApi* | **businessAgentSubmitAgentEvent** | **POST** /metaBusinessAgents/{entityId}/events | Submit Agent Event
 *MetaBusinessAgentApi* | **businessAgentUpdateConnector** | **PATCH** /metaBusinessAgents/{entityId}/connectors/{connectorId} | Update Connector
 *MetaBusinessAgentApi* | **businessAgentUpdateConnectorTool** | **PATCH** /metaBusinessAgents/{entityId}/connectors/{connectorId}/tools/{toolId} | Update Connector Tool
+*MetaBusinessAgentApi* | **businessAgentUpdateFaq** | **PATCH** /metaBusinessAgents/{entityId}/faqs/{faqId} | Update Faq
+*MetaBusinessAgentApi* | **businessAgentUpdateWebsite** | **PATCH** /metaBusinessAgents/{entityId}/websites/{websiteId} | Update Website
 *MetaBusinessAgentApi* | **businessAgentUpsertConnectorApiKey** | **PUT** /metaBusinessAgents/{entityId}/connectors/{connectorId}/credentials/apiKey | Upsert Connector Api Key
 *MetaBusinessAgentApi* | **businessAgentUpsertConnectorCertificate** | **PUT** /metaBusinessAgents/{entityId}/connectors/{connectorId}/credentials/certificate | Upsert Connector Certificate
 *MetaBusinessAgentApi* | **businessAgentUpsertConnectorOAuth** | **PUT** /metaBusinessAgents/{entityId}/connectors/{connectorId}/credentials/oauth | Upsert Connector O Auth
@@ -140,6 +155,7 @@ Class | Method | HTTP request | Description
 *WhatsappMessagesApi* | **sendDirectly** | **POST** /whatsapp/messages/sendDirectly | Send a message directly
 *WhatsappPhoneNumbersApi* | **deleteBusinessUsername** | **DELETE** /whatsapp/phoneNumbers/{wabaId}/{phoneNumber}/businessUsername | Delete a phone number business username
 *WhatsappPhoneNumbersApi* | **deleteContactBookEntry** | **DELETE** /whatsapp/phoneNumbers/{wabaId}/{phoneNumber}/contactBook/{bsuid} | Delete a Meta contact book entry
+*WhatsappPhoneNumbersApi* | **getContactBookEntry** | **GET** /whatsapp/phoneNumbers/{wabaId}/{phoneNumber}/contactBook/{bsuid} | Check a Meta contact book entry
 *WhatsappPhoneNumbersApi* | **list** | **GET** /whatsapp/phoneNumbers | List phone numbers
 *WhatsappPhoneNumbersApi* | **register** | **POST** /whatsapp/phoneNumbers/{wabaId}/{phoneNumber}/register | Register a phone number
 *WhatsappPhoneNumbersApi* | **retrieve** | **GET** /whatsapp/phoneNumbers/{wabaId}/{phoneNumber} | Retrieve a phone number

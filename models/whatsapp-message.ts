@@ -241,7 +241,7 @@ export interface WhatsappMessage {
      */
     'readTime'?: string;
     /**
-     * Total price of this message. **Note: It\'s only an estimated price when the `status` is `accepted` or `sent`. It becomes the final price after the message is delivered, i.e., the `status` is `delivered` or `read`.**
+     * Total price of this message. **Note: It\'s only an estimated price when the `status` is `accepted` or `sent`. It becomes the final price after the message is delivered, i.e., the `status` is `delivered` or `read`.**  For Max Price messages, the send-time amount is an estimate. Use the delivered/read whatsapp.message.updated event for the final charge; maxBid is not the final charged amount.
      * @type {number}
      * @memberof WhatsappMessage
      */
@@ -294,4 +294,10 @@ export interface WhatsappMessage {
      * @memberof WhatsappMessage
      */
     'verificationId'?: string;
+    /**
+     * True when the message is identified as a Marketing Lite bidding message. Its pricingCategory is marketing_lite_bidding.
+     * @type {boolean}
+     * @memberof WhatsappMessage
+     */
+    'bidPricingFlag'?: boolean;
 }
